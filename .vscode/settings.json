@@ -28,6 +28,9 @@
       "allauth",
       "Merch",
       "radicool",
-      "socialaccount"
+      "socialaccount",
+      "xlarge",
+      "xsmall",
+      "xxlarge"
    ]
 }

@@ -21,11 +21,9 @@ class CollectionAdmin(admin.ModelAdmin):
 @admin.register(Merch)
 class MerchAdmin(admin.ModelAdmin):
     list_display = [
-        "product_name", "description", "sku", "price", "quantity", "category",
-        "collection", "image", "created"]
+        "product_name", "description", "price", "category",
+        "collection", "image", "created",]
     list_filter = [
-        "category", "collection", "product_name", "price",
-        "quantity",]
+        "category", "collection", "product_name", "price",]
     list_editable = [
-        "description", "sku", "price", "quantity",
-        "category", "collection", "image",]
+        "description", "price", "category", "collection", "image",]
