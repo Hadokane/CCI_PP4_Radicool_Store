@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings  # added to access local media
+from django.conf.urls.static import static  # added to access local media
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:  # uses local media while debug is true
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
