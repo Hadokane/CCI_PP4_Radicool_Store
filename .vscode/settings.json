@@ -25,6 +25,9 @@
    "terminal.integrated.gpuAcceleration": "canvas",
    "editor.defaultFormatter": "HookyQR.beautify",
    "cSpell.words": [
-      "radicool"
+      "allauth",
+      "Merch",
+      "radicool",
+      "socialaccount"
    ]
 }

@@ -15,12 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings  # added to access local media
 from django.conf.urls.static import static  # added to access local media
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include("allauth.urls")),
 ]
 
 if settings.DEBUG:  # uses local media while debug is true
