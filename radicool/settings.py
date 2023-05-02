@@ -71,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # allauth needs
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'store.views.categories',  # allows all pages to see these views
+                'store.views.collections',  # useful for navbar display
             ],
         },
     },
@@ -149,6 +151,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static",]  # static path
 
 MEDIA_URL = "media/"  # local media storage for development
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")  # media path

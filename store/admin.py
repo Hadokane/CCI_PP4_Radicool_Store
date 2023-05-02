@@ -21,9 +21,11 @@ class CollectionAdmin(admin.ModelAdmin):
 @admin.register(Merch)
 class MerchAdmin(admin.ModelAdmin):
     list_display = [
-        "product_name", "description", "price", "category",
+        "product_name", "slug", "description", "price", "category",
         "collection", "image", "created",]
     list_filter = [
-        "category", "collection", "product_name", "price",]
+        "category", "collection", "product_name", "slug", "price",]
     list_editable = [
         "description", "price", "category", "collection", "image",]
+    # defaults slug to the product_name
+    prepopulated_fields = {"slug": ("product_name",)}

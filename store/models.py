@@ -28,8 +28,9 @@ class Collection(models.Model):
 
 class Merch(models.Model):
     product_name = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
     description = models.TextField()
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
     in_stock = models.BooleanField(default=True)
     category = models.ForeignKey(
         Category, related_name="product_cat", on_delete=models.CASCADE,)
