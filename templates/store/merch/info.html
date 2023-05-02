@@ -1,0 +1,28 @@
+{% extends "../../base.html" %}
+{% load static %}
+{% block extra_title %}| {{ product_name }} {% endblock %}
+{% block content %}
+
+<h1>
+    HELLOO!
+</h1>
+
+<p>You have searched for the:</p>
+<h2>
+    "{{ merch.product_name }}"
+</h2>
+<hr>
+<h4>
+    DESCRIPTION: <em>"{{ merch.description }}</em>
+</h4>
+<hr>
+<h4>
+    "{{ merch.price }}"
+</h4>
+<hr>
+<img width="250px" height="250px" src="../media/{{ merch.image }}">
+<p>
+    URL: "media/{{ merch.image }}"
+</p>
+
+{% endblock %}
