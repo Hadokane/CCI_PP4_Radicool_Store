@@ -22,7 +22,9 @@ from django.conf.urls.static import static  # added to access local media
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include("allauth.urls")),
+    path('', include("store.urls", namespace="store")),
 ]
 
 if settings.DEBUG:  # uses local media while debug is true
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
