@@ -19,6 +19,11 @@ class Collection(models.Model):
     col_name = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, unique=True)  # Creates URL
 
+    class Meta:
+        verbose_name_plural = "Collections"
+
+    def __str__(self):
+        return self.name  # Returns the col_name
 
 class Merch(models.Model):
     product_name = models.CharField(max_length=255)
