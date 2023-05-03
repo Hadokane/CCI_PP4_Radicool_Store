@@ -17,7 +17,7 @@ def collections(request):
 # Show all Merchandise. Acts as Site Index/Homepage.
 def home(request):
     """A view to act as the sites homepage"""
-    return render(request, "store/home.html", {"merch": Merch.objects.all()})
+    return render(request, "store/home.html", {"merch": Merch.objects.filter(hot_item=True)})
 
 
 # Show all Merchandise. Acts as Site Index/Homepage.

@@ -41,6 +41,7 @@ class Merch(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     in_stock = models.BooleanField(default=True)
+    hot_item = models.BooleanField(default=False)
     category = models.ForeignKey(
         Category, related_name="product_cat", on_delete=models.SET_NULL,
         blank=True, null=True)
