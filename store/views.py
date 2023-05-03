@@ -34,16 +34,24 @@ def merch_search(request):
     """A view to handle product searches"""
     form = MerchSearchForm
 
+    # Initialise the results field
     results = []
 
+    # Check the search is valid and pass it through
     if "q" in request.GET:
         form = MerchSearchForm(request.GET)
         if form.is_valid():
             q = form.cleaned_data["q"]
 
-            results = Merch.objects.filter(product_name__contains=q)
+            # filter Merch table, checks description & names
+            results = Merch.objects.filter(
+                product_name__icontains=q) | Merch.objects.filter(
+                    description__icontains=q)
 
-    return render(request, "store/search.html", {"form": form, "results": results, "q": q})
+    return render(request, "store/search.html", {
+        "form": form,
+        "results": results,
+        "q": q})
 
 
 # Show specific Merch info, if in_stock.
