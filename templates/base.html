@@ -105,11 +105,10 @@
                     </li>
                 </ul>
 
-                <!-- Search Bar -->
-                <form class="form-inline my-2 my-lg-0" method="get">
-                    {{ form.as_p }}
-                    <input class="btn btn-outline-secondary my-2 my-sm-0" type="submit" value="Search"
-                        placeholder="Search Our Merch!">
+                <!--SearchForm-->
+                <form method="get" class="form-inline my-2 my-lg-0">
+                    {{ form }}
+                    <input class="btn btn-outline-secondary my-2 my-sm-0 ml-1" type="submit" value="Search">
                 </form>
             </div>
         </nav>

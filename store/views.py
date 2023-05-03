@@ -36,6 +36,7 @@ def merch_search(request):
 
     # Initialise the results field
     results = []
+    q = ""
 
     # Check the search is valid and pass it through
     if "q" in request.GET:
@@ -50,7 +51,7 @@ def merch_search(request):
 
     return render(request, "store/search.html", {
         "form": form,
-        "results": results,
+        "results": results, 
         "q": q})
 
 
