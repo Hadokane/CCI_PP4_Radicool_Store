@@ -51,7 +51,7 @@ def merch_search(request):
 
     return render(request, "store/search.html", {
         "form": form,
-        "results": results, 
+        "results": results,
         "q": q})
 
 
