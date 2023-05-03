@@ -36,7 +36,7 @@ def merch_search(request):
 
     # Initialise the results field
     results = []
-    q = ""
+    q = "hello"
 
     # Check the search is valid and pass it through
     if "q" in request.GET:
