@@ -3,26 +3,34 @@
 {% block extra_title %}| {{ product_name }} {% endblock %}
 {% block content %}
 
-<h1>
-    HELLOO!
-</h1>
+<hr>
+<div class="row d-flex justify-content-center">
+<div class="col-md-6">
+    <div class="card mb-3 bg-light border-dark" style="max-width: 1080px;">
+        <div class="row ">
+            <div class="col-md-6 ml-2 mt-2">
+                <a href="../media/{{ merch.image }}" target="_blank" class="text-decoration-none">
+                    <img src="../media/{{ merch.image }}" alt="{{ merch.product_name }}" width="320px" height="320px">
+                    <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ merch.product_name }}</h5>
+                    <hr>
+                    <p class="card-text">{{ merch.description }}</p>
+                    <hr>
+                    <p class="card-text">£{{ merch.price }}</p>
+                    <hr>
+                    <p class="card-text">SIZE SELECTOR: (GOES HERE)</p>
+                    <p class="card-text">QUANTITY SELECTOR: (GOES HERE)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<hr>
 
-<p>You have searched for the:</p>
-<h2>
-    "{{ merch.product_name }}"
-</h2>
-<hr>
-<h4>
-    DESCRIPTION: <em>"{{ merch.description }}</em>
-</h4>
-<hr>
-<h4>
-    "{{ merch.price }}"
-</h4>
-<hr>
-<img width="250px" height="250px" src="../media/{{ merch.image }}">
-<p>
-    URL: "media/{{ merch.image }}"
-</p>
 
 {% endblock %}
