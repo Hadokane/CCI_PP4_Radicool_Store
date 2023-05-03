@@ -9,6 +9,8 @@ urlpatterns = [
     path("", views.home, name="home"),
     # all products view
     path("products/", views.all_products, name="products"),
+    # search products view
+    path("search/", views.merch_search, name="search"),
     # used to generate urls, reads the models slug
     path("<slug:slug>", views.merch_info, name="merch_info"),
     # used to generate urls, reads the models slug

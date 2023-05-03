@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, reverse, get_object_or_404, redirect
 from .models import Category, Collection, Merch
+from store.forms import MerchSearchForm
 
 # Create your views here.
 
@@ -25,7 +26,24 @@ def home(request):
 def all_products(request):
     """A view to show all available products"""
     return render(request, "store/products.html",
-                  {"merch": Merch.objects.all()})
+                  {"merch":  Merch.objects.all()})
+
+
+# Search for specific Merchandise within the store.
+def merch_search(request):
+    """A view to handle product searches"""
+    form = MerchSearchForm
+
+    results = []
+
+    if "q" in request.GET:
+        form = MerchSearchForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data["q"]
+
+            results = Merch.objects.filter(product_name__contains=q)
+
+    return render(request, "store/search.html", {"form": form, "results": results, "q": q})
 
 
 # Show specific Merch info, if in_stock.
