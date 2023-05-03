@@ -4,9 +4,15 @@
 {% block content %}
 
 <!--Search Title-->
+{% if q %}
 <div class="container">
     <h1>You searched for: "{{ q }}"</h1>
 </div>
+{% else %}
+<div class="container">
+    <h1>Search our merchandise, results will display here.</h1>
+</div>
+{% endif %}
 
 <!--Cards Container-->
 <div class="album py-5 bg-light">
