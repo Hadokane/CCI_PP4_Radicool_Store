@@ -14,13 +14,14 @@ def collections(request):
     return {"collections": Collection.objects.all()}
 
 
-# Show all Merchandise. Acts as Site Index/Homepage.
+# Show a selection of Merchandise. Acts as Site Index/Homepage.
 def home(request):
     """A view to act as the sites homepage"""
-    return render(request, "store/home.html", {"merch": Merch.objects.filter(hot_item=True)})
+    return render(request, "store/home.html",
+                  {"merch": Merch.objects.filter(hot_item=True)})
 
 
-# Show all Merchandise. Acts as Site Index/Homepage.
+# Show all Merchandise in the store.
 def all_products(request):
     """A view to show all available products"""
     return render(request, "store/products.html",

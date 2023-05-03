@@ -49,7 +49,7 @@ class Merch(models.Model):
         Collection, related_name="product_col", on_delete=models.SET_NULL,
         blank=True, null=True)
     image = models.ImageField(
-        upload_to='images/', default='images/placeholder')
+        upload_to='images/', default='images/placeholder.jpg')
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
