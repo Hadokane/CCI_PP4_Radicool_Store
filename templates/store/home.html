@@ -4,18 +4,25 @@
 {% block content %}
 <main role="main">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1>Album example</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
-                etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-            <p>
-                <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-            </p>
+    <!-- Jumbotron -->
+    <div class="jumbotron p-5 text-center bg-image rounded-3">
+        <div class="mask">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white text-center">
+                    <h1 class="mb-3">RADICOOL</h1>
+                    <hr>
+                    <h4 class="mb-3">Welcome to the home of your FAVOURITE D.I.Y. Band & Brands</h1>
+                        <hr>
+                        <h4 class="mb-3">Support local legends by purchasing their merch direct!</h4>
+                        <hr>
+                        <a class="btn btn-outline-light btn-lg" href="#!" role="button">Sign Up</a>
+                        <a class="btn btn-outline-light btn-lg" href="#!" role="button">See HOT products</a>
+                        <hr>
+                </div>
+            </div>
         </div>
-    </section>
-    
+    </div>
+
     <!--Cards Container-->
     <div class="album py-5 bg-light">
         <div class="container">
@@ -31,7 +38,7 @@
                         <!--Card Body Text-->
                         <div class="card-body text-center">
                             <a class="card-text"
-                            href="{{ m.get_absolute_url }}"><strong>{{ m.product_name }}</strong></a>
+                                href="{{ m.get_absolute_url }}"><strong>{{ m.product_name }}</strong></a>
                             <p class="card-text"><em>{{ m.description }}</em></p>
                             <p class="card-text">£{{ m.price }}</p>
                         </div>
@@ -44,14 +51,14 @@
                 </div>
 
                 <!--Horizontal Rule Settings-->
-                
+
                 <!--Displays under each item on small screens-->
                 {% if forloop.counter|divisibleby:2 %}
                 <div class="col-12 d-sm-none">
                     <hr>
                 </div>
                 {% endif %}
-                
+
                 <!--Displays when row is divisible by 2 on medium views-->
                 {% if forloop.counter|divisibleby:2 %}
                 <div class="col-12 d-none d-sm-block d-md-block d-lg-none">
@@ -65,7 +72,7 @@
                     <hr>
                 </div>
                 {% endif %}
-                
+
                 <!--Displays when row is divisible by 4 on x-large views-->
                 {% if forloop.counter|divisibleby:4 %}
                 <div class="col-12 d-none d-xl-block">

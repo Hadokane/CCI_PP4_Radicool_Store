@@ -1,0 +1,12 @@
+.jumbotron {
+    background: url("../../media/images/banner.png") no-repeat center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+  }
+
+.mask{
+    background-color: rgba(0,0,0,0.4);
+    height: 400px;
+    width: 100%;
+  }
