@@ -9,6 +9,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ["cat_name", "slug"]
     # defaults slug to the cat_name
     prepopulated_fields = {"slug": ("cat_name",)}
+    # orders the view
+    ordering = ("cat_name",)
 
 
 @admin.register(Collection)
@@ -16,6 +18,8 @@ class CollectionAdmin(admin.ModelAdmin):
     list_display = ["col_name", "slug"]
     # defaults slug to the col_name
     prepopulated_fields = {"slug": ("col_name",)}
+    # orders the view
+    ordering = ("col_name",)
 
 
 @admin.register(Merch)
@@ -29,3 +33,5 @@ class MerchAdmin(admin.ModelAdmin):
         "description", "price", "category", "collection", "image",]
     # defaults slug to the product_name
     prepopulated_fields = {"slug": ("product_name",)}
+    # orders the view
+    ordering = ("product_name",)

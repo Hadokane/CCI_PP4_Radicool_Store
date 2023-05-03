@@ -63,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / "templates",
-                 BASE_DIR / "allauth"],
+                 BASE_DIR / "templates", "allauth"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # allauth needs
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'store.views.categories',  # allows all pages to see these views
+                'store.views.categories',  # allows all pages to see views
                 'store.views.collections',  # useful for navbar display
             ],
         },
@@ -102,7 +102,8 @@ WSGI_APPLICATION = 'radicool.wsgi.application'
 
 # Allows github access to admin areas
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96.gitpod.io'
+    "https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96.gitpod.io",
+    "https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96b.gitpod.io"
 ]
 
 # Database

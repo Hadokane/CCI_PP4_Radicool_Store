@@ -34,74 +34,82 @@
         <!-- Responsive Navbar - modified from Bootstrap templates -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <!-- Static file Logo accessed -->
-            <a class="navbar-brand" href="#"><img src="{% static 'logos/radicool_logo.png' %}" height="70" alt="Radicool"></a>
+            <a class="navbar-brand" href="../"><img src="{% static 'logos/radicool_logo.png' %}" height="70"
+                    alt="Radicool"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
                 aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Responsive settings -->
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    
+
                     <!-- Main page link -->
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <!-- All Products Link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../products">All Products</a>
                     </li>
                     
                     <!-- Collections Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
                             Collections
                         </a>
                         <div class="dropdown-menu">
                             <!-- Loops through views and displays collections -->
                             {% for c in collections %}
-                            <a class="dropdown-item" href="#">{{ c.col_name | title }}</a>
+                            <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.col_name | title }}</a>
                             {% endfor %}
                         </div>
                     </li>
-                    
+
                     <!-- Categories Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
                             Categories
                         </a>
                         <div class="dropdown-menu">
                             <!-- Loops through views and displays categories -->
-                            <!-- Loops through views and displays categories -->
                             {% for c in categories %}
-                            <a class="dropdown-item" href="#">{{ c.cat_name | title }}</a>
+                            <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.cat_name | title }}</a>
                             {% endfor %}
                         </div>
                     </li>
-                    
-                    <!-- Sign Up Link -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sign Up</a>
-                    </li>
-                    
-                    <!-- Log In Link -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Log In</a>
+
+                    <!-- Accounts Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="nav-link" href="#">Sign Up</a>
+                            <a class="nav-link" href="#">Log In</a>
+                        </div>
                     </li>
                 </ul>
 
                 <!-- Search Bar -->
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <form class="form-inline my-2 my-lg-0" method="get" action="">
+                    <input class="form-control mr-sm-2" type="search" name="q" placeholder="What do you need?">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
-        
+
     </header>
-    
+
     <!-- Displays alerts & toasts beneath the header -->
     {% if messages %}
     <div class="message-container"></div>
     {% endif %}
-    
+
     <!-- Contains page content -->
     <div id="content" class="container-fluid">
         {% block content %}
