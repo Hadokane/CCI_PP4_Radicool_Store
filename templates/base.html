@@ -110,6 +110,17 @@
                     <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search Our Merch!">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
+
+                <!-- Basket -->
+                <div class="ml-3">
+                    <a role="button" class="pl-3 pr- btn btn-outline-secondary my-2 my-sm-0"
+                        href="{% url 'cart:cart_summary' %}">
+                        <hr>
+                        <div class="d-inline-flex">1</div>
+                        <i class="fa-solid fa-basket-shopping" style="color: #000000;"></i>
+                        <hr>
+                    </a>
+                </div> 
             </div>
         </nav>
 

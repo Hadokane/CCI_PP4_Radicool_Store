@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include("allauth.urls")),
     path('', include("store.urls", namespace="store")),
+    path('cart/', include("cart.urls", namespace="cart")),
 ]
 
 if settings.DEBUG:  # uses local media while debug is true
