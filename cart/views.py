@@ -3,12 +3,11 @@ from django.http import JsonResponse
 from store.models import Merch
 from .cart import Cart
 
-# Create your views here.
-
 
 def cart_summary(request):
     """A view to show the carts content"""
-    return render(request, "cart/cart.html")
+    cart = Cart(request)
+    return render(request, "cart/cart.html", {"cart": cart})
 
 
 def cart_add(request):

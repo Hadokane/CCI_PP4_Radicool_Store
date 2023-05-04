@@ -12,14 +12,42 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            {% if cart_items %}
+            <!--Uses cart.py to access the sessions total-->
+            <!--Displays all items within session and their data in the cart-->
+            {% with total_qty=cart|length %}
+            <!--If quantity > 0 show the items-->
+            {% if total_qty > 0 %}
+            <!--Loop through items in cart-->
+            {% for item in cart %}
+            <!--Use product information for each item-->
+            {% with product=item.product %}
+            <!--Arrange into tables-->
             <div class="table-responsive-rounded">
+                <tr>NAME - {{ product.product_name }}</tr>
+                <tr>DESCRIPTION - {{ product.description }}</tr>
+                <tr>PRICE - {{ item.price }}</tr>
+                <!--Show size if present on item-->
+                {% if item.size != "None" %}
+                <tr>SIZE - {{ item.size }}</tr>
+                {% endif %}
+                <tr>QTY - {{ item.qty }}</tr>
+                <tr>SUB TOTAL - {{ item.total_price }}</tr>
             </div>
-            {% else %}
-            <p>Your cart is empty.</p>
-            <a href="{% url 'store:products' %}">See all products!</a>
-            {% endif %}
+            {% endwith %}
+            {% endfor %}
+            <div class="col-12 text-center">
+                <!--Show full cart subtotal-->
+                <div class="h6">
+                    Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span>
+                    </div>
+                </div>
+                {% else %}
+                <p>Your cart is empty.</p>
+                <a href="{% url 'store:products' %}">See all products!</a>
+                {% endif %}
+                {% endwith %}
         </div>
     </div>
 </div>
+
 {% endblock %}

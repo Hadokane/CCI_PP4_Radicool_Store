@@ -1,3 +1,7 @@
+from store.models import Merch
+from decimal import Decimal
+
+
 class Cart():
     """
     A base Cart class, provides default behaviours that
@@ -28,6 +32,24 @@ class Cart():
                                    "size": str(size)}
 
         self.session.modified = True
+
+    def __iter__(self):
+        """
+        Creates an iterable class for this object.
+        Collects merch_id in session data, queries database,
+        returns matches for cart to display.
+        """
+        merch_ids = self.cart.keys()  # gets keys from add
+        products = Merch.objects.filter(id__in=merch_ids)  # filters model
+        cart = self.cart.copy()  # copies session data of the cart
+
+        for product in products:
+            cart[str(product.id)]["product"] = product  # adds full model data
+
+        for item in cart.values():
+            item["price"] = Decimal(item["price"])  # makes price a decimal
+            item["total_price"] = item["price"] * item["qty"]  # calculation
+            yield item  # shows the final item
 
     def __len__(self):
         """Count quantity of items within the cart."""
