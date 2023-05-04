@@ -138,11 +138,13 @@
 
                             <i class="fa-solid fa-basket-shopping" style="color: #000000;"></i>
                             <p class="my-0">
-                                {% if grand_total %}
-                                £{{ grand_total|floatformat:2 }}
+                            <span>
+                                {% if cart.get_total_price > 0 %}
+                                £{{ cart.get_total_price }}
                                 {% else %}
                                 £0.00
                                 {% endif %}
+                            </span>
                             </p>
                             <hr>
                         </a>

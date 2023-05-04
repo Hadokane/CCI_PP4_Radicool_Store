@@ -54,3 +54,8 @@ class Cart():
     def __len__(self):
         """Count quantity of items within the cart."""
         return sum(item["qty"] for item in self.cart.values())
+
+    def get_total_price(self):
+        """Calculates the total price."""
+        return sum(Decimal(item["price"]) * item[
+            "qty"] for item in self.cart.values())
