@@ -33,6 +33,15 @@
                 <tr>QTY - {{ item.qty }}</tr>
                 <tr>ITEM TOTAL - {{ item.total_price }}</tr>
             </div>
+            <!--Add to Cart-->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button type="button" id="add-to-cart" value="{{ product.id }}" class="btn btn-secondary text-right">Add to
+                        cart</button>
+                    <button type="button" id="delete-from-cart" value="{{ product.id }}" class="btn btn-secondary text-right">Delete
+                        from cart</button>
+                </div>
+            </div>
             {% endwith %}
             {% endfor %}
             <div class="col-12 text-center">
@@ -49,5 +58,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).on("click", "#delete-from-cart", function (e) {
+        e.preventDefault();
+        // console.log($("#delete-from-cart").val())
+        $.ajax({
+            type: "POST",
+            url: "{% url 'cart:cart_delete' %}",
+            data: {
+                merchid: $("#delete-from-cart").val(),
+                merchsize: $("#merch-size").val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: "delete"
+            },
+            success: function (json) {
+            },
+            error: function (xhr, errmsg, err) {}
+        });
+    })
+</script>
 
 {% endblock %}

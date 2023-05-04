@@ -31,7 +31,7 @@ class Cart():
                                    "qty": int(qty),
                                    "size": str(size)}
 
-        self.session.modified = True
+        self.save()
 
     def __iter__(self):
         """
@@ -59,3 +59,15 @@ class Cart():
         """Calculates the total price."""
         return sum(Decimal(item["price"]) * item[
             "qty"] for item in self.cart.values())
+
+    def delete(self, merch):
+        """Removes an item from the cart/session data."""
+        merch_id = str(merch)  # made a string in views
+        if merch_id in self.cart:
+            del self.cart[merch_id]
+
+        self.session.modified = True
+
+    def save(self):
+        """Saves the cart session"""
+        self.session.modified = True

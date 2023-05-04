@@ -20,9 +20,19 @@ def cart_add(request):
         merch_qty = int(request.POST.get("merchqty"))
         merch_size = str(request.POST.get("merchsize"))
         merch = get_object_or_404(Merch, id=merch_id)
-        # Variables needed for cart.add function
+        # Run the cart.add function
         cart.add(merch=merch, qty=merch_qty, size=merch_size)
         # Returns total quantity to the cart on the front end.
         cart_qty = cart.__len__()
         response = JsonResponse({"qty": cart_qty})
+        return response
+
+
+def cart_delete(request):
+    """Removes Items from the cart"""
+    cart = Cart(request)
+    if request.POST.get("action") == "delete":
+        merch_id = str(request.POST.get("merchid"))
+        cart.delete(merch=merch_id)
+        response = JsonResponse({"Success": True})
         return response
