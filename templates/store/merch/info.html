@@ -5,32 +5,93 @@
 
 <hr>
 <div class="row d-flex justify-content-center">
-<div class="col-md-6">
-    <div class="card mb-3 bg-light border-dark" style="max-width: 1080px;">
-        <div class="row ">
-            <div class="col-md-6 ml-2 mt-2">
-                <a href="../media/{{ merch.image }}" target="_blank" class="text-decoration-none">
-                    <img src="../media/{{ merch.image }}" alt="{{ merch.product_name }}" width="320px" height="320px">
-                    <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <div class="card-body">
-                    <h5 class="card-title">{{ merch.product_name }}</h5>
-                    <hr>
-                    <p class="card-text">{{ merch.description }}</p>
-                    <hr>
-                    <p class="card-text">£{{ merch.price }}</p>
-                    <hr>
-                    <p class="card-text">SIZE SELECTOR: (GOES HERE)</p>
-                    <p class="card-text">QUANTITY SELECTOR: (GOES HERE)</p>
+    <div class="col-md-6">
+        <div class="card mb-3 bg-light border-dark" style="max-width: 1080px;">
+            <div class="row ">
+                <div class="col-md-6 ml-2 mt-2">
+                    <a href="../media/{{ merch.image }}" target="_blank" class="text-decoration-none">
+                        <img src="../media/{{ merch.image }}" alt="{{ merch.product_name }}" width="320px"
+                            height="320px">
+                        <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ merch.product_name }}</h5>
+                        <hr>
+                        <p class="card-text">{{ merch.description }}</p>
+                        <hr>
+                        <p class="card-text">£{{ merch.price }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 <hr>
 
+<!--Card Footer Fields-->
+<div class="card-footer">
+    <div class="row">
+
+        <!--QTY Select-->
+        <div class="col-6 text-center">
+            <label for="merch-qty">QTY</label>
+            <select id="merch-qty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+        <!--Size Select | change to "Clothing" when included-->
+        {% if merch.category.cat_name == "Vinyl" %}
+        <div class="col-6 text-center">
+            <label for="merch-size">SIZE</label>
+            <select id="merch-size">
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+            </select>
+        </div>
+        {% endif %}
+        <!--Add to Cart-->
+        <div class="col-12 text-center">
+            <button type="button" id="add-to-cart" value="{{ merch.id }}" class="btn btn-secondary text-right">Add to
+                basket</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on("click", "#add-to-cart", function (e) {
+        e.preventDefault();
+        // console.log($("#add-to-cart").val())
+        // console.log($("#merch-qty option:selected").val())
+        // console.log($("#merch-size option:selected").val())
+        $.ajax({
+            type: "POST",
+            url: "{% url 'cart:cart_add' %}",
+            data: {
+                merchid: $("#add-to-cart").val(),
+                merchqty: $("#merch-qty").val(),
+                merchsize: $("#merch-size").val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: "add_to_cart"
+            },
+            success: function (json) {
+                console.log(json)
+                document.getElementById("cart-qty").innerHTML = json.qty
+
+            },
+            error: function (xhr, errmsg, err) {}
+        });
+    })
+</script>
 
 {% endblock %}

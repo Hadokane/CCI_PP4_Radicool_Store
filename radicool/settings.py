@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'store.views.categories',  # allows all pages to see views
                 'store.views.collections',  # useful for navbar display
+                'cart.context_processors.cart',  # cart processor
             ],
         },
     },
@@ -157,6 +158,7 @@ STATICFILES_DIRS = [BASE_DIR / "static",]  # static path
 
 MEDIA_URL = "media/"  # local media storage for development
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")  # media path
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

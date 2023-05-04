@@ -24,9 +24,8 @@
     <!-- External JS -->
     {% block javascript %}
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
@@ -99,31 +98,60 @@
                             <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="nav-link" href="#">Sign Up</a>
-                            <a class="nav-link" href="#">Log In</a>
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                    <a class="nav-link" href="/admin/">Admin</a>
+                                {% endif %}
+                                <a class="nav-link" href="#">Profile</a>
+                                <a class="nav-link" href="#">Logout</a>
+                            {% else %}
+                                <a class="nav-link" href="#">Sign Up</a>
+                                <a class="nav-link" href="#">Login</a>
+                            {% endif %}
                         </div>
                     </li>
                 </ul>
-
-                <!-- Search Bar -->
-                <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'store:search' %}">
-                    <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search Our Merch!">
-                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-
-                <!-- Basket -->
-                <div class="ml-3">
-                    <a role="button" class="pl-3 pr- btn btn-outline-secondary my-2 my-sm-0"
+                <li class="list-inline-item">
+                    <!-- Search Bar -->
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'store:search' %}">
+                        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search Our Merch!">
+                        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </li>
+                <!-- Cart -->
+                <li class="list-inline-item">
+                    <div class="m-3">
+                        <a role="button" class="pl-3 pr- btn btn-outline-secondary my-2 my-sm-0"
                         href="{% url 'cart:cart_summary' %}">
-                        <hr>
-                        <div class="d-inline-flex">1</div>
+                        <div id="cart-qty" class="d-inline-flex">0</div>
                         <i class="fa-solid fa-basket-shopping" style="color: #000000;"></i>
+                        <p class="my-0">
+                            {% if grand_total %}
+                                £{{ grand_total|floatformat:2 }}
+                            {% else %}
+                                £0.00
+                            {% endif %}
+                        </p>
                         <hr>
-                    </a>
-                </div> 
+                        </a>
+                    </div>
+                </li>
             </div>
         </nav>
-
+        <!--Notification Banner-->
+        {% if free_delivery_threshold %}
+        <div id="notification-banner" class="row text-center">
+            <div class="col bg-yellow text-black">
+                <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>                
+            </div>            
+        </div>
+        {% else %}
+        <div id="notification-banner" class="row text-center">
+            <div class="col bg-yellow text-black">
+                <h4 class="logo-font my-1">NO OFFERS!</h4>                
+            </div>            
+        </div>
+        {% endif %}
     </header>
 
     <!-- Displays alerts & toasts beneath the header -->

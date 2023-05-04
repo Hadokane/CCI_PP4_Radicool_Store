@@ -42,10 +42,15 @@
                             <p class="card-text"><em>{{ m.description }}</em></p>
                             <p class="card-text">£{{ m.price }}</p>
                         </div>
-                        <!--Card Footer Buttons-->
+                        <!--Card Footer Fields-->
                         <div class="card-footer">
-                            <a href="#" class="btn btn-secondary text-left">Button</a>
-                            <a href="#" class="btn btn-primary text-right">Button</a>
+                            <div class="row">
+                                <!--View Item-->
+                                <div class="col-12 text-center">
+                                    <a type="button" href="{{ m.get_absolute_url }}" value="{{ m.id }}"
+                                        class="btn btn-secondary text-right">View Merch</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,4 +90,6 @@
         </div>
     </div>
 </main>
+
+
 {% endblock %}

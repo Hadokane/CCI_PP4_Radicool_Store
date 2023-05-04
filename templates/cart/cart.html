@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block extra_title %}| Cart {% endblock %}
+{% block content %}
+
+<div class="container">
+    <hr>
+    <h1>Cart</h1>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if cart_items %}
+            <div class="table-responsive-rounded">
+            </div>
+            {% else %}
+            <p>Your cart is empty.</p>
+            <a href="{% url 'store:products' %}">See all products!</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
