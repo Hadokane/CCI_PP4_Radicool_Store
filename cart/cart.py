@@ -15,7 +15,7 @@ class Cart():
         # show stored session cart
         self.cart = cart
 
-    def add(self, merch, merch_qty, merch_size):
+    def add(self, merch, qty, size):
         """
         Receives merch data from user button presses and adds them
         to the cart. Updating the cart by modifying the current user session,
@@ -24,7 +24,11 @@ class Cart():
         merch_id = merch.id
         if merch_id not in self.cart:
             self.cart[merch_id] = {"price": str(merch.price),
-                                   "qty": int(merch_qty),
-                                   "size": str(merch_size)}
+                                   "qty": int(qty),
+                                   "size": str(size)}
 
         self.session.modified = True
+
+    def __len__(self):
+        """Count quantity of items within the cart."""
+        return sum(item["qty"] for item in self.cart.values())

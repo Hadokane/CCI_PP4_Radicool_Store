@@ -99,14 +99,14 @@
                         </a>
                         <div class="dropdown-menu">
                             {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <a class="nav-link" href="/admin/">Admin</a>
-                                {% endif %}
-                                <a class="nav-link" href="#">Profile</a>
-                                <a class="nav-link" href="#">Logout</a>
+                            {% if request.user.is_superuser %}
+                            <a class="nav-link" href="/admin/">Admin</a>
+                            {% endif %}
+                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="#">Logout</a>
                             {% else %}
-                                <a class="nav-link" href="#">Sign Up</a>
-                                <a class="nav-link" href="#">Login</a>
+                            <a class="nav-link" href="#">Sign Up</a>
+                            <a class="nav-link" href="#">Login</a>
                             {% endif %}
                         </div>
                     </li>
@@ -123,16 +123,28 @@
                     <div class="m-3">
                         <a role="button" class="pl-3 pr- btn btn-outline-secondary my-2 my-sm-0"
                         href="{% url 'cart:cart_summary' %}">
-                        <div id="cart-qty" class="d-inline-flex">0</div>
-                        <i class="fa-solid fa-basket-shopping" style="color: #000000;"></i>
-                        <p class="my-0">
-                            {% if grand_total %}
-                                £{{ grand_total|floatformat:2 }}
+                        <div id="cart-qty" class="d-inline-flex">
+                            <!-- Compiles the total quantity of items in the cart -->
+                            {% with total_qty=cart|length %}
+                            <!-- Show Total Quantity of items -->
+                            {% if total_qty > 0 %}
+                            {{ total_qty }}
+                            <!-- Show 0 if cart is empty -->
                             {% else %}
-                                £0.00
+                                0
                             {% endif %}
-                        </p>
-                        <hr>
+                            {% endwith %}
+                        </div>
+
+                            <i class="fa-solid fa-basket-shopping" style="color: #000000;"></i>
+                            <p class="my-0">
+                                {% if grand_total %}
+                                £{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                £0.00
+                                {% endif %}
+                            </p>
+                            <hr>
                         </a>
                     </div>
                 </li>
@@ -142,14 +154,14 @@
         {% if free_delivery_threshold %}
         <div id="notification-banner" class="row text-center">
             <div class="col bg-yellow text-black">
-                <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>                
-            </div>            
+                <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
+            </div>
         </div>
         {% else %}
         <div id="notification-banner" class="row text-center">
             <div class="col bg-yellow text-black">
-                <h4 class="logo-font my-1">NO OFFERS!</h4>                
-            </div>            
+                <h4 class="logo-font my-1">NO OFFERS!</h4>
+            </div>
         </div>
         {% endif %}
     </header>

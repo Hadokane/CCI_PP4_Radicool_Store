@@ -16,10 +16,14 @@ def cart_add(request):
     is added to the cart via a button press by the user"""
     cart = Cart(request)
     if request.POST.get("action") == "add_to_cart":
+        # Variables for cart.add function
         merch_id = str(request.POST.get("merchid"))
         merch_qty = int(request.POST.get("merchqty"))
         merch_size = str(request.POST.get("merchsize"))
         merch = get_object_or_404(Merch, id=merch_id)
-        cart.add(merch=merch, merch_qty=merch_qty, merch_size=merch_size)
-        response = JsonResponse({"qty": merch_qty})
+        # Variables needed for cart.add function
+        cart.add(merch=merch, qty=merch_qty, size=merch_size)
+        # Returns total quantity to the cart on the front end.
+        cart_qty = cart.__len__()
+        response = JsonResponse({"qty": cart_qty})
         return response
