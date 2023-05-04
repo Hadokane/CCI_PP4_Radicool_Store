@@ -22,7 +22,7 @@
             <!--Use product information for each item-->
             {% with product=item.product %}
             <!--Arrange into tables-->
-            <div class="table-responsive-rounded">
+            <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
                 <tr>NAME - {{ product.product_name }}</tr>
                 <tr>DESCRIPTION - {{ product.description }}</tr>
                 <tr>PRICE - {{ item.price }}</tr>
@@ -32,14 +32,16 @@
                 {% endif %}
                 <tr>QTY - {{ item.qty }}</tr>
                 <tr>ITEM TOTAL - {{ item.total_price }}</tr>
-            </div>
-            <!--Add to Cart-->
-            <div class="row">
-                <div class="col-12 text-center">
-                    <button type="button" id="add-to-cart" value="{{ product.id }}" data-index="{{ product.id }}" class="add-to-cart btn btn-secondary text-right">Add to
-                        cart</button>
-                    <button type="button" id="delete-from-cart" value="{{ product.id }}"  data-index="{{ product.id }}" class="delete-from-cart btn btn-secondary text-right">Delete
-                        from cart</button>
+                <!--Add to Cart-->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                            class="add-to-cart btn btn-secondary text-right">Add to
+                            cart</button>
+                        <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                            class="delete-from-cart btn btn-secondary text-right">Delete
+                            from cart</button>
+                    </div>
                 </div>
             </div>
             {% endwith %}
@@ -48,13 +50,13 @@
                 <!--Show full cart subtotal-->
                 <div class="h6">
                     Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span>
-                    </div>
                 </div>
-                {% else %}
-                <p>Your cart is empty.</p>
-                <a href="{% url 'store:products' %}">See all products!</a>
-                {% endif %}
-                {% endwith %}
+            </div>
+            {% else %}
+            <p>Your cart is empty.</p>
+            <a href="{% url 'store:products' %}">See all products!</a>
+            {% endif %}
+            {% endwith %}
         </div>
     </div>
 </div>
@@ -62,7 +64,7 @@
 <script>
     $(document).on("click", ".delete-from-cart", function (e) {
         e.preventDefault();
-        // console.log($("#delete-from-cart").val())
+        var merchid = $(this).data("index");
         $.ajax({
             type: "POST",
             url: "{% url 'cart:cart_delete' %}",
@@ -73,6 +75,7 @@
                 action: "delete"
             },
             success: function (json) {
+                $(".product-item[data-index='" + merchid + "']").remove();
             },
             error: function (xhr, errmsg, err) {}
         });

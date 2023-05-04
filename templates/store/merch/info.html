@@ -62,14 +62,14 @@
         {% endif %}
         <!--Add to Cart-->
         <div class="col-12 text-center">
-            <button type="button" id="add-to-cart" value="{{ merch.id }}" class="btn btn-secondary text-right">Add to
+            <button type="button" data-id="{{ merch.id }}" class="add-to-cart btn btn-secondary text-right">Add to
                 cart</button>
         </div>
     </div>
 </div>
 
 <script>
-    $(document).on("click", "#add-to-cart", function (e) {
+    $(document).on("click", ".add-to-cart", function (e) {
         e.preventDefault();
         // console.log($("#add-to-cart").val())
         // console.log($("#merch-qty option:selected").val())
@@ -78,7 +78,7 @@
             type: "POST",
             url: "{% url 'cart:cart_add' %}",
             data: {
-                merchid: $("#add-to-cart").val(),
+                merchid: $(this).data("id"),
                 merchqty: $("#merch-qty").val(),
                 merchsize: $("#merch-size").val(),
                 csrfmiddlewaretoken: "{{csrf_token}}",
