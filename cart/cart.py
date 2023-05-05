@@ -37,7 +37,7 @@ class Cart():
         """
         Creates an iterable class for this object.
         Collects merch_id in session data, queries database,
-        returns matches for cart to display.
+        returns item matches for cart to display.
         """
         merch_ids = self.cart.keys()  # gets keys from add
         products = Merch.objects.filter(id__in=merch_ids)  # filters model
@@ -56,7 +56,7 @@ class Cart():
         return sum(item["qty"] for item in self.cart.values())
 
     def get_total_price(self):
-        """Calculates the total price."""
+        """Calculates the total price of all items."""
         return sum(Decimal(item["price"]) * item[
             "qty"] for item in self.cart.values())
 

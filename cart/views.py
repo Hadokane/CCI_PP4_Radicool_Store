@@ -11,8 +11,12 @@ def cart_summary(request):
 
 
 def cart_add(request):
-    """A view to collect ajax data when an item
-    is added to the cart via a button press by the user"""
+    """
+    Collects jSon data when an item is added to the cart, 
+    via a button press by the user.
+    Gathers the id, qty and size, compares with database.
+    Adds to the session.
+    """
     cart = Cart(request)
     if request.POST.get("action") == "add_to_cart":
         # Variables for cart.add function
@@ -29,7 +33,11 @@ def cart_add(request):
 
 
 def cart_delete(request):
-    """Removes Items from the cart"""
+    """
+    Removes Items from the cart.
+    Deletes an item, gets the cart quantity, calculates the total price.
+    Updates the fields.
+    """
     cart = Cart(request)
     if request.POST.get("action") == "delete":
         merch_id = str(request.POST.get("merchid"))
@@ -42,7 +50,11 @@ def cart_delete(request):
 
 
 def cart_update(request):
-    """Updates Items within the cart"""
+    """
+    Updates Items within the cart.
+    Gets the id, qty and size. Updates the cart.
+    Calculates the total price.
+    """
     cart = Cart(request)
     if request.POST.get("action") == "update":
         merch_id = str(request.POST.get("merchid"))
