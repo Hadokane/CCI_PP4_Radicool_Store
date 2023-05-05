@@ -38,6 +38,7 @@
       "merchid",
       "merchqty",
       "merchsize",
+      "orderitem",
       "radicool",
       "socialaccount",
       "xlarge",
