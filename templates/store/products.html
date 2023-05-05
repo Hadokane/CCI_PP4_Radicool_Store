@@ -5,7 +5,20 @@
 <main role="main">
 
     <h1>ALL PRODUCTS</h1>
-
+    
+    <!--Sort Bar-->
+    <hr>
+    <div class="d-inline-flex pr-2">SORT BY:</div>
+    <div class="text-center">
+        <a href="{%url 'store:products' %}" class="btn-primary btn" style="background-color:  #21D192;"><i class="fa-solid fa-fire" style="color: #000000;"></i> Newest</a>
+        <a href="{%url 'store:products' %}?sort=price&direction=asc" class="btn-primary btn" style="background-color:  #21D192;"><i class="fa-regular fa-money-bill-1" style="color: #000000;"></i> By Price (low-high) <i class="fa-solid fa-caret-down" style="color: #000000;"></i></a>
+        <a href="{%url 'store:products' %}?sort=price&direction=desc" class="btn-primary btn" style="background-color:  #21D192;"><i class="fa-solid fa-sack-dollar" style="color: #000000;"></i> By Price (high-low) <i class="fa-solid fa-caret-up" style="color: #000000;"></i></a>
+        <a href="{%url 'store:products' %}?sort=category&direction=asc" class="btn-primary btn" style="background-color:  #21D192;"><i class="fa-solid fa-tag" style="color: #000000;"></i> By Category</a>
+        <a href="{%url 'store:products' %}?sort=collection&direction=asc" class="btn-primary btn" style="background-color:  #21D192;"><i class="fa-solid fa-hat-wizard" style="color: #000000;"></i> By Collection</a>
+        <a href="{%url 'store:products' %}?sort=product_name&direction=asc" class="btn-primary btn" style="background-color:  #21D192;">By Name (A-Z) <i class="fa-solid fa-caret-down" style="color: #000000;"></i></a>
+        <a href="{%url 'store:products' %}?sort=product_name&direction=desc" class="btn-primary btn" style="background-color:  #21D192;">By Name (Z-A) <i class="fa-solid fa-caret-up" style="color: #000000;"></i></a>
+    </div>
+    <hr>
     <!--Cards Container-->
     <div class="album py-5 bg-light">
         <div class="container">
@@ -23,7 +36,17 @@
                             <a class="card-text"
                                 href="{{ m.get_absolute_url }}"><strong>{{ m.product_name }}</strong></a>
                             <p class="card-text"><em>{{ m.description }}</em></p>
-                            <p class="card-text">£{{ m.price }}</p>
+                            <p class="card-text"><i class="fa-regular fa-money-bill-1" style="color: #000000;"></i> £{{ m.price }}</p>
+                            {% if m.category %}
+                            <p>
+                                <a class="card-text" href="../cat/{{m.category.slug}}"><i class="fa-solid fa-tag" style="color: #000000;"></i> {{ m.category }}</a>
+                            </p>
+                            {% endif %}
+                            {% if m.collection %}
+                            <p>
+                                <a class="card-text" href="../col/{{m.collection.slug}}"><i class="fa-solid fa-hat-wizard" style="color: #000000;"></i> {{ m.collection }}</a>
+                            </p>
+                            {% endif %}
                         </div>
                         <!--Card Footer Buttons-->
                         <div class="card-footer">
