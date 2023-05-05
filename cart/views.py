@@ -36,3 +36,19 @@ def cart_delete(request):
         cart.delete(merch=merch_id)
         response = JsonResponse({"Success": True})
         return response
+
+
+def cart_update(request):
+    """Removes Items from the cart"""
+    cart = Cart(request)
+    if request.POST.get("action") == "update":
+        merch_id = str(request.POST.get("merchid"))
+        merch_qty = int(request.POST.get("merchqty"))
+        merch_size = str(request.POST.get("merchsize"))
+        cart.update(merch=merch_id, qty=merch_qty, size=merch_size)
+
+        cart_qty = cart.__len__()
+        cart_total = cart.get_total_price()
+        response = JsonResponse({"qty": cart_qty,
+                                 "subtotal": cart_total})
+        return response

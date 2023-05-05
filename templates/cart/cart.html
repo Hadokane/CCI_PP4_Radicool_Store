@@ -11,7 +11,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-12">
             <!--Uses cart.py to access the sessions total-->
             <!--Displays all items within session and their data in the cart-->
             {% with total_qty=cart|length %}
@@ -23,63 +23,114 @@
             {% with product=item.product %}
             <!--Arrange into tables-->
             <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
-                <tr>NAME - {{ product.product_name }}</tr>
-                <tr>DESCRIPTION - {{ product.description }}</tr>
-                <tr>PRICE - {{ item.price }}</tr>
+                <p>NAME - {{ product.product_name }}</p>
+                <p>DESCRIPTION - {{ product.description }}</p>
+                <p>PRICE - {{ item.price }}</p>
                 <!--Show size if present on item-->
-                {% if item.size != "None" %}
-                <tr>SIZE - {{ item.size }}</tr>
+                {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
+                <p>SIZE - {{ item.size }}</p>
                 {% endif %}
-                <tr>QTY - {{ item.qty }}</tr>
-                <tr>ITEM TOTAL - {{ item.total_price }}</tr>
+                <p>QTY - {{ item.qty }}</p>
+                <p>ITEM TOTAL - {{ item.total_price }}</p>
+
+                <!--Selections-->
+                <!--QTY Select-->
+                <label for="qty">QTY</label>
+                <select id="qty{{product.id}}">
+                    <option selected>{{ item.qty }}</option>
+                    <option disabled>-</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                    <option value="">6</option>
+                </select>
+                <!--Size Select | change to "Clothing" when included-->
+                {% if product.category.cat_name == "Vinyl" %}
+                <label for="size">SIZE</label>
+                <select id="size{{product.id}}">
+                    <option selected>{{ item.size }}</option>
+                    <option disabled>-</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+                {% endif %}
                 <!--Add to Cart-->
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
-                            class="add-to-cart btn btn-secondary text-right">Add to
-                            cart</button>
-                        <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
-                            class="delete-from-cart btn btn-secondary text-right">Delete
-                            from cart</button>
-                    </div>
-                </div>
+                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                    class="update-cart btn btn-secondary">Update</button>
+                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                    class="delete-from-cart btn btn-secondary">Remove</button>
+                <hr>
             </div>
+            <hr>
             {% endwith %}
             {% endfor %}
-            <div class="col-12 text-center">
-                <!--Show full cart subtotal-->
-                <div class="h6">
-                    Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span>
+            <div class="row">
+
+                <div class="col-12 text-center">
+                    <!--Show full cart subtotal-->
+                    <div class="h6">
+                        Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span>
+                    </div>
                 </div>
+                {% else %}
+                <p>Your cart is empty.</p>
+                <a href="{% url 'store:products' %}">See all products!</a>
+                {% endif %}
+                {% endwith %}
             </div>
-            {% else %}
-            <p>Your cart is empty.</p>
-            <a href="{% url 'store:products' %}">See all products!</a>
-            {% endif %}
-            {% endwith %}
         </div>
     </div>
-</div>
 
-<script>
-    $(document).on("click", ".delete-from-cart", function (e) {
-        e.preventDefault();
-        var merchid = $(this).data("index");
-        $.ajax({
-            type: "POST",
-            url: "{% url 'cart:cart_delete' %}",
-            data: {
-                merchid: $(this).data("index"),
-                merchsize: $("#merch-size").val(),
-                csrfmiddlewaretoken: "{{csrf_token}}",
-                action: "delete"
-            },
-            success: function (json) {
-                $(".product-item[data-index='" + merchid + "']").remove();
-            },
-            error: function (xhr, errmsg, err) {}
-        });
-    })
-</script>
+    <script>
+        // Delete Items
+        $(document).on("click", ".delete-from-cart", function (e) {
+            e.preventDefault();
+            var merchid = $(this).data("index");
+            $.ajax({
+                type: "POST",
+                url: "{% url 'cart:cart_delete' %}",
+                data: {
+                    merchid: $(this).data("index"),
+                    merchsize: $("#merch-size").val(),
+                    csrfmiddlewaretoken: "{{csrf_token}}",
+                    action: "delete"
+                },
+                success: function (json) {
+                    $(".product-item[data-index='" + merchid + "']").remove();
+                },
+                error: function (xhr, errmsg, err) {}
+            });
+        })
+    </script>
 
-{% endblock %}
+    <script>
+        // Update Items
+        $(document).on("click", ".update-cart", function (e) {
+            e.preventDefault();
+            var merchid = $(this).data("index");
+            $.ajax({
+                type: "POST",
+                url: "{% url 'cart:cart_update' %}",
+                data: {
+                    merchid: $(this).data("index"),
+                    merchqty: $('#qty' + merchid + ' option:selected').text(),
+                    merchsize: $('#size' + merchid + ' option:selected').text(),
+                    csrfmiddlewaretoken: "{{csrf_token}}",
+                    action: "update"
+                },
+                success: function (json) {
+                    document.getElementById("cart-qty").innerHTML = json.qty
+                    document.getElementById("subtotal").innerHTML = json.subtotal
+                },
+                error: function (xhr, errmsg, err) {}
+            });
+        })
+    </script>
+
+    {% endblock %}

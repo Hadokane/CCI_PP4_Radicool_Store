@@ -68,6 +68,16 @@ class Cart():
 
         self.session.modified = True
 
+    def update(self, merch, qty, size):
+        """Updates items in the cart/session data."""
+        merch_id = str(merch)
+
+        if merch_id in self.cart:
+            self.cart[merch_id]["qty"] = qty
+            self.cart[merch_id]["size"] = size
+
+        self.save()
+
     def save(self):
-        """Saves the cart session"""
+        """Saves the cart session."""
         self.session.modified = True
