@@ -13,7 +13,7 @@ def cart_summary(request):
 
 def cart_add(request):
     """
-    Collects jSon data when an item is added to the cart, 
+    Collects jSon data when an item is added to the cart,
     via a button press by the user.
     Gathers the id, qty and size, compares with database.
     Adds to the session.
@@ -43,8 +43,10 @@ def cart_delete(request):
     if request.POST.get("action") == "delete":
         merch_id = str(request.POST.get("merchid"))
         cart.delete(merch=merch_id)
+
         cart_qty = cart.__len__()
         cart_total = cart.get_total_price()
+
         response = JsonResponse({"qty": cart_qty,
                                  "subtotal": cart_total})
         return response
@@ -69,14 +71,6 @@ def cart_update(request):
 
         cart_qty = cart.__len__()
         cart_total = cart.get_total_price()  # calc cart total
-
-        # print("ID:" + merch_id)
-        # print("QTY:" + str(merch_qty))
-        # print("ITEM PRICE:" + str(item_price))
-        # print("ITEM TOTAL:" + str(item_total))
-        # print("SIZE:" + merch_size)
-        # print("CART_QTY:" + str(cart_qty))
-        # print("CART_TOTAL:" + str(cart_total))
 
         response = JsonResponse({"qty": cart_qty,
                                  "subtotal": cart_total,

@@ -59,15 +59,18 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
                     <!-- All Products Link -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="../products">All Products</a>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../products">
+                            <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
+                            <p>All Products</p></a>
                     </li>
 
                     <!-- Collections Dropdown -->
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown text-center">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                            Collections
+                            <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
+                            <p>Collections</p>
                         </a>
                         <div class="dropdown-menu">
                             <!-- Loops through views and displays collections -->
@@ -79,9 +82,10 @@
 
                     <!-- Categories Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                            Categories
+                            <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
+                            <p>Categories</p>
                         </a>
                         <div class="dropdown-menu">
                             <!-- Loops through views and displays categories -->
@@ -93,9 +97,10 @@
 
                     <!-- Accounts Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle  text-center" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
                             <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
+                            <p>Account</p>
                         </a>
                         <div class="dropdown-menu">
                             {% if request.user.is_authenticated %}
@@ -156,13 +161,13 @@
         </nav>
         <!--Notification Banner-->
         {% if free_delivery_threshold %}
-        <div id="notification-banner" class="row text-center">
+        <div id="notification-banner" class="row text-center text-white" style="background-color: #21D192">
             <div class="col bg-yellow text-black">
                 <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
             </div>
         </div>
         {% else %}
-        <div id="notification-banner" class="row text-center">
+        <div id="notification-banner" class="row text-center text-white" style="background-color: #21D192">
             <div class="col bg-yellow text-black">
                 <h4 class="logo-font my-1">NO OFFERS!</h4>
             </div>
@@ -172,8 +177,23 @@
 
     <!-- Displays alerts & toasts beneath the header -->
     {% if messages %}
-    <div class="message-container"></div>
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
     {% endif %}
+    <hr>
 
     <!-- Contains page content -->
     <div id="content" class="container-fluid">
@@ -181,8 +201,8 @@
         {% endblock %}
     </div>
 
-        <!-- Footer -->
-        <footer class="text-center text-lg-start text-dark" style="background-color: #ECEFF1">
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-dark" style="background-color: #ECEFF1">
             <!-- Section: Social media -->
             <section class="d-flex justify-content-between p-4 text-white" style="background-color: #21D192">
                 <!-- Left -->
@@ -265,7 +285,7 @@
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
                 © 2023 Copyright: <a class="text-dark" href="">Radicool Industries</a>
             </div>
-        </footer>
-</body>
+    </footer>
 
+</body>
 </html>

@@ -25,8 +25,31 @@ def home(request):
 # Show all Merchandise in the store.
 def all_products(request):
     """A view to show all available products"""
+
+    merch = Merch.objects.all()
+    sort = None
+    direction = None
+    current_sorting = None
+
+    if "sort" in request.GET:
+        sortkey = request.GET["sort"]
+        sort = sortkey
+
+        if sortkey == "name":
+            sortkey = "lower_name"
+            merch = merch.annotate(lower_name=Lower("name"))
+
+        if "direction" in request.GET:
+            direction = request.GET['direction']
+            if direction == "desc":
+                sortkey = f"-{sortkey}"
+        merch = merch.order_by(sortkey)
+
+        current_sorting = f"{sort}_{direction}"
+
     return render(request, "store/products.html",
-                  {"merch":  Merch.objects.all()})
+                  {"merch":  merch,
+                   "current_sorting": current_sorting})
 
 
 # Search for specific Merchandise within the store.
