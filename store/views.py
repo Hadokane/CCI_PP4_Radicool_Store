@@ -7,12 +7,13 @@ from store.forms import MerchSearchForm
 
 # Show all Categories in navbar.
 def categories(request):
-    return {"categories": Category.objects.all()}
+    categories = Category.objects.all().order_by('cat_name')
+    return {"categories": categories}
 
 
 # Show all Collections in navbar.
 def collections(request):
-    return {"collections": Collection.objects.all()}
+    return {"collections": Collection.objects.all().order_by('col_name')}
 
 
 # Show a selection of Merchandise. Acts as Site Index/Homepage.
@@ -24,7 +25,9 @@ def home(request):
 
 # Show all Merchandise in the store.
 def all_products(request):
-    """A view to show all available products"""
+    """
+    A view to show all available products. Provides ordering buttons.
+    """
 
     merch = Merch.objects.all()
     sort = None
@@ -38,7 +41,14 @@ def all_products(request):
         if sortkey == "name":
             sortkey = "lower_name"
             merch = merch.annotate(lower_name=Lower("name"))
+        # Allows names to appear in alphabetical order
+        if sortkey == "category":
+            sortkey = "category__cat_name"
 
+        if sortkey == "collection":
+            sortkey = "collection__col_name"
+
+        # - reverses direction (ie: "z-a", "high-low")
         if "direction" in request.GET:
             direction = request.GET['direction']
             if direction == "desc":
