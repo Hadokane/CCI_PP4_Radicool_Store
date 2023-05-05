@@ -34,13 +34,15 @@ def cart_delete(request):
     if request.POST.get("action") == "delete":
         merch_id = str(request.POST.get("merchid"))
         cart.delete(merch=merch_id)
+        cart_qty = cart.__len__()
         cart_total = cart.get_total_price()
-        response = JsonResponse({"subtotal": cart_total})
+        response = JsonResponse({"qty": cart_qty,
+                                 "subtotal": cart_total})
         return response
 
 
 def cart_update(request):
-    """Removes Items from the cart"""
+    """Updates Items within the cart"""
     cart = Cart(request)
     if request.POST.get("action") == "update":
         merch_id = str(request.POST.get("merchid"))
