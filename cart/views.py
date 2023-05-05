@@ -34,7 +34,8 @@ def cart_delete(request):
     if request.POST.get("action") == "delete":
         merch_id = str(request.POST.get("merchid"))
         cart.delete(merch=merch_id)
-        response = JsonResponse({"Success": True})
+        cart_total = cart.get_total_price()
+        response = JsonResponse({"subtotal": cart_total})
         return response
 
 

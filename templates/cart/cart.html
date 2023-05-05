@@ -103,6 +103,7 @@
                 },
                 success: function (json) {
                     $(".product-item[data-index='" + merchid + "']").remove();
+                    document.getElementById("subtotal").innerHTML = json.subtotal
                 },
                 error: function (xhr, errmsg, err) {}
             });
