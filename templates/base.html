@@ -140,7 +140,9 @@
                             <p class="my-0">
                             <span>
                                 {% if cart.get_total_price > 0 %}
-                                £{{ cart.get_total_price }}
+                                <div class="h6">
+                                    Sub Total: £<span id="subtotal-nav">{{ cart.get_total_price }}</span>
+                                </div>
                                 {% else %}
                                 £0.00
                                 {% endif %}

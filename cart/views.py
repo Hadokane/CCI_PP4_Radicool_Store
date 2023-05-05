@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from store.models import Merch
 from .cart import Cart
+from decimal import Decimal
 
 
 def cart_summary(request):
@@ -60,20 +61,27 @@ def cart_update(request):
         merch_id = str(request.POST.get("merchid"))
         merch_qty = int(request.POST.get("merchqty"))
         merch_size = str(request.POST.get("merchsize"))
-        cart.update(merch=merch_id, qty=merch_qty, size=merch_size)
+        item_price = str(request.POST.get("itemprice"))
+        cart.update(merch=merch_id, qty=merch_qty, size=merch_size,
+                    itemprice=item_price)
+
+        item_total = Decimal(item_price)*int(merch_qty)  # calc item total
 
         cart_qty = cart.__len__()
-        cart_total = cart.get_total_price()
-        
-        print("ID:" + merch_id)
-        print("QTY:" + str(merch_qty))
-        print("SIZE:" + merch_size)
-        print("CART_QTY:" + str(cart_qty))
-        print("CART_TOTAL:" + str(cart_total))
+        cart_total = cart.get_total_price()  # calc cart total
+
+        # print("ID:" + merch_id)
+        # print("QTY:" + str(merch_qty))
+        # print("ITEM PRICE:" + str(item_price))
+        # print("ITEM TOTAL:" + str(item_total))
+        # print("SIZE:" + merch_size)
+        # print("CART_QTY:" + str(cart_qty))
+        # print("CART_TOTAL:" + str(cart_total))
 
         response = JsonResponse({"qty": cart_qty,
                                  "subtotal": cart_total,
                                  "size": merch_size,
-                                 "itemqty": merch_qty
+                                 "itemqty": merch_qty,
+                                 "itemtotal": item_total
                                  })
         return response

@@ -25,13 +25,13 @@
             <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
                 <p>NAME - {{ product.product_name }}</p>
                 <p>DESCRIPTION - {{ product.description }}</p>
-                <p>PRICE - {{ product.price }}</p>
+                <p>PRICE - <span id="itemprice{{product.id}}">{{ product.price }}</span></p>
                 <!--Show size if present on item-->
                 {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
                 <p>SIZE - <span id="item_size{{product.id}}">{{ item.size }}</span></p>
                 {% endif %}
                 <p>QTY - <span id="item_qty{{product.id}}">{{ item.qty }}</span></p>
-                <p>ITEM TOTAL - <span id="item_total{{product.id}}">{{ item.total_price }}</span></p>
+                <p>ITEM TOTAL - <span id="itemtotal{{product.id}}">{{ item.total_price }}</span></p>
 
                 <!--Selections-->
                 <!--QTY Select-->
@@ -105,6 +105,7 @@
                     $(".product-item[data-index='" + merchid + "']").remove();
                     document.getElementById("cart-qty").innerHTML = json.qty
                     document.getElementById("subtotal").innerHTML = json.subtotal
+                    document.getElementById("subtotal-nav").innerHTML = json.subtotal
                 },
                 error: function (xhr, errmsg, err) {}
             });
@@ -123,13 +124,16 @@
                     merchid: $(this).data("index"),
                     merchqty: $('#qty' + merchid + ' option:selected').text(),
                     merchsize: $('#size' + merchid + ' option:selected').text(),
+                    itemprice: $('#itemprice' + merchid).text(),
                     csrfmiddlewaretoken: "{{csrf_token}}",
                     action: "update"
                 },
                 success: function (json) {
                     document.getElementById("cart-qty").innerHTML = json.qty
                     document.getElementById("subtotal").innerHTML = json.subtotal
+                    document.getElementById("subtotal-nav").innerHTML = json.subtotal
                     document.getElementById('item_qty' + merchid).innerHTML = json.itemqty
+                    document.getElementById('itemtotal' + merchid).innerHTML = json.itemtotal
                     if (('item_size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" || "XXL")
                         document.getElementById('item_size' + merchid).innerHTML = json.size
                 },

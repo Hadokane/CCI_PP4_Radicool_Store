@@ -71,7 +71,7 @@ class Cart():
 
         self.session.modified = True
 
-    def update(self, merch, qty, size):
+    def update(self, merch, qty, size, itemprice):
         """Updates items in the cart/session data."""
         merch_id = str(merch)
 
