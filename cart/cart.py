@@ -25,8 +25,11 @@ class Cart():
         to the cart. Updating the cart by modifying the current user session,
         adds the price data from the merch item to the cart.
         """
-        merch_id = merch.id
-        if merch_id not in self.cart:
+        merch_id = str(merch.id)
+
+        if merch_id in self.cart:
+            self.cart[merch_id]["qty"] = qty  # if qty exists, update it
+        else:
             self.cart[merch_id] = {"price": str(merch.price),
                                    "qty": int(qty),
                                    "size": str(size)}

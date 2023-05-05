@@ -64,6 +64,16 @@ def cart_update(request):
 
         cart_qty = cart.__len__()
         cart_total = cart.get_total_price()
+        
+        print("ID:" + merch_id)
+        print("QTY:" + str(merch_qty))
+        print("SIZE:" + merch_size)
+        print("CART_QTY:" + str(cart_qty))
+        print("CART_TOTAL:" + str(cart_total))
+
         response = JsonResponse({"qty": cart_qty,
-                                 "subtotal": cart_total})
+                                 "subtotal": cart_total,
+                                 "size": merch_size,
+                                 "itemqty": merch_qty
+                                 })
         return response

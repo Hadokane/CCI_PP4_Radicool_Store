@@ -25,13 +25,13 @@
             <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
                 <p>NAME - {{ product.product_name }}</p>
                 <p>DESCRIPTION - {{ product.description }}</p>
-                <p>PRICE - {{ item.price }}</p>
+                <p>PRICE - {{ product.price }}</p>
                 <!--Show size if present on item-->
                 {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
-                <p>SIZE - {{ item.size }}</p>
+                <p>SIZE - <span id="item_size{{product.id}}">{{ item.size }}</span></p>
                 {% endif %}
-                <p>QTY - {{ item.qty }}</p>
-                <p>ITEM TOTAL - {{ item.total_price }}</p>
+                <p>QTY - <span id="item_qty{{product.id}}">{{ item.qty }}</span></p>
+                <p>ITEM TOTAL - <span id="item_total{{product.id}}">{{ item.total_price }}</span></p>
 
                 <!--Selections-->
                 <!--QTY Select-->
@@ -129,6 +129,9 @@
                 success: function (json) {
                     document.getElementById("cart-qty").innerHTML = json.qty
                     document.getElementById("subtotal").innerHTML = json.subtotal
+                    document.getElementById('item_qty' + merchid).innerHTML = json.itemqty
+                    if (('item_size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" || "XXL")
+                        document.getElementById('item_size' + merchid).innerHTML = json.size
                 },
                 error: function (xhr, errmsg, err) {}
             });
