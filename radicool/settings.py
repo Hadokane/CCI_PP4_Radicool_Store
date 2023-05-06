@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "store",  # Main Store App
     "cart",  # Cart App
     "checkout",  # Checkout App
+    "crispy_forms",
+    "crispy_bootstrap4",  # Crispy Forms Addon
 ]
 
 MIDDLEWARE = [
@@ -60,6 +62,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'radicool.urls'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 TEMPLATES = [
     {
@@ -77,6 +83,10 @@ TEMPLATES = [
                 'store.views.collections',  # useful for navbar display
                 'cart.context_processors.cart',  # cart processor
             ],
+            'builtins':[
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
