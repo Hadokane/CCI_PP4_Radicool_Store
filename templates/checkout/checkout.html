@@ -10,7 +10,85 @@
 </div>
 
 <!--Order Display (Shows Cart content)-->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <!--Uses cart.py to access the sessions total-->
+            <!--Displays all items within session and their data in the cart-->
+            {% with total_qty=cart|length %}
+            <!--If quantity > 0 show the items-->
+            {% if total_qty > 0 %}
+            <!--Loop through items in cart-->
+            {% for item in cart %}
+            <!--Use product information for each item-->
+            {% with product=item.product %}
+            <!--Arrange into tables-->
+            <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
+                <p>NAME - {{ product.product_name }}</p>
+                <p>PRICE - <span id="itemprice{{product.id}}">{{ product.price }}</span></p>
+                <!--Show size if present on item-->
+                {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
+                <p>SIZE - <span id="item_size{{product.id}}">{{ item.size }}</span></p>
+                {% endif %}
+                <p>QTY - <span id="item_qty{{product.id}}">{{ item.qty }}</span></p>
+                <p>ITEM TOTAL - <span id="itemtotal{{product.id}}">{{ item.total_price }}</span></p>
 
+                <!--Selections-->
+                <!--QTY Select-->
+                <label for="qty">QTY</label>
+                <select id="qty{{product.id}}">
+                    <option selected>{{ item.qty }}</option>
+                    <option disabled>-</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                    <option value="">6</option>
+                </select>
+                <!--Size Select | change to "Clothing" when included-->
+                {% if product.category.cat_name == "Vinyl" %}
+                <label for="size">SIZE</label>
+                <select id="size{{product.id}}">
+                    <option selected>{{ item.size }}</option>
+                    <option disabled>-</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+                {% endif %}
+                <!--Add to Cart-->
+                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                    class="update-cart btn btn-secondary">Update</button>
+                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                    class="delete-from-cart btn btn-secondary">Remove</button>
+                <hr>
+            </div>
+            <hr>
+            {% endwith %}
+            {% endfor %}
+            <div class="row">
+
+                <div class="col-12 text-center">
+                    <!--Show full cart subtotal-->
+                    <div class="h6">
+                        Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span>
+                    </div>
+                </div>
+                {% else %}
+                <p>Your cart is empty.</p>
+                <a href="{% url 'store:products' %}">See all products!</a>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</div>
+
+    <hr>
 
 <!--Crispy Form Formatted Checkout Section-->
 <div class="container">
