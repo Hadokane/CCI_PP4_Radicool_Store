@@ -9,94 +9,118 @@
     <hr>
 </div>
 
-<!--Order Display (Shows Cart content)-->
+<!--TEMPLATE-->
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <!--Uses cart.py to access the sessions total-->
-            <!--Displays all items within session and their data in the cart-->
-            {% with total_qty=cart|length %}
-            <!--If quantity > 0 show the items-->
-            {% if total_qty > 0 %}
-            <!--Loop through items in cart-->
-            {% for item in cart %}
-            <!--Use product information for each item-->
-            {% with product=item.product %}
-            <!--Arrange into tables-->
-            <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
-                <p>NAME - {{ product.product_name }}</p>
-                <p>PRICE - <span id="itemprice{{product.id}}">{{ product.price }}</span></p>
-                <!--Show size if present on item-->
-                {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
-                <p>SIZE - <span id="item_size{{product.id}}">{{ item.size }}</span></p>
-                {% endif %}
-                <p>QTY - <span id="item_qty{{product.id}}">{{ item.qty }}</span></p>
-                <p>ITEM TOTAL - <span id="itemtotal{{product.id}}">{{ item.total_price }}</span></p>
-
-                <!--Selections-->
-                <!--QTY Select-->
-                <label for="qty">QTY</label>
-                <select id="qty{{product.id}}">
-                    <option selected>{{ item.qty }}</option>
-                    <option disabled>-</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
-                    <option value="">6</option>
-                </select>
-                <!--Size Select | change to "Clothing" when included-->
-                {% if product.category.cat_name == "Vinyl" %}
-                <label for="size">SIZE</label>
-                <select id="size{{product.id}}">
-                    <option selected>{{ item.size }}</option>
-                    <option disabled>-</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </select>
-                {% endif %}
-                <!--Add to Cart-->
-                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
-                    class="update-cart btn btn-secondary">Update</button>
-                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
-                    class="delete-from-cart btn btn-secondary">Remove</button>
-                <hr>
-            </div>
+        <div class="col">
             <hr>
-            {% endwith %}
-            {% endfor %}
-            <div class="row">
-
-                <div class="col-12 text-center">
-                    <!--Show full cart subtotal-->
-                    <div class="h6">
-                        Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span>
-                    </div>
-                </div>
-                {% else %}
-                <p>Your cart is empty.</p>
-                <a href="{% url 'store:products' %}">See all products!</a>
-                {% endif %}
-                {% endwith %}
-            </div>
+            <h2 class="logo-font mb-4">Checkout</h2>
+            <hr>
         </div>
     </div>
-</div>
 
-    <hr>
-
-<!--Crispy Form Formatted Checkout Section-->
-<div class="container">
     <div class="row">
-        <div class="col-12">
-            <p class="text-muted">Please complete the Checkout form: </p>
-            <p class="text-muted">( * = required )</p>
-            <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
+        <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <p class="text-muted">Order Summary
+                {% with total_qty=cart|length %}
+                <!-- Show Total Quantity of items -->
+                {% if total_qty > 0 %}
+                ({{ total_qty }})
+                <!-- Show 0 if cart is empty -->
+                {% else %}
+                (0)
+                {% endif %}
+                {% endwith %}
+            </p>
+            <div class="row">
+                <div class="col-7 offset-2">
+                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                </div>
+                <div class="col-3 text-right">
+                    <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                </div>
+            </div>
+            {% for item in cart %}
+            <div class="row">
+                <div class="col-2 mb-1">
+                    <a href="">
+                        {% if item.product.image %}
+                        <img class="w-100" src="../media/{{item.product.image}}" alt="{{ item.product.product_name }}">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="col-7">
+                    <p class="my-0"><strong>{{ item.product.product_name }}</strong></p>
+                    {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
+                    <p class="my-0 small">Size:
+                        {{ item.size }}
+                    </p>
+                    {% endif %}
+                    <p class="my-0 small text-muted">Qty: {{ item.qty }}</p>
+                </div>
+                <div class="col-3 text-right">
+                    <p class="my-0 small text-muted">£{{ item.total_price }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <hr class="my-0">
+            <div class="row text-black text-right">
+                <div class="col-7 offset-2">
+                    <p class="my-0">Order Total:</p>
+                    <p class="my-0">Delivery:</p>
+                    <p class="my-0">Grand Total:</p>
+                </div>
+                <div class="col-3">
+                    <p class="my-0">£{{ cart.get_total_price }}</p>
+                    <p class="my-0">£5.00</p>
+                    <p class="my-0"><strong>£</strong></p>
+                </div>
+            </div>
+
+            <!-- Payment Section -->
+            <hr class="my-0">
+            <div>
+                <fieldset class="px-3">
+                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                    <!-- A Stripe card element will go here -->
+                    <div class="mb-3" id="card-element"></div>
+                    <!-- Used to display form errors -->
+                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    <!-- Pass the client secret to the view so we can get the payment intent id -->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                </fieldset>
+
+                <div class="submit-button mt-5 mb-2 d-inline-flex">
+                    <div class="col-6">
+                        <a href="{% url 'cart:cart_summary' %}" class="btn btn-outline-black rounded-0">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="font-weight-bold">Edit Cart</span>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <button id="submit-button" class="btn btn-black rounded-0">
+                            <span class="font-weight-bold">Complete Order</span>
+                            <span class="icon">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </button>
+                        <p class="small text-danger my-0">
+                            <span class="icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Your card will be charged <strong>£{{ grand_total }}</strong></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Please fill out the form below to complete your order</p>
+            <form action="" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
@@ -113,47 +137,20 @@
                     {{ order_form.country | as_crispy_field }}
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
-                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                        <label class="form-check-label" for="id-save-info">Save this delivery information to my
+                            profile</label>
+                        <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info"
+                            checked>
                         {% else %}
-                            <label class="form-check-label" for="id-save-info">
-                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                            </label>
+                        <label class="form-check-label" for="id-save-info">
+                            <a class="text-info" href="">Create an account</a> or
+                            <a class="text-info" href="">login</a> to save this information
+                        </label>
                         {% endif %}
                     </div>
                 </fieldset>
-                <fieldset class="px-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                    <!-- A Stripe card element will go here -->
-                    <div class="mb-3" id="card-element"></div>
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    <!-- Pass the client secret to the view so we can get the payment intent id -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
-                <div class="submit-button text-right mt-5 mb-2">                    
-                    <a href="" class="btn btn-outline-black rounded-0">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="font-weight-bold">Adjust Bag</span>
-                    </a>
-                    <button id="submit-button" class="btn btn-black rounded-0">
-                        <span class="font-weight-bold">Complete Order</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </button>
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
-                    </p>
-                </div>
+            </form>
         </div>
     </div>
 </div>
-
-    {% endblock %}
+{% endblock %}

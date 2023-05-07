@@ -62,7 +62,8 @@
                     <li class="nav-item text-center">
                         <a class="nav-link" href="../products">
                             <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
-                            <p>All Products</p></a>
+                            <p>All Products</p>
+                        </a>
                     </li>
 
                     <!-- Collections Dropdown -->
@@ -177,21 +178,21 @@
 
     <!-- Displays alerts & toasts beneath the header -->
     {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
     <hr>
 
@@ -203,89 +204,90 @@
 
     <!-- Footer -->
     <footer class="text-center text-lg-start text-dark" style="background-color: #ECEFF1">
-            <!-- Section: Social media -->
-            <section class="d-flex justify-content-between p-4 text-white" style="background-color: #21D192">
-                <!-- Left -->
-                <div class="me-5">
-                    <span>Get connected with us on social media:</span>
-                </div>
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-between p-4 text-white" style="background-color: #21D192">
+            <!-- Left -->
+            <div class="me-5">
+                <span>Get connected with us on social media:</span>
+            </div>
 
-                <!-- Right -->
-                <div>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </section>
+            <!-- Right -->
+            <div>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
 
-            <!-- Section: Links  -->
-            <section class="">
-                <div class="container text-center text-md-start mt-5">
-                    <!-- Grid row -->
-                    <div class="row mt-3">
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
 
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <!-- Content -->
-                            <h6 class="text-uppercase fw-bold">Radicool</h6>
-                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                                style="width: 60px; background-color: #08b324; height: 2px" />
-                            <p>
-                                Radicool is a D.I.Y. shipping company for D.I.Y. Bands & Brands.
-                                Shop local, support growing artists and ensure they receive the
-                                best possible percentage on their merchandise by shopping with us.
-                            </p>
-                        </div>
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold">Radicool</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #08b324; height: 2px" />
+                        <p>
+                            Radicool is a D.I.Y. shipping company for D.I.Y. Bands & Brands.
+                            Shop local, support growing artists and ensure they receive the
+                            best possible percentage on their merchandise by shopping with us.
+                        </p>
+                    </div>
 
-                        <!-- Grid column -->
-                        <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Your Account</h6>
-                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                                style="width: 60px; background-color: #7c4dff; height: 2px" />
-                            <p>
-                                <button type="button" class="btn btn-outline-dark btn-rounded">
-                                    Sign up!
-                                </button>
-                            </p>
-                        </div>
+                    <!-- Grid column -->
+                    <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold">Your Account</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p>
+                            <button type="button" class="btn btn-outline-dark btn-rounded">
+                                Sign up!
+                            </button>
+                        </p>
+                    </div>
 
-                        <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Contact</h6>
-                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                                style="width: 60px; background-color: #08b324; height: 2px" />
-                            <p><i class="fas fa-home mr-3"></i> Ships from: NP20, UK</p>
-                            <p><i class="fas fa-envelope mr-3"></i> radicool@example.com</p>
-                        </div>
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold">Contact</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #08b324; height: 2px" />
+                        <p><i class="fas fa-home mr-3"></i> Ships from: NP20, UK</p>
+                        <p><i class="fas fa-envelope mr-3"></i> radicool@example.com</p>
                     </div>
                 </div>
-            </section>
-
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-                © 2023 Copyright: <a class="text-dark" href="">Radicool Industries</a>
             </div>
+        </section>
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2023 Copyright: <a class="text-dark" href="">Radicool Industries</a>
+        </div>
     </footer>
 
 </body>
+
 </html>
