@@ -1,8 +1,8 @@
-{% extends "../base.html" %}
+{% extends "base.html" %}
 {% load static %}
-{% block extra_title %}| Checkout {% endblock %}
-{% block content %}
 
+
+{% block content %}
 <!--HEADER-->
 <div class="container">
     <div class="row">
@@ -70,55 +70,25 @@
                     <p class="my-0"><strong>£</strong></p>
                 </div>
             </div>
-
-            <!-- Payment Section -->
-            <hr class="my-0">
-            <div>
-                <h4 class="mb-3">Payment</h4>
-                <label for="card-element">Credit or debit card</label>
-                <!-- Stripe Payment elements will appear here -->
-                <div id="card-element"></div>
-                <!-- Used to display form errors -->
-                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                <!-- Pass the client secret to the view so we can get the payment intent id -->
-                <input type="hidden" value="{{ client_secret }}" name="client_secret">
-            </div>
-            <hr class="my-4">
-            <button id="submit-button" class="btn btn-primary w-100 fw-bold">Pay Now</button>
-            <hr class="my-3">
-            <div class="row">
-                <div class="col-4">
-                    <a href="{% url 'cart:cart_summary' %}" class="btn btn-outline-black rounded-0">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="font-weight-bold">Edit Cart</span>
-                    </a>
-                </div>
-                <div class="col-4">
-                </div>
-                <div class="col-4">
-                </div>
-            </div>
         </div>
 
         <!-- CRISPY FORM -->
         <div class="col-12 col-lg-6">
             <p class="text-muted">Please fill out the form below to complete your order</p>
-            <form action="" method="POST" id="payment-form">
+            <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                    <span id="custName">{{ order_form.full_name | as_crispy_field }}</span>
+                    <span>{{ order_form.full_name | as_crispy_field }}</span>
                     {{ order_form.email | as_crispy_field }}
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
-                    <span id="custAdd">{{ order_form.street_address_1 | as_crispy_field }}</span>
-                    <span id="custAdd2">{{ order_form.street_address_2 | as_crispy_field }}</span>
+                    <span>{{ order_form.street_address_1 | as_crispy_field }}</span>
+                    <span>{{ order_form.street_address_2 | as_crispy_field }}</span>
                     {{ order_form.town_or_city | as_crispy_field }}
                     {{ order_form.county | as_crispy_field }}
-                    <span id="postCode">{{ order_form.postcode | as_crispy_field }}</span>
+                    <span>{{ order_form.postcode | as_crispy_field }}</span>
                     {{ order_form.country | as_crispy_field }}
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
@@ -134,19 +104,47 @@
                         {% endif %}
                     </div>
                 </fieldset>
+
+                <!-- Payment Section -->
+                <hr class="my-0">
+                <fieldset class="px-3">
+                    <h4 class="mb-3">Payment</h4>
+                    <label for="card-element">Credit or debit card</label>
+                    <!-- Stripe Payment elements will appear here -->
+                    <div class="mb-3" id="card-element"></div>
+                    <!-- Used to display form errors -->
+                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    <!-- Pass the client secret to the view so we can get the payment intent id -->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                </fieldset>
+                <hr class="my-4">
+                <button id="submit-button" class="btn btn-black w-100 rounded-0">
+                    <span class="font-weight-bold">Complete Order</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </button>
+                <hr class="my-3">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="{% url 'cart:cart_summary' %}" class="btn btn-outline-black rounded-0">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="font-weight-bold">Edit Cart</span>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                    </div>
+                    <div class="col-4">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
-
-<!--Makes token & stripe available in JS-->
-<script>
-    var CSRF_TOKEN = '{{ csrf_token }}';
-</script>
+((block.super ))
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
-<script src="https://js.stripe.com/v3/"></script>
-<script src="{% static 'js/checkout.js' %}" data-rel-js></script>
-
+<script src="{% static 'js/checkout.js' %}"></script>
 {% endblock %}

@@ -45,5 +45,8 @@
       "xlarge",
       "xsmall",
       "xxlarge"
-   ]
+   ],
+   "[python]": {
+      "editor.defaultFormatter": "ms-python.python"
+   }
 }
