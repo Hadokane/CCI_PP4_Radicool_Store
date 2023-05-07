@@ -3,22 +3,16 @@
 {% block extra_title %}| Checkout {% endblock %}
 {% block content %}
 
-<div class="container">
-    <hr>
-    <h1>CHECKOUT:</h1>
-    <hr>
-</div>
-
-<!--TEMPLATE-->
+<!--HEADER-->
 <div class="container">
     <div class="row">
         <div class="col">
-            <hr>
             <h2 class="logo-font mb-4">Checkout</h2>
             <hr>
         </div>
     </div>
 
+    <!-- Cart Display -->
     <div class="row">
         <div class="col-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary
@@ -80,16 +74,18 @@
             <!-- Payment Section -->
             <hr class="my-0">
             <div>
-                <fieldset class="px-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                    <!-- A Stripe card element will go here -->
-                    <div class="mb-3" id="card-element"></div>
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    <!-- Pass the client secret to the view so we can get the payment intent id -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
+                <h4 class="mb-3">Payment</h4>
+                <label for="card-element">Credit or debit card</label>
+                <!-- Stripe Payment elements will appear here -->
+                <div id="card-element"></div>
+                <!-- Used to display form errors -->
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <!-- Pass the client secret to the view so we can get the payment intent id -->
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </div>
+            <hr class="my-4">
+            <button id="submit-button" class="btn btn-primary w-100 fw-bold">Pay Now</button>
+            <hr class="my-3">
             <div class="row">
                 <div class="col-4">
                     <a href="{% url 'cart:cart_summary' %}" class="btn btn-outline-black rounded-0">
@@ -102,38 +98,27 @@
                 <div class="col-4">
                 </div>
                 <div class="col-4">
-                    <button id="submit-button" class="btn btn-black rounded-0">
-                        <span class="font-weight-bold">Complete Order</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </button>
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>£{{ grand_total }}</strong></span>
-                    </p>
                 </div>
             </div>
-
         </div>
+
+        <!-- CRISPY FORM -->
         <div class="col-12 col-lg-6">
             <p class="text-muted">Please fill out the form below to complete your order</p>
             <form action="" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                    {{ order_form.full_name | as_crispy_field }}
+                    <span id="custName">{{ order_form.full_name | as_crispy_field }}</span>
                     {{ order_form.email | as_crispy_field }}
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
-                    {{ order_form.street_address_1 | as_crispy_field }}
-                    {{ order_form.street_address_2 | as_crispy_field }}
+                    <span id="custAdd">{{ order_form.street_address_1 | as_crispy_field }}</span>
+                    <span id="custAdd2">{{ order_form.street_address_2 | as_crispy_field }}</span>
                     {{ order_form.town_or_city | as_crispy_field }}
                     {{ order_form.county | as_crispy_field }}
-                    {{ order_form.postcode | as_crispy_field }}
+                    <span id="postCode">{{ order_form.postcode | as_crispy_field }}</span>
                     {{ order_form.country | as_crispy_field }}
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
@@ -153,4 +138,15 @@
         </div>
     </div>
 </div>
+
+
+<!--Makes token & stripe available in JS-->
+<script>
+    var CSRF_TOKEN = '{{ csrf_token }}';
+</script>
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'js/checkout.js' %}" data-rel-js></script>
+
 {% endblock %}
