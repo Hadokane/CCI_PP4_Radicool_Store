@@ -89,34 +89,34 @@
                     <!-- Pass the client secret to the view so we can get the payment intent id -->
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 </fieldset>
-
-                <div class="submit-button mt-5 mb-2 d-inline-flex">
-                    <div class="col-6">
-                        <a href="{% url 'cart:cart_summary' %}" class="btn btn-outline-black rounded-0">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="font-weight-bold">Edit Cart</span>
-                        </a>
-                    </div>
-                    <div class="col-6">
-                    </div>
-                    <div class="col-6">
-                        <button id="submit-button" class="btn btn-black rounded-0">
-                            <span class="font-weight-bold">Complete Order</span>
-                            <span class="icon">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </button>
-                        <p class="small text-danger my-0">
-                            <span class="icon">
-                                <i class="fas fa-exclamation-circle"></i>
-                            </span>
-                            <span>Your card will be charged <strong>£{{ grand_total }}</strong></span>
-                        </p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <a href="{% url 'cart:cart_summary' %}" class="btn btn-outline-black rounded-0">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="font-weight-bold">Edit Cart</span>
+                    </a>
+                </div>
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <button id="submit-button" class="btn btn-black rounded-0">
+                        <span class="font-weight-bold">Complete Order</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </button>
+                    <p class="small text-danger my-0">
+                        <span class="icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Your card will be charged <strong>£{{ grand_total }}</strong></span>
+                    </p>
                 </div>
             </div>
+
         </div>
         <div class="col-12 col-lg-6">
             <p class="text-muted">Please fill out the form below to complete your order</p>
