@@ -36,7 +36,7 @@ var card = elements.create('card', {
 card.mount('#card-element');
 
 // Check for validation errors on the stripe card
-card.addEventListener('change', function (event) {
+card.addEventListener('change', function(event) {
     var errorDiv = document.getElementById('card-errors');
     if (event.error) {
         var html = `
@@ -54,7 +54,7 @@ card.addEventListener('change', function (event) {
 // Handle form submit
 var form = document.getElementById('payment-form');
 
-form.addEventListener('submit', function (ev) {
+form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({
         'disabled': true
@@ -70,7 +70,7 @@ form.addEventListener('submit', function (ev) {
     };
     var url = '/checkout/cache_checkout_data/';
 
-    $.post(url, postData).done(function () {
+    $.post(url, postData).done(function() {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -97,7 +97,7 @@ form.addEventListener('submit', function (ev) {
                     country: $.trim(form.country.value),
                 }
             },
-        }).then(function (result) {
+        }).then(function(result) {
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
@@ -116,7 +116,7 @@ form.addEventListener('submit', function (ev) {
                 }
             }
         });
-    }).fail(function () {
+    }).fail(function() {
         // just reload the page, the error will be in django messages
         location.reload();
     });
