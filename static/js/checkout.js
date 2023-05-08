@@ -6,8 +6,11 @@
     https://stripe.com/docs/stripe-js
 */
 
+// Get Stripe Keys
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
+
+// Set up Elements for checkout form
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 var style = {
@@ -25,6 +28,8 @@ var style = {
         iconColor: '#dc3545'
     }
 };
+
+// Mount the Stripe card to the checkout
 var card = elements.create('card', {
     style: style
 });
@@ -53,6 +58,7 @@ form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
+    
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,

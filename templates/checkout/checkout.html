@@ -143,7 +143,11 @@
         </div>
     </div>
 </div>
-((block.super ))
+
+<!--Make csrf token available in JS files-->
+<script>
+    var CSRF_TOKEN = '{{ csrf_token }}';
+</script>
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'js/checkout.js' %}"></script>

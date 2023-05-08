@@ -3,13 +3,12 @@ import json
 import stripe
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
-from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .forms import OrderForm
 from cart.cart import Cart
 from cart.context_processors import cart
 from store.models import Merch
-from .models import Order, OrderItem
+from .models import OrderItem, Order
 
 
 def checkout(request):
@@ -21,31 +20,44 @@ def checkout(request):
 
     if request.method == 'POST':
         cart = Cart(request)
-        carttotal = cart.get_total_price()
+        total = cart.get_total_price()
 
-        order = Order.objects.create(
-                full_name='request.POST["full_name"]',
-                email="request.POST['email']",
-                town_or_city="request.POST['town_or_city']",
-                street_address_1="request.POST['street_address_1']",
-                street_address_2="request.POST['street_address_2']",
-                county="request.POST['county']",
-                postcode="request.POST['postcode']",
-                country="request.POST['country']",
-                total_paid=carttotal,
-                )
-        order_id = order.pk
+        form_data = {
+                'full_name': request.POST['full_name'],
+                'email': request.POST['email'],
+                'town_or_city': request.POST['town_or_city'],
+                'street_address_1': request.POST['street_address_1'],
+                'street_address_2': request.POST['street_address_2'],
+                'county': request.POST['county'],
+                'postcode': request.POST['postcode'],
+                'country': request.POST['country'],
+            }
+        order_form = OrderForm(form_data)
 
-        for item in cart:
-            OrderItem.objects.create(
-                    order_id=order_id,
-                    merch=item['product'],
-                    price=item['price'],
-                    quantity=item['qty']
+        if order_form.is_valid():
+            order = order_form.save()
+            for item in cart:
+                order_item = OrderItem(
+                        order=Order.id,
+                        size=item["size"],
+                        quantity=item["qty"],
+                        item_total=item["total_price"],
                     )
+                merch_ids = cart.cart.keys()
+                products = Merch.objects.filter(id__in=merch_ids)
 
-        response = JsonResponse({'success': 'Return something'})
-        return response
+                for p in products:
+                    order_item = OrderItem(
+                        merch=p
+                    )
+                    print("MERCH:" + str(p))
+                    print("ORDER:" + str(order))
+                    print("Size:" + str(item["size"]))
+                    print("QTY:" + str(item["qty"]))
+                    order_item.save()
+
+            request.session["save_info"] = "save_info" in request.POST
+            return redirect(reverse("checkout:checkout_success", args=[order.order_number]))
 
     else:
         cart = Cart(request)
@@ -59,7 +71,6 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
-            metadata={"userid": request.user.id},
         )
 
         order_form = OrderForm()
