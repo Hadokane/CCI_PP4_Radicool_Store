@@ -10,7 +10,8 @@
             <hr>
             <h2 class="logo-font mb-4">Thank You</h2>
             <hr>
-            <p class="text-black">Your order information is below. A confirmation email will be sent to
+            <p class="text-black">Your order information is below.
+                A confirmation email will be sent to
                 <strong>{{ order.email }}</strong>.</p>
         </div>
     </div>
@@ -38,7 +39,7 @@
                         <p class="mb-0 text-black font-weight-bold">Order Date</p>
                     </div>
                     <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ order.date }}</p>
+                        <p class="mb-0">{{ order.created }}</p>
                     </div>
                 </div>
 
@@ -48,16 +49,17 @@
                     </div>
                 </div>
 
-                {% for item in order.lineitems.all %}
+                {% for item in order.items.all %}
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="small mb-0 text-black font-weight-bold">
-                            {{ item.product.name }}{% if item.product_size %} - Size
-                            {{ item.product_size|upper }}{% endif %}
+                            {{ item.merch }}
+                            {% if item.size == "L" %} - Size:
+                            {{ item.size|upper }}{% endif %}
                         </p>
                     </div>
                     <div class="col-12 col-md-8 text-md-right">
-                        <p class="small mb-0">{{ item.quantity }} @ ${{ item.product.price }} each</p>
+                        <p class="small mb-0">{{ item.quantity }} @ £{{ item.price }} each</p>
                     </div>
                 </div>
                 {% endfor %}
@@ -148,7 +150,7 @@
                         <p class="mb-0 text-black font-weight-bold">Order Total</p>
                     </div>
                     <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">£{{ order.order_total }}</p>
+                        <p class="mb-0">£{{ order.total_paid }}</p>
                     </div>
                 </div>
 

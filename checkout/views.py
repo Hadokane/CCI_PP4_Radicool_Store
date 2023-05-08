@@ -1,6 +1,7 @@
 import os
 import json
 import stripe
+import uuid
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
 from django.http.response import JsonResponse
@@ -23,6 +24,7 @@ def checkout(request):
         cart = Cart(request)
         carttotal = cart.get_total_price()
         user_id = request.user.id
+        num = uuid.uuid4().hex.upper()
 
         order = Order.objects.create(
                 full_name=request.POST["full_name"],
@@ -35,6 +37,7 @@ def checkout(request):
                 country=request.POST['country'],
                 total_paid=carttotal,
                 order_key=request.POST.get('client_secret'),
+                order_number=num,
                 )
         order_id = order.pk
 
@@ -47,8 +50,8 @@ def checkout(request):
                     size=item["size"],
                     )
 
-        response = JsonResponse({'success': 'Return something'})
-        return response
+        return redirect(reverse("checkout:checkout_success",
+                        args=[order.order_number]))
 
     else:
         cart = Cart(request)

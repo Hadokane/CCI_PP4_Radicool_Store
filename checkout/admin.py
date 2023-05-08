@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Order, OrderItem
 
-admin.site.register(OrderItem)
-
 
 class OrderItemAdminInline(admin.TabularInline):
     model = OrderItem

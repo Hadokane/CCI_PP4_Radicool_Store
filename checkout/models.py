@@ -20,6 +20,7 @@ class Order(models.Model):
     total_paid = models.DecimalField(max_digits=11, decimal_places=2)
     order_key = models.CharField(max_length=200)
     billing_status = models.BooleanField(default=False)
+    order_number = models.CharField(max_length=32, null=False, editable=False)
 
     class Meta:
         ordering = ('-created',)
