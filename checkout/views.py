@@ -22,6 +22,7 @@ def checkout(request):
     if request.method == 'POST':
         cart = Cart(request)
         carttotal = cart.get_total_price()
+        user_id = request.user.id
 
         order = Order.objects.create(
                 full_name=request.POST["full_name"],
@@ -33,6 +34,7 @@ def checkout(request):
                 postcode=request.POST['postcode'],
                 country=request.POST['country'],
                 total_paid=carttotal,
+                order_key=request.POST.get('client_secret'),
                 )
         order_id = order.pk
 
@@ -57,6 +59,7 @@ def checkout(request):
         total = current_cart.get_total_price()
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
+
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
