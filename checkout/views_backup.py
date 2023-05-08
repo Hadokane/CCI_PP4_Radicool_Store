@@ -33,6 +33,7 @@ def checkout(request):
                 'country': request.POST['country'],
             }
         order_form = OrderForm(form_data)
+        order_form.save()
 
         if order_form.is_valid():
             order = order_form.save()

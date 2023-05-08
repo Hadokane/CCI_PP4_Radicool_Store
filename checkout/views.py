@@ -24,14 +24,14 @@ def checkout(request):
         carttotal = cart.get_total_price()
 
         order = Order.objects.create(
-                full_name='request.POST["full_name"]',
-                email="request.POST['email']",
-                town_or_city="request.POST['town_or_city']",
-                street_address_1="request.POST['street_address_1']",
-                street_address_2="request.POST['street_address_2']",
-                county="request.POST['county']",
-                postcode="request.POST['postcode']",
-                country="request.POST['country']",
+                full_name=request.POST["full_name"],
+                email=request.POST['email'],
+                town_or_city=request.POST['town_or_city'],
+                street_address_1=request.POST['street_address_1'],
+                street_address_2=request.POST['street_address_2'],
+                county=request.POST['county'],
+                postcode=request.POST['postcode'],
+                country=request.POST['country'],
                 total_paid=carttotal,
                 )
         order_id = order.pk
