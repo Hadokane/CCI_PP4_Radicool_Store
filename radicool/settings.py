@@ -170,9 +170,9 @@ STATICFILES_DIRS = [BASE_DIR / "static",]  # static path
 MEDIA_URL = "media/"  # local media storage for development
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")  # media path
 
-STRIPE_PUBLIC_KEY = "pk_test_51N2tqaJBncpFz3JEf8j2jpgwSCe7Y36AB196lDJFNi90ewcVMvhtltqiD6pF8xuMpD44VTahBu5lGUXZGU8EhAcw00rgFnAqNO"
-STRIPE_CURRENCY = "gbp"
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_CURRENCY = "gbp"
 STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET")
 
 # Default primary key field type
