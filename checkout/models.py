@@ -64,13 +64,5 @@ class OrderItem(models.Model):
                                      null=False, blank=False,
                                      editable=False)
 
-    def save(self, *args, **kwargs):
-        """
-        Override the original save method to set the item total
-        and update the order total.
-        """
-        self.item_total = self.merch.price * self.quantity
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return f'{self.merch.product_name} on order {self.order.order_number}'
