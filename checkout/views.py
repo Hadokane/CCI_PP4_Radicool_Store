@@ -41,7 +41,8 @@ def checkout(request):
                     order_id=order_id,
                     merch=item['product'],
                     price=item['price'],
-                    quantity=item['qty']
+                    quantity=item['qty'],
+                    size=item["size"],
                     )
 
         response = JsonResponse({'success': 'Return something'})
