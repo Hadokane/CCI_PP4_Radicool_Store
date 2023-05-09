@@ -1,12 +1,10 @@
 import os
-import json
 import stripe
 import uuid
 
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.conf import settings
-from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -104,9 +102,9 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-
-    if 'cart' in request.session:
-        del request.session['cart']
+    
+    cart = Cart(request)
+    cart.clear()
 
     template = 'checkout/checkout_success.html'
     context = {

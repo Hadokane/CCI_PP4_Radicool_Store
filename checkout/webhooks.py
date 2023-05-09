@@ -1,4 +1,4 @@
-# Set your secret key. Remember to switch to your live secret key in production.
+# Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
 from django.conf import settings
 from django.http import HttpResponse
@@ -8,6 +8,8 @@ from .webhook_handler import StripeWH_Handler
 import json
 import stripe
 from .views import payment_confirmation
+
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.wh_key = settings.STRIPE_WH_SECRET
 

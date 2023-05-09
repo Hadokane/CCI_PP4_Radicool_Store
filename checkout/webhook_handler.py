@@ -5,9 +5,6 @@ from django.conf import settings
 
 from .models import Order, OrderItem
 from store.models import Merch
-
-import json
-import time
 import stripe
 
 
