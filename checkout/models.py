@@ -4,6 +4,7 @@ from django.db import models
 from django_countries.fields import CountryField
 
 from store.models import Merch
+from profiles.models import UserProfile
 
 
 class Order(models.Model):
@@ -21,6 +22,9 @@ class Order(models.Model):
     order_key = models.CharField(max_length=200)
     billing_status = models.BooleanField(default=False)
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    user_profile = models.ForeignKey(
+        UserProfile, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name="orders")
 
     class Meta:
         ordering = ('-created',)

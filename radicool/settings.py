@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "store",  # Main Store App
     "cart",  # Cart App
     "checkout",  # Checkout App
+    "profiles",  # Profiles App
     "crispy_forms",
     "crispy_bootstrap4",  # Crispy Forms Addon
 ]
