@@ -85,3 +85,7 @@ class Cart():
     def save(self):
         """Saves the cart session."""
         self.session.modified = True
+
+    def clear(self):
+        del self.session["session_key"]
+        self.save()

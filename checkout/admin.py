@@ -18,10 +18,10 @@ class OrderAdmin(admin.ModelAdmin):
               'email', 'country',
               'postcode', 'town_or_city', 'street_address_1',
               'street_address_2', 'county',
-              'total_paid',)
+              'total_paid', "billing_status",)
 
     list_display = ('order_key', "order_number", 'created', 'full_name',
-                    'total_paid',)
+                    'total_paid', "billing_status",)
 
     ordering = ('-created',)
 

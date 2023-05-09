@@ -15,6 +15,7 @@ from cart.cart import Cart
 from cart.context_processors import cart
 from store.models import Merch
 from .models import Order, OrderItem
+from .webhooks import stripe_webhook
 
 
 @require_POST
@@ -116,3 +117,7 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def payment_confirmation(data):
+    Order.objects.filter(order_key=data).update(billing_status=True)
