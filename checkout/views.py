@@ -15,17 +15,14 @@ from cart.cart import Cart
 from cart.context_processors import cart
 from store.models import Merch
 from .models import Order, OrderItem
-from .webhooks import stripe_webhook
 
 
 @require_POST
 def cache_checkout_data(request):
     try:
-        cart = Cart(request)
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })

@@ -8,6 +8,7 @@ from store.models import Merch
 
 import json
 import time
+import stripe
 
 
 class StripeWH_Handler:
@@ -30,6 +31,22 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
+        save_info = intent.metadata.save_info
+
+        # Get the Charge object
+        stripe_charge = stripe.Charge.retrieve(
+            intent.latest_charge
+        )
+
+        billing_details = stripe_charge.billing_details  # updated
+        shipping_details = intent.shipping
+        grand_total = round(stripe_charge.amount / 100, 2)  # updated
+
+        # Clean data for shipping details
+        for field, value in shipping_details.address.items():
+            if value == "":
+                shipping_details.address[field] = None
+
         print(intent)
         return HttpResponse(
             content=(f'Webhook received: {event["type"]} | SUCCESS: '

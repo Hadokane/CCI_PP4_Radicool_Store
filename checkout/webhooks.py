@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .webhook_handler import StripeWH_Handler
 import json
 import stripe
-
+from .views import payment_confirmation
 stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.wh_key = settings.STRIPE_WH_SECRET
 
@@ -31,6 +31,7 @@ def stripe_webhook(request):
     # Handle the event
     if event.type == 'payment_intent.succeeded':
         payment_intent = event.data.object  # contains a stripe.PaymentIntent
+        payment_confirmation(event.data.object.client_secret)
         print('PaymentIntent was successful!')
     elif event.type == 'payment_method.attached':
         payment_method = event.data.object  # contains a stripe.PaymentMethod
