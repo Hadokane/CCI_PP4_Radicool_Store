@@ -8,6 +8,8 @@ from django.db.models.signals import post_save
 class UserProfile(models.Model):
     """The Users Profile Model. Stores Delivery Info."""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    default_full_name = models.CharField(
+        max_length=250, null=True, blank=True)
     default_street_address_1 = models.CharField(
         max_length=250, null=True, blank=True)
     default_street_address_2 = models.CharField(

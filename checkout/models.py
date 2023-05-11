@@ -42,7 +42,7 @@ class OrderItem(models.Model):
                               on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=11, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
-    size = models.CharField(max_length=2)
+    size = models.CharField(max_length=4)
 
     def __str__(self):
         return str(self.id)

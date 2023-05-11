@@ -63,7 +63,7 @@
 
                     <!-- All Products Link -->
                     <li class="nav-item text-center">
-                        <a class="nav-link" href="../products">
+                        <a class="nav-link" href="../products/">
                             <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
                             <p>All Products</p>
                         </a>
@@ -111,7 +111,7 @@
                             {% if request.user.is_superuser %}
                             <a class="nav-link" href="/admin/">Admin</a>
                             {% endif %}
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="/profile/">Profile</a>
                             <a class="nav-link" href="#">Logout</a>
                             {% else %}
                             <a class="nav-link" href="#">Sign Up</a>

@@ -117,7 +117,8 @@ WSGI_APPLICATION = 'radicool.wsgi.application'
 # Allows github access to admin areas
 CSRF_TRUSTED_ORIGINS = [
     "https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96.gitpod.io",
-    "https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96b.gitpod.io"
+    "https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96b.gitpod.io",
+    "https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu97.gitpod.io",
 ]
 
 # Database
