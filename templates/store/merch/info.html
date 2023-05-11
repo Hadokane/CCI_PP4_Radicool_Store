@@ -37,14 +37,7 @@
         <!--QTY Select-->
         <div class="col-6 text-center">
             <label for="merch-qty">QTY</label>
-            <select id="merch-qty">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
+            <input id="merch-qty" type="number" value="1" min="1">
         </div>
         <!--Size Select | change to "Clothing" when included-->
         {% if merch.category.cat_name == "Vinyl" %}
@@ -64,6 +57,13 @@
         <div class="col-12 text-center">
             <button type="button" data-id="{{ merch.id }}" class="add-to-cart btn btn-secondary text-right">Add to
                 cart</button>
+                {% if request.user.is_superuser %}
+                <small class="ml-3">
+                    <a href="{% url 'store:edit_merch' merch.id %}">Edit</a>
+                    <!--Add a safety model on click then have that call the delete function-->
+                    <a class="text-danger" href="{% url 'store:delete_merch' merch.id %}">Delete</a>
+                </small>
+            {% endif %}
         </div>
     </div>
 </div>

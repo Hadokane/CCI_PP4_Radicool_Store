@@ -35,17 +35,9 @@
 
                 <!--Selections-->
                 <!--QTY Select-->
-                <label for="qty">QTY</label>
-                <select id="qty{{product.id}}">
-                    <option selected>{{ item.qty }}</option>
-                    <option disabled>-</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
-                    <option value="">6</option>
-                </select>
+                <label for="merch-qty">QTY</label>
+                <input id="qty{{product.id}}" type="number" value="{{ item.qty }}" min="1">
+            
                 <!--Size Select | change to "Clothing" when included-->
                 {% if product.category.cat_name == "Vinyl" %}
                 <label for="size">SIZE</label>
@@ -130,7 +122,7 @@
                 url: "{% url 'cart:cart_update' %}",
                 data: {
                     merchid: $(this).data("index"),
-                    merchqty: $('#qty' + merchid + ' option:selected').text(),
+                    merchqty: $('#qty' + merchid).val(),
                     merchsize: $('#size' + merchid + ' option:selected').text(),
                     itemprice: $('#itemprice' + merchid).text(),
                     csrfmiddlewaretoken: "{{csrf_token}}",
