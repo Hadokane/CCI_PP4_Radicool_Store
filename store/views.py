@@ -1,8 +1,8 @@
 from django.shortcuts import render, reverse, get_object_or_404, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Category, Collection, Merch
-from store.forms import MerchSearchForm
-
-# Create your views here.
+from .forms import MerchSearchForm, MerchForm
 
 
 # Show all Categories in navbar.
@@ -111,3 +111,78 @@ def collection_info(request, collection_slug):
     merch = Merch.objects.filter(collection=collection)
     return render(request, "store/merch/collection.html",
                   {"collection": collection, "merch": merch})
+
+
+# Allow superuser to add merch
+@login_required
+def add_merch(request):
+    """ Add a product to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('store:home'))
+
+    if request.method == 'POST':
+        form = MerchForm(request.POST, request.FILES)
+        if form.is_valid():
+            merch = form.save()
+            messages.success(request, 'Successfully added Merch!')
+            return redirect(reverse('store:merch_info', args=[merch.slug]))
+        else:
+            messages.error(request,
+                           ('Failed to add merch.'
+                            'Please ensure the form is valid.'))
+    else:
+        form = MerchForm()
+
+    template = 'superuser/add_merch.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+# Allow superuser to edit products
+@login_required
+def edit_merch(request, merch_id):
+    """ Edit a product in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('store:home'))
+
+    merch = get_object_or_404(Merch, pk=merch_id)
+    if request.method == 'POST':
+        form = MerchForm(request.POST, request.FILES, instance=merch)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated merch!')
+            return redirect(reverse('store:merch_info', args=[merch.slug]))
+        else:
+            messages.error(request,
+                           ('Failed to update merch. '
+                            'Please ensure the form is valid.'))
+    else:
+        form = MerchForm(instance=merch)
+        messages.info(request, f'You are editing {merch.product_name}')
+
+    template = 'superuser/edit_merch.html'
+    context = {
+        'form': form,
+        'merch': merch,
+    }
+
+    return render(request, template, context)
+
+
+# Allow superuser to delete products
+@login_required
+def delete_merch(request, merch_id):
+    """ Delete a product from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('store:home'))
+
+    merch = get_object_or_404(Merch, pk=merch_id)
+    merch.delete()
+    messages.success(request, 'Merchandise deleted!')
+    return redirect(reverse('store:products'))
