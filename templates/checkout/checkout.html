@@ -64,10 +64,11 @@
                     <p class="my-0">Delivery:</p>
                     <p class="my-0">Grand Total:</p>
                 </div>
+                <!--Show full cart subtotals-->
                 <div class="col-3">
                     <p class="my-0">£{{ cart.get_total_price }}</p>
-                    <p class="my-0">£5.00</p>
-                    <p class="my-0"><strong>£</strong></p>
+                    <p class="my-0">£{{ cart.get_delivery_cost }}</p>
+                    <p class="my-0"><strong>£{{ cart.grand_total }}</strong></p>
                 </div>
             </div>
         </div>

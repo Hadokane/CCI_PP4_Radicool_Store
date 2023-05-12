@@ -41,6 +41,8 @@ def checkout(request):
     if request.method == 'POST':
         cart = Cart(request)
         carttotal = cart.get_total_price()
+        cartdelivery = cart.get_delivery_cost()
+        cartgrand = cart.grand_total()
         user_id = request.user.id
         num = uuid.uuid4().hex.upper()
 
@@ -54,6 +56,8 @@ def checkout(request):
                 postcode=request.POST['postcode'],
                 country=request.POST['country'],
                 total_paid=carttotal,
+                total_delivery_cost=cartdelivery,
+                total_grand=cartgrand,
                 order_key=request.POST.get('client_secret'),
                 order_number=num,
                 )
@@ -77,7 +81,7 @@ def checkout(request):
             return redirect(reverse('store:products'))
 
         current_cart = Cart(request)
-        total = current_cart.get_total_price()
+        total = current_cart.grand_total()
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
 

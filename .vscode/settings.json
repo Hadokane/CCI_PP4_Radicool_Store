@@ -26,6 +26,8 @@
    "editor.defaultFormatter": "HookyQR.beautify",
    "cSpell.words": [
       "allauth",
+      "cartdelivery",
+      "cartgrand",
       "carttotal",
       "clientsecret",
       "csrfmiddlewaretoken",

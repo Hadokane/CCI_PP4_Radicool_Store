@@ -111,7 +111,6 @@
                             {% if request.user.is_superuser %}
                             <a class="nav-link" href="/admin/">Admin</a>
                             <a class="nav-link" href="/add/">Add Merch</a>
-                            <a class="nav-link" href="/edit/">Edit Merch</a>
                             {% endif %}
                             <a class="nav-link" href="/profile/">Profile</a>
                             <a class="nav-link" href="#">Logout</a>
@@ -172,10 +171,13 @@
                 <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
             </div>
         </div>
+        <!--Displays when no free delivery offer is in effect. Promotes a new collection. (Future proofing the site.)-->
         {% else %}
         <div id="notification-banner" class="row text-center text-white" style="background-color: #21D192">
             <div class="col bg-yellow text-black">
-                <h4 class="logo-font my-1">NO OFFERS!</h4>
+                <a href="../col/the-oversights">
+                    <h4 class="logo-font my-1">New Collection from The Oversights!</h4>
+                </a>
             </div>
         </div>
         {% endif %}

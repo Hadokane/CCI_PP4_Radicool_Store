@@ -1,3 +1,4 @@
+from radicool import settings
 from store.models import Merch
 from decimal import Decimal
 
@@ -63,6 +64,57 @@ class Cart():
         """Calculates the total price of all items."""
         return sum(Decimal(item["price"]) * item[
             "qty"] for item in self.cart.values())
+
+    # Calculate the shipping
+    def delivery_context(self):
+        """Calculates the delivery cost of the order."""
+        total = self.get_total_price()
+        if total < settings.FREE_DELIVERY_THRESHOLD:
+            delivery = Decimal(settings.STANDARD_DELIVERY_COST)
+            free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+        else:
+            delivery = 0
+            free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+
+        grand_total = delivery + total
+
+        context = {
+            "total": total,
+            "delivery": delivery,
+            "free_delivery_delta": free_delivery_delta,
+            "free_delivery_threshold": settings.FREE_DELIVERY_THRESHOLD,
+            "grand_total": grand_total,
+        }
+        return context
+
+    # Get the shipping cost
+    def get_delivery_cost(self):
+        """Calculates the delivery cost of the order."""
+        total = self.get_total_price()
+        if total < settings.FREE_DELIVERY_THRESHOLD:
+            delivery = Decimal(settings.STANDARD_DELIVERY_COST)
+            free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+        else:
+            delivery = 0
+            free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+
+        grand_total = delivery + total
+
+        return delivery
+
+    # Calculate the grand total for Stripe use
+    def grand_total(self):
+        """Calculates the delivery cost of the order."""
+        total = self.get_total_price()
+
+        if total < settings.FREE_DELIVERY_THRESHOLD:
+            delivery = Decimal(settings.STANDARD_DELIVERY_COST)
+        else:
+            delivery = 0
+
+        grand_total = delivery + total
+
+        return grand_total
 
     def delete(self, merch):
         """Removes an item from the cart/session data."""

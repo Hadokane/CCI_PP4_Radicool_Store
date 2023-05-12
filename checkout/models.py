@@ -19,6 +19,8 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     total_paid = models.DecimalField(max_digits=11, decimal_places=2)
+    total_delivery_cost = models.DecimalField(max_digits=11, decimal_places=2)
+    total_grand = models.DecimalField(max_digits=11, decimal_places=2)
     order_key = models.CharField(max_length=200)
     billing_status = models.BooleanField(default=False)
     order_number = models.CharField(max_length=32, null=False, editable=False)

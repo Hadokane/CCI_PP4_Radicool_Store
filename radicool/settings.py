@@ -179,6 +179,9 @@ STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET")
 
 DEFAULT_FROM = "radicool@example.com"
 
+FREE_DELIVERY_THRESHOLD = 35
+STANDARD_DELIVERY_COST = 4
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
