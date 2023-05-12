@@ -165,19 +165,20 @@
             </div>
         </nav>
         <!--Notification Banner-->
-        {% if free_delivery_threshold %}
+        {% if cart.delivery_context.free_delivery_delta > 0 %}
         <div id="notification-banner" class="row text-center text-white" style="background-color: #21D192">
             <div class="col bg-yellow text-black">
-                <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
+                <h4 class="logo-font my-1">Free delivery on orders over
+                    £{{ cart.delivery_context.free_delivery_threshold }}!</h4>
             </div>
         </div>
         <!--Displays when no free delivery offer is in effect. Promotes a new collection. (Future proofing the site.)-->
         {% else %}
         <div id="notification-banner" class="row text-center text-white" style="background-color: #21D192">
             <div class="col bg-yellow text-black">
-                <a href="../col/the-oversights">
-                    <h4 class="logo-font my-1">New Collection from The Oversights!</h4>
-                </a>
+                <h4 class="logo-font my-1"><a href="../col/the-oversights">New Collection from The Oversights!</a> |
+                    FREE DELIVERY ENABLED</h4>
+
             </div>
         </div>
         {% endif %}
@@ -204,12 +205,11 @@
     <hr>
 
     <!-- Contains page content -->
-
     <div id="content" class="container-fluid">
         {% block content %}
         {% endblock %}
     </div>
-    
+
     <!-- Invisible HR for added space -->
     <hr style="margin-top: 50px; border: none;">
     <hr>
@@ -298,6 +298,11 @@
             © 2023 Copyright: <a class="text-dark" href="">Radicool Industries</a>
         </div>
     </footer>
+    
+    <!-- Post Load Javascript -> Shows Toasts -->
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
 
 </body>
 
