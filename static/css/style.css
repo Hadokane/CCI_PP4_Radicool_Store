@@ -1,3 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* Set Sites Default Font */
+body, a{
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Site banner and Footer Banner */
+#notification-banner,
+#footer-banner{
+  background-color: #21D192;
+}
+
+/* Footer Bar lines */
+.bar-line{
+  background-color: #21D192;
+  width: 80px;
+  height: 2px;
+}
+
+#footer-bottom{
+  background-color: #7c4dff;
+  color: white;
+}
+
+#footer-bottom a{
+  color: white;
+}
+
+/* Hover effect for buttons and links */
+a:hover,
+button:hover{
+  font-weight: 800;
+  color:#21D192;
+  text-decoration:solid;
+}
+
+/* I class elements */
+i {
+  font-weight: 600;
+  color:black;
+  text-decoration:solid;
+}
+
+/* When hovering a link, make the i class green */
+a:hover i {
+  font-weight: 800;
+  color:#00cc99;
+  text-decoration:solid;
+}
+
+/* For the nav search bar */
+form:hover i {
+  font-weight: 800;
+  color:#00cc99;
+  text-decoration:solid;
+}
+
+/* Footer Social Links */
+.social-links a i{
+  color:white;
+}
+
+.social-links a i:hover{
+  font-weight: 800;
+  color:black;
+}
+
 /* Jumbotron Hero Image */
 .jumbotron {
     background: url("../../media/images/banner.png") no-repeat center center fixed;
@@ -13,7 +82,7 @@
   }
 
 
-/* ------------------------------- bootstrap toasts */
+/* Bootstrap Toasts - modified from CI Project */
 
 .message-container {
   position: fixed;
@@ -36,16 +105,13 @@
   overflow-y: auto;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
 .container {
   max-width: 80%;
 }
 }
 
-/* Allauth form formatting */
+/* Allauth Form Formatting - modified from CI Project */
 
 .allauth-form-inner-content p {
   margin-top: 1.5rem; /* mt-4 */
@@ -100,7 +166,7 @@ color: #17a2b8; /* text-info */
 }
 
 
-/* Stripe Formatting */
+/* Stripe Formatting - modified from CI Project */
   .StripeElement,
   .stripe-style-input {
     box-sizing: border-box;

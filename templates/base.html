@@ -37,7 +37,7 @@
 
     <!-- Internal JS -->
     {% block intjs %}
-    <script src="../static/js/scripts.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
     <script src="{% static 'js/checkout.js' %}" data-rel-js></script>
     {% endblock %}
 
@@ -64,17 +64,17 @@
                     <!-- All Products Link -->
                     <li class="nav-item text-center">
                         <a class="nav-link" href="../products/">
-                            <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
+                            <i class="fa-solid fa-shop"></i>
                             <p>All Products</p>
                         </a>
                     </li>
 
                     <!-- Collections Dropdown -->
                     <li class="nav-item dropdown text-center">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
-                            <p>Collections</p>
+                            <i class="fa-solid fa-record-vinyl"></i>
+                            <p>Collections <i class="fa-solid fa-caret-down"></i></p>
                         </a>
                         <div class="dropdown-menu">
                             <!-- Loops through views and displays collections -->
@@ -86,10 +86,10 @@
 
                     <!-- Categories Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link text-center" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
-                            <p>Categories</p>
+                            <i class="fa-solid fa-socks"></i>
+                            <p>Categories <i class="fa-solid fa-caret-down"></i></p>
                         </a>
                         <div class="dropdown-menu">
                             <!-- Loops through views and displays categories -->
@@ -101,22 +101,22 @@
 
                     <!-- Accounts Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle  text-center" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link text-center" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="fa-regular fa-circle-user" style="color: #000000;"></i>
-                            <p>Account</p>
+                            <i class="fa-regular fa-circle-user"></i>
+                            <p>Account <i class="fa-solid fa-caret-down"></i></p>
                         </a>
                         <div class="dropdown-menu">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                            <a class="nav-link" href="/admin/">Admin</a>
-                            <a class="nav-link" href="/add/">Add Merch</a>
+                            <a class="dropdown-item" href="/admin/">Admin</a>
+                            <a class="dropdown-item" href="/add/">Add Merch</a>
                             {% endif %}
-                            <a class="nav-link" href="/profile/">Profile</a>
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="dropdown-item" href="/profile/">Profile</a>
+                            <a class="dropdown-item" href="#">Logout</a>
                             {% else %}
-                            <a class="nav-link" href="#">Sign Up</a>
-                            <a class="nav-link" href="#">Login</a>
+                            <a class="dropdown-itemk" href="#">Sign Up</a>
+                            <a class="dropdown-item" href="#">Login</a>
                             {% endif %}
                         </div>
                     </li>
@@ -125,7 +125,7 @@
                     <!-- Search Bar -->
                     <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'store:search' %}">
                         <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search Our Merch!">
-                        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                     </form>
                 </li>
                 <!-- Cart -->
@@ -146,7 +146,7 @@
                                 {% endwith %}
                             </div>
 
-                            <i class="fa-solid fa-basket-shopping" style="color: #000000;"></i>
+                            <i class="fa-solid fa-basket-shopping"></i>
                             <p class="my-0">
                                 <span>
                                     {% if cart.get_total_price > 0 %}
@@ -166,7 +166,7 @@
         </nav>
         <!--Notification Banner-->
         {% if cart.delivery_context.free_delivery_delta > 0 %}
-        <div id="notification-banner" class="row text-center text-white" style="background-color: #21D192">
+        <div id="notification-banner" class="row text-center text-white">
             <div class="col bg-yellow text-black">
                 <h4 class="logo-font my-1">Free delivery on orders over
                     £{{ cart.delivery_context.free_delivery_threshold }}!</h4>
@@ -174,7 +174,7 @@
         </div>
         <!--Displays when no free delivery offer is in effect. Promotes a new collection. (Future proofing the site.)-->
         {% else %}
-        <div id="notification-banner" class="row text-center text-white" style="background-color: #21D192">
+        <div id="notification-banner" class="row text-center text-white">
             <div class="col bg-yellow text-black">
                 <h4 class="logo-font my-1"><a href="../col/the-oversights">New Collection from The Oversights!</a> |
                     FREE DELIVERY ENABLED</h4>
@@ -211,38 +211,38 @@
     </div>
 
     <!-- Invisible HR for added space -->
-    <hr style="margin-top: 50px; border: none;">
+    <hr style="margin-top: 20px; border: none;">
     <hr>
     <!-- Footer -->
-    <footer class="text-center text-lg-start text-dark" style="background-color: #ECEFF1">
+    <footer class="text-center text-lg-start text-dark">
         <!-- Section: Social media -->
-        <section class="d-flex justify-content-between p-4 text-white" style="background-color: #21D192">
+        <section class="d-flex justify-content-between p-4 text-white" id="footer-banner">
             <!-- Left -->
             <div class="me-5">
                 <span>Get connected with us on social media:</span>
             </div>
 
             <!-- Right -->
-            <div>
-                <a href="" class="text-white me-4">
+            <div class="social-links">
+                <a href="#" class="text-white me-4">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="" class="text-white me-4">
+                <a href="#" class="text-white me-4">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="" class="text-white me-4">
+                <a href="#" class="text-white me-4">
                     <i class="fab fa-google"></i>
                 </a>
-                <a href="" class="text-white me-4">
+                <a href="#" class="text-white me-4">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <a href="" class="text-white me-4">
+                <a href="#" class="text-white me-4">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="" class="text-white me-4">
+                <a href="#" class="text-white me-4">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="" class="text-white me-4">
+                <a href="#" class="text-white me-4">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -258,8 +258,7 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold">Radicool</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: #08b324; height: 2px" />
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line"/>
                         <p>
                             Radicool is a D.I.Y. shipping company for D.I.Y. Bands & Brands.
                             Shop local, support growing artists and ensure they receive the
@@ -271,8 +270,7 @@
                     <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold">Your Account</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line"/>
                         <p>
                             <button type="button" class="btn btn-outline-dark btn-rounded">
                                 Sign up!
@@ -284,8 +282,7 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold">Contact</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: #08b324; height: 2px" />
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line"/>
                         <p><i class="fas fa-home mr-3"></i> Ships from: NP20, UK</p>
                         <p><i class="fas fa-envelope mr-3"></i> radicool@example.com</p>
                     </div>
@@ -294,8 +291,8 @@
         </section>
 
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2023 Copyright: <a class="text-dark" href="">Radicool Industries</a>
+        <div class="text-center p-3" id="footer-bottom">
+            © 2023 Copyright: <a href="#">Radicool Industries</a>
         </div>
     </footer>
     
