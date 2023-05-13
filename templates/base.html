@@ -41,6 +41,12 @@
     <script src="{% static 'js/checkout.js' %}" data-rel-js></script>
     {% endblock %}
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+
     <!-- Page Title | Extra Information here -->
     <title>{% block title %}Radicool {% block extra_title %}{% endblock %}{% endblock %}</title>
 </head>
@@ -71,8 +77,7 @@
 
                     <!-- Collections Dropdown -->
                     <li class="nav-item dropdown text-center">
-                        <a class="nav-link" href="#" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-record-vinyl"></i>
                             <p>Collections <i class="fa-solid fa-caret-down"></i></p>
                         </a>
@@ -125,7 +130,9 @@
                     <!-- Search Bar -->
                     <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'store:search' %}">
                         <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search Our Merch!">
-                        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+                        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
                     </form>
                 </li>
                 <!-- Cart -->
@@ -167,7 +174,7 @@
         <!--Notification Banner-->
         {% if cart.delivery_context.free_delivery_delta > 0 %}
         <div id="notification-banner" class="row text-center text-white">
-            <div class="col bg-yellow text-black">
+            <div class="col">
                 <h4 class="logo-font my-1">Free delivery on orders over
                     £{{ cart.delivery_context.free_delivery_threshold }}!</h4>
             </div>
@@ -175,7 +182,7 @@
         <!--Displays when no free delivery offer is in effect. Promotes a new collection. (Future proofing the site.)-->
         {% else %}
         <div id="notification-banner" class="row text-center text-white">
-            <div class="col bg-yellow text-black">
+            <div class="col">
                 <h4 class="logo-font my-1"><a href="../col/the-oversights">New Collection from The Oversights!</a> |
                     FREE DELIVERY ENABLED</h4>
 
@@ -258,7 +265,7 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold">Radicool</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line"/>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
                         <p>
                             Radicool is a D.I.Y. shipping company for D.I.Y. Bands & Brands.
                             Shop local, support growing artists and ensure they receive the
@@ -270,7 +277,7 @@
                     <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold">Your Account</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line"/>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
                         <p>
                             <button type="button" class="btn btn-outline-dark btn-rounded">
                                 Sign up!
@@ -282,7 +289,7 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold">Contact</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line"/>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
                         <p><i class="fas fa-home mr-3"></i> Ships from: NP20, UK</p>
                         <p><i class="fas fa-envelope mr-3"></i> radicool@example.com</p>
                     </div>
@@ -295,7 +302,7 @@
             © 2023 Copyright: <a href="#">Radicool Industries</a>
         </div>
     </footer>
-    
+
     <!-- Post Load Javascript -> Shows Toasts -->
     <script type="text/javascript">
         $('.toast').toast('show');
