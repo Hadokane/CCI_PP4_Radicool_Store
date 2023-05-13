@@ -39,7 +39,7 @@
                 <input id="qty{{product.id}}" type="number" value="{{ item.qty }}" min="1">
             
                 <!--Size Select | change to "Clothing" when included-->
-                {% if product.category.cat_name == "Vinyl" %}
+                {% if product.category.cat_name == "Clothing" %}
                 <label for="size">SIZE</label>
                 <select id="size{{product.id}}">
                     <option selected>{{ item.size }}</option>

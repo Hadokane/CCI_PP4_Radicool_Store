@@ -6,27 +6,60 @@ body, a{
   font-family: 'Quicksand', sans-serif;
 }
 
+/* Article Background */
+#hot-items{
+  background-image: linear-gradient(to left,pink,orange);
+  background-repeat: repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
 /* Site banner and Footer Banner */
 #notification-banner,
 #footer-banner{
   background-color: #21D192;
 }
 
-/* Footer Bar lines */
-.bar-line{
-  background-color: #21D192;
-  width: 80px;
-  height: 2px;
+#notification-banner a{
+  color: white;
 }
 
+/* Footer Classes */
 #footer-bottom{
-  background-color: #7c4dff;
+  background-color: black;
   color: white;
 }
 
 #footer-bottom a{
   color: white;
 }
+
+/* HR - Bar-line classes */
+.bar-line{
+  background-color: #21D192;
+  width: 80px;
+  height: 2px;
+}
+
+.bar-line-long{
+  background-color: black;
+  width: 220px;
+  height: 2px;
+}
+
+.bar-line-longer{
+  background-color: black;
+  width: 380px;
+  height: 2px;
+}
+
+.bar-line-feature{
+  background-color: black;
+  width: 310px;
+  height: 2px;
+}
+
+
 
 /* Hover effect for buttons and links */
 a:hover,
