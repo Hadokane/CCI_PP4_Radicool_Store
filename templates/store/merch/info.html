@@ -10,10 +10,10 @@
             <div class="row">
 
                 <!--Card Image Field-->
-                <div class="col-md-6 ml-2 mt-2">
+                <div class="col-md-6 ml-2 mt-2 text-center">
                     <a href="../media/{{ merch.image }}" target="_blank" class="text-decoration-none">
                         <img src="../media/{{ merch.image }}" alt="{{ merch.product_name }}" width="100%">
-                        <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
+                        <p class="text-muted">[Click image to expand]</p>
                     </a>
                 </div>
 
@@ -57,9 +57,8 @@
                 <hr>
                 <!--Add to Cart-->
                 <div class="col-12 text-center">
-                    <button type="button" data-id="{{ merch.id }}" class="add-to-cart btn btn-secondary text-right">Add
-                        to
-                        cart</button>
+                    <button type="button" data-id="{{ merch.id }}" class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
+                        Add to cart</button>
                     {% if request.user.is_superuser %}
                     <hr>
                     <p><a href="{% url 'store:edit_merch' merch.id %}"><i class="fa-solid fa-pen-to-square"></i>

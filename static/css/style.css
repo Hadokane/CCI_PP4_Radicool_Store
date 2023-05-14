@@ -21,6 +21,20 @@ body, a{
   font-size: 8em;
 }
 
+/* Nav Link Hover */
+.dropdown-menu a:focus{
+  background-color: #21D192;
+}
+
+/* Card Hover */
+.card:hover{
+  scale: 103%;
+}
+
+.card a:hover i{
+  color: #21D192;
+}
+
 /* Article Background */
 #hot-items{
   background-image: linear-gradient(to left,pink,orange);
@@ -133,8 +147,6 @@ a:hover i {
   color:#00cc99;
   text-decoration:solid;
 }
-
-
 
 /* Footer Social Links */
 .social-links a i{

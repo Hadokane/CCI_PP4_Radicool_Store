@@ -18,8 +18,15 @@
                         <h3>Welcome to the home of your FAVOURITE D.I.Y. Band & Brands</h3>
                         <h4>Support local legends by purchasing their merch direct!</h4>
                         <hr>
-                        <a class="btn btn-outline-light btn-lg" href="#!" role="button">Sign Up</a>
-                        <a class="btn btn-outline-light btn-lg" href="#!" role="button">See HOT products</a>
+                        {% if request.user.is_authenticated %}
+                        <a class="btn btn-outline-light btn-lg" href="{% url 'store:products' %}" role="button">See HOT
+                            products</a>
+                        {% else %}
+                        <a class="btn btn-outline-light btn-lg" href="{% url 'account_signup' %}" role="button">Sign
+                            Up</a>
+                        <a class="btn btn-outline-light btn-lg" href="{% url 'store:products' %}" role="button">See HOT
+                            products</a>
+                        {% endif %}
                         <hr>
                     </div>
                 </div>
@@ -30,42 +37,75 @@
     <!--Radicool Collections Cards Container-->
     <div class="album py-5" id="rad-col">
         <div class="container">
-            <h2 class="text-center text-lg-left"><i class="fa-solid fa-biohazard"></i> Rad Collection <i
-                    class="fa-solid fa-biohazard"></i></h2>
+            <h2 class="text-center text-lg-left"><i class="fa-solid fa-biohazard"></i>
+                Rad Collection
+                <i class="fa-solid fa-biohazard"></i>
+            </h2>
             <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-longer">
             <p>Support the stores you love. Check out this new Collection from RADICOOL.</p>
+
             <div class="row">
                 <!--Loops through merch displaying them responsively in cards-->
                 {% for m in merch %}
                 {% if m.collection.col_name == "Radicool" %}
-
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100 mb-4 shadow-sm text-center">
+
                         <!--Card Header Image-->
-                        <div class="overflow-auto">
-                            <img class="card-img-top" width="100%" height="100%" src="media/{{m.image}}">
-                        </div>
+                        <a href="{{ m.get_absolute_url }}">
+                            <div class="overflow-auto">
+                                <img class="card-img-top" width="100%" height="100%" src="../media/{{m.image}}">
+                            </div>
+                        </a>
+
                         <!--Card Body Text-->
-                        <div class="card-body text-center">
+                        <div class="card-body text-center d-flex flex-column">
                             <a class="card-text"
                                 href="{{ m.get_absolute_url }}"><strong>{{ m.product_name }}</strong></a>
                             <p class="card-text"><em>{{ m.description }}</em></p>
-                            <p class="card-text">£{{ m.price }}</p>
+
+                            {% if m.category %}
+                            <p>
+                                <a class="card-text" href="../cat/{{m.category.slug}}">
+                                    <i class="fa-solid fa-tag"></i>
+                                    {{ m.category }}
+                                </a>
+                            </p>
+                            {% endif %}
+                            {% if m.collection %}
+                            <p>
+                                <a class="card-text" href="../col/{{m.collection.slug}}">
+                                    <i class="fa-solid fa-record-vinyl"></i>
+                                    {{ m.collection }}</a>
+                            </p>
+                            {% endif %}
+                            <p class="card-text align-self-end mt-auto">
+                                <a href="{{ m.get_absolute_url }}">
+                                    <strong>
+                                        <i class="fa-regular fa-money-bill-1"></i>
+                                        £{{ m.price }}</p>
+                            </strong>
+                            </a>
                         </div>
-                        <!--Card Footer Fields-->
+
+                        <!--Card Footer Buttons-->
+                        {% if request.user.is_superuser %}
                         <div class="card-footer">
-                            <div class="row">
-                                <!--View Item-->
-                                <div class="col-12 text-center">
-                                    <a type="button" href="{{ m.get_absolute_url }}" value="{{ m.id }}"
-                                        class="btn btn-secondary text-right">View Merch</a>
-                                </div>
-                            </div>
+                            <p>
+                                <a href="{% url 'store:edit_merch' m.id %}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Edit the Product
+                                </a>
+                            </p>
+                            <!--Add a safety model on click then have that call the delete function-->
+                            <p>
+                                <a class="text-danger" href="{% url 'store:delete_merch' m.id %}">
+                                    <i class="fa-solid fa-trash"></i> Delete the Product</a>
+                            </p>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
-
-                <!--Horizontal Rule Settings-->
 
                 <!--Horizontal Rule Settings-->
 
@@ -89,7 +129,6 @@
                     <hr>
                 </div>
                 {% endif %}
-                
                 {% endif %}
                 {% endfor %}
             </div>
@@ -108,27 +147,60 @@
                 {% for m in merch %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100 mb-4 shadow-sm text-center">
+
                         <!--Card Header Image-->
-                        <div class="overflow-auto">
-                            <img class="card-img-top" width="100%" height="100%" src="media/{{m.image}}">
-                        </div>
+                        <a href="{{ m.get_absolute_url }}">
+                            <div class="overflow-auto">
+                                <img class="card-img-top" width="100%" height="100%" src="../media/{{m.image}}">
+                            </div>
+                        </a>
+
                         <!--Card Body Text-->
-                        <div class="card-body text-center">
+                        <div class="card-body text-center d-flex flex-column">
                             <a class="card-text"
                                 href="{{ m.get_absolute_url }}"><strong>{{ m.product_name }}</strong></a>
                             <p class="card-text"><em>{{ m.description }}</em></p>
-                            <p class="card-text">£{{ m.price }}</p>
+
+                            {% if m.category %}
+                            <p>
+                                <a class="card-text" href="../cat/{{m.category.slug}}">
+                                    <i class="fa-solid fa-tag"></i>
+                                    {{ m.category }}
+                                </a>
+                            </p>
+                            {% endif %}
+                            {% if m.collection %}
+                            <p>
+                                <a class="card-text" href="../col/{{m.collection.slug}}">
+                                    <i class="fa-solid fa-record-vinyl"></i>
+                                    {{ m.collection }}</a>
+                            </p>
+                            {% endif %}
+                            <p class="card-text align-self-end mt-auto">
+                                <a href="{{ m.get_absolute_url }}">
+                                    <strong>
+                                        <i class="fa-regular fa-money-bill-1"></i>
+                                        £{{ m.price }}</p>
+                            </strong>
+                            </a>
                         </div>
-                        <!--Card Footer Fields-->
+
+                        <!--Card Footer Buttons-->
+                        {% if request.user.is_superuser %}
                         <div class="card-footer">
-                            <div class="row">
-                                <!--View Item-->
-                                <div class="col-12 text-center">
-                                    <a type="button" href="{{ m.get_absolute_url }}" value="{{ m.id }}"
-                                        class="btn btn-secondary text-right">View Merch</a>
-                                </div>
-                            </div>
+                            <p>
+                                <a href="{% url 'store:edit_merch' m.id %}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Edit the Product
+                                </a>
+                            </p>
+                            <!--Add a safety model on click then have that call the delete function-->
+                            <p>
+                                <a class="text-danger" href="{% url 'store:delete_merch' m.id %}">
+                                    <i class="fa-solid fa-trash"></i> Delete the Product</a>
+                            </p>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -184,10 +256,10 @@
                             <div class="row ">
 
                                 <!--Card Image Field-->
-                                <div class="col-md-6 ml-2 mt-2">
+                                <div class="col-md-6 ml-2 mt-2 text-center">
                                     <a href="../media/{{ m.image }}" target="_blank" class="text-decoration-none">
                                         <img src="../media/{{ m.image }}" alt="{{ m.product_name }}" width="100%">
-                                        <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
+                                        <p class="text-muted">[Click image to expand]</p>
                                     </a>
                                 </div>
 
@@ -232,9 +304,8 @@
                                 <!--Add to Cart-->
                                 <div class="col-12 text-center">
                                     <button type="button" data-id="{{ m.id }}"
-                                        class="add-to-cart btn btn-secondary text-right">Add
-                                        to
-                                        cart</button>
+                                        class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                        Add to cart</button>
                                     {% if request.user.is_superuser %}
                                     <hr>
                                     <p><a href="{% url 'store:edit_merch' m.id %}"><i

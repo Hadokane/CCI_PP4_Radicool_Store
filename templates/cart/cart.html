@@ -18,18 +18,18 @@
     {% for item in cart %}
     <!--Use product information for each item-->
     {% with product=item.product %}
-    <div class="row">
+    <div class="row product-item" data-index="{{ product.id }}">
         <!--Arrange into tables-->
         <div class="col-6">
             <div class="text-left">
                 <a href="../media/{{ product.image }}" target="_blank" class="text-decoration-none">
                     <img src="../media/{{ product.image }}" alt="{{ product.product_name }}" width="60%">
-                    <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
+                    <p class="text-muted pl-5 ml-4 mt-2"></p>
                 </a>
             </div>
         </div>
         <div class="col-6">
-            <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
+            <div class="table-responsive-rounded">
                 <p>PRODUCT: <strong>{{ product.product_name }}</strong></p>
                 <p>PRICE: <span id="itemprice{{product.id}}">{{ product.price }}</span></p>
                 <!--Show size if present on item-->
@@ -41,22 +41,24 @@
 
                 <!--Selections-->
                 <!--QTY Select-->
-                <label for="merch-qty">QTY</label>
+                <label for="merch-qty" class="mr-2">QTY</label>
                 <input id="qty{{product.id}}" type="number" value="{{ item.qty }}" min="1">
 
                 <!--Size Select | change to "Clothing" when included-->
                 {% if product.category.cat_name == "Clothing" %}
-                <label for="size">SIZE</label>
-                <select id="size{{product.id}}">
-                    <option selected>{{ item.size }}</option>
-                    <option disabled>-</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </select>
+                <div class="d-flex d-inline-block">
+                    <label for="size" class="mr-2">SIZE</label>
+                    <select id="size{{product.id}}">
+                        <option selected>{{ item.size }}</option>
+                        <option disabled>-</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
                 {% endif %}
                 <!--Add to Cart-->
                 <p class="mt-3">

@@ -56,7 +56,7 @@
         <!-- Responsive Navbar - modified from Bootstrap templates -->
         <nav id="site-nav" class="navbar navbar-expand-lg navbar-light">
             <!-- Static file Logo accessed -->
-            <a class="navbar-brand" href="../">
+            <a class="navbar-brand" href="{% url 'store:home' %}">
                 <img src="{% static 'logos/radicool_logo.png' %}" height="70" alt="Radicool">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
@@ -70,7 +70,7 @@
 
                     <!-- All Products Link -->
                     <li class="nav-item text-center">
-                        <a class="nav-link" href="../products/">
+                        <a class="nav-link" href="{% url 'store:products' %}">
                             <i class="fa-solid fa-shop"></i>
                             <p>All Products</p>
                         </a>
@@ -78,13 +78,14 @@
 
                     <!-- Collections Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-center" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link text-center" role="button" data-toggle="dropdown"
                             aria-expanded="false">
                             <i class="fa-solid fa-record-vinyl"></i>
                             <p>Collections <i class="fa-solid fa-caret-down"></i></p>
                         </a>
+
+                        <!-- Loops through views and displays collections -->
                         <div class="dropdown-menu">
-                            <!-- Loops through views and displays collections -->
                             {% for c in collections %}
                             <a class="dropdown-item text-center"
                                 href="{{ c.get_absolute_url }}">{{ c.col_name | title }}</a>
@@ -94,9 +95,9 @@
 
                     <!-- Categories Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-center" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link text-center" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="fa-solid fa-socks"></i>
+                            <i class="fa-solid fa-tag"></i>
                             <p>Categories <i class="fa-solid fa-caret-down"></i></p>
                         </a>
                         <div class="dropdown-menu">
@@ -110,7 +111,7 @@
 
                     <!-- Accounts Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-center" href="#" role="button" data-toggle="dropdown"
+                        <a class="nav-link text-center" role="button" data-toggle="dropdown"
                             aria-expanded="false">
                             <i class="fa-regular fa-circle-user"></i>
                             <p>Account <i class="fa-solid fa-caret-down"></i></p>
@@ -118,18 +119,18 @@
                         <div class="dropdown-menu">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                            <a class="dropdown-item text-center" href="/admin/">Admin</a>
-                            <a class="dropdown-item text-center" href="/add/">Add Merch</a>
+                            <a class="dropdown-item text-center" href="{% url 'admin:index' %}">Admin</a>
+                            <a class="dropdown-item text-center" href="{% url 'store:add_merch' %}">Add Merch</a>
                             {% endif %}
-                            <a class="dropdown-item text-center" href="/profile/">Profile</a>
-                            <a class="dropdown-item text-center" href="accounts/logout/">Logout</a>
+                            <a class="dropdown-item text-center" href="{% url 'profiles:profile' %}">Profile</a>
+                            <a class="dropdown-item text-center" type="button" data-toggle="modal"
+                                data-target="#logoutModal">Logout</a>
                             {% else %}
-                            <a class="dropdown-item text-center" href="accounts/signup/">Sign Up</a>
-                            <a class="dropdown-item text-center" href="accounts/login/">Login</a>
+                            <a class="dropdown-item text-center" href="{% url 'account_signup' %}">Sign Up</a>
+                            <a class="dropdown-item text-center" href="{% url 'account_login' %}">Login</a>
                             {% endif %}
                         </div>
                     </li>
-
                 </ul>
 
                 <!-- Cart -->
@@ -204,6 +205,40 @@
     {% endif %}
     <hr>
 
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>'Are you sure you want to sign out?'</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark btn-rounded mb-3" data-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> Cancel
+                    </button>
+
+                    <!-- Allauth Sign Out Form -->
+                    <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                        {% endif %}
+                        <button type="submit" class="btn btn-outline-dark btn-rounded mb-3">
+                            <i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+                      </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contains page content -->
     {% block content %}
     {% endblock %}
@@ -223,25 +258,22 @@
 
             <!-- Right -->
             <div class="social-links">
-                <a href="#" class="text-white me-4">
+                <a href="https://www.facebook.com/" class="text-white me-4">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="text-white me-4">
+                <a href="https://www.twitter.com/" class="text-white me-4">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="text-white me-4">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a href="#" class="text-white me-4">
+                <a href="https://www.youtube.com/" class="text-white me-4">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <a href="#" class="text-white me-4">
+                <a href="https://www.instagram.com/" class="text-white me-4">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="text-white me-4">
+                <a href="https://www.linkedin.com/" class="text-white me-4">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="#" class="text-white me-4">
+                <a href="https://github.com/Hadokane" class="text-white me-4">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -269,18 +301,18 @@
                         <p>{% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
                             <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="/admin/">Admin</a>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'admin:index' %}">Admin</a>
                             </p>
                             {% endif %}
                             <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="/profile/">Profile</a>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'profiles:profile' %}">Profile</a>
                             </p>
                             {% else %}
                             <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="accounts/signup/">Sign Up</a>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_signup' %}">Sign Up</a>
                             </p>
                             <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="accounts/login/">Login</a>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_login' %}">Login</a>
                             </p>
                             {% endif %}
                         </p>
@@ -304,9 +336,17 @@
         </div>
     </footer>
 
-    <!-- Post Load Javascript -> Shows Toasts -->
+    <!-- Post Load Javascript -->
+    <!-- Shows Toasts -->
     <script type="text/javascript">
         $('.toast').toast('show');
+    </script>
+
+    <!-- Shows Modals -->
+    <script type="text/javascript">
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
     </script>
 
 </body>
