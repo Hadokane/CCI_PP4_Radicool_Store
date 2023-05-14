@@ -136,7 +136,7 @@
                 <!-- Cart -->
                 <div class="m-3 text-center">
                     <a role="button" class="pl-3 pr- btn btn-outline-secondary" href="{% url 'cart:cart_summary' %}">
-                        <div id="cart-qty text-center" class="d-inline-flex">
+                        <div id="cart-qty" class="d-inline-flex text-center">
                             <!-- Compiles the total quantity of items in the cart -->
                             {% with total_qty=cart|length %}
                             <!-- Show Total Quantity of items -->
@@ -340,13 +340,6 @@
     <!-- Shows Toasts -->
     <script type="text/javascript">
         $('.toast').toast('show');
-    </script>
-
-    <!-- Shows Modals -->
-    <script type="text/javascript">
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
-        })
     </script>
 
 </body>

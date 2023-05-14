@@ -30,7 +30,6 @@ class Cart():
 
         if merch_id in self.cart:
             self.cart[merch_id]["qty"] = qty  # if qty exists, update it
-            self.cart[merch_id]["qty"] = qty  # if qty exists, update it
         else:
             self.cart[merch_id] = {"price": str(merch.price),
                                    "qty": int(qty),
