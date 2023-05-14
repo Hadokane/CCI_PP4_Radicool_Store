@@ -4,31 +4,33 @@
 {% block content %}
 <main role="main">
 
-    <h1>ALL PRODUCTS</h1>
-
+    
+    <div class="container">
+        <h1>ALL PRODUCTS</h1>
+        <hr>
+    </div>
+    
     <!--Sort Bar-->
-    <hr>
-    <div class="d-inline-flex pr-2">SORT BY:</div>
-    <div class="text-center">
-        <a href="{%url 'store:products' %}" class="btn-primary btn" style="background-color:  #21D192;"><i
-                class="fa-solid fa-fire" style="color: #000000;"></i> Newest</a>
-        <a href="{%url 'store:products' %}?sort=price&direction=asc" class="btn-primary btn"
-            style="background-color:  #21D192;"><i class="fa-regular fa-money-bill-1" style="color: #000000;"></i> By
-            Price (low-high) <i class="fa-solid fa-caret-down" style="color: #000000;"></i></a>
+    <div class="text-center" id="sort-bar">
+        <div class="d-inline pr-2">SORT BY:</div>
+        <a href="{%url 'store:products' %}" class="btn-primary btn">
+            <i class="fa-solid fa-fire"></i> Newest</a>
+        <a href="{%url 'store:products' %}?sort=price&direction=asc" class="btn-primary btn">
+            By Price (low-high) <i class="fa-solid fa-caret-down"></i></a>
         <a href="{%url 'store:products' %}?sort=price&direction=desc" class="btn-primary btn"
-            style="background-color:  #21D192;"><i class="fa-solid fa-sack-dollar" style="color: #000000;"></i> By Price
-            (high-low) <i class="fa-solid fa-caret-up" style="color: #000000;"></i></a>
+            ><i class="fa-solid fa-sack-dollar"></i> By Price
+            (high-low) <i class="fa-solid fa-caret-up"></i></a>
         <a href="{%url 'store:products' %}?sort=category&direction=asc" class="btn-primary btn"
-            style="background-color:  #21D192;"><i class="fa-solid fa-tag" style="color: #000000;"></i> By Category</a>
+            ><i class="fa-solid fa-tag"></i> By Category</a>
         <a href="{%url 'store:products' %}?sort=collection&direction=asc" class="btn-primary btn"
-            style="background-color:  #21D192;"><i class="fa-solid fa-hat-wizard" style="color: #000000;"></i> By
+            ><i class="fa-solid fa-hat-wizard"></i> By
             Collection</a>
         <a href="{%url 'store:products' %}?sort=product_name&direction=asc" class="btn-primary btn"
-            style="background-color:  #21D192;">By Name (A-Z) <i class="fa-solid fa-caret-down"
-                style="color: #000000;"></i></a>
+            >By Name (A-Z) <i class="fa-solid fa-caret-down"
+                ></i></a>
         <a href="{%url 'store:products' %}?sort=product_name&direction=desc" class="btn-primary btn"
-            style="background-color:  #21D192;">By Name (Z-A) <i class="fa-solid fa-caret-up"
-                style="color: #000000;"></i></a>
+            >By Name (Z-A) <i class="fa-solid fa-caret-up"
+                ></i></a>
     </div>
     <hr>
     <!--Cards Container-->

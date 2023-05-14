@@ -6,10 +6,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6">
-                <hr>
-                <h2 class="logo-font mb-4">Product Management</h2>
-                <h5 class="text-muted">Add new merchandise</h5>
-                <h5 class="text-muted">For slug, enter the product name, in lowercase, with "-" instead of space.</h5>
+                <h2 class="logo-font mb-4">
+                    <i class="fa-solid fa-plus"></i>
+                    Add new merchandise
+                </h2>
+                <p class="text-muted">
+                    For slug, enter the product name, in lowercase, with "-" instead of space.
+                </p>
                 <hr>
             </div>
         </div>
@@ -26,8 +29,12 @@
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'store:products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Product</button>
+                        <a class="btn btn-outline-black rounded-0" href="{% url 'store:products' %}">
+                            Cancel
+                        </a>
+                        <button class="btn btn-black rounded-0" type="submit">
+                            Add Product
+                        </button>
                     </div>
                 </form>
             </div>            

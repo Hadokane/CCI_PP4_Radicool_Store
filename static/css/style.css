@@ -1,9 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+/* Import Londria (logo) & Quicksand (body) fonts */
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* Set Sites Default Font */
 body, a{
   color: black;
   font-family: 'Quicksand', sans-serif;
+}
+
+/* Highlights the site logo in the brand green colour on hover */
+#site-nav img:hover {
+  filter: invert(57%) sepia(86%) saturate(397%) hue-rotate(107deg) brightness(100%) contrast(88%);
+}
+
+#body-rad{
+  font-family: 'Londrina Outline', cursive;
+}
+
+#body-rad-big{
+  font-family: 'Londrina Outline', cursive;
+  font-size: 8em;
 }
 
 /* Article Background */
@@ -12,6 +27,46 @@ body, a{
   background-repeat: repeat;
   background-position: center center;
   background-size: contain;
+}
+
+/* Search Bar Colour */
+.form-control-search:focus{
+  border-color: #21D192;
+}
+
+.form-control-search:hover,
+.form-control-search:focus,
+.form-control:focus,
+.form-control:hover{
+  border-color: #21D192; 
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+/* All Products Sort Bar Colour */
+#sort-bar .btn{
+  border-color: black;
+  background-color:  #21D192; 
+}
+
+#sort-bar .btn:hover i{
+  color: white;
+}
+
+/* Footer Button Colour */
+#footer-account .btn{
+  border-color: black;
+}
+
+#footer-account .btn:hover a{
+  color:white;
+  background-color: #21D192;
+  font-weight: 800;
+}
+
+#footer-account .btn:hover{
+  border-color: black;
+  background-color:  #21D192;
 }
 
 /* Site banner and Footer Banner */
@@ -58,8 +113,6 @@ body, a{
   width: 310px;
   height: 2px;
 }
-
-
 
 /* Hover effect for buttons and links */
 a:hover,
@@ -246,23 +299,4 @@ color: #17a2b8; /* text-info */
   select:invalid,
   select option[value=""] {
       color: #aab7c4 !important;
-  }
-  
-  #loading-overlay {
-    display: none;
-    position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(23, 162, 184, .85);
-      z-index: 9999;
-  }
-  
-  .loading-spinner {
-    display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      height: 100%;
   }
