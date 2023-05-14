@@ -3,70 +3,79 @@
 {% block extra_title %}| {{ product_name }} {% endblock %}
 {% block content %}
 
-<hr>
+<!--Product Card -->
 <div class="row d-flex justify-content-center">
     <div class="col-md-8">
         <div class="card mb-3 bg-light border-dark" style="max-width: 1080px;">
             <div class="row ">
+
+                <!--Card Image Field-->
                 <div class="col-md-6 ml-2 mt-2">
                     <a href="../media/{{ merch.image }}" target="_blank" class="text-decoration-none">
-                        <img src="../media/{{ merch.image }}" alt="{{ merch.product_name }}" width="320px"
-                            height="320px">
+                        <img src="../media/{{ merch.image }}" alt="{{ merch.product_name }}" width="100%">
                         <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
                     </a>
                 </div>
+
+                <!--Card Body Field-->
                 <div class="col-md-4">
                     <div class="card-body">
-                        <h5 class="card-title">{{ merch.product_name }}</h5>
+                        <h2 class="card-title">{{ merch.product_name }}</h2>
                         <hr>
                         <p class="card-text">{{ merch.description }}</p>
                         <hr>
-                        <p class="card-text">£{{ merch.price }}</p>
+                        <p class="card-text"><strong>£{{ merch.price }}</strong></p>
                     </div>
+                </div>
+
+                <!--Card Footer Field-->
+                <!--Size Select | change to "Clothing" when included-->
+                {% if merch.category.cat_name == "Clothing" %}
+                <!--QTY Select(with sizing)-->
+                <div class="col-6 text-center mb-3">
+                    <label for="merch-qty">QTY</label>
+                    <input id="merch-qty" type="number" value="1" min="1">
+                </div>
+                <div class="col-6 text-center mb-3">
+                    <label for="merch-size">SIZE</label>
+                    <select id="merch-size">
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+                {% else %}
+                <!--QTY Select (solo)-->
+                <div class="col-12 text-center mb-3">
+                    <label for="merch-qty">QTY</label>
+                    <input id="merch-qty" type="number" value="1" min="1">
+                </div>
+                {% endif %}
+                <hr>
+                <!--Add to Cart-->
+                <div class="col-12 text-center">
+                    <button type="button" data-id="{{ merch.id }}" class="add-to-cart btn btn-secondary text-right">Add
+                        to
+                        cart</button>
+                    {% if request.user.is_superuser %}
+                    <hr>
+                    <p><a href="{% url 'store:edit_merch' merch.id %}"><i class="fa-solid fa-pen-to-square"></i>
+                            Edit the Product</a></p>
+                    <!--Add a safety model on click then have that call the delete function-->
+                    <p><a class="text-danger" href="{% url 'store:delete_merch' merch.id %}"><i
+                                class="fa-solid fa-trash"></i> Delete the Product</a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </div>
-<hr>
 
-<!--Card Footer Fields-->
-<div class="card-footer">
-    <div class="row">
 
-        <!--QTY Select-->
-        <div class="col-6 text-center">
-            <label for="merch-qty">QTY</label>
-            <input id="merch-qty" type="number" value="1" min="1">
-        </div>
-        <!--Size Select | change to "Clothing" when included-->
-        {% if merch.category.cat_name == "Clothing" %}
-        <div class="col-6 text-center">
-            <label for="merch-size">SIZE</label>
-            <select id="merch-size">
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-            </select>
-        </div>
-        {% endif %}
-        <!--Add to Cart-->
-        <div class="col-12 text-center">
-            <button type="button" data-id="{{ merch.id }}" class="add-to-cart btn btn-secondary text-right">Add to
-                cart</button>
-                {% if request.user.is_superuser %}
-                <hr>
-                    <p><a href="{% url 'store:edit_merch' merch.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit the Product</a></p>
-                    <!--Add a safety model on click then have that call the delete function-->
-                    <p><a class="text-danger" href="{% url 'store:delete_merch' merch.id %}"><i class="fa-solid fa-trash"></i> Delete the Product</a></p>
-            {% endif %}
-        </div>
-    </div>
-</div>
-
+<!--Javascript - Add To Cart-->
 <script>
     $(document).on("click", ".add-to-cart", function (e) {
         e.preventDefault();

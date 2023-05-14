@@ -4,12 +4,14 @@
 {% block content %}
 <main role="main">
 
-    
+    <!-- Search Bar -->
+    {% include 'includes/search/search_bar.html' %}
+
     <div class="container">
         <h1>ALL PRODUCTS</h1>
         <hr>
     </div>
-    
+
     <!--Sort Bar-->
     <div class="text-center" id="sort-bar">
         <div class="d-inline pr-2">SORT BY:</div>
@@ -17,20 +19,18 @@
             <i class="fa-solid fa-fire"></i> Newest</a>
         <a href="{%url 'store:products' %}?sort=price&direction=asc" class="btn-primary btn">
             By Price (low-high) <i class="fa-solid fa-caret-down"></i></a>
-        <a href="{%url 'store:products' %}?sort=price&direction=desc" class="btn-primary btn"
-            ><i class="fa-solid fa-sack-dollar"></i> By Price
+        <a href="{%url 'store:products' %}?sort=price&direction=desc" class="btn-primary btn"><i
+                class="fa-solid fa-sack-dollar"></i> By Price
             (high-low) <i class="fa-solid fa-caret-up"></i></a>
-        <a href="{%url 'store:products' %}?sort=category&direction=asc" class="btn-primary btn"
-            ><i class="fa-solid fa-tag"></i> By Category</a>
-        <a href="{%url 'store:products' %}?sort=collection&direction=asc" class="btn-primary btn"
-            ><i class="fa-solid fa-hat-wizard"></i> By
+        <a href="{%url 'store:products' %}?sort=category&direction=asc" class="btn-primary btn"><i
+                class="fa-solid fa-tag"></i> By Category</a>
+        <a href="{%url 'store:products' %}?sort=collection&direction=asc" class="btn-primary btn"><i
+                class="fa-solid fa-hat-wizard"></i> By
             Collection</a>
-        <a href="{%url 'store:products' %}?sort=product_name&direction=asc" class="btn-primary btn"
-            >By Name (A-Z) <i class="fa-solid fa-caret-down"
-                ></i></a>
-        <a href="{%url 'store:products' %}?sort=product_name&direction=desc" class="btn-primary btn"
-            >By Name (Z-A) <i class="fa-solid fa-caret-up"
-                ></i></a>
+        <a href="{%url 'store:products' %}?sort=product_name&direction=asc" class="btn-primary btn">By Name (A-Z) <i
+                class="fa-solid fa-caret-down"></i></a>
+        <a href="{%url 'store:products' %}?sort=product_name&direction=desc" class="btn-primary btn">By Name (Z-A) <i
+                class="fa-solid fa-caret-up"></i></a>
     </div>
     <hr>
     <!--Cards Container-->

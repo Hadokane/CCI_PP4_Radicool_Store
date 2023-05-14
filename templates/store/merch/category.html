@@ -2,9 +2,12 @@
 {% load static %}
 {% block extra_title %}| {{category.cat_name}} {% endblock %}
 {% block content %}
-<main role="main">
 
-    <h1>"{{category.cat_name}}"</h1>
+<main role="main">
+    <div class="container">
+        <h1>{{category.cat_name}}</h1>
+        <hr>
+    </div>
 
     <!--Cards Container-->
     <div class="album py-5 bg-light">
