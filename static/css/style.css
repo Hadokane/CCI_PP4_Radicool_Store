@@ -58,12 +58,6 @@ body, a{
   border-color: black;
 }
 
-#footer-account .btn:hover a{
-  color:white;
-  background-color: #21D192;
-  font-weight: 800;
-}
-
 #footer-account .btn:hover{
   border-color: black;
   background-color:  #21D192;

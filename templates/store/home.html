@@ -30,8 +30,8 @@
     <!--Radicool Collections Cards Container-->
     <div class="album py-5" id="rad-col">
         <div class="container">
-            <h2><i class="fa-solid fa-biohazard"></i> Radicool Collection <i class="fa-solid fa-biohazard"></i></h2>
-            <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line-longer">
+            <h2 class="text-center text-lg-left"><i class="fa-solid fa-biohazard"></i> Radicool Collection <i class="fa-solid fa-biohazard"></i></h2>
+            <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-longer">
             <p>Support the stores you love. Check out this new Collection from RADICOOL.</p>
             <div class="row">
                 <!--Loops through merch displaying them responsively in cards-->
@@ -102,8 +102,8 @@
     <!--Hot Items Cards Container-->
     <div class="album py-5" id="hot-items">
         <div class="container">
-            <h2><i class="fa-solid fa-fire"></i> Hot Items <i class="fa-solid fa-fire"></i></h2>
-            <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line-long">
+            <h2 class="text-center text-lg-left"><i class="fa-solid fa-fire"></i> Hot Items <i class="fa-solid fa-fire"></i></h2>
+            <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-long">
             <p>Explore what's hot right now by taking a look at our Bestsellers.</p>
             <div class="row">
                 <!--Loops through merch displaying them responsively in cards-->
@@ -171,11 +171,15 @@
 
     <!--Featured Item - Card Container-->
     <div class="album py-5" id="featured-item">
-        <div class="container">
-            <h2><i class="fa-solid fa-star"></i> Featured Item: <i class="fa-solid fa-star"></i></h2>
-            <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line-feature">
-            <p>We want to show some love towards the following release:</p>
 
+        <!--Header - Responsive Bar Line-->
+        <div class="container">
+            <h2 class="text-center text-lg-left"><i class="fa-solid fa-star"></i> Featured Item: <i class="fa-solid fa-star"></i>
+            </h2>
+            <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-feature">
+            <p>We want to show some love towards the following release:</p>
+            
+            <!--Card Display-->
             <div class="row">
                 <!--Loops through merch displaying them responsively in cards-->
                 {% for m in merch %}

@@ -256,15 +256,11 @@
                 <div class="row mt-3">
 
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-left">
                         <!-- Content -->
                         <h3 id="body-rad" class="text-uppercase fw-bold">Radicool</h3>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
-                        <p>
-                            Radicool is a D.I.Y. shipping company for D.I.Y. Bands & Brands.
-                            Shop local, support growing artists and ensure they receive the
-                            best possible percentage on their merchandise by shopping with us.
-                        </p>
+                        <p>Radicool is a D.I.Y. shipping company for indy Bands & Brands.</p>
                     </div>
 
                     <!-- Grid column -->
@@ -275,33 +271,25 @@
                         <p>{% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
                             <p>
-                                <button type="button" class="btn btn-outline-dark btn-rounded">
-                                    <a class="dropdown-item" href="/admin/">Admin</a>
-                                </button>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="/admin/">Admin</a>
                             </p>
                             {% endif %}
                             <p>
-                                <button type="button" class="btn btn-outline-dark btn-rounded">
-                                    <a class="dropdown-item" href="/profile/">Profile</a>
-                                </button>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="/profile/">Profile</a>
                             </p>
                             {% else %}
                             <p>
-                                <button type="button" class="btn btn-outline-dark btn-rounded">
-                                    <a class="dropdown-itemk" href="accounts/signup/">Sign Up</a>
-                                </button>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="accounts/signup/">Sign Up</a>
                             </p>
                             <p>
-                                <button type="button" class="btn btn-outline-dark btn-rounded">
-                                    <a class="dropdown-item" href="accounts/login/">Login</a>
-                                </button>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="accounts/login/">Login</a>
                             </p>
                             {% endif %}
                         </p>
                     </div>
 
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-left">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold">Contact</h6>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
@@ -314,7 +302,7 @@
 
         <!-- Copyright -->
         <div class="text-center p-3" id="footer-bottom">
-            © 2023 Copyright: <a href="#">Radicool Industries</a>
+            © 2023 Copyright: <a href="../">Radicool Industries</a>
         </div>
     </footer>
 
