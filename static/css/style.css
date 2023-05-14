@@ -73,9 +73,10 @@ body, a{
   border-color: black;
 }
 
-#footer-account .btn:hover{
+.add-to-cart:hover i,
+#footer-account .btn:hover i{
   border-color: black;
-  background-color:  #21D192;
+  color:  #21D192;
 }
 
 /* Site banner and Footer Banner */

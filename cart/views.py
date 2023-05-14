@@ -71,11 +71,17 @@ def cart_update(request):
 
         cart_qty = cart.__len__()
         cart_total = cart.get_total_price()  # calc cart total
+        delivery_total = cart.get_delivery_cost()  # calc delivery total
+        delivery_delta = cart.delivery_delta()  # calc delivery delta
+        grand_total = cart.grand_total()  # calc grand total
 
         response = JsonResponse({"qty": cart_qty,
                                  "subtotal": cart_total,
                                  "size": merch_size,
                                  "itemqty": merch_qty,
-                                 "itemtotal": item_total
+                                 "itemtotal": item_total,
+                                 "deliverycost": delivery_total,
+                                 "deliverydelta": delivery_delta,
+                                 "grandtotal": grand_total,
                                  })
         return response

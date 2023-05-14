@@ -86,11 +86,10 @@
             <!--Show full cart subtotals-->
             <div>
                 <p>Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span></p>
-                <p>Delivery Cost: £<span id="delivery_cost">{{ cart.delivery_context.delivery }}*</span></p>
+                <p>Delivery Cost: £<span id="deliverycost">{{ cart.delivery_context.delivery }}</span></p>
                 <hr>
                 <p>
-                    <strong>Grand Total: £<span id="grand_total">
-                            {{ cart.delivery_context.grand_total }}
+                    <strong>Grand Total: £<span id="grandtotal">{{ cart.delivery_context.grand_total }}
                         </span></strong>
                 </p>
                 <!--Checkout Button-->
@@ -100,14 +99,11 @@
                 </p>
                 <hr>
                 {% if cart.delivery_context.free_delivery_delta > 0 %}
-                <p class="text-muted">*Spend £<span id="delivery_cost">{{ cart.delivery_context.free_delivery_delta }}
-                        more
-                        for free
-                        delivery!</span></p>
+                <p class="text-muted"><span id="deliverydelta">*Spend £{{ cart.delivery_context.free_delivery_delta }}
+                        more for free delivery!</span></p>
                 {% else %}
                 <p class="text-muted">*You spent over £{{ cart.delivery_context.free_delivery_threshold }}!
-                    Enjoy
-                    your FREE DELIVERY!</span></p>
+                    Enjoy your FREE DELIVERY!</span></p>
                 {% endif %}
             </div>
         </div>
@@ -170,6 +166,9 @@
                 document.getElementById("subtotal-nav").innerHTML = json.subtotal
                 document.getElementById('item_qty' + merchid).innerHTML = json.itemqty
                 document.getElementById('itemtotal' + merchid).innerHTML = json.itemtotal
+                document.getElementById('deliverycost').innerHTML = json.deliverycost
+                document.getElementById('deliverydelta').innerHTML = json.deliverydelta
+                document.getElementById('grandtotal').innerHTML = json.grandtotal
                 if (('item_size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" ||
                     "XXL")
                     document.getElementById('item_size' + merchid).innerHTML = json.size

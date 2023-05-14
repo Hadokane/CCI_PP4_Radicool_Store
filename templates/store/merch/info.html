@@ -59,7 +59,7 @@
                 <div class="col-12 text-center">
                     <button type="button" data-id="{{ merch.id }}"
                         class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
-                        Add to cart</button>
+                        <i class="fa-solid fa-plus"></i> Add to cart</button>
                     {% if request.user.is_superuser %}
                     <hr>
                     <p><a href="{% url 'store:edit_merch' merch.id %}"><i class="fa-solid fa-pen-to-square"></i>
