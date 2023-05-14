@@ -1,0 +1,15 @@
+<!--Search Banner-->
+<div class="container d-flex justify-content-center mt-4">
+    <div id="serch-banner" class="row">
+        <div class="col-12 input-group">
+            <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'store:search' %}">
+                <input class="form-control-search rounded mr-sm-2 p-1" type="search" name="q"
+                    placeholder="Search Our Merch!">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
