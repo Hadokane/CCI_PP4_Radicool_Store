@@ -30,7 +30,8 @@
     <!--Radicool Collections Cards Container-->
     <div class="album py-5" id="rad-col">
         <div class="container">
-            <h2 class="text-center text-lg-left"><i class="fa-solid fa-biohazard"></i> Radicool Collection <i class="fa-solid fa-biohazard"></i></h2>
+            <h2 class="text-center text-lg-left"><i class="fa-solid fa-biohazard"></i> Rad Collection <i
+                    class="fa-solid fa-biohazard"></i></h2>
             <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-longer">
             <p>Support the stores you love. Check out this new Collection from RADICOOL.</p>
             <div class="row">
@@ -66,33 +67,29 @@
 
                 <!--Horizontal Rule Settings-->
 
-                <!--Displays under each item on small screens-->
-                {% if forloop.counter|divisibleby:2 %}
+                <!--Horizontal Rule Settings-->
+
+                {% if forloop.counter|divisibleby:1 %}
                 <div class="col-12 d-sm-none">
                     <hr>
                 </div>
                 {% endif %}
-
-                <!--Displays when row is divisible by 2 on medium views-->
                 {% if forloop.counter|divisibleby:2 %}
-                <div class="col-12 d-none d-sm-block d-md-block d-lg-none">
+                <div class="col-12 d-none d-sm-block d-md-block d-lg-none ">
                     <hr>
                 </div>
                 {% endif %}
-
-                <!--Displays when row is divisible by 3 on large views-->
                 {% if forloop.counter|divisibleby:3 %}
                 <div class="col-12 d-none d-lg-block d-xl-none">
                     <hr>
                 </div>
                 {% endif %}
-
-                <!--Displays when row is divisible by 4 on x-large views-->
                 {% if forloop.counter|divisibleby:4 %}
                 <div class="col-12 d-none d-xl-block">
                     <hr>
                 </div>
                 {% endif %}
+                
                 {% endif %}
                 {% endfor %}
             </div>
@@ -102,7 +99,8 @@
     <!--Hot Items Cards Container-->
     <div class="album py-5" id="hot-items">
         <div class="container">
-            <h2 class="text-center text-lg-left"><i class="fa-solid fa-fire"></i> Hot Items <i class="fa-solid fa-fire"></i></h2>
+            <h2 class="text-center text-lg-left"><i class="fa-solid fa-fire"></i> Hot Items <i
+                    class="fa-solid fa-fire"></i></h2>
             <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-long">
             <p>Explore what's hot right now by taking a look at our Bestsellers.</p>
             <div class="row">
@@ -136,28 +134,21 @@
 
                 <!--Horizontal Rule Settings-->
 
-                <!--Displays under each item on small screens-->
-                {% if forloop.counter|divisibleby:2 %}
+                {% if forloop.counter|divisibleby:1 %}
                 <div class="col-12 d-sm-none">
                     <hr>
                 </div>
                 {% endif %}
-
-                <!--Displays when row is divisible by 2 on medium views-->
                 {% if forloop.counter|divisibleby:2 %}
-                <div class="col-12 d-none d-sm-block d-md-block d-lg-none">
+                <div class="col-12 d-none d-sm-block d-md-block d-lg-none ">
                     <hr>
                 </div>
                 {% endif %}
-
-                <!--Displays when row is divisible by 3 on large views-->
                 {% if forloop.counter|divisibleby:3 %}
                 <div class="col-12 d-none d-lg-block d-xl-none">
                     <hr>
                 </div>
                 {% endif %}
-
-                <!--Displays when row is divisible by 4 on x-large views-->
                 {% if forloop.counter|divisibleby:4 %}
                 <div class="col-12 d-none d-xl-block">
                     <hr>
@@ -174,11 +165,12 @@
 
         <!--Header - Responsive Bar Line-->
         <div class="container">
-            <h2 class="text-center text-lg-left"><i class="fa-solid fa-star"></i> Featured Item: <i class="fa-solid fa-star"></i>
+            <h2 class="text-center text-lg-left"><i class="fa-solid fa-star"></i> Featured Item: <i
+                    class="fa-solid fa-star"></i>
             </h2>
             <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-feature">
             <p>We want to show some love towards the following release:</p>
-            
+
             <!--Card Display-->
             <div class="row">
                 <!--Loops through merch displaying them responsively in cards-->

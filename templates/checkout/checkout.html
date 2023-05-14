@@ -79,12 +79,12 @@
             <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <legend class="fieldset-label px-2 w-auto"><h4>Details:</h4></legend>
                     <span>{{ order_form.full_name | as_crispy_field }}</span>
                     {{ order_form.email | as_crispy_field }}
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                    <legend class="fieldset-label px-2 w-auto"><h4>Delivery Details:</h4></legend>
                     <span>{{ order_form.street_address_1 | as_crispy_field }}</span>
                     <span>{{ order_form.street_address_2 | as_crispy_field }}</span>
                     {{ order_form.town_or_city | as_crispy_field }}
@@ -107,32 +107,37 @@
                 </fieldset>
 
                 <!-- Payment Section -->
-                <hr class="my-0">
-                <fieldset class="px-3">
-                    <h4 class="mb-3">Payment</h4>
-                    <label for="card-element">Credit or debit card</label>
-                    <!-- Stripe Payment elements will appear here -->
-                    <div class="mb-3" id="card-element"></div>
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    <!-- Pass the client secret to the view so we can get the payment intent id -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
-                <hr class="my-4">
-                <button id="submit-button" class="btn btn-black w-100 rounded-0">
-                    <span class="font-weight-bold">Pay Now!</span>
-                    <span class="icon">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </button>
+                <div class="row">
+                    <div class="col">
+                        <!-- Stripe Form -->
+                        <fieldset class="px-3">
+                            <h4 class="mb-3">Payment</h4>
+                            <label for="card-element">Credit or debit card</label>
+                            <!-- Stripe Payment elements will appear here -->
+                            <div class="mb-3" id="card-element"></div>
+                            <!-- Used to display form errors -->
+                            <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                            <!-- Pass the client secret to the view so we can get the payment intent id -->
+                            <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                        </fieldset>
+
+                        <!-- Pay Now Button -->
+                        <div class="col text-center">
+                            <button id="submit-button" class="btn btn-outline-dark btn-rounded text-center">
+                                <span class="font-weight-bold">Pay Now!</span>
+                                <i class="fas fa-lock"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Edit Cart Button -->
                 <hr class="my-3">
                 <div class="row">
                     <div class="col-4">
-                        <a href="{% url 'cart:cart_summary' %}" class="btn rounded-0">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="font-weight-bold">Edit Cart</span>
+                        <a href="{% url 'cart:cart_summary' %}" class="btn btn-outline-dark btn-rounded">
+                            <i class="fas fa-chevron-left"></i>
+                            Edit Cart
                         </a>
                     </div>
                     <div class="col-4">
@@ -140,6 +145,7 @@
                     <div class="col-4">
                     </div>
                 </div>
+
             </form>
         </div>
     </div>

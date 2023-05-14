@@ -167,7 +167,7 @@
         <!--Notification Banner-->
         {% if cart.delivery_context.free_delivery_delta > 0 %}
         <div id="notification-banner" class="row text-center text-white">
-            <div class="col">
+            <div class="col m-1">
                 <h4 class="logo-font my-1">Free delivery on orders over
                     £{{ cart.delivery_context.free_delivery_threshold }}!</h4>
             </div>
@@ -175,7 +175,7 @@
         <!--Displays when no free delivery offer is in effect. Promotes a new collection. (Future proofing the site.)-->
         {% else %}
         <div id="notification-banner" class="row text-center text-white">
-            <div class="col">
+            <div class="col m-1">
                 <h4 class="logo-font my-1"><a href="../col/the-oversights">New Collection from The Oversights!</a> |
                     FREE DELIVERY ENABLED</h4>
 
@@ -205,10 +205,8 @@
     <hr>
 
     <!-- Contains page content -->
-    <div id="content" class="container-fluid">
-        {% block content %}
-        {% endblock %}
-    </div>
+    {% block content %}
+    {% endblock %}
 
     <!-- Invisible HR for added space -->
     <hr style="margin-top: 20px; border: none;">
@@ -256,7 +254,7 @@
                 <div class="row mt-3">
 
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-left">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
                         <!-- Content -->
                         <h3 id="body-rad" class="text-uppercase fw-bold">Radicool</h3>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
@@ -289,12 +287,12 @@
                     </div>
 
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-left">
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-center">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold">Contact</h6>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
-                        <p><i class="fas fa-home mr-3"></i> Ships from: NP20, UK</p>
-                        <p><i class="fas fa-envelope mr-3"></i> radicool@example.com</p>
+                        <p><i class="fas fa-envelope mr-2"></i>radicool@example.com</p>
+                        <p><i class="fas fa-home mr-2"></i> Ships from: NP20***, UK</p>
                     </div>
                 </div>
             </div>

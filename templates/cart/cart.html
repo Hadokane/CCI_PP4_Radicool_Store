@@ -4,39 +4,46 @@
 {% block content %}
 
 <div class="container">
-    <h1>Cart</h1>
+    <h1>Shopping Cart:</h1>
     <hr>
 </div>
 
 <div class="container">
+    <!--Uses cart.py to access the sessions total-->
+    <!--Displays all items within session and their data in the cart-->
+    {% with total_qty=cart|length %}
+    <!--If quantity > 0 show the items-->
+    {% if total_qty > 0 %}
+    <!--Loop through items in cart-->
+    {% for item in cart %}
+    <!--Use product information for each item-->
+    {% with product=item.product %}
     <div class="row">
-        <div class="col-12">
-            <!--Uses cart.py to access the sessions total-->
-            <!--Displays all items within session and their data in the cart-->
-            {% with total_qty=cart|length %}
-            <!--If quantity > 0 show the items-->
-            {% if total_qty > 0 %}
-            <!--Loop through items in cart-->
-            {% for item in cart %}
-            <!--Use product information for each item-->
-            {% with product=item.product %}
-            <!--Arrange into tables-->
+        <!--Arrange into tables-->
+        <div class="col-6">
+            <div class="text-left">
+                <a href="../media/{{ product.image }}" target="_blank" class="text-decoration-none">
+                    <img src="../media/{{ product.image }}" alt="{{ product.product_name }}" width="60%">
+                    <p class="text-muted pl-5 ml-4 mt-2">[Click image to expand]</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-6">
             <div data-index="{{ product.id }}" class="product-item table-responsive-rounded">
-                <p>NAME - {{ product.product_name }}</p>
-                <p>DESCRIPTION - {{ product.description }}</p>
-                <p>PRICE - <span id="itemprice{{product.id}}">{{ product.price }}</span></p>
+                <p>PRODUCT: <strong>{{ product.product_name }}</strong></p>
+                <p>PRICE: <span id="itemprice{{product.id}}">{{ product.price }}</span></p>
                 <!--Show size if present on item-->
                 {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
-                <p>SIZE - <span id="item_size{{product.id}}">{{ item.size }}</span></p>
+                <p>SIZE: <span id="item_size{{product.id}}">{{ item.size }}</span></p>
                 {% endif %}
-                <p>QTY - <span id="item_qty{{product.id}}">{{ item.qty }}</span></p>
-                <p>ITEM TOTAL - <span id="itemtotal{{product.id}}">{{ item.total_price }}</span></p>
+                <p>QTY: <span id="item_qty{{product.id}}">{{ item.qty }}</span></p>
+                <p>TOTAL: <strong><span id="itemtotal{{product.id}}">{{ item.total_price }}</span></strong></p>
 
                 <!--Selections-->
                 <!--QTY Select-->
                 <label for="merch-qty">QTY</label>
                 <input id="qty{{product.id}}" type="number" value="{{ item.qty }}" min="1">
-            
+
                 <!--Size Select | change to "Clothing" when included-->
                 {% if product.category.cat_name == "Clothing" %}
                 <label for="size">SIZE</label>
@@ -52,100 +59,122 @@
                 </select>
                 {% endif %}
                 <!--Add to Cart-->
-                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
-                    class="update-cart btn btn-secondary">Update</button>
-                <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
-                    class="delete-from-cart btn btn-secondary">Remove</button>
-                <hr>
-            </div>
-            <hr>
-            {% endwith %}
-            {% endfor %}
-            <div class="row">
+                <p class="mt-3">
+                    <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                        class="update-cart btn btn-outline-dark btn-rounded mb-3"><i class="fa-solid fa-star"></i>
+                        Update</button>
 
-                <div class="col-12 text-center">
-                    <!--Show full cart subtotals-->
-                    <div class="h6">
-                        <p>Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span></p>
-                        <p>Delivery Cost: £<span id="delivery_cost">{{ cart.delivery_context.delivery }}</span></p>
-                        {% if cart.delivery_context.free_delivery_delta > 0 %}
-                        <p class="text-muted">Spend £<span id="delivery_cost">{{ cart.delivery_context.free_delivery_delta }} more for free delivery!</span></p>
-                        {% else %}
-                        <p class="text-muted">You spent over £{{ cart.delivery_context.free_delivery_threshold }}! Enjoy your FREE DELIVERY!</span></p>
-                        {% endif %}
-                        <p>Grand Total: £<span id="grand_total">{{ cart.delivery_context.grand_total }}</span></p>
-                    </div>
-                </div>
-                {% else %}
-                <p>Your cart is empty.</p>
-                <a href="{% url 'store:products' %}">See all products!</a>
-                {% endif %}
-                {% endwith %}
+                    <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                        class="delete-from-cart btn btn-outline-dark btn-rounded mb-3"><i class="fa-solid fa-trash"></i>
+                        Remove</button></p>
             </div>
         </div>
+        <div class="col-12">
+            <hr>
+        </div>
+        <hr>
     </div>
-    <div class="col-4">
-        <a href="{% url 'checkout:checkout' %}" class="btn btn-outline-black rounded-0">
-            <span class="icon">
-                <i class="fas fa-chevron-right"></i>
-            </span>
-            <span class="font-weight-bold">Checkout</span>
-        </a>
+    {% endwith %}
+    {% endfor %}
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 text-center">
+            <!--Show full cart subtotals-->
+            <div>
+                <p>Sub Total: £<span id="subtotal">{{ cart.get_total_price }}</span></p>
+                <p>Delivery Cost: £<span id="delivery_cost">{{ cart.delivery_context.delivery }}*</span></p>
+                <hr>
+                <p>
+                    <strong>Grand Total: £<span id="grand_total">
+                            {{ cart.delivery_context.grand_total }}
+                        </span></strong>
+                </p>
+                <!--Checkout Button-->
+                <p>
+                    <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'checkout:checkout' %}">
+                        <i class="fas fa-chevron-right"></i> Checkout</a>
+                </p>
+                <hr>
+                {% if cart.delivery_context.free_delivery_delta > 0 %}
+                <p class="text-muted">*Spend £<span id="delivery_cost">{{ cart.delivery_context.free_delivery_delta }}
+                        more
+                        for free
+                        delivery!</span></p>
+                {% else %}
+                <p class="text-muted">*You spent over £{{ cart.delivery_context.free_delivery_threshold }}!
+                    Enjoy
+                    your FREE DELIVERY!</span></p>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <p>Your cart is empty.</p>
+        
+        <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'store:products' %}">
+            <i class="fas fa-chevron-left"></i> See all products!</a>
+
+        {% endif %}
+        {% endwith %}
     </div>
 
-    <script>
-        // Delete Items
-        $(document).on("click", ".delete-from-cart", function (e) {
-            e.preventDefault();
-            var merchid = $(this).data("index");
-            $.ajax({
-                type: "POST",
-                url: "{% url 'cart:cart_delete' %}",
-                data: {
-                    merchid: $(this).data("index"),
-                    merchsize: $("#merch-size").val(),
-                    csrfmiddlewaretoken: "{{csrf_token}}",
-                    action: "delete"
-                },
-                success: function (json) {
-                    $(".product-item[data-index='" + merchid + "']").remove();
-                    document.getElementById("cart-qty").innerHTML = json.qty
-                    document.getElementById("subtotal").innerHTML = json.subtotal
-                    document.getElementById("subtotal-nav").innerHTML = json.subtotal
-                },
-                error: function (xhr, errmsg, err) {}
-            });
-        })
-    </script>
+</div>
 
-    <script>
-        // Update Items
-        $(document).on("click", ".update-cart", function (e) {
-            e.preventDefault();
-            var merchid = $(this).data("index");
-            $.ajax({
-                type: "POST",
-                url: "{% url 'cart:cart_update' %}",
-                data: {
-                    merchid: $(this).data("index"),
-                    merchqty: $('#qty' + merchid).val(),
-                    merchsize: $('#size' + merchid + ' option:selected').text(),
-                    itemprice: $('#itemprice' + merchid).text(),
-                    csrfmiddlewaretoken: "{{csrf_token}}",
-                    action: "update"
-                },
-                success: function (json) {
-                    document.getElementById("cart-qty").innerHTML = json.qty
-                    document.getElementById("subtotal").innerHTML = json.subtotal
-                    document.getElementById("subtotal-nav").innerHTML = json.subtotal
-                    document.getElementById('item_qty' + merchid).innerHTML = json.itemqty
-                    document.getElementById('itemtotal' + merchid).innerHTML = json.itemtotal
-                    if (('item_size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" || "XXL")
-                        document.getElementById('item_size' + merchid).innerHTML = json.size
-                },
-                error: function (xhr, errmsg, err) {}
-            });
-        })
-    </script>
+<script>
+    // Delete Items
+    $(document).on("click", ".delete-from-cart", function (e) {
+        e.preventDefault();
+        var merchid = $(this).data("index");
+        $.ajax({
+            type: "POST",
+            url: "{% url 'cart:cart_delete' %}",
+            data: {
+                merchid: $(this).data("index"),
+                merchsize: $("#merch-size").val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: "delete"
+            },
+            success: function (json) {
+                $(".product-item[data-index='" + merchid + "']").remove();
+                document.getElementById("cart-qty").innerHTML = json.qty
+                document.getElementById("subtotal").innerHTML = json.subtotal
+                document.getElementById("subtotal-nav").innerHTML = json.subtotal
+            },
+            error: function (xhr, errmsg, err) {}
+        });
+    })
+</script>
 
-    {% endblock %}
+<script>
+    // Update Items
+    $(document).on("click", ".update-cart", function (e) {
+        e.preventDefault();
+        var merchid = $(this).data("index");
+        $.ajax({
+            type: "POST",
+            url: "{% url 'cart:cart_update' %}",
+            data: {
+                merchid: $(this).data("index"),
+                merchqty: $('#qty' + merchid).val(),
+                merchsize: $('#size' + merchid + ' option:selected').text(),
+                itemprice: $('#itemprice' + merchid).text(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: "update"
+            },
+            success: function (json) {
+                document.getElementById("cart-qty").innerHTML = json.qty
+                document.getElementById("subtotal").innerHTML = json.subtotal
+                document.getElementById("subtotal-nav").innerHTML = json.subtotal
+                document.getElementById('item_qty' + merchid).innerHTML = json.itemqty
+                document.getElementById('itemtotal' + merchid).innerHTML = json.itemtotal
+                if (('item_size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" ||
+                    "XXL")
+                    document.getElementById('item_size' + merchid).innerHTML = json.size
+            },
+            error: function (xhr, errmsg, err) {}
+        });
+    })
+</script>
+
+{% endblock %}

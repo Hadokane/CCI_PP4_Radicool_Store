@@ -34,6 +34,7 @@ body, a{
   border-color: #21D192;
 }
 
+#merch-qty:hover,
 .form-control-search:hover,
 .form-control-search:focus,
 .form-control:focus,
@@ -86,7 +87,7 @@ body, a{
 /* HR - Bar-line classes */
 .bar-line{
   background-color: #21D192;
-  width: 80px;
+  width: 100px;
   height: 2px;
 }
 
@@ -98,7 +99,7 @@ body, a{
 
 .bar-line-longer{
   background-color: black;
-  width: 380px;
+  width: 320px;
   height: 2px;
 }
 
@@ -123,19 +124,17 @@ i {
   text-decoration:solid;
 }
 
-/* When hovering a link, make the i class green */
+/* When hovering, make the i class green */
+.update-cart:hover i,
+.delete-from-cart:hover i,
+form:hover i,
 a:hover i {
   font-weight: 800;
   color:#00cc99;
   text-decoration:solid;
 }
 
-/* For the nav search bar */
-form:hover i {
-  font-weight: 800;
-  color:#00cc99;
-  text-decoration:solid;
-}
+
 
 /* Footer Social Links */
 .social-links a i{
