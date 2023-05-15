@@ -92,16 +92,10 @@ def merch_search(request):
 def merch_info(request, slug):
     """A view shown when an individual piece of merchandise is selected."""
     merch = get_object_or_404(Merch, slug=slug, in_stock=True)
-    wishlist = ""
-    # If user is signed_in add to wish list works.
-    # Otherwise allauth redirects the user to sign in.
-    if request.user.is_authenticated:
-        wishlist = Merch.objects.filter(user_wishlist=request.user)
     return render(
         request,
         "store/merch/info.html",
         {"merch": merch,
-         "wishlist": wishlist
          })
 
 

@@ -83,6 +83,7 @@ TEMPLATES = [
                 'store.views.categories',  # allows all pages to see views
                 'store.views.collections',  # useful for navbar display
                 'cart.context_processors.cart',  # cart processor
+                'store.wishlist_context.wishlist_context',  # wishlist
             ],
             'builtins':[
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -139,16 +140,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth'
+        '.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth'
+        '.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth'
+        '.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth'
+        '.password_validation.NumericPasswordValidator',
     },
 ]
 

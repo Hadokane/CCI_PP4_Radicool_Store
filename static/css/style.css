@@ -137,7 +137,7 @@ button:hover{
 }
 
 /* Remove from wishlist icon hover */
-#remove-wishlist a:hover i{
+.remove-wishlist a:hover i{
   color:red  
 }
 
