@@ -79,6 +79,10 @@ body, a{
   color:  #21D192;
 }
 
+.modal-footer button:hover i{
+  color:  #21D192;
+}
+
 /* Site banner and Footer Banner */
 #notification-banner,
 #footer-banner{
@@ -142,7 +146,7 @@ i {
 /* When hovering, make the i class green */
 .update-cart:hover i,
 .delete-from-cart:hover i,
-form:hover i,
+button:hover i,
 a:hover i {
   font-weight: 800;
   color:#00cc99;

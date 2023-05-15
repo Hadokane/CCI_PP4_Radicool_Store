@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block extra_title %}| {{ user.username }} {% endblock %}
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
@@ -12,6 +12,7 @@
         <div class="col">
             <h2 class="logo-font mb-4">My Profile</h2>
             <hr>
+            <p>Welcome {{ user.username }}.</p>
         </div>
     </div>
 
@@ -41,7 +42,8 @@
                         {% for order in orders %}
                         <tr>
                             <td>
-                                <a href="{% url 'profiles:order_history' order.order_number %}" title="{{ order.order_number }}">
+                                <a href="{% url 'profiles:order_history' order.order_number %}"
+                                    title="{{ order.order_number }}">
                                     {{ order.order_number|truncatechars:6 }}
                                 </a>
                             </td>
