@@ -45,13 +45,36 @@
                                 {{ m.collection }}</a>
                         </p>
                         {% endif %}
-                        <p class="card-text align-self-end mt-auto">
+                        <!--Wishlist-->
+                        <!--Remove from Wishlist Icon-->
+                        {% if wishlist %}
+                        {% if m in wishlist %}
+                        <div class="remove-wishlist m-3 align-self-center mt-auto">
+                            <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-xmark"></i>
+                            </a>
+                        </div>
+
+                        <!--Add to Wishlist Icon-->
+                        {% else %}
+                        <div class="m-3 align-self-center mt-auto">
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+
+                        <p class="card-text align-self-center mt-auto">
                             <a href="{{ m.get_absolute_url }}">
                                 <strong>
                                     <i class="fa-regular fa-money-bill-1"></i>
-                                    £{{ m.price }}</p>
-                        </strong>
-                        </a>
+                                    £{{ m.price }}
+                                </strong>
+                            </a>
+                        </p>
                     </div>
 
                     <!--Card Footer Buttons-->
@@ -96,7 +119,7 @@
                 <hr>
             </div>
             {% endif %}
-            
+
             <!-- Delete Modal -->
             <div class="modal fade" id="deleteModal{{ m.id }}" tabindex="-1" role="dialog"
                 aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -125,7 +148,7 @@
                     </div>
                 </div>
             </div>
-            
+
             {% endfor %}
         </div>
     </div>

@@ -77,13 +77,36 @@
                                 {{ m.collection }}</a>
                         </p>
                         {% endif %}
-                        <p class="card-text align-self-end mt-auto">
+                        <!--Wishlist-->
+                        <!--Remove from Wishlist Icon-->
+                        {% if wishlist %}
+                        {% if m in wishlist %}
+                        <div class="remove-wishlist m-3 align-self-center mt-auto">
+                            <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-xmark"></i>
+                            </a>
+                        </div>
+
+                        <!--Add to Wishlist Icon-->
+                        {% else %}
+                        <div class="m-3 align-self-center mt-auto">
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+
+                        <p class="card-text align-self-center mt-auto">
                             <a href="{{ m.get_absolute_url }}">
                                 <strong>
                                     <i class="fa-regular fa-money-bill-1"></i>
-                                    £{{ m.price }}</p>
-                        </strong>
-                        </a>
+                                    £{{ m.price }}
+                                </strong>
+                            </a>
+                        </p>
                     </div>
 
                     <!--Card Footer Buttons-->
@@ -204,13 +227,36 @@
                                 {{ m.collection }}</a>
                         </p>
                         {% endif %}
-                        <p class="card-text align-self-end mt-auto">
+                        <!--Wishlist-->
+                        <!--Remove from Wishlist Icon-->
+                        {% if wishlist %}
+                        {% if m in wishlist %}
+                        <div class="remove-wishlist m-3 align-self-center mt-auto">
+                            <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-xmark"></i>
+                            </a>
+                        </div>
+
+                        <!--Add to Wishlist Icon-->
+                        {% else %}
+                        <div class="m-3 align-self-center mt-auto">
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+
+                        <p class="card-text align-self-center mt-auto">
                             <a href="{{ m.get_absolute_url }}">
                                 <strong>
                                     <i class="fa-regular fa-money-bill-1"></i>
-                                    £{{ m.price }}</p>
-                        </strong>
-                        </a>
+                                    £{{ m.price }}
+                                </strong>
+                            </a>
+                        </p>
                     </div>
 
                     <!--Card Footer Buttons-->
@@ -335,12 +381,37 @@
                             <!--Card Footer Field-->
                             <!--Size Select | change to "Clothing" when included-->
                             {% if m.category.cat_name == "Clothing" %}
-                            <!--QTY Select(with sizing)-->
+
+                            <!--Wishlist-->
+                            <!--Remove from Wishlist Icon-->
+                            {% if wishlist %}
+                            {% if m in wishlist %}
+                            <div class="remove-wishlist col-3 text-center mb-3">
+                                <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                    aria-label="remove from wishlist"
+                                    class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-xmark"></i>
+                                </a>
+                            </div>
+
+                            <!--Add to Wishlist Icon-->
+                            {% else %}
+                            <div class="col-3 text-center mb-3">
+                                <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-plus"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endif %}
+
+                            <!--QTY Select-->
                             <div class="col-6 text-center mb-3">
                                 <label for="merch-qty">QTY</label>
                                 <input id="merch-qty" type="number" value="1" min="1">
                             </div>
-                            <div class="col-6 text-center mb-3">
+                            <!--Size Select-->
+                            <div class="col-3 text-center mb-3">
                                 <label for="merch-size">SIZE</label>
                                 <select id="merch-size">
                                     <option value="XS">XS</option>
@@ -352,13 +423,42 @@
                                 </select>
                             </div>
                             {% else %}
-                            <!--QTY Select (solo)-->
-                            <div class="col-12 text-center mb-3">
+
+                            <!--If No Size-->
+
+                            <!--Wishlist-->
+                            <!--Remove from Wishlist Icon-->
+                            {% if wishlist %}
+                            {% if m in wishlist %}
+                            <div class="remove-wishlist col-3 text-center mb-3">
+                                <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                    aria-label="remove from wishlist"
+                                    class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-xmark"></i>
+                                </a>
+                            </div>
+
+                            <!--Add to Wishlist Icon-->
+                            {% else %}
+                            <div class="col-3 text-center mb-3">
+                                <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-plus"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endif %}
+
+                            <!--QTY Select-->
+                            <div class="col-6 text-center mb-3">
                                 <label for="merch-qty">QTY</label>
                                 <input id="merch-qty" type="number" value="1" min="1">
                             </div>
+
+                            <!--Empty for spacing-->
+                            <div class="col-3 text-center mb-3">
+                            </div>
                             {% endif %}
-                            <hr>
                             <!--Add to Cart-->
                             <div class="col-12 text-center">
                                 <button type="button" data-id="{{ m.id }}"
@@ -412,8 +512,8 @@
             </div>
 
             {% endfor %}
-        </div>
 
+        </div>
     </div>
 </div>
 
