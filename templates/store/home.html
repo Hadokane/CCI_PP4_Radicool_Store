@@ -64,7 +64,7 @@
 
                         {% if m.category %}
                         <p>
-                            <a class="card-text" href="../cat/{{m.category.slug}}">
+                            <a class="card-text" href="{% url 'store:category_info' m.category.slug %}">
                                 <i class="fa-solid fa-tag"></i>
                                 {{ m.category }}
                             </a>
@@ -72,7 +72,7 @@
                         {% endif %}
                         {% if m.collection %}
                         <p>
-                            <a class="card-text" href="../col/{{m.collection.slug}}">
+                            <a class="card-text" href="{% url 'store:collection_info' m.collection.slug %}">
                                 <i class="fa-solid fa-record-vinyl"></i>
                                 {{ m.collection }}</a>
                         </p>

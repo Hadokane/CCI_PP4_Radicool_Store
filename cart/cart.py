@@ -99,7 +99,8 @@ class Cart():
         else:
             delivery_delta = delivery_threshold - total
             free_delivery_delta = str(
-                f"*You spent over £{delivery_threshold}! Enjoy your FREE DELIVERY!")
+                f"*You spent over £{delivery_threshold}!"
+                "Enjoy your FREE DELIVERY!")
         return free_delivery_delta
 
     # Get the shipping cost for cart display
