@@ -71,7 +71,7 @@ def update_wishlist(request, id):
             + " has been removed from your WishList")
     # if not on users list, add the item
     else:
-        product.users_wishlist.add(request.user)
+        merch.user_wishlist.add(request.user)
         messages.success(
             request,
             "Added "

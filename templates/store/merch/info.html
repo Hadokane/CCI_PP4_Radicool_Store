@@ -19,11 +19,14 @@
                 <!--Card Body Field-->
                 <div class="col-md-4">
                     <div class="card-body">
-                        <h2 class="card-title">{{ merch.product_name }}</h2>
+                        <h2 class="card-title">
+                            {{ merch.product_name }}
+                        </h2>
                         <hr>
                         <p class="card-text">{{ merch.description }}</p>
                         <hr>
-                        <p class="card-text"><strong>£{{ merch.price }}</strong></p>
+                        <p class="card-text"><i class="fa-regular fa-money-bill-1"></i>
+                            <strong>£{{ merch.price }}</strong></p>
                     </div>
                 </div>
 
@@ -31,11 +34,24 @@
                 <!--Size Select | change to "Clothing" when included-->
                 {% if merch.category.cat_name == "Clothing" %}
                 <!--Wishlist-->
-                <div class="col-3 text-center">
-                    <a href="{% url 'profiles:update_wishlist' merch.id %}" aria-disabled="true" class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
+                <!--Remove from Wishlist Icon-->
+                {% if wishlist %}
+                {% for merch in wishlist %}
+                <div id="remove-wishlist" class="col-3 text-center mb-3">
+                    <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' merch.id %}" aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                       <i class="fa-solid fa-heart-circle-xmark"></i>
+                    </a>
+                </div>
+                {% endfor %}
+            
+                <!--Add to Wishlist Icon-->
+            {% else %}
+                <div class="col-3 text-center mb-3">
+                    <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' merch.id %}" aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-heart-circle-plus"></i>
                     </a>
                 </div>
+            {% endif %}
                 <!--QTY Select-->
                 <div class="col-6 text-center mb-3">
                     <label for="merch-qty">QTY</label>
@@ -54,23 +70,42 @@
                     </select>
                 </div>
                 {% else %}
+                
                 <!--If No Size-->
+
                 <!--Wishlist-->
-                <div class="col-3 text-center mb-3">
-                    <a href="{% url 'profiles:update_wishlist' merch.id %}" aria-disabled="true" class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
-                        <i class="fa-solid fa-heart-circle-plus"></i>
-                    </a>
-                </div>
+                <!--Remove from Wishlist Icon-->
+                    {% if wishlist %}
+                        {% for merch in wishlist %}
+                        <div id="remove-wishlist" class="col-3 text-center mb-3">
+                            <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' merch.id %}" aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                               <i class="fa-solid fa-heart-circle-xmark"></i>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    
+                        <!--Add to Wishlist Icon-->
+                    {% else %}
+                        <div class="col-3 text-center mb-3">
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' merch.id %}" aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                        </div>
+                    {% endif %}
+                        
                 <!--QTY Select-->
                 <div class="col-6 text-center mb-3">
                     <label for="merch-qty">QTY</label>
                     <input id="merch-qty" type="number" value="1" min="1">
                 </div>
+
                 <!--Empty for spacing-->
                 <div class="col-3 text-center mb-3">
                 </div>
                 {% endif %}
+
                 <hr>
+
                 <!--Add to Cart-->
                 <div class="col-12 text-center">
                     <button type="button" data-id="{{ merch.id }}"

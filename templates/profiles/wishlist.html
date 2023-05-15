@@ -11,6 +11,42 @@
             <p>Welcome {{ user.username }}.</p>
         </div>
     </div>
+
+    <!--Display Wishlist Items-->
+    {% if wishlist %}
+    {% for merch in wishlist %}
+    <div class="card mb-3 rounded-0">
+        <div class="row g-0">
+            <div class="col-md-2">
+                <a href="{{ merch.get_absolute_url }}">
+                    <img class="img-fluid d-block p-2" width="300px" src="../../media/{{merch.image}}"
+                        alt="{{ image.image.alt_text }}" /></a>
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <a href="{{ merch.get_absolute_url }}">
+                        <h5 class="card-title">{{ merch.product_name }}</h5>
+                    </a>
+                    <p class="card-text">{{ merch.description }}</p>
+                    <p class="card-text"><small><i class="fa-regular fa-money-bill-1"></i>
+                            <strong>{{ merch.price }}</strong></small></p>
+                    <!--Remove Wishlist Items-->
+                    <a type="button" class="btn btn-outline-dark btn-rounded"
+                        href="{% url 'profiles:update_wishlist' merch.id %}">
+                        <i class="fa-solid fa-heart-circle-xmark"></i> Remove from Wishlist</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!--If Wishlist Empty-->
+    {% else %}
+    <p class="card-text">No products have been added to your wishlist yet</p>
+    <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'store:products' %}">
+        <i class="fas fa-chevron-left"></i> See all products!</a>
+    {% endif %}
+
 </div>
 
 {% endblock %}
