@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.functions import Lower
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -52,6 +53,9 @@ class Merch(models.Model):
     image = models.ImageField(
         upload_to='images/', default='images/placeholder.jpg')
     created = models.DateTimeField(auto_now_add=True)
+    user_wishlist = models.ManyToManyField(
+        User, related_name="user_wishlist",
+        blank="True")
 
     class Meta:
         verbose_name_plural = "Merch"
