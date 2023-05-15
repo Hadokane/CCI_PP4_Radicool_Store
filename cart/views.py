@@ -29,7 +29,10 @@ def cart_add(request):
         cart.add(merch=merch, qty=merch_qty, size=merch_size)
         # Returns total quantity to the cart on the front end.
         cart_qty = cart.__len__()
-        response = JsonResponse({"qty": cart_qty})
+        cart_total = cart.get_total_price()
+        response = JsonResponse({"qty": cart_qty,
+                                 "subtotal": cart_total,
+                                 })
         return response
 
 
@@ -46,9 +49,16 @@ def cart_delete(request):
 
         cart_qty = cart.__len__()
         cart_total = cart.get_total_price()
+        delivery_total = cart.get_delivery_cost()
+        delivery_delta = cart.delivery_delta()
+        grand_total = cart.grand_total()
 
         response = JsonResponse({"qty": cart_qty,
-                                 "subtotal": cart_total})
+                                 "subtotal": cart_total,
+                                 "deliverycost": delivery_total,
+                                 "deliverydelta": delivery_delta,
+                                 "grandtotal": grand_total,
+                                 })
         return response
 
 
@@ -56,7 +66,7 @@ def cart_update(request):
     """
     Updates Items within the cart.
     Gets the id, qty and size. Updates the cart.
-    Calculates the total price.
+    Calculates the subtotal, delivery & grand total.
     """
     cart = Cart(request)
     if request.POST.get("action") == "update":
@@ -73,7 +83,7 @@ def cart_update(request):
         cart_total = cart.get_total_price()  # calc cart total
         delivery_total = cart.get_delivery_cost()  # calc delivery total
         delivery_delta = cart.delivery_delta()  # calc delivery delta
-        grand_total = cart.grand_total()  # calc grand total
+        grand_total = cart_total + delivery_total  # calc grand total
 
         response = JsonResponse({"qty": cart_qty,
                                  "subtotal": cart_total,

@@ -40,6 +40,7 @@
       "intjs",
       "itemprice",
       "itemqty",
+      "itemsize",
       "itemtotal",
       "Merch",
       "merchid",

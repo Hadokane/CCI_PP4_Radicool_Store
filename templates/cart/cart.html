@@ -34,9 +34,9 @@
                 <p>PRICE: <span id="itemprice{{product.id}}">{{ product.price }}</span></p>
                 <!--Show size if present on item-->
                 {% if item.size == "XS" or item.size == "S" or item.size == "M" or item.size == "L" or item.size == "XL" or item.size == "XXL" %}
-                <p>SIZE: <span id="item_size{{product.id}}">{{ item.size }}</span></p>
+                <p>SIZE: <span id="item-size{{product.id}}">{{ item.size }}</span></p>
                 {% endif %}
-                <p>QTY: <span id="item_qty{{product.id}}">{{ item.qty }}</span></p>
+                <p>QTY: <span id="item-qty{{product.id}}">{{ item.qty }}</span></p>
                 <p>TOTAL: <strong><span id="itemtotal{{product.id}}">{{ item.total_price }}</span></strong></p>
 
                 <!--Selections-->
@@ -102,7 +102,7 @@
                 <p class="text-muted"><span id="deliverydelta">*Spend £{{ cart.delivery_context.free_delivery_delta }}
                         more for free delivery!</span></p>
                 {% else %}
-                <p class="text-muted">*You spent over £{{ cart.delivery_context.free_delivery_threshold }}!
+                <p class="text-muted"><span id="deliverydelta">*You spent over £{{ cart.delivery_context.free_delivery_threshold }}!
                     Enjoy your FREE DELIVERY!</span></p>
                 {% endif %}
             </div>
@@ -129,7 +129,6 @@
             url: "{% url 'cart:cart_delete' %}",
             data: {
                 merchid: $(this).data("index"),
-                merchsize: $("#merch-size").val(),
                 csrfmiddlewaretoken: "{{csrf_token}}",
                 action: "delete"
             },
@@ -138,6 +137,9 @@
                 document.getElementById("cart-qty").innerHTML = json.qty
                 document.getElementById("subtotal").innerHTML = json.subtotal
                 document.getElementById("subtotal-nav").innerHTML = json.subtotal
+                document.getElementById('deliverycost').innerHTML = json.deliverycost
+                document.getElementById('grandtotal').innerHTML = json.grandtotal
+                document.getElementById('deliverydelta').innerHTML = json.deliverydelta
             },
             error: function (xhr, errmsg, err) {}
         });
@@ -164,14 +166,14 @@
                 document.getElementById("cart-qty").innerHTML = json.qty
                 document.getElementById("subtotal").innerHTML = json.subtotal
                 document.getElementById("subtotal-nav").innerHTML = json.subtotal
-                document.getElementById('item_qty' + merchid).innerHTML = json.itemqty
+                document.getElementById('item-qty' + merchid).innerHTML = json.itemqty
                 document.getElementById('itemtotal' + merchid).innerHTML = json.itemtotal
                 document.getElementById('deliverycost').innerHTML = json.deliverycost
-                document.getElementById('deliverydelta').innerHTML = json.deliverydelta
                 document.getElementById('grandtotal').innerHTML = json.grandtotal
-                if (('item_size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" ||
+                document.getElementById('deliverydelta').innerHTML = json.deliverydelta
+                if (('item-size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" ||
                     "XXL")
-                    document.getElementById('item_size' + merchid).innerHTML = json.size
+                    document.getElementById('item-size' + merchid).innerHTML = json.size
             },
             error: function (xhr, errmsg, err) {}
         });

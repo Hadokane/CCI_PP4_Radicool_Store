@@ -91,16 +91,17 @@ class Cart():
         """Calculates the delivery delta."""
         total = self.get_total_price()
         delivery_threshold = settings.FREE_DELIVERY_THRESHOLD
+        delivery_delta = delivery_threshold - total
 
         if total < delivery_threshold:
-            delivery_delta = delivery_threshold - total
             free_delivery_delta = str(
                 f"*Spend £{delivery_delta} more for free delivery!")
         else:
             delivery_delta = delivery_threshold - total
             free_delivery_delta = str(
-                f"*You spent over £{delivery_threshold}!"
+                f"*You spent over £{delivery_threshold}! "
                 "Enjoy your FREE DELIVERY!")
+
         return free_delivery_delta
 
     # Get the shipping cost for cart display
@@ -111,6 +112,7 @@ class Cart():
             delivery = Decimal(settings.STANDARD_DELIVERY_COST)
         else:
             delivery = 0
+
         return delivery
 
     # Calculate the grand total for Stripe use
