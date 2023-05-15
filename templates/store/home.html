@@ -489,6 +489,7 @@
             },
             success: function (json) {
                 document.getElementById("cart-qty").innerHTML = json.qty
+                document.getElementById("subtotal-nav").innerHTML = json.subtotal
             },
             error: function (xhr, errmsg, err) {}
         });
