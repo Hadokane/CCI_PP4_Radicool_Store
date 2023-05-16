@@ -1,108 +1,134 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![Radicool Example](docs/images/doc_header.png)
 
-Welcome Hadokane,
+**Style Guide:**
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+![Style Guide](docs/images/style_guide.png)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+I put together a brand style guide to provide a visual representation of the websites core elements.
 
-## Gitpod Reminders
+**Fonts used:**
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+[Quicksand - by Andrew Paglinawan:](https://fonts.google.com/specimen/Quicksand)
 
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+An easy to read "display sans serif" font with rounded corners. Designed to be legible at small sizes and used across nearly 2 million websites according to Googles API data. Used as a readable yet distinct main body font.
 
 ---
 
-Happy coding!
+[Londrina Outline - by Marcelo Magalhães:](https://fonts.google.com/specimen/Londrina+Outline?preview.text=RADICOOL&preview.text_type=custom)
+
+A font designed for use in posters, to be displayed in bold uppercase letters. Used as a reflection of the DIY style event and gig posters that would be seen and matches the culture and audience that RADICOOL seeks to serve. Used for the websites main logo.
+
+---
+
+**Colour Pallette used:**
+
+![Green Sample](docs/images/green.png)
+
+**#21D192 - the main accent colour of the website.**
+
+This green was chosen as it's an energetic, friendly and eye-catching colour. It compliments the websites minimal colour pallette of black and whites by allowing it to have a stronger brand identity.
+
+This is also used to highlight icons and elements when the user hovers over them, providing positive feedback to user interactions.
+
+---
+
+**Red** was implemented very sparingly throughout the website as a means of highlight user interactions further. 
+
+It is used when the user hovers over a "REMOVE FROM" wish list button specifically. The button uses an icon and hover text to indicate it's function to the user.
+ 
+The red was chosen to give the "REMOVE" button further distinction from the "ADD" button, as the two share the same space and functionality.
+
+This improves the users overall experience by providing the icon buttons pleasing UI with a different highlight to reinforce specific user actions.
+
+---
+
+**Black & White** were used to keep the website free from cluttering colour to allow the product imagery to stand out without having to compete with surrounding clashes.
+
+They allow fonts, buttons and elements to remain readable and legible at any size.
+
+They conform to and meet most user expectations, not giving them a reason to dislike the websites overall design or feel dissuaded from making a purchase.
+
+It keeps the overall presentation inviting while allowing the accent green to take center stage across the website's elements.
+
+---
+
+**Brand Logo** 
+
+![Radicool Logo](static/logos/radicool_logo.png)
+
+The logo makes use of **Londrina Outline** for the reasons described above.
+
+It is displayed in white on top of a black paint brush stroke. This is to reinforce the **D.I.Y.** nature of the brand, it's ethos and it's customer base. 
+
+It serves as a link back to the main home/index page of the website, something dictated by user expectations across nearly every website on the internet. 
+
+![Radicool Highlight Logo](docs/images/h_logo.png)
+
+Upon `:hover` the logo changes to match the website's core green. Confirming that this is an interactable element to users.
+
+[Isotropic](https://isotropic.co/tool/hex-color-to-css-filter/) was used to find the CSS filter information. This was used to create the above `:hover` effect.
+
+---
+
+**Favicon** 
+
+![Radicool Favicon](static/favicon/favicon.ico)
+
+The favicon used was the **"Toxic"** icon found on FontAwesome. 
+
+It was edited to use the brand colours of Radicool.
+
+The icon in particular was chosen to represent the **"RAD"** in **Radicool**, being a play on "**RAD**iation".
+
+This would be present on proprietary merchandise that **RADICOOL** would sell directly through it's own website.
+
+This is also utilised as the brands secondary logo & is present in browser tabs to provide a stronger brand identity.
+
+---
+
+**Hero Image**
+
+![Hero Image](docs/images/heroimg.png)
+
+The section image currently in use is from the EP Cover **"D.O.A."** by **"The Oversights".**
+
+They are a **D.I.Y.** band selling through Radicool. As this is a new release it is being used as the websites Hero Image, to further promote the band & provide an up-to-date example of a product for sale on the website.
+
+This creates trust between sellers, the admin & the users looking to support the band, while also providing a visually interesting hero image for users on larger devices.
+
+---
+
+**Section Image**
+
+![Section Image](docs/images/hot_items.png)
+
+Following a similar premise to the user of the Hero Image, the "Hot Items" section is present on the home page.
+
+This is the equivalent of a "Best Seller" or "Promoted collections" list. This is built as a section so that the filter query can be updated by the admin to display a different category/collection/list of items depending on what they are looking to promote at any given time.
+
+To distinguish it from other collections present on the home page it has been given a distinct background. In this case a visually pleasing gradient has been used, including colours that indicate **heat** matching the idea of this particular collection.
+
+This section is built with adaptability in mind, as the background is also easily changeable - through a single CSS line - to match the theme of the collection.
+An image such as the above hero image, a different gradient, block colour or repeating pattern could all be implemented to compliment the theme.
+
+This helps the section to stand out to a user while also increasing sales/click-throughs for both the band/brand.
+
+---
+
+**Featured Item Image**
+
+![Featured Item Image](docs/images/featured_item.png)
+
+This follows the same reasoning and principles as the above two sections. 
+
+The added benefit of a **Featured Item** is that this is the only item directly purchaseable* from the home page. Driving user interactions, wish list additions and sales for a specific item inline with site goals.
+
+*(addable to cart) 
+
+---
+
+**Defensive Design**
+
+Button Highlights - Icon colours being red, use of modals when logging out and deleting for admin users.
+
+Image Placeholder if no Image provided ensuring something will always be present to the user and allow the admin to add products with imagery following.
