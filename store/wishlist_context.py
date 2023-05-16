@@ -7,4 +7,6 @@ def wishlist_context(request):
     Otherwise allauth redirects the user to sign in."""
     if request.user.is_authenticated:
         wishlist = Merch.objects.filter(user_wishlist=request.user)
-        return ({"wishlist": wishlist})
+    else:
+        wishlist = None
+    return ({"wishlist": wishlist})
