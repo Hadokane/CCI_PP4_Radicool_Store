@@ -78,8 +78,7 @@
 
                     <!-- Collections Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-center" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link text-center" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-record-vinyl"></i>
                             <p>Collections <i class="fa-solid fa-caret-down"></i></p>
                         </a>
@@ -95,8 +94,7 @@
 
                     <!-- Categories Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-center" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link text-center" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-tag"></i>
                             <p>Categories <i class="fa-solid fa-caret-down"></i></p>
                         </a>
@@ -111,8 +109,7 @@
 
                     <!-- Accounts Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-center" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link text-center" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa-regular fa-circle-user"></i>
                             <p>Account <i class="fa-solid fa-caret-down"></i></p>
                         </a>
@@ -229,11 +226,11 @@
                     <form method="post" action="{% url 'account_logout' %}">
                         {% csrf_token %}
                         {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                         {% endif %}
                         <button type="submit" class="btn btn-outline-dark btn-rounded mb-3">
                             <i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
-                      </form>
+                    </form>
 
                 </div>
             </div>
@@ -308,14 +305,16 @@
                             {% endif %}
                             <p>
                                 <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'profiles:profile' %}">
-                                <i class="fa-solid fa-user"></i> Profile</a>
+                                    <i class="fa-solid fa-user"></i> Profile</a>
                             </p>
                             {% else %}
                             <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_signup' %}">Sign Up</a>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_signup' %}">
+                                    <i class="fa-solid fa-handshake-angle"></i> Sign Up</a>
                             </p>
                             <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_login' %}">Login</a>
+                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_login' %}">
+                                    <i class="fa-solid fa-right-to-bracket"></i> Login</a>
                             </p>
                             {% endif %}
                         </p>
