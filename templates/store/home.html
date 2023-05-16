@@ -99,6 +99,17 @@
                         {% endif %}
                         {% endif %}
 
+                        {% if request.user.is_authenticated %}
+                        {% else %}
+                        <p>HELLO :D</p>
+                        <div class="col-3 text-center mb-3">
+                            <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+
                         <p class="card-text align-self-center mt-auto">
                             <a href="{{ m.get_absolute_url }}">
                                 <strong>
@@ -248,6 +259,17 @@
                             </a>
                         </div>
                         {% endif %}
+                        {% endif %}
+
+                        {% if request.user.is_authenticated %}
+                        {% else %}
+                        <p>HELLO :D</p>
+                        <div class="col-3 text-center mb-3">
+                            <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                        </div>
                         {% endif %}
 
                         <p class="card-text align-self-center mt-auto">
@@ -406,6 +428,17 @@
                             {% endif %}
                             {% endif %}
 
+                            {% if request.user.is_authenticated %}
+                            {% else %}
+                            <p>HELLO :D</p>
+                            <div class="col-3 text-center mb-3">
+                                <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-plus"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+
                             <!--QTY Select-->
                             <div class="col-6 text-center mb-3">
                                 <label for="merch-qty">QTY</label>
@@ -448,6 +481,17 @@
                                 </a>
                             </div>
                             {% endif %}
+                            {% endif %}
+
+                            {% if request.user.is_authenticated %}
+                            {% else %}
+                            <p>HELLO :D</p>
+                            <div class="col-3 text-center mb-3">
+                                <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-plus"></i>
+                                </a>
+                            </div>
                             {% endif %}
 
                             <!--QTY Select-->

@@ -19,8 +19,15 @@ def collections(request):
 # Show a selection of Merchandise. Acts as Site Index/Homepage.
 def home(request):
     """A view to act as the sites homepage"""
+
+    if request.user.is_authenticated:
+        wishlist = Merch.objects.filter(user_wishlist=request.user)
+    else:
+        wishlist = None
+
     return render(request, "store/home.html",
-                  {"merch": Merch.objects.filter(hot_item=True)})
+                  {"merch": Merch.objects.filter(hot_item=True),
+                   "wishlist": wishlist})
 
 
 # Show all Merchandise in the store.
@@ -30,6 +37,12 @@ def all_products(request):
     """
 
     merch = Merch.objects.all()
+
+    if request.user.is_authenticated:
+        wishlist = Merch.objects.filter(user_wishlist=request.user)
+    else:
+        wishlist = None
+
     sort = None
     direction = None
     current_sorting = None
@@ -59,7 +72,8 @@ def all_products(request):
 
     return render(request, "store/products.html",
                   {"merch":  merch,
-                   "current_sorting": current_sorting})
+                   "current_sorting": current_sorting,
+                   "wishlist": wishlist})
 
 
 # Search for specific Merchandise within the store.
@@ -82,20 +96,33 @@ def merch_search(request):
                 product_name__icontains=q) | Merch.objects.filter(
                     description__icontains=q)
 
+            if request.user.is_authenticated:
+                wishlist = Merch.objects.filter(user_wishlist=request.user)
+            else:
+                wishlist = None
+
     return render(request, "store/search.html", {
         "form": form,
         "results": results,
-        "q": q})
+        "q": q,
+        "wishlist": wishlist})
 
 
 # Show specific Merch info, if in_stock.
 def merch_info(request, slug):
     """A view shown when an individual piece of merchandise is selected."""
     merch = get_object_or_404(Merch, slug=slug, in_stock=True)
+
+    if request.user.is_authenticated:
+        wishlist = Merch.objects.filter(user_wishlist=request.user)
+    else:
+        wishlist = None
+
     return render(
         request,
         "store/merch/info.html",
         {"merch": merch,
+         "wishlist": wishlist
          })
 
 
@@ -104,8 +131,15 @@ def category_info(request, category_slug):
     """A view shown when an individual category is selected."""
     category = get_object_or_404(Category, slug=category_slug)
     merch = Merch.objects.filter(category=category)
+
+    if request.user.is_authenticated:
+        wishlist = Merch.objects.filter(user_wishlist=request.user)
+    else:
+        wishlist = None
+
     return render(request, "store/merch/category.html",
-                  {"category": category, "merch": merch})
+                  {"category": category, "merch": merch,
+                   "wishlist": wishlist})
 
 
 # Show specific Collection of Merch.
@@ -113,8 +147,15 @@ def collection_info(request, collection_slug):
     """A view shown when an individual collection is selected."""
     collection = get_object_or_404(Collection, slug=collection_slug)
     merch = Merch.objects.filter(collection=collection)
+
+    if request.user.is_authenticated:
+        wishlist = Merch.objects.filter(user_wishlist=request.user)
+    else:
+        wishlist = None
+
     return render(request, "store/merch/collection.html",
-                  {"collection": collection, "merch": merch})
+                  {"collection": collection, "merch": merch, 
+                   "wishlist": wishlist})
 
 
 # Allow superuser to add merch

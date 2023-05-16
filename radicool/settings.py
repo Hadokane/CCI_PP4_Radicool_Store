@@ -83,7 +83,6 @@ TEMPLATES = [
                 'store.views.categories',  # allows all pages to see views
                 'store.views.collections',  # useful for navbar display
                 'cart.context_processors.cart',  # cart processor
-                'store.wishlist_context.wishlist_context',  # wishlist
             ],
             'builtins':[
                 'crispy_forms.templatetags.crispy_forms_tags',
