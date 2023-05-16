@@ -15,7 +15,10 @@ class MerchForm(forms.ModelForm):
 
     class Meta:
         model = Merch
-        fields = '__all__'
+        fields = ('product_name', 'slug',
+                  'description', 'price', 'in_stock',
+                  'hot_item', 'category', 'collection',
+                  'image',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
