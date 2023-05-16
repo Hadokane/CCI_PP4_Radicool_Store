@@ -117,16 +117,19 @@
                     <button type="button" data-id="{{ merch.id }}"
                         class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-plus"></i> Add to cart</button>
-                    {% if request.user.is_superuser %}
-                    <hr>
-                    <p><a href="{% url 'store:edit_merch' merch.id %}"><i class="fa-solid fa-pen-to-square"></i>
-                            Edit the Product</a></p>
 
-                    <!--Calls safety modal - Delete function-->
-                    <p>
-                        <a class="text-danger text-center" type="button" data-toggle="modal" data-target="#deleteModal">
-                            <i class="fa-solid fa-trash"></i> Delete the Product</a>
-                    </p>
+                    {% if request.user.is_superuser %}
+                    <div class="card-footer">
+                        <p><a href="{% url 'store:edit_merch' merch.id %}"><i class="fa-solid fa-pen-to-square"></i>
+                                Edit the Product</a></p>
+
+                        <!--Calls safety modal - Delete function-->
+                        <p>
+                            <a class="delete-text text-danger text-center" type="button" data-toggle="modal"
+                                data-target="#deleteModal">
+                                <i class="fa-solid fa-trash"></i> Delete the Product</a>
+                        </p>
+                    </div>
                     {% endif %}
                 </div>
             </div>
@@ -140,7 +143,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Logout</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -155,7 +158,8 @@
                 </a>
 
                 <!-- Delete Button-->
-                <a class="btn btn-outline-dark btn-rounded mb-3" href="{% url 'store:delete_merch' merch.id %}">
+                <a class="delete-btn btn btn-outline-dark btn-rounded mb-3"
+                    href="{% url 'store:delete_merch' merch.id %}">
                     <i class="fa-solid fa-trash"></i> Delete the Product
                 </a>
             </div>

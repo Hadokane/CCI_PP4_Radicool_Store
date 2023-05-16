@@ -21,20 +21,6 @@ body, a{
   font-size: 8em;
 }
 
-/* Nav Link Hover */
-.dropdown-menu a:focus{
-  background-color: #21D192;
-}
-
-/* Card Hover */
-.card:hover{
-  scale: 103%;
-}
-
-.card a:hover i{
-  color: #21D192;
-}
-
 /* Article Background */
 #hot-items{
   background-image: linear-gradient(to left,pink,orange);
@@ -48,6 +34,7 @@ body, a{
   border-color: #21D192;
 }
 
+/* Form Colour */
 #merch-qty:hover,
 .form-control-search:hover,
 .form-control-search:focus,
@@ -79,9 +66,6 @@ body, a{
   color:  #21D192;
 }
 
-.modal-footer button:hover i{
-  color:  #21D192;
-}
 
 /* Site banner and Footer Banner */
 #notification-banner,
@@ -128,19 +112,6 @@ body, a{
   height: 2px;
 }
 
-/* Hover effect for buttons and links */
-a:hover,
-button:hover{
-  font-weight: 800;
-  color:#21D192;
-  text-decoration:solid;
-}
-
-/* Remove from wishlist icon hover */
-.remove-wishlist a:hover i{
-  color:red  
-}
-
 /* I class elements */
 i {
   font-weight: 600;
@@ -150,12 +121,34 @@ i {
 
 /* When hovering, make the i class green */
 .update-cart:hover i,
-.delete-from-cart:hover i,
 button:hover i,
 a:hover i {
   font-weight: 800;
   color:#00cc99;
   text-decoration:solid;
+}
+
+/* Hover effect for buttons and links */
+a:hover,
+button:hover{
+  font-weight: 800;
+  color:#21D192;
+  text-decoration:solid;
+}
+
+/* Nav Link Hover */
+.dropdown-item:focus,
+.dropdown-menu a:focus{
+  background-color: #21D192;
+}
+
+/* Card Hover */
+.card:hover{
+  scale: 103%;
+}
+
+.card a:hover i{
+  color: #21D192;
 }
 
 /* Footer Social Links */
@@ -166,6 +159,16 @@ a:hover i {
 .social-links a i:hover{
   font-weight: 800;
   color:black;
+}
+
+/* Remove from wishlist icon hover */
+a .delete-text:hover i,
+.card-footer .delete-text:hover i,
+.modal-footer .cancel-btn:hover i,
+.modal-footer .delete-btn:hover i,
+.delete-from-cart:hover i,
+.remove-wishlist a:hover i{
+  color:red  
 }
 
 /* Jumbotron Hero Image */
