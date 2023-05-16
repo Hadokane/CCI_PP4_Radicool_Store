@@ -1,4 +1,4 @@
-/* Import Londria (logo) & Quicksand (body) fonts */
+/* Import Londrina (logo) & Quicksand (body) fonts */
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* Set Sites Default Font */
@@ -167,6 +167,7 @@ a .delete-text:hover i,
 .modal-footer .cancel-btn:hover i,
 .modal-footer .delete-btn:hover i,
 .delete-from-cart:hover i,
+.card-body .remove-wishlist:hover i,
 .remove-wishlist a:hover i{
   color:red  
 }

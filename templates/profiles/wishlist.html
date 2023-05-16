@@ -31,7 +31,7 @@
                     <p class="card-text"><small><i class="fa-regular fa-money-bill-1"></i>
                             <strong>{{ merch.price }}</strong></small></p>
                     <!--Remove Wishlist Items-->
-                    <a type="button" class="btn btn-outline-dark btn-rounded"
+                    <a type="button" class="remove-wishlist btn btn-outline-dark btn-rounded"
                         href="{% url 'profiles:update_wishlist' merch.id %}">
                         <i class="fa-solid fa-heart-circle-xmark"></i> Remove from Wishlist</a>
                 </div>

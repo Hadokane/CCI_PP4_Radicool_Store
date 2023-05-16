@@ -85,9 +85,10 @@
                                 Edit the Product
                             </a>
                         </p>
-                        <!--Add a safety model on click then have that call the delete function-->
+                        <!--Calls safety modal - Delete function-->
                         <p>
-                            <a class="delete-text text-danger" href="{% url 'store:delete_merch' m.id %}">
+                            <a class="delete-text text-danger text-center" type="button" data-toggle="modal"
+                                data-target="#deleteModal{{ m.id }}">
                                 <i class="fa-solid fa-trash"></i> Delete the Product</a>
                         </p>
                     </div>
@@ -139,14 +140,14 @@
                             </a>
 
                             <!-- Delete Button-->
-                            <a class="delete-btn btn btn-outline-dark btn-rounded mb-3" href="{% url 'store:delete_merch' m.id %}">
+                            <a class="delete-btn btn btn-outline-dark btn-rounded mb-3"
+                                href="{% url 'store:delete_merch' m.id %}">
                                 <i class="fa-solid fa-trash"></i> Delete the Product
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-
             {% endfor %}
         </div>
     </div>
