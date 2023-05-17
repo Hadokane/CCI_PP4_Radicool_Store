@@ -1,8 +1,29 @@
+<div align="center">
+
 ![Radicool Example](docs/images/doc_header.png)
+
+**RADICOOL - Home to your favourite D.I.Y. Bands & Brands**
+
+</div>
+
+
+---
+
+**USER GOALS**
+
+![User Goals](docs/schema/user_goals.png)
+
+---
+
+**SCHEMA**
+
+![Schema](docs/schema/rad_schema.png)
+
+---
 
 **Style Guide:**
 
-![Style Guide](docs/images/style_guide.png)
+![Style Guide](docs/schema/style_guide.png)
 
 I put together a brand style guide to provide a visual representation of the websites core elements.
 
@@ -132,3 +153,53 @@ The added benefit of a **Featured Item** is that this is the only item directly 
 Button Highlights - Icon colours being red, use of modals when logging out and deleting for admin users.
 
 Image Placeholder if no Image provided ensuring something will always be present to the user and allow the admin to add products with imagery following.
+
+Creation of the "Brand" user group. Edit/Delete buttons & a limited version of the Admin section (inline with user goals) are available to users with this assigned group. Allowing Brands and Bands to have their own accounts to add/remove merchandise, categories and collections, while also being able to view Order history.
+
+Admin section full view only available to SuperUsers.
+
+If a new user clicks a Wish List button they are redirected to sign-up/sign-in before being able to utilise the Wish List functionality of the site. Encouraging users to create an account.
+
+---
+
+**Interactive Design**
+
+![account buttons](docs/images/buttons/acc_btn.png)
+
+![account buttons](docs/images/buttons/arrange_btn.png)
+
+![account buttons](docs/images/buttons/nav.png)
+
+![account buttons](docs/images/buttons/nav_h1.png)
+
+![account buttons](docs/images/buttons/nav_h2.png)
+
+![account buttons](docs/images/buttons/search.png)
+
+![account buttons](docs/images/buttons/search2.png)
+
+![account buttons](docs/images/buttons/wl_btn.png)
+
+![account buttons](docs/images/buttons/wl_a_btn.png)
+
+![account buttons](docs/images/buttons/wl_r_btn.png)
+
+---
+
+**Future Goals**
+
+Implement deeper user groups limiting specific Brands to only be able to access their own relevant categories and collections to upload merchandise within. Protecting the rest of the website from interaction by unintended Brand users. Beyond the scope of the current project and not necessary for an initial launch where things will be small scale and directly under the control/supervision of the site Admin.
+
+Add a subscription page to view live events from bands within a portal on the site, charging a monthly fee for access. Would be a good additional service to be offered but is again beyond the scope and implementation of the initial project.
+
+Further payment options such as Paypal or Google Pay, not required by the assignment and would overcomplicate the checkout for the user while drawing attention away from the assignment-required Stripe payment section. 
+
+
+**LINKS**
+
+https://django-allauth.readthedocs.io/en/latest/views.html - Allauth Documentation
+https://fontawesome.com/ - FontAwesome for Icons
+https://learn.codeinstitute.net/ - For course videos & assignment
+https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13 - For guidance on Conventional Commits
+https://dbdiagram.io/ - DB Schema Tool
+https://docs.google.com/ - For user goals tables
