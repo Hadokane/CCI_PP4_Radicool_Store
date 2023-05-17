@@ -7,7 +7,7 @@
 */
 
 // Get Stripe Keys
-var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
+var stripePublicKey = 'pk_test_51N2tqaJBncpFz3JEf8j2jpgwSCe7Y36AB196lDJFNi90ewcVMvhtltqiD6pF8xuMpD44VTahBu5lGUXZGU8EhAcw00rgFnAqNO';
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 
 // Set up Elements for checkout form
