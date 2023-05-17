@@ -27,7 +27,8 @@ def home(request):
         wishlist = None
 
     return render(request, "store/home.html",
-                  {"merch": Merch.objects.filter(hot_item=True),
+                  {"hotmerch": Merch.objects.filter(hot_item=True),
+                   "merch": Merch.objects.all(),
                    "wishlist": wishlist})
 
 
