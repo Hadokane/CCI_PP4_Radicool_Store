@@ -121,7 +121,8 @@
                     </div>
 
                     <!--Card Footer Buttons-->
-                    {% if request.user.is_superuser %}
+                    {% for group in request.user.groups.all %}
+                            {% if group.name == 'Brand' %}
                     <div class="card-footer">
                         <p>
                             <a href="{% url 'store:edit_merch' m.id %}">
@@ -137,6 +138,7 @@
                         </p>
                     </div>
                     {% endif %}
+                    {% endfor %}
                 </div>
             </div>
 
@@ -283,7 +285,8 @@
                     </div>
 
                     <!--Card Footer Buttons-->
-                    {% if request.user.is_superuser %}
+                    {% for group in request.user.groups.all %}
+                    {% if group.name == 'Brand' %}
                     <div class="card-footer">
                         <p>
                             <a href="{% url 'store:edit_merch' m.id %}">
@@ -299,6 +302,7 @@
                         </p>
                     </div>
                     {% endif %}
+                    {% endfor %}
                 </div>
             </div>
 
@@ -510,7 +514,8 @@
                                     class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
                                     <i class="fa-solid fa-plus"></i> Add to cart</button>
                                 <div class="card-footer">
-                                    {% if request.user.is_superuser %}
+                                    {% for group in request.user.groups.all %}
+                                    {% if group.name == 'Brand' %}
                                     <p><a href="{% url 'store:edit_merch' m.id %}"><i
                                                 class="fa-solid fa-pen-to-square"></i>
                                             Edit the Product</a></p>
@@ -522,6 +527,7 @@
                                     </p>
                                 </div>
                                 {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

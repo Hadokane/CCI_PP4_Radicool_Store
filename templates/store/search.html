@@ -98,7 +98,8 @@
                     </div>
 
                     <!--Card Footer Buttons-->
-                    {% if request.user.is_superuser %}
+                    {% for group in request.user.groups.all %}
+                    {% if group.name == 'Brand' %}
                     <div class="card-footer">
                         <p>
                             <a href="{% url 'store:edit_merch' post.id %}">
@@ -116,6 +117,7 @@
 
                     </div>
                     {% endif %}
+                    {% endfor %}
                 </div>
             </div>
 

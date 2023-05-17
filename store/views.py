@@ -1,5 +1,6 @@
 from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Category, Collection, Merch
 from .forms import MerchSearchForm, MerchForm
@@ -154,15 +155,17 @@ def collection_info(request, collection_slug):
         wishlist = None
 
     return render(request, "store/merch/collection.html",
-                  {"collection": collection, "merch": merch, 
+                  {"collection": collection, "merch": merch,
                    "wishlist": wishlist})
 
 
-# Allow superuser to add merch
+# Allows "BRAND" users to add merch
 @login_required
 def add_merch(request):
     """ Add a product to the store """
-    if not request.user.is_superuser:
+
+    if not User.objects.filter(
+         pk=request.user.id, groups__name='Brand').exists():
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('store:home'))
 
@@ -187,11 +190,12 @@ def add_merch(request):
     return render(request, template, context)
 
 
-# Allow superuser to edit products
+# Allows "BRAND" users to edit products
 @login_required
 def edit_merch(request, merch_id):
     """ Edit a product in the store """
-    if not request.user.is_superuser:
+    if not User.objects.filter(
+         pk=request.user.id, groups__name='Brand').exists():
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('store:home'))
 
@@ -219,11 +223,12 @@ def edit_merch(request, merch_id):
     return render(request, template, context)
 
 
-# Allow superuser to delete products
+# Allows "BRAND" users to delete products
 @login_required
 def delete_merch(request, merch_id):
     """ Delete a product from the store """
-    if not request.user.is_superuser:
+    if not User.objects.filter(
+         pk=request.user.id, groups__name='Brand').exists():
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('store:home'))
 
