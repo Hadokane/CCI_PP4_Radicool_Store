@@ -21,7 +21,8 @@
                     <!--Card Header Image-->
                     <a href="{{ m.get_absolute_url }}">
                         <div class="overflow-auto">
-                            <img class="card-img-top" width="100%" height="100%" src="{{ m.image.url }}" alt="{{ m.product_name }}">
+                            <img class="card-img-top" width="100%" height="100%" src="{{ m.image.url }}"
+                                alt="{{ m.product_name }}">
                         </div>
                     </a>
 
@@ -45,38 +46,40 @@
                                 {{ m.collection }}</a>
                         </p>
                         {% endif %}
+
                         <!--Wishlist-->
-                        <!--Remove from Wishlist Icon-->
-                        {% if wishlist %}
-                        {% if m in wishlist %}
-                        <div class="remove-wishlist m-3 align-self-center mt-auto">
+                        <div class="m-3 align-self-center mt-auto">
+                            {% if request.user.is_authenticated %}
+                            {% if wishlist %}
+                            {% if m in wishlist %}
+                            <!--Remove from Wishlist Icon-->
                             <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
-                                aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                aria-label="remove from wishlist"
+                                class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-xmark"></i>
                             </a>
-                        </div>
-
-                        <!--Add to Wishlist Icon-->
-                        {% else %}
-                        <div class="m-3 align-self-center mt-auto">
+                            {% else %}
+                            <!--Add to Wishlist Icon-->
                             <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
                                 aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-plus"></i>
                             </a>
-                        </div>
-                        {% endif %}
-                        {% endif %}
-
-                        {% if request.user.is_authenticated %}
-                        {% else %}
-                        <p>HELLO :D</p>
-                        <div class="col-3 text-center mb-3">
+                            {% endif %}
+                            {% else %}
+                            <!--Otherwise if no Wishlist show this-->
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                            {% endif %}
+                            {% else %}
+                            <!--If not authenticated-->
                             <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
                                 aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-plus"></i>
                             </a>
+                            {% endif %}
                         </div>
-                        {% endif %}
 
                         <p class="card-text align-self-center mt-auto">
                             <a href="{{ m.get_absolute_url }}">
@@ -154,7 +157,8 @@
                             </a>
 
                             <!-- Delete Button-->
-                            <a class="delete-btn btn btn-outline-dark btn-rounded mb-3" href="{% url 'store:delete_merch' m.id %}">
+                            <a class="delete-btn btn btn-outline-dark btn-rounded mb-3"
+                                href="{% url 'store:delete_merch' m.id %}">
                                 <i class="fa-solid fa-trash"></i> Delete the Product
                             </a>
                         </div>

@@ -35,37 +35,38 @@
                 {% if merch.category.cat_name == "Clothing" %}
 
                 <!--Wishlist-->
-                <!--Remove from Wishlist Icon-->
-                {% if wishlist %}
-                {% if merch in wishlist %}
-                <div class="remove-wishlist col-3 text-center mb-3">
+                <div class="col-3 text-center mb-3">
+                    {% if request.user.is_authenticated %}
+                    {% if wishlist %}
+                    {% if m in wishlist %}
+                    <!--Remove from Wishlist Icon-->
                     <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' merch.id %}"
-                        aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                        aria-label="remove from wishlist"
+                        class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-heart-circle-xmark"></i>
                     </a>
-                </div>
-
-                <!--Add to Wishlist Icon-->
-                {% else %}
-                <div class="col-3 text-center mb-3">
+                    {% else %}
+                    <!--Add to Wishlist Icon-->
                     <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' merch.id %}"
                         aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-heart-circle-plus"></i>
                     </a>
-                </div>
-                {% endif %}
-                {% endif %}
-
-                {% if request.user.is_authenticated %}
-                {% else %}
-                <p>HELLO :D</p>
-                <div class="col-3 text-center mb-3">
-                    <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                    {% endif %}
+                    {% else %}
+                    <!--Otherwise if no Wishlist show this-->
+                    <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' merch.id %}"
                         aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-heart-circle-plus"></i>
                     </a>
+                    {% endif %}
+                    {% else %}
+                    <!--If not authenticated-->
+                    <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}" aria-label="add to wishlist"
+                        class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                        <i class="fa-solid fa-heart-circle-plus"></i>
+                    </a>
+                    {% endif %}
                 </div>
-                {% endif %}
 
                 <!--QTY Select-->
                 <div class="col-6 text-center mb-3">
@@ -89,37 +90,38 @@
                 <!--If No Size-->
 
                 <!--Wishlist-->
-                <!--Remove from Wishlist Icon-->
-                {% if wishlist %}
-                {% if merch in wishlist %}
-                <div class="remove-wishlist col-3 text-center mb-3">
+                <div class="col-3 text-center mb-3">
+                    {% if request.user.is_authenticated %}
+                    {% if wishlist %}
+                    {% if m in wishlist %}
+                    <!--Remove from Wishlist Icon-->
                     <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' merch.id %}"
-                        aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                        aria-label="remove from wishlist"
+                        class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-heart-circle-xmark"></i>
                     </a>
-                </div>
-
-                <!--Add to Wishlist Icon-->
-                {% else %}
-                <div class="col-3 text-center mb-3">
+                    {% else %}
+                    <!--Add to Wishlist Icon-->
                     <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' merch.id %}"
                         aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-heart-circle-plus"></i>
                     </a>
-                </div>
-                {% endif %}
-                {% endif %}
-
-                {% if request.user.is_authenticated %}
-                {% else %}
-                <p>HELLO :D</p>
-                <div class="col-3 text-center mb-3">
-                    <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                    {% endif %}
+                    {% else %}
+                    <!--Otherwise if no Wishlist show this-->
+                    <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' merch.id %}"
                         aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-heart-circle-plus"></i>
                     </a>
+                    {% endif %}
+                    {% else %}
+                    <!--If not authenticated-->
+                    <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}" aria-label="add to wishlist"
+                        class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                        <i class="fa-solid fa-heart-circle-plus"></i>
+                    </a>
+                    {% endif %}
                 </div>
-                {% endif %}
 
                 <!--QTY Select-->
                 <div class="col-6 text-center mb-3">

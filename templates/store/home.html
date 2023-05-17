@@ -53,7 +53,8 @@
                     <!--Card Header Image-->
                     <a href="{{ m.get_absolute_url }}">
                         <div class="overflow-auto">
-                            <img class="card-img-top" width="100%" height="100%" src="{{ m.image.url }}" alt="{{ m.product_name }}">
+                            <img class="card-img-top" width="100%" height="100%" src="{{ m.image.url }}"
+                                alt="{{ m.product_name }}">
                         </div>
                     </a>
 
@@ -77,38 +78,41 @@
                                 {{ m.collection }}</a>
                         </p>
                         {% endif %}
+
                         <!--Wishlist-->
-                        <!--Remove from Wishlist Icon-->
-                        {% if wishlist %}
-                        {% if m in wishlist %}
-                        <div class="remove-wishlist m-3 align-self-center mt-auto">
+                        <div class="m-3 align-self-center mt-auto">
+                            {% if request.user.is_authenticated %}
+                            {% if wishlist %}
+                            {% if m in wishlist %}
+                            <!--Remove from Wishlist Icon-->
                             <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
-                                aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                aria-label="remove from wishlist"
+                                class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-xmark"></i>
                             </a>
-                        </div>
-
-                        <!--Add to Wishlist Icon-->
-                        {% else %}
-                        <div class="m-3 align-self-center mt-auto">
+                            {% else %}
+                            <!--Add to Wishlist Icon-->
                             <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
                                 aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-plus"></i>
                             </a>
-                        </div>
-                        {% endif %}
-                        {% endif %}
-
-                        {% if request.user.is_authenticated %}
-                        {% else %}
-                        <p>HELLO :D</p>
-                        <div class="col-3 text-center mb-3">
+                            {% endif %}
+                            {% else %}
+                            <!--Otherwise if no Wishlist show this-->
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                            {% endif %}
+                            {% else %}
+                            <!--If not authenticated-->
                             <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
                                 aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-plus"></i>
                             </a>
+                            {% endif %}
                         </div>
-                        {% endif %}
+
 
                         <p class="card-text align-self-center mt-auto">
                             <a href="{{ m.get_absolute_url }}">
@@ -118,11 +122,12 @@
                                 </strong>
                             </a>
                         </p>
+
                     </div>
 
                     <!--Card Footer Buttons-->
                     {% for group in request.user.groups.all %}
-                            {% if group.name == 'Brand' %}
+                    {% if group.name == 'Brand' %}
                     <div class="card-footer">
                         <p>
                             <a href="{% url 'store:edit_merch' m.id %}">
@@ -217,7 +222,8 @@
                     <!--Card Header Image-->
                     <a href="{{ m.get_absolute_url }}">
                         <div class="overflow-auto">
-                            <img class="card-img-top" width="100%" height="100%" src="{{ m.image.url }}" alt="{{ m.product_name }}">
+                            <img class="card-img-top" width="100%" height="100%" src="{{ m.image.url }}"
+                                alt="{{ m.product_name }}">
                         </div>
                     </a>
 
@@ -241,38 +247,41 @@
                                 {{ m.collection }}</a>
                         </p>
                         {% endif %}
+
                         <!--Wishlist-->
-                        <!--Remove from Wishlist Icon-->
-                        {% if wishlist %}
-                        {% if m in wishlist %}
-                        <div class="remove-wishlist m-3 align-self-center mt-auto">
+                        <div class="m-3 align-self-center mt-auto">
+                            {% if request.user.is_authenticated %}
+                            {% if wishlist %}
+                            {% if m in wishlist %}
+                            <!--Remove from Wishlist Icon-->
                             <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
-                                aria-label="remove from wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                aria-label="remove from wishlist"
+                                class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-xmark"></i>
                             </a>
-                        </div>
-
-                        <!--Add to Wishlist Icon-->
-                        {% else %}
-                        <div class="m-3 align-self-center mt-auto">
+                            {% else %}
+                            <!--Add to Wishlist Icon-->
                             <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
                                 aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-plus"></i>
                             </a>
-                        </div>
-                        {% endif %}
-                        {% endif %}
-
-                        {% if request.user.is_authenticated %}
-                        {% else %}
-                        <p>HELLO :D</p>
-                        <div class="col-3 text-center mb-3">
+                            {% endif %}
+                            {% else %}
+                            <!--Otherwise if no Wishlist show this-->
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                            {% endif %}
+                            {% else %}
+                            <!--If not authenticated-->
                             <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
                                 aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                                 <i class="fa-solid fa-heart-circle-plus"></i>
                             </a>
+                            {% endif %}
                         </div>
-                        {% endif %}
+
 
                         <p class="card-text align-self-center mt-auto">
                             <a href="{{ m.get_absolute_url }}">
@@ -282,6 +291,7 @@
                                 </strong>
                             </a>
                         </p>
+
                     </div>
 
                     <!--Card Footer Buttons-->
@@ -410,165 +420,176 @@
                             {% if m.category.cat_name == "Clothing" %}
 
                             <!--Wishlist-->
-                            <!--Remove from Wishlist Icon-->
-                            {% if wishlist %}
-                            {% if m in wishlist %}
-                            <div class="remove-wishlist col-3 text-center mb-3">
+                            <div class="col-3 text-center mb-3">
+                                {% if request.user.is_authenticated %}
+                                {% if wishlist %}
+                                {% if m in wishlist %}
+                                <!--Remove from Wishlist Icon-->
                                 <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
                                     aria-label="remove from wishlist"
-                                    class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
                                     <i class="fa-solid fa-heart-circle-xmark"></i>
                                 </a>
-                            </div>
-
-                            <!--Add to Wishlist Icon-->
-                            {% else %}
-                            <div class="col-3 text-center mb-3">
+                                {% else %}
+                                <!--Add to Wishlist Icon-->
                                 <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
                                     aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </a>
-                            </div>
-                            {% endif %}
-                            {% endif %}
-
-                            {% if request.user.is_authenticated %}
-                            {% else %}
-                            <p>HELLO :D</p>
-                            <div class="col-3 text-center mb-3">
-                                <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
-                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </a>
-                            </div>
-                            {% endif %}
-
-                            <!--QTY Select-->
-                            <div class="col-6 text-center mb-3">
-                                <label for="merch-qty">QTY</label>
-                                <input id="merch-qty" type="number" value="1" min="1">
-                            </div>
-                            <!--Size Select-->
-                            <div class="col-3 text-center mb-3">
-                                <label for="merch-size">SIZE</label>
-                                <select id="merch-size">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                </select>
-                            </div>
-                            {% else %}
-
-                            <!--If No Size-->
-
-                            <!--Wishlist-->
-                            <!--Remove from Wishlist Icon-->
-                            {% if wishlist %}
-                            {% if m in wishlist %}
-                            <div class="remove-wishlist col-3 text-center mb-3">
-                                <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
-                                    aria-label="remove from wishlist"
-                                    class="btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                    <i class="fa-solid fa-heart-circle-xmark"></i>
-                                </a>
-                            </div>
-
-                            <!--Add to Wishlist Icon-->
-                            {% else %}
-                            <div class="col-3 text-center mb-3">
-                                <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
-                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </a>
-                            </div>
-                            {% endif %}
-                            {% endif %}
-
-                            {% if request.user.is_authenticated %}
-                            {% else %}
-                            <p>HELLO :D</p>
-                            <div class="col-3 text-center mb-3">
-                                <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
-                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </a>
-                            </div>
-                            {% endif %}
-
-                            <!--QTY Select-->
-                            <div class="col-6 text-center mb-3">
-                                <label for="merch-qty">QTY</label>
-                                <input id="merch-qty" type="number" value="1" min="1">
-                            </div>
-
-                            <!--Empty for spacing-->
-                            <div class="col-3 text-center mb-3">
-                            </div>
-                            {% endif %}
-                            <!--Add to Cart-->
-                            <div class="col-12 text-center">
-                                <button type="button" data-id="{{ m.id }}"
-                                    class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                    <i class="fa-solid fa-plus"></i> Add to cart</button>
-                                <div class="card-footer">
-                                    {% for group in request.user.groups.all %}
-                                    {% if group.name == 'Brand' %}
-                                    <p><a href="{% url 'store:edit_merch' m.id %}"><i
-                                                class="fa-solid fa-pen-to-square"></i>
-                                            Edit the Product</a></p>
-                                    <!--Calls safety modal - Delete function-->
-                                    <p>
-                                        <a class="delete-text text-danger text-center" type="button" data-toggle="modal"
-                                            data-target="#deleteModal{{ m.id }}">
-                                            <i class="fa-solid fa-trash"></i> Delete the Product</a>
-                                    </p>
-                                </div>
                                 {% endif %}
-                                {% endfor %}
+                                {% else %}
+                                <!--Otherwise if no Wishlist show this-->
+                                <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-plus"></i>
+                                </a>
+                                {% endif %}
+                                {% else %}
+                                <!--If not authenticated-->
+                                <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                                    aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                    <i class="fa-solid fa-heart-circle-plus"></i>
+                                </a>
+                                {% endif %}
                             </div>
+
+
+                            <p class="card-text align-self-center mt-auto">
+                                <a href="{{ m.get_absolute_url }}">
+                                    <strong>
+                                        <i class="fa-regular fa-money-bill-1"></i>
+                                        £{{ m.price }}
+                                    </strong>
+                                </a>
+                            </p>
+
                         </div>
+
+                        <!--QTY Select-->
+                        <div class="col-6 text-center mb-3">
+                            <label for="merch-qty">QTY</label>
+                            <input id="merch-qty" type="number" value="1" min="1">
+                        </div>
+                        <!--Size Select-->
+                        <div class="col-3 text-center mb-3">
+                            <label for="merch-size">SIZE</label>
+                            <select id="merch-size">
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </div>
+                        {% else %}
+
+                        <!--If No Size-->
+
+                        <!--Wishlist-->
+                        <div class="col-3 text-center mb-3">
+                            {% if request.user.is_authenticated %}
+                            {% if wishlist %}
+                            {% if m in wishlist %}
+                            <!--Remove from Wishlist Icon-->
+                            <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="remove from wishlist"
+                                class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-xmark"></i>
+                            </a>
+                            {% else %}
+                            <!--Add to Wishlist Icon-->
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                            {% endif %}
+                            {% else %}
+                            <!--Otherwise if no Wishlist show this-->
+                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' m.id %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                            {% endif %}
+                            {% else %}
+                            <!--If not authenticated-->
+                            <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                                <i class="fa-solid fa-heart-circle-plus"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+
+                    <!--QTY Select-->
+                    <div class="col-6 text-center mb-3">
+                        <label for="merch-qty">QTY</label>
+                        <input id="merch-qty" type="number" value="1" min="1">
+                    </div>
+
+                    <!--Empty for spacing-->
+                    <div class="col-3 text-center mb-3">
+                    </div>
+                    {% endif %}
+                    <!--Add to Cart-->
+                    <div class="col-12 text-center">
+                        <button type="button" data-id="{{ m.id }}"
+                            class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
+                            <i class="fa-solid fa-plus"></i> Add to cart</button>
+                        <div class="card-footer">
+                            {% for group in request.user.groups.all %}
+                            {% if group.name == 'Brand' %}
+                            <p><a href="{% url 'store:edit_merch' m.id %}"><i class="fa-solid fa-pen-to-square"></i>
+                                    Edit the Product</a></p>
+                            <!--Calls safety modal - Delete function-->
+                            <p>
+                                <a class="delete-text text-danger text-center" type="button" data-toggle="modal"
+                                    data-target="#deleteModal{{ m.id }}">
+                                    <i class="fa-solid fa-trash"></i> Delete the Product</a>
+                            </p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            {% endif %}
-
-            <!-- Delete Modal -->
-            <div class="modal fade" id="deleteModal{{ m.id }}" tabindex="-1" role="dialog"
-                aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>'Are you sure you want to delete this product?'</p>
-                        </div>
-                        <div class="modal-footer">
-                            <!-- Cancel Button-->
-                            <a class="btn btn-outline-dark btn-rounded mb-3" data-dismiss="modal">
-                                <i class="fa-solid fa-xmark"></i> Cancel
-                            </a>
-
-                            <!-- Delete Button-->
-                            <a class="delete-btn btn btn-outline-dark btn-rounded mb-3"
-                                href="{% url 'store:delete_merch' m.id %}">
-                                <i class="fa-solid fa-trash"></i> Delete the Product
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {% endfor %}
-
         </div>
     </div>
+    {% endif %}
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal{{ m.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>'Are you sure you want to delete this product?'</p>
+                </div>
+                <div class="modal-footer">
+                    <!-- Cancel Button-->
+                    <a class="btn btn-outline-dark btn-rounded mb-3" data-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> Cancel
+                    </a>
+
+                    <!-- Delete Button-->
+                    <a class="delete-btn btn btn-outline-dark btn-rounded mb-3"
+                        href="{% url 'store:delete_merch' m.id %}">
+                        <i class="fa-solid fa-trash"></i> Delete the Product
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+</div>
 </div>
 
 <!--Site Features Cards Container-->
