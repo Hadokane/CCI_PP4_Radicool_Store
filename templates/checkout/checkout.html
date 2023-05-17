@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-2 mb-1">
                         {% if item.product.image %}
-                        <img class="w-100" src="../media/{{item.product.image}}" alt="{{ item.product.product_name }}">
+                        <img class="w-100" src="{{item.product.image.url}}" alt="{{ item.product.product_name }}">
                         {% endif %}
                 </div>
                 <div class="col-7">

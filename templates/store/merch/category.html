@@ -20,7 +20,7 @@
                     <!--Card Header Image-->
                     <a href="{{ m.get_absolute_url }}">
                         <div class="overflow-auto">
-                            <img class="card-img-top" width="100%" height="100%" src="../media/{{m.image}}">
+                            <img class="card-img-top" width="100%" height="100%" src="{{ m.image.url }}" alt="{{ m.product_name }}">
                         </div>
                     </a>
 

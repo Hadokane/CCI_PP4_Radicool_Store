@@ -19,8 +19,7 @@
         <div class="row g-0">
             <div class="col-md-2">
                 <a href="{{ merch.get_absolute_url }}">
-                    <img class="img-fluid d-block p-2" width="300px" src="../../media/{{merch.image}}"
-                        alt="{{ image.image.alt_text }}" /></a>
+                    <img class="img-fluid d-block p-2" width="300px" src="{{ merch.image.url }}" alt="{{ merch.product_name }}"/></a>
             </div>
             <div class="col-md-10">
                 <div class="card-body">

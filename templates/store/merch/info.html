@@ -10,8 +10,8 @@
             <div class="row">
                 <!--Card Image Field-->
                 <div class="col-md-6 ml-2 mt-2 text-center">
-                    <a href="../media/{{ merch.image }}" target="_blank" class="text-decoration-none">
-                        <img src="../media/{{ merch.image }}" alt="{{ merch.product_name }}" width="100%">
+                    <a href="{{ merch.image.url }}" target="_blank" class="text-decoration-none">
+                        <img src="{{ merch.image.url }}" alt="{{ merch.product_name }}" width="100%">
                         <p class="text-muted">[Click image to expand]</p>
                     </a>
                 </div>
