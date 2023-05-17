@@ -13,7 +13,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='order_number',
-            field=models.CharField(default=2222222222222222222333333, editable=False, max_length=32),
+            field=models.CharField(
+                default=2222222222222222222333333,
+                editable=False, max_length=32),
             preserve_default=False,
         ),
     ]

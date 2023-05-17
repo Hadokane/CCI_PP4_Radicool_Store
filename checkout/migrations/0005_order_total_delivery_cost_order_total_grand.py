@@ -13,13 +13,15 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='total_delivery_cost',
-            field=models.DecimalField(decimal_places=2, default=0, max_digits=11),
+            field=models.DecimalField(
+                decimal_places=2, default=0, max_digits=11),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='order',
             name='total_grand',
-            field=models.DecimalField(decimal_places=2, default=3000, max_digits=11),
+            field=models.DecimalField(
+                decimal_places=2, default=3000, max_digits=11),
             preserve_default=False,
         ),
     ]

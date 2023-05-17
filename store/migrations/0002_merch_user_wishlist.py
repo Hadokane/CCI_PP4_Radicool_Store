@@ -15,6 +15,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='merch',
             name='user_wishlist',
-            field=models.ManyToManyField(blank='True', related_name='user_wishlist', to=settings.AUTH_USER_MODEL),
+            field=models.ManyToManyField(
+                blank='True',
+                related_name='user_wishlist',
+                to=settings.AUTH_USER_MODEL),
         ),
     ]

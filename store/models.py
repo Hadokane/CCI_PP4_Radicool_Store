@@ -1,10 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.functions import Lower
 from django.urls import reverse
-from django.contrib.auth.models import User
-
-# Create your models here.
 
 
 class Category(models.Model):

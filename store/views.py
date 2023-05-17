@@ -2,6 +2,8 @@ from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.db.models.functions import Lower
+
 from .models import Category, Collection, Merch
 from .forms import MerchSearchForm, MerchForm
 

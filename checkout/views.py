@@ -1,17 +1,14 @@
-import os
 import stripe
 import uuid
 
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.conf import settings
-from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.contrib import messages
 
 from .forms import OrderForm
 from cart.cart import Cart
-from cart.context_processors import cart
-from store.models import Merch
 from .models import Order, OrderItem
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
@@ -43,7 +40,6 @@ def checkout(request):
         carttotal = cart.get_total_price()
         cartdelivery = cart.get_delivery_cost()
         cartgrand = cart.grand_total()
-        user_id = request.user.id
         num = uuid.uuid4().hex.upper()
 
         order = Order.objects.create(

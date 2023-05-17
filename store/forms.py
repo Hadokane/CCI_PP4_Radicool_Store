@@ -1,5 +1,5 @@
 from django import forms
-from .models import Merch, Category, Collection
+from .models import Merch
 
 
 class MerchSearchForm(forms.Form):
@@ -22,8 +22,6 @@ class MerchForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        categories = Category.objects.all()
-        collections = Collection.objects.all()
 
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'

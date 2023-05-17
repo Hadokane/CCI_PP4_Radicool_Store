@@ -1,13 +1,15 @@
 # Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
+import json
+import stripe
+
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-from .webhook_handler import StripeWH_Handler
-import json
-import stripe
+
 from .views import payment_confirmation
+from .webhook_handler import StripeWH_Handler
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -26,17 +28,15 @@ def stripe_webhook(request):
             json.loads(payload), stripe.api_key,
             stripe.wh_key
         )
-    except ValueError as e:
+    except ValueError:
         # Invalid payload
         return HttpResponse(status=400)
 
     # Handle the event
     if event.type == 'payment_intent.succeeded':
-        payment_intent = event.data.object  # contains a stripe.PaymentIntent
         payment_confirmation(event.data.object.client_secret)
         print('PaymentIntent was successful!')
     elif event.type == 'payment_method.attached':
-        payment_method = event.data.object  # contains a stripe.PaymentMethod
         print('PaymentMethod was attached to a Customer!')
     # ... handle other event types
     else:
