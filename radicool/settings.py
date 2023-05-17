@@ -215,7 +215,6 @@ STRIPE_CURRENCY = "gbp"
 STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET", "")
 
 # EMAIL SETTINGS
-DEFAULT_FROM = "radicool@example.com"
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
