@@ -29,6 +29,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
 
+#DEBUG = True  # Delete when done bug fixing.
+
 ALLOWED_HOSTS = ['radicool.herokuapp.com', 'localhost']
 
 
@@ -181,8 +183,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static",]  # static path
 
-MEDIA_URL = "media/"  # local media storage for development
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")  # media path
+MEDIA_URL = "/media/"  # local media storage for development
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # media path
 
 if 'USE_AWS' in os.environ:
 
