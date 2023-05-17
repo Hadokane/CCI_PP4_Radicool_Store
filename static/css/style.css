@@ -174,7 +174,7 @@ a .delete-text:hover i,
 
 /* Jumbotron Hero Image */
 .jumbotron {
-    background: url("../../media/images/banner.png") no-repeat center center fixed;
+    background: url("../../static/logos/banner.png") no-repeat center center fixed;
     background-size: cover;
     background-repeat: no-repeat;
     color: white;

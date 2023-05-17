@@ -185,6 +185,13 @@ MEDIA_URL = "media/"  # local media storage for development
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")  # media path
 
 if 'USE_AWS' in os.environ:
+
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
     # Amazon Bucket Config
     AWS_STORAGE_BUCKET_NAME = "radicool"
     AWS_S3_REGION_NAME = "eu-west-1"
@@ -202,13 +209,28 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
-STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+# STRIPE SETTINGS
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
 STRIPE_CURRENCY = "gbp"
-STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET")
+STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET", "")
 
+# EMAIL SETTINGS
 DEFAULT_FROM = "radicool@example.com"
 
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'radicool@example.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+# DEFAULT DELIVERY VARIABLES
 FREE_DELIVERY_THRESHOLD = 35
 STANDARD_DELIVERY_COST = 4
 
