@@ -12,24 +12,55 @@
 </div>
 
 <!--Sort Bar-->
-<div class="text-center" id="sort-bar">
-    <div class="d-inline pr-2">SORT BY:</div>
+<div class="text-center d-none d-lg-block flex m-3" id="sort-bar">
+    <div class="d-inline pr-2"><i class="fa-solid fa-sort"></i> SORT BY:</div>
     <a href="{%url 'store:products' %}" class="btn-primary btn">
         <i class="fa-solid fa-fire"></i> Newest</a>
     <a href="{%url 'store:products' %}?sort=price&direction=asc" class="btn-primary btn">
-        By Price (low-high) <i class="fa-solid fa-caret-down"></i></a>
+        <i class="fa-solid fa-coins"></i> By Price (low-high) <i class="fa-solid fa-caret-down"></i></a>
     <a href="{%url 'store:products' %}?sort=price&direction=desc" class="btn-primary btn"><i
-            class="fa-solid fa-sack-dollar"></i> By Price
-        (high-low) <i class="fa-solid fa-caret-up"></i></a>
+            class="fa-solid fa-sack-dollar"></i> By Price (high-low) <i class="fa-solid fa-caret-up"></i></a>
     <a href="{%url 'store:products' %}?sort=category&direction=asc" class="btn-primary btn"><i
             class="fa-solid fa-tag"></i> By Category</a>
     <a href="{%url 'store:products' %}?sort=collection&direction=asc" class="btn-primary btn"><i
             class="fa-solid fa-hat-wizard"></i> By
         Collection</a>
-    <a href="{%url 'store:products' %}?sort=product_name&direction=asc" class="btn-primary btn">By Name (A-Z) <i
-            class="fa-solid fa-caret-down"></i></a>
-    <a href="{%url 'store:products' %}?sort=product_name&direction=desc" class="btn-primary btn">By Name (Z-A) <i
-            class="fa-solid fa-caret-up"></i></a>
+    <a href="{%url 'store:products' %}?sort=product_name&direction=asc" class="btn-primary btn">
+        <i class="fa-solid fa-a"></i> By Name (A-Z) <i class="fa-solid fa-caret-down"></i></a>
+    <a href="{%url 'store:products' %}?sort=product_name&direction=desc" class="btn-primary btn">
+        <i class="fa-solid fa-z"></i> By Name (Z-A) <i class="fa-solid fa-caret-up"></i></a>
+</div>
+
+<!--Sort Bar Mobile-->
+<div class="text-center d-lg-none d-sm-block flex m-3" id="sort-bar">
+    <button class="btn-primary btn" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fa-solid fa-sort"></i> SORT BY:
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+        <a class="dropdown-item" href="{%url 'store:products' %}">
+            <i class="fa-solid fa-fire"></i> Newest</a>
+
+        <a class="dropdown-item" href="{%url 'store:products' %}?sort=price&direction=asc">
+            <i class="fa-solid fa-coins"></i> By Price (low-high) <i class="fa-solid fa-caret-down"></i></a>
+
+        <a class="dropdown-item" href="{%url 'store:products' %}?sort=price&direction=desc">
+            <i class="fa-solid fa-sack-dollar"></i> By Price (high-low) <i class="fa-solid fa-caret-up"></i></a>
+
+        <a class="dropdown-item" href="{%url 'store:products' %}?sort=category&direction=asc">
+            <i class="fa-solid fa-tag"></i> By Category</a>
+
+        <a class="dropdown-item" href="{%url 'store:products' %}?sort=collection&direction=asc">
+            <i class="fa-solid fa-hat-wizard"></i> By Collection</a>
+
+        <a class="dropdown-item" href="{%url 'store:products' %}?sort=product_name&direction=asc">
+            <i class="fa-solid fa-a"></i> By Name (A-Z) <i class="fa-solid fa-caret-down"></i></a>
+
+        <a class="dropdown-item" href="{%url 'store:products' %}?sort=product_name&direction=desc">
+            <i class="fa-solid fa-z"></i> By Name (Z-A) <i class="fa-solid fa-caret-up"></i></a>
+
+    </div>
 </div>
 
 <hr>
