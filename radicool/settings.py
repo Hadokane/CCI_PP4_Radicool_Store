@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.path.exists("env.py"):
     import env
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = "DEVELOPMENT" in os.environ
 
 ALLOWED_HOSTS = ['radicool.herokuapp.com', 'localhost']
 
