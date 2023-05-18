@@ -37,7 +37,7 @@
 
 This project was created to attain a **Diploma in Web App Development** from [Code Institute](https://codeinstitute.net/ "Code Institute").
 
-The academic aim of this project is to design a Full Stack web application, offering multiple component apps, built using Django framework.
+The academic aim of this project is to design a Full Stack web application, offering multiple component apps, built using the Django framework.
 
 As the site owner, I will achieve this by offering an E-commerce website named "Radicool." 
 
@@ -45,7 +45,7 @@ Targeted at music/alternative media fans, Radicool offers them a way to purchase
 
 The above will be displayed throughout this project via my: coding, comments, commits, and the explanation provided by this README and the accompanying [TESTING](TESTING.md) document.
 
-Full CRUD* functionality is achievable through the front-end of the site, with different users groups having differing actions and interactions with site elements. *(Create, Read, Update, Delete.)
+Full CRUD* functionality is achievable through the front end of the site, with different user groups having differing actions and interactions with site elements. *(Create, Read, Update, Delete.)
 
 ---
 
@@ -85,11 +85,11 @@ Full CRUD* functionality is achievable through the front-end of the site, with d
 
 As has become tradition, I have chosen to arrange my UX analysis following the framework of Jesse James Garrett's philosophy of the "5 Planes," as discussed in his book [The Elements of User Experience](https://www.amazon.co.uk/Elements-User-Experience-User-Centered-Design/dp/0321683684/ref=asc_df_0321683684/?tag=googshopuk-21&linkCode=df0&hvadid=311000051962&hvpos=&hvnetw=g&hvrand=10376246921916888236&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1007448&hvtargid=pla-432330338546&psc=1&th=1&psc=1).
 
-This methodology allows me to establish a clear, ordered and achievable list of goals for my project's development cycle, while maintaining an organised development path. 
+This methodology allows me to establish a clear, ordered and achievable list of goals for my project's development cycle while maintaining an organised development path. 
 
-These goals will focus on meeting the needs of the websites users which include: First-time, Returning, Brand Accounts & the Site Owner.
+These goals will focus on meeting the needs of the website's users which include: First-time, Returning, Brand Accounts & the Site Owner.
 
-By considering the needs of the aforementioned groups. I can develop a justified plan by establish a defined priority of tasks and elements that will be required for site integration. This will ensure the project meets the defined user goals below & help to stop the project being effected by "feature creep," at this early development stage.
+By considering the needs of the aforementioned groups. I can develop a justified plan by establishing a defined priority of tasks and elements that will be required for site integration. This will ensure the project meets the defined user goals below & help to stop the project from being affected by "feature creep," at this early development stage.
 
 ---
 
@@ -136,7 +136,7 @@ With the above goals in mind, I have assembled the following "Grid of Opportunit
 
 To set a clear scope for development and avoid "feature creep", I will establish the core features the website requires in this section, in doing so we will maintain an agile approach.
 
-The features required are written concerning the established user group stories and directly reference how we can meet these stated goals with our sites design.
+The features required are written concerning the established user group stories and directly reference how we can meet these stated goals with our site's design.
 
 ---
 
@@ -148,14 +148,14 @@ The features required are written concerning the established user group stories 
 
 - Allows the user to browse the merchandise by Categories, Collections and additional means.
 
-- Provide a search function for a more user customisable approach to navigation.
+- Provide a search function for a more user-customisable approach to navigation.
     
 
-**2. A Cart App to contain the users order.**
+**2. A Cart App to contain the user's order.**
     
 - Navbar icon would allow users to see the quantity/total price of their Cart from any webpage/app on the site.
 
-- Will allows the user C.R.U.D. functionality over their order before reaching the Checkout.
+- Will allow the user C.R.U.D. functionality over their order before reaching the Checkout.
 
 **3. A Checkout App to allow payments.**
     
@@ -177,9 +177,9 @@ The features required are written concerning the established user group stories 
 
 - Allows the Admin C.R.U.D. functionality over user data.
 
-**6. An Admin/Super user section.**
+**6. An Admin/Superuser section.**
 
-- Allows the Admin C.R.U.D. functionality over all site data.
+- Allows the Admin C.R.U.D. functionality over site data.
 
 - Allows the creation of a "Brand Accounts" group. Can be shown specific front-end pages allowing C.R.U.D. actions like adding, editing or deleting Merchandise, Categories & Collections without accessing the Admin section.
 
@@ -189,7 +189,7 @@ The features required are written concerning the established user group stories 
     
 - Buttons, links & form inputs changing colour on `:hover` to show user interaction is possible.
 
-- Cards increasing in size on `:hover` to show user is interacting with it.  
+- Cards increasing in size on `:hover` to show the user is interacting with it.  
 
 [Back to top ↑](#radicool)
 
@@ -199,7 +199,7 @@ The features required are written concerning the established user group stories 
 
 ---
 
-By establishing the features needed to meet our current user stories, I can now create a Road-Map for hypothetical future updates that would serve to improve the overall features, functions or user experience of this project and it's apps. 
+By establishing the features needed to meet our current user stories, I can now create a Road-Map for hypothetical future updates that would serve to improve the overall features, functions or user experience of this project and its apps. 
 
 These updates have been deemed non-essential for an initial "proof-of-concept" build and would simply serve to enhance the core website that is being prioritised at this early stage of development.
 
@@ -208,18 +208,18 @@ These updates have been deemed non-essential for an initial "proof-of-concept" b
 
 ---
 
-In a theoretical "next update", I would aim to add additional functionality to the website and provide further distinction between Brand Accounts looking to sell their Merchandise through Radicool.
+In a theoretical "next update", I would aim to add additional functionality to the website and provide a further distinction between Brand Accounts looking to sell their merchandise through Radicool.
 
 **To improve the experience for the user, the following could be implemented:**
 
-1. Provide additional payment options such as Paypal or Google Pay to the checkout. Stripe was required specifically by the projects Assessment Criteria and as such serves as the current implemented payment method. In a live setting including Paypal or Google Pay would be a preference as I feel these are more widely known to the standard consumer and would improve user confidence in shopping with Radicool.
+1. Provide additional payment options such as Paypal or Google Pay to the checkout. Stripe was required specifically by the project's Assessment Criteria and as such serves as the current implemented payment method. In a live setting including Paypal or Google Pay would be a preference as I feel these are more widely known to the standard consumer and would improve user confidence in shopping with Radicool.
 
 
 **To improve the experience for Bran Accounts, the following could be implemented:**
 
-1. Create specific user groups for each Brand Account that sells through Radicool. Limiting their C.R.U.D. functionality to predefined Categories & Collections within the website. This is in the interest of defensive design as it would stop Brand Accounts from being able to add, edit or delete another Brand Account's Merchandise. Currently this isn't a priority or issue as all Brand Accounts are fictional and their merchandise could also be uploaded/managed by the Site Admin directly at this current stage. Which would be beneficial given the small scale of the current site, limiting the need for multiple Brand Account Groups being created via Django.
+1. Create specific user groups for each Brand Account that sells through Radicool. Limiting their C.R.U.D. functionality to predefined Categories & Collections within the website. This is in the interest of defensive design as it would stop Brand Accounts from being able to add, edit or delete another Brand Account's Merchandise. Currently, this isn't a priority or issue as all Brand Accounts are fictional and their merchandise could also be uploaded/managed by the Site Admin directly at this current stage. This would be beneficial given the small scale of the current site, limiting the need for multiple Brand Account Groups being created via Django.
 
-2. Allow Brand Accounts to see how much stock of their Merchandise has been purchased through their Admin page. Could setup direct emails to them each time one of their items sells. Currently they would need to scan through Order History manually or trust the Site Admins reports to see how well their Merchandise was selling. This wasn't deemed a priority feature for an initial launch as it doesn't effect the site functionality or initial User Goals established.
+2. Allow Brand Accounts to see how much stock of their Merchandise has been purchased through their Admin page. Could set up direct emails to them each time one of their items sells. Currently, they would need to scan through Order History manually or trust the Site Admins' reports to see how well their Merchandise was selling. This wasn't deemed a priority feature for an initial launch as it doesn't affect the site functionality or initial User Goals established.
 
 **Further Features**
 
@@ -237,14 +237,14 @@ With the user stories and scope of our project established, we will now decide u
 
 ## Feature Priority
 
-The below sections will layout what each page and app of this website will provide the user in terms of features, interactions and content. It allows us, as the developer, to have a concrete list of what to include on a page-by-page basis.
+The below sections will lay out what each page and app of this website will provide the user in terms of features, interactions and content. It allows us, as the developer, to have a concrete list of what to include on a page-by-page basis.
 
 
 ### Base Template
 
 ---
 
-A `base` HTML template will be created to provide core features and elements. It will utilise the Django templating language to be inherited widely by all other pages on the website. This ensures a D.R.Y. approach to design, allowing us to create elements such as the Navbar and Footer in one HTML file, rather than copying the code to each individual page.
+A `base` HTML template will be created to provide core features and elements. It will utilise the Django templating language to be inherited widely by all other pages on the website. This ensures a D.R.Y. approach to design, allowing us to create elements such as the Navbar and Footer in one HTML file, rather than copying the code to each page.
 
 It will feature:
 
@@ -254,13 +254,13 @@ It will feature:
 
 - A responsive navigation menu, utilising Bootstrap classes. 
 
-    - All users will be able to browse the website's Merchandise pages, arranging by factors such as Category or Collection.
+    - All users will be able to browse the website's Merchandise pages, arranged by factors such as Category or Collection.
 
     - Unauthenticated/New users will have access to links to `Sign up` and `Login`.
     
-    - Authenticated users (logged-in) will have access to `Profile` and `Wishlist` pages, along with an option to `Logout`.
+    - Authenticated users (logged-in) will have access to the `Profile` and `Wishlist` pages, along with an option to `Logout`.
         
-        - The `Logout` button will call a modal, providing defensive design to accidental user interactions.
+        - The `Logout` button will call a modal, providing defensive design to address accidental user interactions.
 
     - Brand Accounts will see an additional link to the `Admin` and `Add Merch` sections.
 
@@ -272,13 +272,13 @@ It will feature:
 
 - A section to display toasts/messages to the user, providing positive feedback to site interactions.
 
-- Under the above sections would be a Django `{% block content %}` tag, where we will insert the other pages content, keeping a uniform, D.R.Y.-designed E-commerce store.
+- Under the above sections would be a Django `{% block content %}` tag, where we will insert other page's content, keeping a uniform, D.R.Y.-designed E-commerce store.
 
 - A clean Bootstrap Footer containing:
 
     - Placeholder social links, that could be swapped out to represent Radicool's social media presence.
 
-    - A short about blurb and contact info.
+    - A short "about" blurb and contact info.
 
     - Unauthenticated/New users will see links to `Sign up` and `Login`.
 
@@ -298,9 +298,9 @@ The following pages would be contained within a Django "Store" app, created to h
 
 - All of the below pages will feature a Django "include" in the form of a `Search Bar`.
 
-    - This is deemed unnecessary on other website apps as it pertains directly with the users viewing Merchandise, meaning it would clutter other sections.
+    - This is deemed unnecessary on other website apps as it pertains directly to the users viewing Merchandise, meaning it would clutter other sections.
 
-    - It will allow users to search Merchandise items by checking the database to see if the "Searched Term" appears anywhere within an items `product_name` or `description`. 
+    - It will allow users to search Merchandise items by checking the database to see if the "Searched Term" appears anywhere within an item's `product_name` or `description`. 
 
     - If a match is made, it will return the data in the form of Bootstrap cards.
 
@@ -308,9 +308,9 @@ The following pages would be contained within a Django "Store" app, created to h
 
 - For Brand Users and the Site Admin, options will appear on all Bootstrap item cards - within a footer - providing them with the ability to delete or edit the specific product featured within the card. 
 
-    - This allows them the freedom to edit/delete Merchandise from within the websites Front-End, saving them from heading into the Admin section.
+    - This allows them the freedom to edit/delete Merchandise from within the website's Front-End, saving them from heading into the Admin section.
 
-- Wish List buttons will appear for all users, interacting with the button will have a different function based on the users state:
+- Wish List buttons will appear for all users, interacting with the button will have a different function based on the user's state:
 
     - Unauthenticated users will be redirected to the `Sign Up` page.
 
@@ -327,21 +327,21 @@ The first thing the user should be greeted by is an appealing `Home Page/Index` 
 
 - A clutter-free, intuitive design, making use of Bootstrap classes and minimal brand colours to allow Merchandise imagery to stand out.
 
-- A large hero image to promote an important collection to users - such as a new release from one of the websites Brand Accounts.
+- A large hero image to promote an important collection to users - such as a new release from one of the website's Brand Accounts.
 
     - Containing brand text & a button to send `New Users` to the `Sign Up` page or promote a Collection to `Returning Users`.
 
 - Sections containing rows of promo cards, styled with Bootstrap. 
     
-    - These will house each individual Merchandise item for sale and can be arranged into sections based on Brand Account, Category, Collection or something different entirely such as "Hot Items," which can be used to promote Best Sellers or a hand-picked selection differing from the pre-defined methods.
+    - These will house each Merchandise item for sale and can be arranged into sections based on Brand Account, Category, Collection or something different entirely such as "Hot Items," which can be used to promote Best Sellers or a hand-picked selection differing from the pre-defined methods.
 
     - Individual sections will have different headers and icons used to refer to their collections.
 
-    - Sections may include a background image or colour in order to make it more distinct to users, encouraging interaction.
+    - Sections may include a background image or colour to make it more distinct to users, encouraging interaction.
 
 - A `Featured Item` card. Similar to the above but being the only Merchandise item directly buyable through the Home page. Serving as a boon for Brand Accounts whose items are chosen and encouraging user views and purchases.
 
-    - Requires `add to cart` functionality through Javascript & AJAX requests in order to update the Navbar Cart icon in realtime.
+    - Requires `add to cart` functionality through Javascript & AJAX requests to update the Navbar Cart icon in real-time.
 
 - A row of icons and informative text pertaining to Radicool's core values and practices. Inspiring confidence in users looking to shop with us.
 
@@ -354,7 +354,7 @@ The first thing the user should be greeted by is an appealing `Home Page/Index` 
 
 - Contains a secondary navbar, that responsively collapses on smaller screens.
 
-    - Allows organising of the Merchandise by factors such as: Name (A-Z), (Z-A); Price (Low-High), (High-Low); Category; Collection; etc.
+    - Allows organising of the Merchandise by factors such as Name (A-Z), (Z-A); Price (Low-High), (High-Low); Category; Collection; etc.
 
 
 ### Category & Collection Pages
@@ -363,7 +363,7 @@ The first thing the user should be greeted by is an appealing `Home Page/Index` 
 
 - Displays a filtered Merchandise list. Only showing the Merchandise included within the given Category or Collection.
 
-    - Beneficial to Brand Accounts as a Brand can have their own dedicated Merchandise page through the use of a Collection.
+    - Beneficial to Brand Accounts as a Brand can have its own dedicated Merchandise page through the use of a Collection.
 
     - Beneficial to Users by giving them options like CD, VINYL or PRINT to find the Merchandise they're interested in.
 
@@ -374,7 +374,7 @@ The first thing the user should be greeted by is an appealing `Home Page/Index` 
 
 - Provides the user with the same functionality as the `Featured Item` on the homepage.
 
-- Serves as the users interaction point for `Adding` an item to the Cart.
+- Serves as the user's interaction point for `Adding` an item to the Cart.
 
 - Interacting with the Merchandise image will open it in a separate browser tab for users to view in closer detail.
 
@@ -398,7 +398,7 @@ It will provide:
 
 - Users with CRUD functionality allowing them to edit Merchandise: Quantity and Size (if Clothing).
 
-    - Required Javascript for the above functions & AJAX to live update the values (quantity, size, subtotal, cart_quantity, etc.)
+    - Required Javascript for the above functions & AJAX to update the values (quantity, size, subtotal, cart_quantity, etc.) in real-time.
 
 ---
 
@@ -420,7 +420,7 @@ The Checkout App will contain two HTML pages.
 
 - The success page will: 
 
-    - Confirm the users order has been made. Providing positive feedback and confirmation of a Successful order.
+    - Confirm the user's order has been made. Providing positive feedback and confirmation of a Successful order.
 
     - Show their order & delivery information.
 
@@ -438,13 +438,13 @@ The Profiles App will contain two HTML pages.
 
     - View any former orders and see their information by interacting with them.
 
-    - Greet the user by username to provide a positive experience and create a more personable page.
+    - Greet the user by their username to provide a positive experience and create a more personable page.
 
 - The Wish List page will: 
 
     - Display any items the user has added to their Wish List while browsing the website.
 
-    - Serve as a direct link to return to that items `Info` page, allowing them to add it to their carts.
+    - Serve as a direct link to return to that item's `Info` page, allowing them to add it to their carts.
 
     - Allow the user to remove the item by interacting with them.
 
@@ -458,13 +458,13 @@ The Profiles App will contain two HTML pages.
 
 Account pages will be handled through the use of Django `AllAuth` which serves as a convenient framework within Django for managing user accounts. 
 
-- The AllAuth HTML templates will be modified via CSS and templating to match the websites overall look and style.
+- The AllAuth HTML templates will be modified via CSS and templating to match the website's overall look and style.
 
 - Django Crispy Forms will be utilised for consistency.
 
 - These pages will provide users with the following features and pages: 
     
-    - For the sign up process: sign up, verification email required, email confirmation.
+    - For the sign-up process: sign up, verification email required, email confirmation.
     
     - For users: login, logout, password resetting.
 
@@ -478,11 +478,11 @@ Account pages will be handled through the use of Django `AllAuth` which serves a
 
 This app will include two pages only viewable to superusers/Site Admin and Brand Accounts.
 
-They will allow users to add new or edit existing Merchandise through the websites Front-End. Providing a convenient method of C.R.U.D. functionality, improving the Radicool experience for Brand Accounts.
+They will allow users to add new or edit existing Merchandise through the website's Front-End. Providing a convenient method of C.R.U.D. functionality, improving the Radicool experience for Brand Accounts.
 
 They will both utilise Django Crispy Forms to display the required form fields to the user, providing helpful text to aid them in completing the form.
 
-Upon submission the Merchandise will be immediately available for purchase upon the website.
+Upon submission, the Merchandise will be immediately available for purchase on the website.
 
 [Back to top ↑](#radicool)
 
@@ -496,19 +496,19 @@ Upon submission the Merchandise will be immediately available for purchase upon 
 
 1. Will use built-in Bootstrap classes to remain consistent across the website.
 
-2. on`:hover` the text and icons present will bolden or change colour to indicate interactions can occur.
+2. On`:hover` the text and icons present will bolden or change colour to indicate interactions can occur.
 
-3. A combination of contextual icons and text will be used to convey the buttons purpose to users.
+3. A combination of contextual icons and text will be used to convey the purpose of the button to users.
 
-4. Will be coloured clear if related to navigation or site feature.
+4. Will be coloured clear if related to navigation or site features.
 
-5. Will be coloured green if related to sorting of Merchandise. User is able to create an expectation based on the buttons appearance.
+5. Will be coloured green if related to sorting of Merchandise. The user can create an expectation based on the appearance of the button.
 
 **Merchandise Cards**
 
 1. Bootstrap classes will be used for consistency and convenience.
 
-2. Images will be present in the card header and serve as link to an `info` page for the specific item.
+2. Images will be present in the card header and serve as a link to an `info` page for the specific item.
 
 3. Merchandise names will be interactable and lead to the `info` page.
 
@@ -535,7 +535,7 @@ Upon submission the Merchandise will be immediately available for purchase upon 
 
 - Allow the user to create an account and sign in/log out with ease.
 
-- Allow the user Create/Read/Update/Delete functionality as specified in the above sections.
+- Allow the user to Create/Read/Update/Delete functionality as specified in the above sections.
 
 - Allow the user to assemble a Wish List of Merchandise, ready for a future purchase.
 
@@ -551,11 +551,11 @@ Upon submission the Merchandise will be immediately available for purchase upon 
 
 Radicool will be created entirely with HTML, CSS, Javascript & Python languages.
 
-The website will present numerous opportunities for different user groups to carry out C.R.U.D. functionality at their own discretion.
+The website will present numerous opportunities for different user groups to carry out C.R.U.D. functionality at their discretion.
 
-All of the websites data will be housed within a [PostgreSQL](https://www.postgresql.org/) `Relational Database System`, which will be used to store the created user data in organised tables.
+All of the website's data will be housed within a [PostgreSQL](https://www.postgresql.org/) `Relational Database System`, which will be used to store the created user data in organised tables.
 
-Utilising one-to-many relationships and Foreign Keys, these tables will communicate with each other and as such we will be able to maintain relationships such as: associating orders with the user who placed it or seeing which Merchandise belongs to which Category or Collection.
+Utilising one-to-many relationships and Foreign Keys, these tables will communicate with each other and as such we will be able to maintain relationships such as: associating orders with the user who placed them or seeing which Merchandise belongs to which Category or Collection.
 
 Django utilises [sqlite](https://www.sqlite.org/index.html) - which is included in Python - as a database engine, this will be utilised throughout the project in the creation and maintenance of all local databases before hosting their content externally for deployment.
 
@@ -567,7 +567,7 @@ The production databases are hosted externally on [Railway](https://railway.app/
 
 ---
 
-The below wireframes - created with [Draw io](https://www.draw.io) - demonstrate the positions of features and elements within the sites many apps and pages, providing a simplified visual demonstration of the project's architecture and design choices.
+The below wireframes - created with [Draw io](https://www.draw.io) - demonstrate the positions of features and elements within the site's many apps and pages, providing a simplified visual demonstration of the project's architecture and design choices.
 
 <details><summary>Radicool Wireframe</summary><img src="docs/schema/wireframe.png" alt="Radicool Wireframe"></details>
 
@@ -581,7 +581,7 @@ A database schema was created to provide a visual representation of the tables a
 
 <details><summary>Database Schema</summary><img src="docs/schema/rad_schema.png" alt="Database Schema"></details>
 
-The below is a screenshot of all the databases present within Railway. The additional tables - to the ones shown above - were created automatically by Django AllAuth for it to carryout it's functionality and store data created during User Sign Up actions.
+Below is a screenshot of all the databases present within Railway. The additional tables - to the ones shown above - were created automatically by Django AllAuth to carry out its functionality and store data created during User Sign Up actions.
 
 <details><summary>Railway Databases</summary><img src="docs/schema/railway.png" alt="Railway Databases"></details>
 
@@ -603,13 +603,13 @@ As a software developer, I am fully aware that Radicool will be viewed across nu
 
 *Manual testing will also be implemented and detailed in the TESTING document, further ensuring elements display as expected. 
 
-Bootstrap classes were used extensively across the website, as a reliable, industry standard solution in achieving responsive design. Their container classes and cards can be seen across all areas of the website. 
+Bootstrap classes were used extensively across the website, as a reliable, industry-standard solution in achieving responsive design. Their container classes and cards can be seen across all areas of the website. 
 
-Additional custom CSS was utilised to ensure all images, elements and text will display comfortably on multiple devices, ensuing a consistent user experience for both mobile and desktop users.
+Additional custom CSS was utilised to ensure all images, elements and text will display comfortably on multiple devices, ensuring a consistent user experience for both mobile and desktop users.
 
 Examples of the website meeting responsive design conformities are shown here:
 
-- The sort bar on the `Products` page collapses on medium or smaller screens - as designated by Bootstrap - to stop the bar squishing into two or more lines, making it difficult for the user to interact with the correct button.*
+- The sort bar on the `Products` page collapses on medium or smaller screens - as designated by Bootstrap - to stop the bar from condensing into two or more lines, making it difficult for the user to interact with the correct button.*
 
 - Card rows change in size responsively to the screen size. *(Cards & Sort Bar visible together in card examples.)
 
@@ -639,7 +639,7 @@ Examples of the website meeting responsive design conformities are shown here:
 
 ## Style Guide:
 
-Utilising [Photoshop](https://www.adobe.com/uk/products/photoshop.html) I assembled a brand style guide in order to provide a visual representation of the websites core elements, typography and imagery.
+Utilising [Photoshop](https://www.adobe.com/uk/products/photoshop.html) I assembled a brand style guide to provide a visual representation of the website's core elements, typography and imagery.
 
 <details><summary>Style Guide</summary><img src="docs/schema/style_guide.png" alt="Style Guide"></details>
 
@@ -651,17 +651,17 @@ Utilising [Photoshop](https://www.adobe.com/uk/products/photoshop.html) I assemb
 
 [Quicksand - by Andrew Paglinawan:](https://fonts.google.com/specimen/Quicksand)
 
-An easy to read "display sans serif" font with rounded corners. Designed to be legible at small sizes and used across nearly 2 million websites according to Googles API data. Used as a readable yet distinct main body font.
+An easy-to-read "display sans serif" font with rounded corners. Designed to be legible at small sizes and used across nearly 2 million websites according to Google's API data. Used as a readable yet distinct main body font.
 
 ---
 
 [Londrina Outline - by Marcelo Magalhães:](https://fonts.google.com/specimen/Londrina+Outline?preview.text=RADICOOL&preview.text_type=custom)
 
-A font designed for use in posters, to be displayed in bold uppercase letters. Used as a reflection of the DIY style event and gig posters that would be seen and matches the culture and audience that RADICOOL seeks to serve. Used for the websites main logo.
+A font designed for use in posters, to be displayed in bold uppercase letters. Used as a reflection of the DIY style event and gig posters that would be seen and matches the culture and audience that RADICOOL seeks to serve. Used for the website's main logo.
 
 ---
 
-### Colour Pallette:
+### Colour Palette:
 
 ---
 
@@ -669,19 +669,19 @@ A font designed for use in posters, to be displayed in bold uppercase letters. U
 
 **#21D192 - the main accent colour of the website.**
 
-This green was chosen as it's an energetic, friendly and eye-catching colour. It compliments the websites minimal colour pallette of black and whites by allowing it to have a stronger brand identity.
+This green was chosen as it's an energetic, friendly and eye-catching colour. It complements the website's minimal colour palette of black and white by allowing it to have a sole colour to define its brand identity.
 
 This is also used to highlight icons and elements when the user hovers over them, providing positive feedback to user interactions.
 
 ---
 
-**Red** was implemented very sparingly throughout the website as a means of highlight user interactions further. 
+**Red** was implemented very sparingly throughout the website as a means of highlighting user interactions further. 
 
-It is used when the user hovers over a "REMOVE FROM" wish list button specifically. The button uses an icon and hover text to indicate it's function to the user.
+It is used when the user hovers over a "REMOVE FROM" wish list button specifically. The button uses an icon and hover text to indicate its function to the user.
  
 The red was chosen to give the "REMOVE" button further distinction from the "ADD" button, as the two share the same space and functionality.
 
-This improves the users overall experience by providing the icon buttons pleasing UI with a different highlight to reinforce specific user actions.
+This improves the user's overall experience by providing the icon buttons pleasing UI with a different highlight to reinforce specific user actions.
 
 ---
 
@@ -689,9 +689,9 @@ This improves the users overall experience by providing the icon buttons pleasin
 
 They allow fonts, buttons and elements to remain readable and legible at any size.
 
-They conform to and meet most user expectations, not giving them a reason to dislike the websites overall design or feel dissuaded from making a purchase.
+They conform to and meet most user expectations, not giving them a reason to dislike the website's overall design or feel dissuaded from making a purchase.
 
-It keeps the overall presentation inviting while allowing the accent green to take center stage across the website's elements.
+It keeps the overall presentation inviting while allowing the accent green to take centre stage across the website's elements.
 
 [Back to top ↑](#radicool)
 
@@ -701,15 +701,15 @@ It keeps the overall presentation inviting while allowing the accent green to ta
 
 The website follows a traditionally ordered hierarchy and achieves visual separation through the use of Bootstrap `Row and Columns`. 
 
-At the top, there is a responsive `Header`, containing a navbar with links to all of the websites HTML pages.
+At the top, there is a responsive `Header`, containing a navbar with links to all of the website's HTML pages.
 
-Underneath this is an update banner, providing deal information to customers.
+Underneath this is an "update" banner, providing deal information to customers.
 
 Next alert messages will display when called by user actions. These are closable `onClick`.
 
-The specific HTML pages content is then displayed through the use of Django {% block content %} tags here. Being made up of interactable elements allowing the user to navigate, purchase merchandise or perform CRUD functionality where relevant such as editing their Wish List.
+The specific HTML page content is then displayed through the use of Django {% block content %} tags here. Being made up of interactable elements allowing the user to navigate, purchase merchandise or perform CRUD functionality where relevant such as editing their Wish List.
 
-At the bottom is a `Footer` with placeholder links, a short site blurb and a copyright disclaimer.
+Finally a `Footer` with placeholder links, a short site blurb and a copyright disclaimer.
 
 This simple layout allows a user to intuitively navigate Radicool with no learning curve, as it meets the same standard conventions as the majority of popular websites and as such users should be able to navigate it with ease. This will be further reinforced by manual and automated testing criteria in the TESTING document. 
 
@@ -727,13 +727,13 @@ This simple layout allows a user to intuitively navigate Radicool with no learni
 
 The logo makes use of **Londrina Outline** for the reasons described above.
 
-It is displayed in white on top of a black paint brush stroke. This is to reinforce the **D.I.Y.** nature of the brand, it's ethos and it's customer base. 
+It is displayed in white on top of a black paint brush stroke. This is to reinforce the **D.I.Y.** nature of the brand, its ethos and its customer base. 
 
 It serves as a link back to the main home/index page of the website, something dictated by user expectations across nearly every website on the internet. 
 
 ![Radicool Highlight Logo](docs/images/h_logo.png)
 
-Upon `:hover` the logo changes to match the website's core green. Confirming that this is an interactable element to users.
+Upon `:hover` the logo changes to match the website's core green. Confirming that this is an interactable element for users.
 
 [Isotropic](https://isotropic.co/tool/hex-color-to-css-filter/) was used to find the CSS filter information. This was used to create the above `:hover` effect.
 
@@ -749,11 +749,11 @@ The favicon used was the **"Toxic"** icon found on FontAwesome.
 
 It was edited to use the brand colours of Radicool.
 
-The icon in particular was chosen to represent the **"RAD"** in **Radicool**, being a play on "**RAD**iation".
+The icon, in particular, was chosen to represent the **"RAD"** in **Radicool**, being a play on "**RAD**iation".
 
-This would be present on proprietary merchandise that **RADICOOL** would sell directly through it's own website.
+This would be present on proprietary merchandise that **RADICOOL** would sell directly through its website.
 
-This is also utilised as the brands secondary logo & is present in browser tabs to provide a stronger brand identity.
+This is also utilised as the brand's secondary logo & is present in browser tabs to provide a stronger brand identity.
 
 ---
 
@@ -765,7 +765,7 @@ This is also utilised as the brands secondary logo & is present in browser tabs 
 
 The section image currently in use is from the EP Cover **"D.O.A."** by **"The Oversights".**
 
-They are a **D.I.Y.** band selling through Radicool. As this is a new release it is being used as the websites Hero Image, to further promote the band & provide an up-to-date example of a product for sale on the website.
+They are a **D.I.Y.** band selling through Radicool. As this is a new release it is being used as the website's Hero Image, to further promote the band & provide an up-to-date example of a product for sale on the website.
 
 This creates trust between sellers, the admin & the users looking to support the band, while also providing a visually interesting hero image for users on larger devices.
 
@@ -781,10 +781,10 @@ Following a similar premise to the user of the Hero Image, the "Hot Items" secti
 
 This is the equivalent of a "Best Seller" or "Promoted collections" list. This is built as a section so that the filter query can be updated by the admin to display a different category/collection/list of items depending on what they are looking to promote at any given time.
 
-To distinguish it from other collections present on the home page it has been given a distinct background. In this case a visually pleasing gradient has been used, including colours that indicate **heat** matching the idea of this particular collection.
+To distinguish it from other collections present on the home page it has been given a distinct background. In this case, a visually pleasing gradient has been used, including colours that indicate **heat** matching the idea of this particular collection.
 
 This section is built with adaptability in mind, as the background is also easily changeable - through a single CSS line - to match the theme of the collection.
-An image such as the above hero image, a different gradient, block colour or repeating pattern could all be implemented to compliment the theme.
+An image such as the above hero image, a different gradient, block colour or repeating pattern could all be implemented to complement the theme.
 
 This helps the section to stand out to a user while also increasing sales/click-throughs for both the band/brand.
 
@@ -798,7 +798,7 @@ This helps the section to stand out to a user while also increasing sales/click-
 
 This follows the same reasoning and principles as the above two sections. 
 
-The added benefit of a **Featured Item** is that this is the only item directly purchaseable* from the home page. Driving user interactions, wish list additions and sales for a specific item inline with site goals. Improving interactions for the user and driving sales for Brand Accounts.
+The added benefit of a **Featured Item** is that this is the only item directly purchasable* from the home page. Driving user interactions, wish list additions and sales for a specific item in line with site goals. Improving interactions for the user and driving sales for Brand Accounts.
 
 *(addable to cart) 
 
@@ -809,9 +809,9 @@ The added benefit of a **Featured Item** is that this is the only item directly 
 ## IXD - Interaction Design
 ---
 
-IXD was described during above the Skeleton Plane. Below is imagery confirming visual examples of the aforementioned points, serving as confirmation of their inclusion within the final design.
+IXD was described during the above Skeleton Plane. Below is imagery confirming visual examples of the aforementioned points, serving as confirmation of their inclusion within the final design.
 
-I have included images below to provide visual examples of each point and to serve as confirmation that these decisions have been implemented into the final designs. Demonstrations of `:hover` interactions, icon and colour changes along with custom CSS usage is demonstrated below to provide positive user interactions throughout the multiple apps and elements that comprise Radicool.
+I have included images below to provide visual examples of each point and to serve as confirmation that these decisions have been implemented into the final designs. Demonstrations of `:hover` interactions, icon and colour changes along with custom CSS usage are demonstrated below to provide positive user interactions throughout the multiple apps and elements that comprise Radicool.
 
 **Buttons**
 
@@ -870,25 +870,25 @@ Examples of defensive design implementations can be seen here:
 
     - <details><summary>Delete Modal</summary><img src="officechampion/static/assets/images/docs/surface/dlt_modal.png" alt="Delete Modal"></details>
 
-- The above method was also implemented on the `logout` page of the website. Moving this page inside of a modal provides the same defensive solution and improvements to user experience as mentioned above, also shortening the users journey by eliminating the need for a separate HTML `logout` page.
+- The above method was also implemented on the `logout` page of the website. Moving this page inside of a modal provides the same defensive solution and improvements to user experience as mentioned above, also shortening the user's journey by eliminating the need for a separate HTML `logout` page.
 
     - <details><summary>Delete Modal</summary><img src="officechampion/static/assets/images/docs/surface/dlt_modal.png" alt="Delete Modal"></details>
 
-- Button`:hover` icons change colour to indicate a positive (Green) or negative (Red) user action, providing positive visual feedback. In the following IXD section, look at the `wish list buttons` images to see a clear example of this design principal. Red indicating `Remove` and Green representing `Add`.
+- Button`:hover` icons change colour to indicate a positive (Green) or negative (Red) user action, providing positive visual feedback. In the following IXD section, look at the `wish list buttons` images to see a clear example of this design principle. Red indicates `Remove` and Green represents `Add`.
 
 - A `Placeholder Image` is applied to Merchandise by default if no Image is provided by the user, ensuring something will always be present on the Front-End, allowing the Admin to `Add` Merchandise without imagery.
 
-- Through the creation of "Brand" user group in Django. 
+- Through the creation of a "Brand" user group in Django. 
 
-    - Providing Edit/Delete buttons on the websites Front-End Merchandise for CRUD functionality.
+    - Providing Edit/Delete buttons on the website's Front-End Merchandise for CRUD functionality.
 
     - Access to designated Add/Edit Merchandise pages on the Front-End.
 
-    - Access to a customised Admin section, inline with the established Brand Account goals.
+    - Access to a customised Admin section, in line with the established Brand Account goals.
 
         - Allowing Brand Accounts to add/remove Merchandise, Categories & Collections. 
         
-        - Allows Brand Accounts to view Order history.
+        - Allows Brand Accounts to view Order History.
 
 Admin section full view only available to SuperUsers.
 
@@ -918,11 +918,176 @@ If a new user clicks a Wish List button they are redirected to sign-up/sign-in b
 
 # Deployment
 
+## Creating the Gitpod Workspace
+
+The project uses the Code Institute Gitpod Template as its foundation. 
+
+This can be accessed by doing the following:
+
+1. Log in to your GitHub account. 
+2. Head to the [Code Institute Student Template](https://github.com/Code-Institute-Org/gitpod-full-template).
+2. Click 'Use this Template' next to the Green Gitpod button.
+3. Click the "Use this template" button.
+4. In the dropdown menu select "Create a new repository".
+5. You will be presented with the example screen below.
+6. Enter your details & press "Create repository from template"
+
+    <details><summary>Create Repository Example</summary><img src="docs/deployment/github1.png" alt="GitHub Example Screen"></details>
+
 ---
 
+## Forking the GitHub Repository
+
+If you would like to fork this GitHub Repository - make a copy of the original on your GitHub account - do the following:
+
+1. Log in to your GitHub account.
+2. Head to the [Radicool GitHub Repository](https://github.com/Hadokane/CCI_PP4_Radicool_Store).
+3. Select the "Fork" tab on the right-hand side of the navigation menu.
+4. Choose a destination to save your newly forked repository.
+5. Press Create Fork.
+
+    <details><summary>Fork Example</summary><img src="docs/deployment/github2.png" alt="GitHub Example Screen"></details>
+
+For further information on making a local clone of this project, I recommend reading the GitHub Docs guide on forking located [here.](https://docs.github.com/en/github-ae@latest/get-started/quickstart/fork-a-repo)
+
+---
+
+## Deploying with Heroku
+
+The application was then deployed with Heroku using the following steps:
+
+1. Create an account / Login to [Heroku](https://dashboard.heroku.com/apps).
+2. On the main page select the "New" button and chose "Create new app".
+
+    <details><summary>Heroku Button</summary><img src="docs/deployment/heroku1.png" alt="Heroku Example Screen"></details>
+
+3. Enter a unique name for your project (with no spaces or capitalisation) and select your closest region (Europe in my case).
+4. Select the 'Create App' button.
+
+    <details><summary>Heroku Create App</summary><img src="docs/deployment/heroku2.png" alt="Heroku Example Screen"></details>
+
+5. Install Heroku into the project by entering ```npm install -g heroku``` into the terminal.
+6. Enter ```heroku login -i``` into the terminal and enter your heroku credentials. 
+    - If you have two-factor authentication enabled use a Heroku API key instead of your password when connecting to Heroku via CLI. This can be found on your Heroku "manage account" page.
+7. Enter ```heroku apps``` in the GitHub Terminal to see a list of your created apps & confirm your created app exists.
+8. Head to the Heroku dashboard "settings" tab for your created project and find the "Heroku git URL" shown there.
+9. Copy that URL and paste the following into the GitHub CLI Terminal: ```git remote add heroku your_url``` (replacing your_url with the "Heroku git URL" mentioned above.)
+12. Use ```git push -u heroku main``` to push the main branch of the project to heroku. (Will fail if the "Procfile" or "requirements.txt" are missing from your project.)
+13. Finally enter the following into the "Config Vars" section found on the Heroku Dashboards "Setting" tab. Select the "Reveal Config Vars" button and enter the following information for the keys, followed by your values for the database and external apps like Stripe and Amazon AWS services.
+
+    <details><summary>Heroku Config Example</summary><img src="docs/deployment/config.png" alt="Heroku Example Screen"></details>
+
+| Key                   | Value                      |
+|-----------------------|----------------------------|
+| AWS_ACCESS_KEY_ID     | Your AWS Access Key        |
+| AWS_SECRET_ACCESS_KEY | Your AWS Secret Access Key |
+| DATABASE_URL          | Your Database URL          |
+| EMAIL_HOST_PASS       | Your Email Password        |
+| EMAIL_HOST_USER       | Your Email Address         |
+| SECRET_KEY            | Your Secret Key            |
+| STRIPE_PUBLIC_KEY     | Your Stripe Public Key     |
+| STRIPE_SECRET_KEY     | Your Stripe Secret Key     |
+| STRIPE_WH_SECRET      | Your Stripe WH Key         |
+| USE_AWS               | TRUE                       |
 
 
+12. Press "Open app" on Heroku. 
 
+13. Breathe a sigh of relief, the app is deployed, live and operational!
+
+    <details><summary>Heroku Example Screen</summary><img src="docs/deployment/heroku3.png" alt="Heroku Example Screen"></details>
+
+This step won't be necessary if you've cloned the project as the files are already created and readily available, however, you will need to update the "requirements.txt" file if you install additional frameworks or dependencies to your version of this project so I will include the methods used to create the file below.
+
+1. Create a new "requirements.txt" file by typing ``` pip3 freeze --local > requirements.txt ``` into the Gitpod Command Line Interface Terminal & commit it to GitHub.
+
+---
+
+## Deploying with Railway
+
+Due to uncertainty in Heroku, the PostgreSQL database is hosted externally on Railway.
+
+1. Navigate to and create an account with [Railway](https://railway.app/) and click “Start a New Project.”
+
+    <details><summary>Railway</summary><img src="docs/deployment/railway1.png" alt="Railway Example 1"></details>
+
+2. Chose "Provision PostgreSQL" from the dropdown list.
+
+    <details><summary>Railway #2</summary><img src="docs/deployment/railway2.png" alt="Railway Example 2"></details>
+
+3. Select the new database and go to the "Connect" tab. Here you will see your "Postgres Connection URL". (Example screens from a fake project.)
+
+    <details><summary>Railway #3</summary><img src="docs/deployment/railway3.png" alt="Railway Example 3"></details>
+
+4. This will be used in Heroku as our "DATABASE_URL" Key: Value pair. You can add it to your Config Vars by navigating to Heroku's Settings page for your project.
+
+5. In your Django project head to the settings.py file and change the database engine string from `sqlite3` to `postgresql` as shown below.
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '<PGDATABASE>',
+        'USER': '<PGUSER>',
+        'PASSWORD': '<PGPASSWORD>',
+        'HOST': '<PGHOST>',
+        'PORT': '<PGPORT>',
+    }
+}
+```
+
+6. Using the above format, input your "available variables" from Railway's "Connect" tab to fill in the `NAME, USER, PASSWORD, HOST` & `PORT` settings.
+
+7. Run `python3 manage.py migrate` and the project data will populate the Postgres database on Railway.
+
+[For further information I recommend this informative article from Youtuber Dennis Ivy](https://dev.to/dennisivy11/easiest-django-postgres-connection-ever-with-railway-11h6).
+
+---
+
+## Amazon Web Services (AWS):
+
+Static and Media files for the deployed site are hosted within an AWS S3 bucket.
+
+1. Follow the information on creating an S3 bucket in the
+[AWS Docs - Click Here.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html)
+
+2. Install boto3 and django-storages within Gitpod using the following CLI terminal commands:
+
+```
+$ pip3 install boto3
+$ pip3 install django-storages
+```
+
+3. Add 'storages' to INSTALLED_APPS in settings.py.
+4. Add the following code to settings.py to link the AWS bucket to your website:
+
+```
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'your-project-name-here'
+    AWS_S3_REGION_NAME = 'your-aws-region-here-for-me-it-was-(eu-west-1)'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+```
+
+5. Push these changes to Heroku.
 
 ---
 
@@ -967,11 +1132,11 @@ If a new user clicks a Wish List button they are redirected to sign-up/sign-in b
   - Integrated to handle user payments.
 
 - [Bootstrap](https://getbootstrap.com/)
-  - Front-end library utilised for it's CSS classes. 
-  - Used on all websites elements and as a responsive design tool.
+  - Front-end library utilised for its CSS classes. 
+  - Used on all website elements and as a responsive design tool.
 
 - [Google Fonts](https://fonts.google.com/)
-  - Used to import the projects fonts.
+  - Used to import the project's fonts.
   
 - [Font Awesome](https://fontawesome.com/)
   - Used to import icons that were utilised contextually across the site.
@@ -993,7 +1158,7 @@ If a new user clicks a Wish List button they are redirected to sign-up/sign-in b
 
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
   - Chrome's Dev Tools were essential during the development of this project.
-  - Allowed testing of the sites responsiveness across various screen sizes during creation.
+  - Allowed testing of the site's responsiveness across various screen sizes during creation.
   - Provided numerous opportunities for debugging and aided in bug identification throughout the project's dev cycle.
 
 - [CI TEMPLATE](https://github.com/Code-Institute-Org/gitpod-full-template)
@@ -1039,7 +1204,7 @@ If a new user clicks a Wish List button they are redirected to sign-up/sign-in b
 
 ## Imagery Used:
 
-All imagery used within the website is owned by myself or used with permission of those who do own it.
+All imagery used within the website is owned by myself or used with the permission of their owners.
 
 ---
 
@@ -1054,6 +1219,6 @@ With thanks to:
     - A Youtuber with incredibly informative courses on Django. Was crucial study material when trying to understand Django and implement more up-to-date versions of features than specified by the course material.
 
 - My Family and Friends
-    - For providing some great feedback and user-testing across multiple devices and browsers.
+    - For providing some great feedback and user testing across multiple devices and browsers.
 
 [Back to top ↑](#radicool)
