@@ -21,9 +21,9 @@ Your order will be shipped to:
 {{ order.postcode }},
 {{ order.country }}.
 
-If you have any questions, feel free to contact us at "support@Radicool.com".
+If you have any questions, feel free to contact us at: "radicoolindustries@gmail.com".
 
-A big thank you for supporting D.I.Y. bands & brands!
+A big thank you for supporting D.I.Y. Bands & Brands!
 
 Sincerely, 
 
