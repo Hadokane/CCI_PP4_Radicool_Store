@@ -43,9 +43,9 @@
         <div class="mask">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-white text-center">
-                    <h2 id="body-rad-big">RADICOOL</h2>
-                    <h3>Welcome to the home of your FAVOURITE D.I.Y. Band & Brands</h3>
-                    <h4>Support local legends by purchasing their merch direct!</h4>
+                    <h1 id="body-rad-big">RADICOOL</h1>
+                    <h2 class="h2-size">Welcome to the home of your FAVOURITE D.I.Y. Band & Brands</h2>
+                    <h3 class="h3-size">Support local legends by purchasing their merch direct!</h3>
                     <hr>
                     {% if request.user.is_authenticated %}
                     <a class="btn btn-outline-light btn-lg" href="{% url 'store:products' %}" role="button">See HOT
@@ -68,8 +68,8 @@
 
     <!--Header - Responsive Bar Line-->
     <div class="container">
-        <h2 class="text-center text-lg-left"><i class="fa-solid fa-star"></i> Featured Item: <i
-                class="fa-solid fa-star"></i>
+        <h2 class="text-center text-lg-left"><i class="fa-solid fa-star"></i> Featured Item: 
+            <i class="fa-solid fa-star"></i>
         </h2>
         <hr class="d-lg-inline-block text-md-center mb-4 mt-0 mx-auto bar-line-feature">
         <p>We want to show some love towards the following release:</p>
@@ -487,9 +487,9 @@
         <div class="col-6 col-lg-3 mt-3">
             <div class="d-inline-block mt-3">
                 <i class="h2-size fa-solid fa-truck"></i>
-                <h4 class="m-0">
+                <h3 class="m-0 h3-size">
                     Free Delivery*
-                </h4>
+                </h3>
                 <!---->
                 <p>
                     When you spend over £35!</p>
@@ -500,9 +500,9 @@
         <div class="col-6 col-lg-3 mt-3">
             <div class="d-inline-block mt-3">
                 <i class="h2-size fa-solid fa-recycle"></i>
-                <h4 class="m-0">
+                <h3 class="m-0 h3-size">
                     Recyclable Packaging
-                </h4>
+                </h3>
                 <!---->
                 <p>
                     Keeping things green!</p>
@@ -513,9 +513,9 @@
         <div class="col-6 col-lg-3 mt-3">
             <div class="d-inline-block mt-3">
                 <i class="fa-solid fa-guitar h2-size"></i>
-                <h4 class="m-0">
+                <h3 class="m-0 h3-size">
                     Supporting local talent
-                </h4>
+                </h3>
                 <!---->
                 <p>
                     Brands & bands paid highest %!</p>
@@ -526,9 +526,9 @@
         <div class="col-6 col-lg-3 mt-3">
             <div class="d-inline-block mt-3">
                 <i class="fa-solid fa-shirt h2-size"></i>
-                <h4 class="m-0">
+                <h3 class="m-0 h3-size">
                     Built to last
-                </h4>
+                </h3>
                 <!---->
                 <p>
                     Highest quality goods!</p>
@@ -538,6 +538,9 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
 <!--Javascript - Add To Cart-->
 <script>
     $(document).on("click", ".add-to-cart", function (e) {

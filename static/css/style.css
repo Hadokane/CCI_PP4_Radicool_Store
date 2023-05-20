@@ -47,12 +47,14 @@ a {
 }
 
 /* All Products Sort Bar Colour */
-#sort-bar .btn {
+#sort-bar .btn,
+#sort-bar-mobile .btn {
   border-color: black;
   background-color: #21D192;
 }
 
-#sort-bar .btn:hover i {
+#sort-bar .btn:hover i,
+#sort-bar-mobile .btn:hover i {
   color: white;
 }
 

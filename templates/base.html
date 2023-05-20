@@ -35,15 +35,10 @@
     <script src="https://kit.fontawesome.com/67e7e0c15f.js" crossorigin="anonymous"></script>
     {% endblock %}
 
-    <!-- Internal JS -->
-    {% block intjs %}
-    {% endblock %}
-
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 
     <!-- Page Title | Extra Information here -->
     <title>{% block title %}Radicool {% block extra_title %}{% endblock %}{% endblock %}</title>
@@ -198,6 +193,7 @@
         {% endfor %}
     </div>
     {% endif %}
+
     <hr>
 
     <!-- Logout Modal -->
@@ -282,7 +278,7 @@
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
                     <!-- Content -->
-                    <h3 id="body-rad" class="text-uppercase fw-bold">Radicool</h3>
+                    <p id="body-rad" class="text-uppercase fw-bold h2-size">Radicool</p>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line">
                     <p>Radicool is a D.I.Y. shipping company for indy Bands & Brands.</p>
                 </div>
@@ -290,7 +286,7 @@
                 <!-- Grid column -->
                 <div id="footer-account" class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold">Your Account</h6>
+                    <p class="text-uppercase fw-bold h4-size">Your Account</p>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line">
                     {% if request.user.is_authenticated %}
                     {% for group in request.user.groups.all %}
@@ -320,12 +316,12 @@
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-center">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <p class="text-uppercase fw-bold h4-size">Contact</p>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line">
                     <p><i class="fas fa-envelope mr-2"></i>radicool@example.com</p>
                     <p><i class="fas fa-home mr-2"></i> Ships from: NP20***, UK</p>
                 </div>
-                
+
             </div>
         </div>
 
@@ -336,11 +332,14 @@
 
     </footer>
 
-    <!-- Post Load Javascript -->
-    <!-- Shows Toasts -->
+    <!-- JS - Show Toasts -->
     <script>
         $('.toast').toast('show');
     </script>
+
+    <!-- Post Load Javascript -->
+    {% block postloadjs %}
+    {% endblock %}
 
 </body>
 
