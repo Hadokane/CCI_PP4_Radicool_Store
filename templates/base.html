@@ -131,7 +131,7 @@
                     </li>
                 </ul>
 
-                <!-- Cart -->
+                <!-- Cart, maybe improve by refactoring -->
                 <div class="m-3 text-center">
                     <a role="button" class="pl-3 pr- btn btn-outline-secondary" href="{% url 'cart:cart_summary' %}">
                         <div id="cart-qty" class="d-inline-flex text-center">
@@ -148,18 +148,15 @@
                         </div>
                         <i class="fa-solid fa-basket-shopping"></i>
                         <p class="my-0 mt-2">
-                            <span>
-                                {% if cart.get_total_price > 0 %}
-                                <div class="h6">
-                                    £<span id="subtotal-nav">{{ cart.get_total_price }}</span>
-                                </div>
-                                {% else %}
-                                £0.00
-                                {% endif %}
-                            </span>
+                            {% if cart.get_total_price > 0 %}
+                            £<span id="subtotal-nav">{{ cart.get_total_price }}</span>
+                            {% else %}
+                            £<span id="subtotal-nav">0.00</span>
+                            {% endif %}
                         </p>
                     </a>
                 </div>
+
             </div>
         </nav>
 
@@ -248,7 +245,7 @@
     <!-- Footer -->
     <footer class="text-center">
         <!-- Section: Social media -->
-        <section class="d-flex justify-content-between p-4 text-white" id="footer-banner">
+        <div class="d-flex justify-content-between p-4 text-white" id="footer-banner">
             <!-- Left -->
             <div class="me-5">
                 <span>Get connected with us on social media:</span>
@@ -275,74 +272,73 @@
                     <i class="fab fa-github"></i>
                 </a>
             </div>
-        </section>
+        </div>
 
         <!-- Section: Links  -->
-        <section>
-            <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
-                <div class="row mt-3">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
 
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
-                        <!-- Content -->
-                        <h3 id="body-rad" class="text-uppercase fw-bold">Radicool</h3>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
-                        <p>Radicool is a D.I.Y. shipping company for indy Bands & Brands.</p>
-                    </div>
-
-                    <!-- Grid column -->
-                    <div id="footer-account" class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold">Your Account</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
-                        <p>{% if request.user.is_authenticated %}
-                            {% for group in request.user.groups.all %}
-                            {% if group.name == 'Brand' %}
-                            <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'admin:index' %}">
-                                    <i class="fa-solid fa-lock"></i> Admin</a>
-                            </p>
-                            {% endif %}
-                            {% endfor %}
-                            <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'profiles:profile' %}">
-                                    <i class="fa-solid fa-user"></i> Profile</a>
-                            </p>
-                            {% else %}
-                            <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_signup' %}">
-                                    <i class="fa-solid fa-handshake-angle"></i> Sign Up</a>
-                            </p>
-                            <p>
-                                <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_login' %}">
-                                    <i class="fa-solid fa-right-to-bracket"></i> Login</a>
-                            </p>
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-center">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold">Contact</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line" />
-                        <p><i class="fas fa-envelope mr-2"></i>radicool@example.com</p>
-                        <p><i class="fas fa-home mr-2"></i> Ships from: NP20***, UK</p>
-                    </div>
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
+                    <!-- Content -->
+                    <h3 id="body-rad" class="text-uppercase fw-bold">Radicool</h3>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line">
+                    <p>Radicool is a D.I.Y. shipping company for indy Bands & Brands.</p>
                 </div>
+
+                <!-- Grid column -->
+                <div id="footer-account" class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Your Account</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line">
+                    {% if request.user.is_authenticated %}
+                    {% for group in request.user.groups.all %}
+                    {% if group.name == 'Brand' %}
+                    <p>
+                        <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'admin:index' %}">
+                            <i class="fa-solid fa-lock"></i> Admin</a>
+                    </p>
+                    {% endif %}
+                    {% endfor %}
+                    <p>
+                        <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'profiles:profile' %}">
+                            <i class="fa-solid fa-user"></i> Profile</a>
+                    </p>
+                    {% else %}
+                    <p>
+                        <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_signup' %}">
+                            <i class="fa-solid fa-handshake-angle"></i> Sign Up</a>
+                    </p>
+                    <p>
+                        <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'account_login' %}">
+                            <i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-center">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto bar-line">
+                    <p><i class="fas fa-envelope mr-2"></i>radicool@example.com</p>
+                    <p><i class="fas fa-home mr-2"></i> Ships from: NP20***, UK</p>
+                </div>
+                
             </div>
-        </section>
+        </div>
 
         <!-- Copyright -->
         <div class="text-center p-3" id="footer-bottom">
             © 2023 Copyright: <a href="../">Radicool Industries</a>
         </div>
+
     </footer>
 
     <!-- Post Load Javascript -->
     <!-- Shows Toasts -->
-    <script type="text/javascript">
+    <script>
         $('.toast').toast('show');
     </script>
 

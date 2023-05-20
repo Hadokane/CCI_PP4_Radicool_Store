@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* Set Sites Default Font */
-body, a{
+body,
+a {
   color: black;
   font-family: 'Quicksand', sans-serif;
 }
@@ -12,25 +13,25 @@ body, a{
   filter: invert(57%) sepia(86%) saturate(397%) hue-rotate(107deg) brightness(100%) contrast(88%);
 }
 
-#body-rad{
+#body-rad {
   font-family: 'Londrina Outline', cursive;
 }
 
-#body-rad-big{
+#body-rad-big {
   font-family: 'Londrina Outline', cursive;
   font-size: 8em;
 }
 
 /* Article Background */
-#hot-items{
-  background-image: linear-gradient(to left,pink,orange);
+#hot-items {
+  background-image: linear-gradient(to left, pink, orange);
   background-repeat: repeat;
   background-position: center center;
   background-size: contain;
 }
 
 /* Search Bar Colour */
-.form-control-search:focus{
+.form-control-search:focus {
   border-color: #21D192;
 }
 
@@ -39,74 +40,100 @@ body, a{
 .form-control-search:hover,
 .form-control-search:focus,
 .form-control:focus,
-.form-control:hover{
-  border-color: #21D192; 
+.form-control:hover {
+  border-color: #21D192;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
 
 /* All Products Sort Bar Colour */
-#sort-bar .btn{
+#sort-bar .btn {
   border-color: black;
-  background-color:  #21D192; 
+  background-color: #21D192;
 }
 
-#sort-bar .btn:hover i{
+#sort-bar .btn:hover i {
   color: white;
 }
 
 /* Footer Button Colour */
-#footer-account .btn{
+#footer-account .btn {
   border-color: black;
 }
 
 .add-to-cart:hover i,
-#footer-account .btn:hover i{
+#footer-account .btn:hover i {
   border-color: black;
-  color:  #21D192;
+  color: #21D192;
 }
 
 
 /* Site banner and Footer Banner */
 #notification-banner,
-#footer-banner{
+#footer-banner {
   background-color: #21D192;
 }
 
-#notification-banner a{
+#notification-banner a {
   color: white;
 }
 
 /* Footer Classes */
-#footer-bottom{
+#footer-bottom {
   background-color: black;
   color: white;
 }
 
-#footer-bottom a{
+#footer-bottom a {
   color: white;
 }
 
+/* Header Sized Stylings for elements */
+.h2-size {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.h3-size {
+  font-size: 1.17em;
+  font-weight: bolder;
+}
+
+.h4-size {
+  font-size: 1em;
+  font-weight: bolder;
+}
+
+.h5-size {
+  font-size: .83em;
+  font-weight: bolder;
+}
+
+.h6-size {
+  font-size: .67em;
+  font-weight: bolder;
+}
+
 /* HR - Bar-line classes */
-.bar-line{
+.bar-line {
   background-color: #21D192;
   width: 100px;
   height: 2px;
 }
 
-.bar-line-long{
+.bar-line-long {
   background-color: black;
   width: 220px;
   height: 2px;
 }
 
-.bar-line-longer{
+.bar-line-longer {
   background-color: black;
   width: 320px;
   height: 2px;
 }
 
-.bar-line-feature{
+.bar-line-feature {
   background-color: black;
   width: 310px;
   height: 2px;
@@ -115,8 +142,8 @@ body, a{
 /* I class elements */
 i {
   font-weight: 600;
-  color:black;
-  text-decoration:solid;
+  color: black;
+  text-decoration: solid;
 }
 
 /* When hovering, make the i class green */
@@ -124,41 +151,46 @@ i {
 button:hover i,
 a:hover i {
   font-weight: 800;
-  color:#00cc99;
-  text-decoration:solid;
+  color: #00cc99;
+  text-decoration: solid;
 }
 
 /* Hover effect for buttons and links */
 a:hover,
-button:hover{
+button:hover {
   font-weight: 800;
-  color:#21D192;
-  text-decoration:solid;
+  color: #21D192;
+  text-decoration: solid;
 }
 
 /* Nav Link Hover */
 .dropdown-item:focus,
-.dropdown-menu a:focus{
+.dropdown-menu a:focus {
   background-color: #21D192;
 }
 
+/* Feature Card Image */
+.feature-card img {
+  width: 100%
+}
+
 /* Card Hover */
-.card:hover{
+.card:hover {
   scale: 103%;
 }
 
-.card a:hover i{
+.card a:hover i {
   color: #21D192;
 }
 
 /* Footer Social Links */
-.social-links a i{
-  color:white;
+.social-links a i {
+  color: white;
 }
 
-.social-links a i:hover{
+.social-links a i:hover {
   font-weight: 800;
-  color:black;
+  color: black;
 }
 
 /* Remove from wishlist icon hover */
@@ -168,23 +200,23 @@ a .delete-text:hover i,
 .modal-footer .delete-btn:hover i,
 .delete-from-cart:hover i,
 .card-body .remove-wishlist:hover i,
-.remove-wishlist a:hover i{
-  color:red  
+.remove-wishlist a:hover i {
+  color: red
 }
 
 /* Jumbotron Hero Image */
 .jumbotron {
-    background: url("../../static/logos/banner.png") no-repeat center center fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-  }
+  background: url("../../static/logos/banner.png") no-repeat center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
 
-.mask{
-    background-color: rgba(0,0,0,0.4);
-    height: 400px;
-    width: 100%;
-  }
+.mask {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 400px;
+  width: 100%;
+}
 
 
 /* Bootstrap Toasts - modified from CI Project */
@@ -211,16 +243,18 @@ a .delete-text:hover i,
 }
 
 @media (min-width: 1200px) {
-.container {
-  max-width: 80%;
-}
+  .container {
+    max-width: 80%;
+  }
 }
 
 /* Allauth Form Formatting - modified from CI Project */
 
 .allauth-form-inner-content p {
-  margin-top: 1.5rem; /* mt-4 */
-  color: #6c757d; /* text-secondary */
+  margin-top: 1.5rem;
+  /* mt-4 */
+  color: #6c757d;
+  /* text-secondary */
 }
 
 .allauth-form-inner-content input {
@@ -237,8 +271,8 @@ a .delete-text:hover i,
 }
 
 .allauth-form-inner-content input[type='submit'] {
-/* btn */
-display: inline-block;
+  /* btn */
+  display: inline-block;
   font-weight: 400;
   color: #fff;
   text-align: center;
@@ -255,61 +289,61 @@ display: inline-block;
   border-radius: 0;
 
   /* standard bootstrap btn transitions */
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.allauth-form-inner-content input[type='submit']:hover {	
-color: #fff;
+.allauth-form-inner-content input[type='submit']:hover {
+  color: #fff;
   background-color: #222;
   border-color: #222;
 }
 
 
 /* Stripe Formatting - modified from CI Project */
-  .StripeElement,
-  .stripe-style-input {
-    box-sizing: border-box;
-    height: 40px;
-    padding: 10px 12px;
-    border: 1px solid transparent;
-    border-radius: 0px;
-    background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
-    -webkit-transition: box-shadow 150ms ease;
-    transition: box-shadow 150ms ease;
-  }
-  
-  .StripeElement--focus,
-  .stripe-style-input:focus,
-  .stripe-style-input:active {
-    box-shadow: 0 1px 3px 0 #cfd7df;
-  }
-  
-  .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
-  }
-  
-  .stripe-style-input::placeholder {
-      color: #aab7c4;
-  }
-  
-  .fieldset-label {
-      position: relative;
-      right: .5rem;
-  }
-  
-  #payment-form .form-control,
-  #card-element {
-      color: #000;
-      border: 1px solid #000;
-  }
-  
-  select,
-  select option {
-      color: #000000;
-  }
-  
-  select:invalid,
-  select option[value=""] {
-      color: #aab7c4 !important;
-  }
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-style-input::placeholder {
+  color: #aab7c4;
+}
+
+.fieldset-label {
+  position: relative;
+  right: .5rem;
+}
+
+#payment-form .form-control,
+#card-element {
+  color: #000;
+  border: 1px solid #000;
+}
+
+select,
+select option {
+  color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+  color: #aab7c4 !important;
+}
