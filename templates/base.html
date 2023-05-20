@@ -26,13 +26,13 @@
     <!-- External JS -->
     {% block javascript %}
     <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" type="module"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" type="module"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
     <!-- FontAwesome JS -->
-    <script src="https://kit.fontawesome.com/67e7e0c15f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/67e7e0c15f.js" type="module" crossorigin="anonymous"></script>
     {% endblock %}
 
     <!-- Favicon -->
@@ -50,7 +50,7 @@
         <nav id="site-nav" class="navbar navbar-expand-lg">
             <!-- Static file Logo accessed -->
             <a class="navbar-brand" href="{% url 'store:home' %}">
-                <img src="{% static 'logos/radicool_logo.webp' %}" height="70" alt="Radicool">
+                <img src="{% static 'logos/radicool_logo.webp' %}" height="70px" width="247px" alt="Radicool">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
                 aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
