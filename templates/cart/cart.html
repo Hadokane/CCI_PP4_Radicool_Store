@@ -23,7 +23,7 @@
         <div class="col-6">
             <div class="text-left">
                 <a href="../media/{{ product.image }}" target="_blank" class="text-decoration-none">
-                    <img src="{{ product.image.url }}" alt="{{ product.product_name }}"width="60%">
+                    <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="60%">
                     <p class="text-muted pl-5 ml-4 mt-2"></p>
                 </a>
             </div>
@@ -102,23 +102,26 @@
                 <p class="text-muted"><span id="deliverydelta">*Spend £{{ cart.delivery_context.free_delivery_delta }}
                         more for free delivery!</span></p>
                 {% else %}
-                <p class="text-muted"><span id="deliverydelta">*You spent over £{{ cart.delivery_context.free_delivery_threshold }}!
-                    Enjoy your FREE DELIVERY!</span></p>
+                <p class="text-muted"><span id="deliverydelta">*You spent over
+                        £{{ cart.delivery_context.free_delivery_threshold }}!
+                        Enjoy your FREE DELIVERY!</span></p>
                 {% endif %}
             </div>
-        </div>
-        {% else %}
-        <p>Your cart is empty.</p>
-        
-        <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'store:products' %}">
-            <i class="fas fa-chevron-left"></i> See all products!</a>
 
-        {% endif %}
-        {% endwith %}
+            {% else %}
+            <p>Your cart is empty.</p>
+
+            <a class="btn btn-lg btn-outline-dark btn-rounded" href="{% url 'store:products' %}">
+                <i class="fas fa-chevron-left"></i> See all products!</a>
+
+            {% endif %}
+            {% endwith %}
+        </div>
     </div>
 
 </div>
 
+{% block postloadjs %}
 <script>
     // Delete Items
     $(document).on("click", ".delete-from-cart", function (e) {
@@ -145,7 +148,6 @@
         });
     })
 </script>
-
 <script>
     // Update Items
     $(document).on("click", ".update-cart", function (e) {
@@ -179,5 +181,6 @@
         });
     })
 </script>
+{% endblock %}
 
 {% endblock %}

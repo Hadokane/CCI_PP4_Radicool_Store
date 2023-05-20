@@ -3,6 +3,7 @@
 {% block extra_title %}| {{ user.username }} {% endblock %}
 {% block content %}
 
+<!-- Header-->
 <div class="container">
     <div class="row">
         <div class="col">
@@ -12,6 +13,7 @@
         </div>
     </div>
 
+    <!-- Delivery Information Form -->
     <div class="row">
         <div class="col-12 col-lg-6">
             <p class="text-muted">Default Delivery Information</p>
@@ -23,6 +25,7 @@
             </form>
         </div>
 
+        <!-- Order History Form -->
         <div class="col-12 col-lg-6">
             <p class="text-muted">Order History</p>
             <div class="order-history table-responsive">
@@ -63,7 +66,9 @@
                 </table>
             </div>
         </div>
+
     </div>
+    
 </div>
 
 {% endblock %}

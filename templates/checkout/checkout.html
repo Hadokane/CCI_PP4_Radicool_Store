@@ -37,9 +37,9 @@
             {% for item in cart %}
             <div class="row">
                 <div class="col-2 mb-1">
-                        {% if item.product.image %}
-                        <img class="w-100" src="{{item.product.image.url}}" alt="{{ item.product.product_name }}">
-                        {% endif %}
+                    {% if item.product.image %}
+                    <img class="w-100" src="{{item.product.image.url}}" alt="{{ item.product.product_name }}">
+                    {% endif %}
                 </div>
                 <div class="col-7">
                     <p class="my-0"><strong>{{ item.product.product_name }}</strong></p>
@@ -77,12 +77,16 @@
             <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label px-2 w-auto"><h4>Details:</h4></legend>
+                    <legend class="fieldset-label px-2 w-auto">
+                        <h4>Details:</h4>
+                    </legend>
                     <span>{{ order_form.full_name | as_crispy_field }}</span>
                     {{ order_form.email | as_crispy_field }}
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label px-2 w-auto"><h4>Delivery Details:</h4></legend>
+                    <legend class="fieldset-label px-2 w-auto">
+                        <h4>Delivery Details:</h4>
+                    </legend>
                     <span>{{ order_form.street_address_1 | as_crispy_field }}</span>
                     <span>{{ order_form.street_address_2 | as_crispy_field }}</span>
                     {{ order_form.town_or_city | as_crispy_field }}
@@ -128,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Edit Cart Button -->
                 <hr class="my-3">
                 <div class="row">
@@ -149,12 +153,20 @@
     </div>
 </div>
 
+{% block postloadjs %}
 <!--Make csrf token available in JS files-->
 <script>
     var CSRF_TOKEN = '{{ csrf_token }}';
 </script>
+
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
+
+<!-- Internal Checkout JS -->
 <script src="{% static 'js/checkout.js' %}"></script>
+<!-- Stripe JS -->
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
 {% endblock %}
