@@ -21,6 +21,8 @@
     <!-- Internal CSS -->
     {% block intcss %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Preload the LCP image (Hero Image) so it starts loading with the stylesheet. -->
+    <link rel="preload" fetchpriority="high" as="image" href="{% static 'logos/banner.webp' %}" type="image/webp">
     {% endblock %}
 
     <!-- Favicon -->

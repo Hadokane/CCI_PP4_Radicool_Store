@@ -215,7 +215,7 @@ a .delete-text:hover i,
 
 /* Jumbotron Hero Image */
 .jumbotron {
-  background: url("../../static/logos/banner.webp") no-repeat center center fixed;
+  background: url('/static/logos/banner.webp') no-repeat center center fixed;
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
