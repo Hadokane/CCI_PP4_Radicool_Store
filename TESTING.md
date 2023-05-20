@@ -12,7 +12,7 @@ Here we will document the numerous testing and validation methods taken to ensur
     - [W3C HTML Validator](#w3c-html-validation) 
     - [W3C CSS Validator](#w3c-css-validation)
     - [JSHint Validator](#jshint-validation)
-    - [CI Python Linter](#CI-Python-Linter)
+    - [Flake8 Linter](#flake8-python-linter)
 - [Wave Validator](#wave)
 - [Lighthouse](#lighthouse)
 
@@ -39,19 +39,13 @@ This section will cover the automated testing procedures undertaken and justifie
 
 -  [W3C HTML Validator](https://validator.w3.org/)
 
-<details><summary>W3C HTML Validation - Errors</summary><img src="" alt="W3C HTML Errors Screen"></details>
+  - <details><summary>W3C HTML Validation - Errors</summary><img src="docs/testing/w3html1.png" alt="W3C HTML Errors Screen"></details>
 
-Using these results, I:
+**80 Total suggestions were returned. Using these results, I:**
 
 - Refactored the deleteModal by moving it outside of Django if/or statements and deleting duplicates. Calling the modal from the HTML body rather than from within the statements.
 
 - Placed modal at the top of the HTML body inline with [Bootstrap Document](https://getbootstrap.com/docs/4.0/components/modal/#:~:text=Whenever%20possible%2C%20place%20your%20modal,using%20modals%20on%20mobile%20devices.) guidance.
-
-- Removed redundant `Section` tags.
-
-- Fixed Header hierarchy.
-
-- Refactored `Featured Item` Cards to remove duplicate/redundant code.
 
 ```
 
@@ -59,9 +53,17 @@ Modals use position: fixed, which can sometimes be a bit particular about its re
 
 ```
 
-- a
+- Removed redundant `Section` tags.
 
-<details><summary>W3C HTML Validation - Pass</summary><img src="officechampion/static/assets/images/docs/validation/w3c_html2.png" alt="W3C HTML Pass Screen"></details>
+- Fixed Header hierarchy.
+
+- Refactored `Featured Item` Cards to remove duplicate/redundant code.
+
+- <details><summary>W3C HTML Validation - Home Pass</summary><img src="docs/testing/w3html2.png" alt="W3C HTML Pass Screen"></details>
+
+- <details><summary>W3C HTML Validation - Products Pass</summary><img src="docs/testing/w3html3.png" alt="W3C HTML Pass Screen"></details>
+
+- <details><summary>W3C HTML Validation - Checkout Pass</summary><img src="docs/testing/w3html4.png" alt="W3C HTML Pass Screen"></details>
 
 ---
 
@@ -69,11 +71,31 @@ Modals use position: fixed, which can sometimes be a bit particular about its re
 
 - [W3C CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/)
 
-Next, I carried out validation of the CSS file by running the page through W3C CSS Validation Service - Jigsaw.
+- <details><summary>W3C CSS Validation </summary><img src="docs/testing/w3css.png" alt="W3C HTML Pass Screen"></details>
 
-<details><summary>W3C CSS Pass</summary><img src="officechampion/static/assets/images/docs/validation/w3c_css.png" alt="W3C CSS Pass Screen"></details>
+**1 "Error" was returned.**
 
-The results came back successful.
+This error is a false flag, as proven by this article from [W3Schools](https://www.w3schools.com/cssref/css_pr_scale.php) explaining how to use the scale property and providing "%" as a valid input, also stating that:
+
+```
+Note: An alternative technique to scale an element is to use CSS transform property with CSS scale() function.
+The CSS scale property, as explained on this webpage, is arguably a simpler and more direct way to scale an element.
+```
+
+[Mig281](https://github.com/validator/validator/issues/1091) in a GitHub discussion explains that the validator expects this instead:
+
+```
+#foo, .bar {
+  transform: scale(0.8);
+}
+
+The MDN docs do state:
+The scale CSS property allows you to specify scale transforms individually and independently of the transform property. This maps better to typical user interface usage, and saves having to remember the exact order of transform functions to specify in the transform value.
+```
+
+As shown here this is an issue with the validator not recognising this "newer" CSS property rather than an issue with my CSS code.
+
+I am satisfied with the results of this validation and consider it to be passed, as I have used a more efficient method for my use-case than the suggested "fix".
 
 ---
 
@@ -81,28 +103,27 @@ The results came back successful.
 
 - [JSHint Validator](https://jshint.com/)
 
-I utilised JSHint as a validation tool to help detect if there were any errors or potential problems within my JavaScript code.
+I utilised JSHint as a validation tool for the "Checkout.JS" file. Which contains all of the projects internal JS used for Stripe and payment handling. The validator passed Radicool's JS.
 
-<details><summary>JSHint Validation</summary><img src="officechampion/static/assets/images/docs/validation/jshint.png" alt="JSHint Validation"></details>
-
-- The undefined variables were all required by Materialize's inbuilt components to initialise forms and other components.
-
-- The removeNode function is called from within HTML pages whenever an alert is clicked by the user. This allows users to close alert pop-ups.
+  - <details><summary>JSHint Validation</summary><img src="docs/testing/jshint.png"></details>
 
 ---
 
-## CI Python Linter
+## Flake8 Python Linter
 
-- [Code Institute Python Linter - Pep8 Validator](https://pep8ci.herokuapp.com/)
+- [Flake8 Validator](https://pep8ci.herokuapp.com/)
 
-I used Code Institute's Python Linter to check the validity of my code based on Pep 8 styling standards.
+This was ran internally using GitPod's CLI.
 
-I ran each Python page individually through the linter. With each returning a result of: "All clear, no errors found."
+Initially a number of formatting errors were shown:
 
-<details><summary>Python Lint for - "__init__.py"</summary><img src="officechampion/static/assets/images/docs/validation/ci_init.png" alt="Python Lint Results #1"></details>
-<details><summary>Python Lint for - "models.py"</summary><img src="officechampion/static/assets/images/docs/validation/ci_models.png" alt="Python Lint Results #2"></details>
-<details><summary>Python Lint for - "routes.py"</summary><img src="officechampion/static/assets/images/docs/validation/ci_routes.png" alt="Python Lint Results #3"></details>
-<details><summary>Python Lint for - "run.py"</summary><img src="officechampion/static/assets/images/docs/validation/ci_run.png" alt="Python Lint Results #4"></details>
+  - <details><summary>Initial Python Lint</summary><img src="docs/testing/flake8.png" alt="Python Lint Results #1"></details>
+
+Upon refactoring, Radicool passed the Python Linting process. 
+
+  - <details><summary>Python Linting - Pass</summary><img src="docs/testing/flake8pass.png" alt="Python Lint Results #2"></details>
+
+The entire project was inserted into a file and checked. This was to avoid false flags from other frameworks or plugins beyond my control.
 
 ---
 
@@ -110,35 +131,96 @@ I ran each Python page individually through the linter. With each returning a re
 
 - [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/)
 
-This was used to check that the Office Champion website was accessible to as many individuals' needs as possible.
+This was used to check the accessibility of Radicool in meeting individual user needs.
 
-On an initial scan, I discovered the following accessibility errors:
-- The Materialize default of white text on an amber background was actually being flagged as a contrast issue.
-- Underlining being used on page headers wasn't the best practice. A user could easily mistake this for a hyperlink.
-- The home button contained the same link as the adjacent "Office Champions" Hero Image, that was included in the navbar. Repeating adjacent links seemed unnecessary to Wave.
+included in the navbar. Repeating adjacent links seemed unnecessary to Wave.
 
-<details><summary>Wave Error #1</summary><img src="officechampion/static/assets/images/docs/validation/wave1.png" alt="Wave Error #1"></details>
+  - <details><summary>Wave Error #1</summary><img src="docs/testing/wave1.png" alt="Wave Error #1"></details>
 
-<details><summary>Wave Error #2</summary><img src="officechampion/static/assets/images/docs/validation/wave5.png" alt="Wave Error #2"></details>
+Improvements-made:
 
-To fix the above issues:
-- I recoloured all menu and navigation text to black. Providing adequate contrast for users.
-- I removed all underlining throughout the website's headers.
+- `sr-only` label added to `search_bar` for screen-reader use.
 
-I also decided to keep the "redundant" additional navigation link of "home". My reasoning is that most users will expect the navbar icon to take them home as this is an extremely common feature across numerous websites. The addition of the written "home" button will provide a means of getting to the home page for users without this expectation without harming the website or other users.
+- `sr-only` span elements added inside of empty links that use icons as their context rather than text, such as the social links in the footer.
 
-After carrying out the above steps, Office Champion passed Wave validation.
+After carrying out the above steps, Radicool passed Wave validation.
 
-<details><summary>Wave Validation Pass</summary><img src="officechampion/static/assets/images/docs/validation/wave4.png" alt="Wave Validation Screen #4"></details>
+  - <details><summary>Wave Validation Pass</summary><img src="docs/testing/wave2.png" alt="Wave Validation"></details>
+
+As justification for the remaining contrast errors and alerts:
+
+- Alerts are referring almost entirely to "redundant links" but I feel a user would expect multiple elements within the same card to lead to that cards `info` html page. As such these have been left in to provide a better user experience, as they cause no issues to the website.
+
+- Contrast errors are all in reference to white text appearing on the Radicool green. This is a similar colour convention's used by world renowned brands such as: Subway, Asda, Starbucks and Xbox. I am confident users will have no issue interacting with these elements and have ensured it is only used on elements that are not-integral to a users purchase journey such as sort buttons and a website banner.
 
 ---
 
-## A11y Contrast Validator
+## Lighthouse
 
-- [A11y Color Contrast Accessibility Validator](https://color.a11y.com/Contrast/)
+- [Google Chrome Lighthouse Validator](https://developer.chrome.com/docs/lighthouse/overview/)
 
-This was used to ensure the website's colour contrast met WCAG 2.1 Guidelines.
+Google Lighthouse was used to run performance, accessibility & SEO audits of Radicool.
 
-An initial check showed that the burger menu icon on the side-nav bar was a contrast issue. I recoloured this icon from white to black, fixing the issue.
+<details><summary>Lighthouse Initial Check - Desktop</summary><img src="docs/testing/lighthouse1.png"></details>
 
-<details><summary>A11y Validation Pass</summary><img src="officechampion/static/assets/images/docs/validation/a11y_val.png" alt="A11y Validation Screen"></details>
+The performance results were concerning, to improve this statistic and raise scores the following was done:
+
+- `<Meta>` tags were added to the base template's head to improve the SEO potential of Radicool.
+
+- Stripe JS was moved to the checkout page where it was required instead of being ran from the Base template.
+
+- Replaced images within the Amazon Bucket. Changing .jpg's and .png's into .webp images using [Cloud Convert](https://cloudconvert.com/). Boosted "Home" Performance to 56%.
+
+- Navbar links coloured darker and made bolder.
+
+- Javascript moved to base template footer from head.
+
+- Hero Image pre-loaded within the HTML.
+
+After implementing all of the above changes there was only a marginal shift in my Performance score.
+
+<details><summary>Lighthouse Desktop</summary><img src="docs/testing/lighthouse-desktop.png"></details>
+
+<details><summary>Lighthouse Mobile</summary><img src="docs/testing/lighthouse-mobile.png"></details>
+
+Running a test on the same project locally instead gave these results.
+
+<details><summary>Lighthouse Local Desktop Check</summary><img src="docs/testing/lighthouse-local-test.png"></details>
+
+With the above in mind I feel as though I've done what I can to improve the scores & that further improvements to "Performance" would require me to purchase and upgrade my subscriptions to either Heroku, Railway or - most likely - Amazon's services.
+
+With that in mind, I am happy with the above results and feel this testing process has dramatically improved the overall speed and best practice across the Radicool E-commerce store. Images have been drastically condensed in file-size, the order of elements and frameworks loading has been improved and sped-up.
+
+All-in-all a better user-experience has been achieved. 
+
+[Back to Top ↑](#testing-document)
+
+---
+
+# Device Testing
+
+The website was tested and functioned as expected on the following devices:
+
+- Novatech LTD. AMD Ryzen 7 3800x, 32GB Desktop
+- Lenovo IdeaPad 5 Pro
+- Samsung Galaxy S20 & S21
+- Samsung Galaxy Tab S7
+- MacBook Air with M1 chip
+- iPhone 11, 13 & 14
+- iPad Air
+- Samsung Chrome Book
+
+The website has been tested on up-to-date versions of the following browsers:
+
+- Microsoft Edge
+- Google Chrome
+- Chrome for android
+- Mozilla Firefox
+- Opera
+- Safari
+- Internet Explorer
+- Duck Duck Go
+
+The website has also been tested on monitors of 16:9, 16:10 and 21:9 resolutions.
+
+[Back to Top ↑](#testing-document)
