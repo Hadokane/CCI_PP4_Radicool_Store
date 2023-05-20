@@ -62,7 +62,7 @@ form.addEventListener('submit', function(ev) {
     $('#submit-button').attr('disabled', true);
 
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
-    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val()
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
@@ -120,4 +120,4 @@ form.addEventListener('submit', function(ev) {
         // just reload the page, the error will be in django messages
         location.reload();
     });
-})
+});
