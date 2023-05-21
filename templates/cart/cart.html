@@ -60,9 +60,9 @@
                     </select>
                 </div>
                 {% endif %}
-                <!--Add to Cart-->
+                <!--Update Cart-->
                 <p class="mt-3">
-                    <button type="button" value="{{ product.id }}" data-index="{{ product.id }}"
+                    <button type="button" value="{{ product.id }}" data-index="{{ product.id }}" id="update-cart{{ product.id }}"
                         class="update-cart btn btn-outline-dark btn-rounded mb-3"><i class="fa-solid fa-star"></i>
                         Update</button>
 
@@ -173,6 +173,8 @@
                 document.getElementById('deliverycost').innerHTML = json.deliverycost
                 document.getElementById('grandtotal').innerHTML = json.grandtotal
                 document.getElementById('deliverydelta').innerHTML = json.deliverydelta
+                document.getElementById("update-cart" + merchid).innerHTML = "<i class='fa-solid fa-check'></i> Updated!";
+                setTimeout(function() {document.getElementById('update-cart' + merchid).innerHTML='<i class="fa-solid fa-star"></i> Update';},1000);
                 if (('item-size' + merchid).innerHTML = "XS" || "S" || "M" || "L" || "XL" ||
                     "XXL")
                     document.getElementById('item-size' + merchid).innerHTML = json.size

@@ -124,7 +124,7 @@
 
                 <!--Add to Cart-->
                 <div class="col-12 text-center">
-                    <button type="button" data-id="{{ merch.id }}"
+                    <button type="button" data-id="{{ merch.id }}" id="add-cart"
                         class="add-to-cart btn btn-lg btn-outline-dark btn-rounded mb-3">
                         <i class="fa-solid fa-plus"></i> Add to cart</button>
 
@@ -168,6 +168,8 @@
             success: function (json) {
                 document.getElementById("cart-qty").innerHTML = json.qty
                 document.getElementById("subtotal-nav").innerHTML = json.subtotal
+                document.getElementById("add-cart").innerHTML = "<i class='fa-solid fa-check'></i> Added!";
+                setTimeout(function() {document.getElementById('add-cart').innerHTML='<i class="fa-solid fa-plus"></i> Add to cart';},1000);
             },
             error: function (xhr, errmsg, err) {}
         });
