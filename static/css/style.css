@@ -227,9 +227,7 @@ a .delete-text:hover i,
   width: 100%;
 }
 
-
 /* Bootstrap Toasts - modified from CI Project */
-
 .message-container {
   position: fixed;
   top: 180px;
