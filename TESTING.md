@@ -9,18 +9,16 @@ Here we will document the numerous testing and validation methods taken to ensur
 ---
 
 - [Code Validation](#code-validation)
-    - [W3C HTML Validator](#w3c-html-validation) 
-    - [W3C CSS Validator](#w3c-css-validation)
-    - [JSHint Validator](#jshint-validation)
-    - [Flake8 Linter](#flake8-python-linter)
-- [Wave Validator](#wave)
-- [Lighthouse](#lighthouse)
-
+  - [W3C HTML Validator](#w3c-html-validation) 
+  - [W3C CSS Validator](#w3c-css-validation)
+  - [JSHint Validator](#jshint-validation)
+  - [Flake8 Linter](#flake8-python-linter)
+  - [Wave Validator](#wave)
+  - [Lighthouse](#lighthouse)
 - [Testing User Stories](#testing-user-stories)
-    - [First Time User](#first-time-user)
-    - [Returning User](#returning-user)
-    - [Website Owner](#website-owner)
-
+  - [First Time User](#first-time-user)
+  - [Returning User](#returning-user)
+  - [Website Owner](#website-owner)
 - [Bugs](#bugs)
 
 Return to [README.md ↑](/README.md#testing)
@@ -224,3 +222,152 @@ The website has been tested on up-to-date versions of the following browsers:
 The website has also been tested on monitors of 16:9, 16:10 and 21:9 resolutions.
 
 [Back to Top ↑](#testing-document)
+
+---
+
+# Manual Testing
+
+Manual testing played a crucial role in the development of this  project.
+
+It has been carried out at each step of development through the use of Chrome Dev Tools, family & friends user tests and by asking and solving questions about the sites functionality in order to find any additional development oversights.
+
+Once the project had reached its developmental conclusion I compiled a list of main concerns that would need to be passed to confirm the site worked as intended. Through this methodology, I can ensure that I've satisfied my project brief and provided a fully functional full-stack website, fit for consumption by multiple users.
+
+---
+
+1. Can users create a new account?
+
+**Passes Testing:** Here we created a new user account with a test email from [Temp Mail](https://temp-mail.org/en/) successfully. Email Verification was carried out successfully.
+
+<details><summary>Sign Up - Quality check</summary><img src="docs/testing/signup_test/2.png" alt="Sign Up"></details>
+
+<details><summary>Sign Up - Test</summary><img src="docs/testing/signup_test/verify-email.png" alt="Sign Up 2"></details>
+
+<details><summary>Sign Up - Email Verification Required</summary><img src="docs/testing/signup_test/verify-email2.png" alt="Sign Up 3"></details>
+
+<details><summary>Sign Up - Email Received</summary><img src="docs/testing/signup_test/verify-email3.png" alt="Sign Up 4"></details>
+
+<details><summary>Sign Up - Email Confirmation</summary><img src="docs/testing/signup_test/verify-email4.png" alt="Sign Up 5"></details>
+
+<details><summary>Sign Up - Email Verified</summary><img src="docs/testing/signup_test/verify-email5.png" alt="Sign Up 6"></details>
+
+**Additional Testing Passed:**
+
+- A user is warned of incorrect or insecure data when signing up through Django AllAuth & Alert messages.
+
+- The user is sent an email allowing them to authenticate their account.
+
+- Once authenticated a user is able to sign in to their account.
+
+- This is a responsive, positive user experience, with informative prompts and interactive elements to guide the user.
+
+---
+
+2. Can users login on their verified accounts?
+
+**Passes Testing:** Alerts tell the user of issues preventing login. The user is able to login to the website with the correct information.
+
+<details><summary>Login - Test</summary><img src="docs/testing/signup_test/6.png" alt="Sign Up 7"></details>
+
+<details><summary>Login - Warning</summary><img src="docs/testing/signup_test/7.png" alt="Sign Up 8"></details>
+
+<details><summary>Login - Success</summary><img src="docs/testing/signup_test/8.png" alt="Sign Up 9"></details>
+
+---
+
+3. Does a "Brand Account" user have C.R.U.D. functionality from the Front-End?
+
+For this test:
+
+- The user "Test" was given a "Brand Account" group class within Django Admin.
+
+- The user "Test2" serves as a standard user account.
+
+**Passes Testing:** 
+
+- The Brand Account user is able to access a limited version of the Admin section from the Front-End. Viewing order history and having C.R.U.D. functionality over Merchandise.
+
+- They can perform C.R.U.D. functionality from the Front-End via the "Add" & "Edit" pages.
+
+- They are able to Delete products from the Front-End via a defensively designed delete modal.
+
+- Regular users are blocked from accessing Brand Account only pages if they navigate to the URL directly and are informed of this by Alerts.
+
+<details><summary>Brand Account - Assigning group</summary><img src="docs/testing/brand_account/a_create.png" alt="Assigning group"></details>
+
+<details><summary>Brand Account - Brand footer</summary><img src="docs/testing/brand_account/a_footer.png" alt="Brand footer"></details>
+
+<details><summary>Brand Account - Navbar</summary><img src="docs/testing/brand_account/a_dropdown.png" alt="Brand Navbar"></details>
+
+<details><summary>Brand Account - Card footer</summary><img src="docs/testing/brand_account/a_card.png" alt="Card footer"></details>
+
+<details><summary>Brand Account - Add Page</summary><img src="docs/testing/brand_account/a_add.png" alt="Add Page"></details>
+
+<details><summary>Brand Account - Edit Page</summary><img src="docs/testing/brand_account/a_edit.png" alt="Edit Page"></details>
+
+<details><summary>Brand Account - Delete Page</summary><img src="docs/testing/brand_account/a_dlt.png" alt="Delete Page"></details>
+
+<details><summary>Brand Account - Admin</summary><img src="docs/testing/brand_account/a_admin.png" alt="Admin"></details>
+
+<details><summary>Standard User - Sign in & Navbar</summary><img src="docs/testing/brand_account/s_signin.png" alt="Sign in"></details>
+
+<details><summary>Standard User - Redirect Message</summary><img src="docs/testing/brand_account/s_msg.png" alt="Redirect"></details>
+
+---
+
+4. Can users add items to their cart?
+
+**Passes Testing:** 
+
+- Users are able to add items to their cart and this is reflected by the live updating cart in the top right of the site.
+
+- The cart functions as expected by updating it's subtotal and quantity.
+
+- Button text provides live positive feedback.
+
+<details><summary>Cart - Add Test</summary><img src="docs/testing/cart_test/add1.png" alt="Cart - Add Test"></details>
+
+<details><summary>Cart - Added</summary><img src="docs/testing/cart_test/add2.png" alt="Cart - Added"></details>
+
+---
+
+5. Can users edit items within their cart?
+
+**Passes Testing:** 
+
+- Users are able to remove items from the cart via interactive buttons.
+
+- The totals dynamically update to inform the user of shipping costs, sub totals for each item and the carts grand total.
+
+- Size and quantity can be updated for each item dynamically within the cart.
+
+- Button text provides live positive feedback for update. Page refreshes on removal.
+
+<details><summary>Cart - Test</summary><img src="docs/testing/cart_test/cart.png" alt="Cart - Test"></details>
+
+<details><summary>Cart - Remove</summary><img src="docs/testing/cart_test/remove.png" alt="Cart - Remove"></details>
+
+<details><summary>Cart - Update</summary><img src="docs/testing/cart_test/update.png" alt="Cart - Update"></details>
+
+<details><summary>Cart - Updated</summary><img src="docs/testing/cart_test/update2.png" alt="Cart - Updated"></details>
+
+
+---
+
+6. Can users checkout and complete a purchase?
+
+**Passes Testing:** 
+
+- The user can enter and save their information to their profile.
+
+- Stripe payment is accepted.
+
+- The user is shown a confirmation page.
+
+- The order appears within the users profile and is accessible.
+
+- A confirmation email is sent.
+
+<details><summary>Checkout - Test</summary><img src="docs/testing/signup_test/6.png" alt="Checkout - Test"></details>
+
+---
