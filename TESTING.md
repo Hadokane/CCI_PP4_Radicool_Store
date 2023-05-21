@@ -237,7 +237,17 @@ Once the project had reached its developmental conclusion I compiled a list of m
 
 1. Can users create a new account?
 
-**Passes Testing:** Here we created a new user account with a test email from [Temp Mail](https://temp-mail.org/en/) successfully. Email Verification was carried out successfully.
+Here we created a new user account with a test email from [Temp Mail](https://temp-mail.org/en/) and attempt to sign up to Radicool.
+
+**Passes Testing:**
+
+- A user is warned of incorrect or insecure data when signing up through Django AllAuth & Alert messages.
+
+- The user is sent an email allowing them to authenticate their account.
+
+- Once authenticated a user is able to sign in to their account.
+
+- This is a responsive, positive user experience, with informative prompts and interactive elements to guide the user.
 
 <details><summary>Sign Up - Quality check</summary><img src="docs/testing/signup_test/2.png" alt="Sign Up"></details>
 
@@ -250,16 +260,6 @@ Once the project had reached its developmental conclusion I compiled a list of m
 <details><summary>Sign Up - Email Confirmation</summary><img src="docs/testing/signup_test/verify-email4.png" alt="Sign Up 5"></details>
 
 <details><summary>Sign Up - Email Verified</summary><img src="docs/testing/signup_test/verify-email5.png" alt="Sign Up 6"></details>
-
-**Additional Testing Passed:**
-
-- A user is warned of incorrect or insecure data when signing up through Django AllAuth & Alert messages.
-
-- The user is sent an email allowing them to authenticate their account.
-
-- Once authenticated a user is able to sign in to their account.
-
-- This is a responsive, positive user experience, with informative prompts and interactive elements to guide the user.
 
 ---
 
@@ -362,12 +362,236 @@ For this test:
 
 - Stripe payment is accepted.
 
+- Stripe Webhooks are received.
+
 - The user is shown a confirmation page.
 
-- The order appears within the users profile and is accessible.
+- The order appears within the users Profile under Order History and is viewable.
 
-- A confirmation email is sent.
+- A confirmation email is sent to the user.
 
-<details><summary>Checkout - Test</summary><img src="docs/testing/signup_test/6.png" alt="Checkout - Test"></details>
+- Users can save delivery information in their Profile, that is then called in the Checkout.
+
+<details><summary>Checkout - Test</summary><img src="docs/testing/checkout_test/ch1.png" alt="Checkout - Test"></details>
+
+<details><summary>Checkout - Info Entered</summary><img src="docs/testing/checkout_test/ch2.png" alt="Checkout - Info Entered"></details>
+
+<details><summary>Checkout - Confirmed</summary><img src="docs/testing/checkout_test/ch3.png" alt="Checkout - Confirmed"></details>
+
+<details><summary>Checkout - Email Received</summary><img src="docs/testing/checkout_test/ch4.png" alt="Checkout - Email Received"></details>
+
+<details><summary>Checkout - Email Contents</summary><img src="docs/testing/checkout_test/ch5.png" alt="Checkout -  Email Contents"></details>
+
+<details><summary>Checkout - Order History</summary><img src="docs/testing/checkout_test/ch6.png" alt="Checkout - Order History"></details>
+
+<details><summary>Profile - Past Order</summary><img src="docs/testing/checkout_test/chpast.png" alt="Profile - Past Order"></details>
+
+<details><summary>Profile Info - Test</summary><img src="docs/testing/checkout_test/prof1.png" alt="Profile Info - Test"></details>
+
+<details><summary>Profile Saved</summary><img src="docs/testing/checkout_test/prof2.png" alt="Profile Saved"></details>
+
+<details><summary>Checkout - Calls Profile Info</summary><img src="docs/testing/checkout_test/prof3.png" alt="Checkout - Calls Profile Info"></details>
+
+<details><summary>Stripe- Success</summary><img src="docs/testing/checkout_test/stripe.png" alt="Stripe- Success"></details>
 
 ---
+
+7. Can users use their Wish List?
+
+**Passes Testing:** 
+
+- The user is able to add & remove items from their wish list.
+
+- The correct buttons display by items to show the user if they are within their list or not.
+
+- Merchandise on the wish list page link correctly to their `info` pages when interacted with.
+
+- The user has front-end C.R.U.D. functionality over their wish list.
+
+- Unauthorised users are directed to the sign up page, thus being incentivised to sign up for Radicool's services.
+
+- Toast Alerts provide positive feedback for users.
+
+<details><summary>Wish List - Empty</summary><img src="docs/testing/wishlist_test/1.png" alt="Wish List - Empty"></details>
+
+<details><summary>Wish List - Add</summary><img src="docs/testing/wishlist_test/2.png" alt="Wish List - Add"></details>
+
+<details><summary>Wish List - Add Alert</summary><img src="docs/testing/wishlist_test/3.png" alt="Wish List - Add Alert"></details>
+
+<details><summary>Wish List</summary><img src="docs/testing/wishlist_test/4.png" alt="Wish List"></details>
+
+<details><summary>Wish List - Remove</summary><img src="docs/testing/wishlist_test/5.png" alt="Wish List - Remove"></details>
+
+<details><summary>Wish List - Saved between sessions, browsers and devices.</summary><img src="docs/testing/wishlist_test/6_sesh.png" alt="Wish List - Sessions"></details>
+
+---
+
+8. Can Guests checkout?
+
+**Passes Testing:** 
+
+- Guests are able to checkout and receive confirmation emails the same as regular users.
+
+<details><summary>Checkout - Guest</summary><img src="docs/testing/checkout_test/ch_g1.png" alt="Checkout - Guest"></details>
+
+<details><summary>Checkout - Guest Email Received</summary><img src="docs/testing/checkout_test/ch_g2.png" alt="Checkout - Guest Email Received"></details>
+
+<details><summary>Checkout - Guest Email</summary><img src="docs/testing/checkout_test/ch_g3.png" alt="Checkout - Guest Email"></details>
+
+---
+
+**Additional Tests:** 
+
+- Users are able to sign in on multiple devices.
+
+- Alert Toasts can be closed by clicking them.
+
+- Users cannot see other users' data.
+
+[Back to top ↑](#testing_document)
+
+---
+
+# Testing User Stories
+
+Here we will test our previously defined user goals by providing and acknowledging evidence that shows they are met by the current deployed project.
+
+---
+
+## First-time User
+
+**As a First-Time user, I want to:**
+
+| ID      | GOAL          | GOAL MET? (X=MET)      |
+| -------------|:-------------:|:-------------:|
+| A1           | Browse Merch on the website          | X |
+| A2           | Search for Merchandise directly      | X |
+| A3           | Add items to Cart   | X |
+| A4           | View my Cart     | X |
+| A5           | Edit my Cart    | X |
+| A6           | Checkout as Guest    | X |
+| A7           | Receive Order Confirmations  | X |
+| A8           | Have a reason to sign up | X |
+| A9           | Create an account | X |
+| A10          | Access the site on different devices | X |
+
+- A1 is met by the Products, Categories & Collections pages.
+- A2 is met by the above & the search bar function.
+- A3-A5 is met by the Cart section and proven in earlier testing.
+- A6-A7, A9 & A10 are proven in the above Manual Testing section.
+- A8 is met by the website featuring the Wish List & Profile section of the website.
+
+---
+
+## Returning User
+
+**As a Returning user, I want to:**
+
+| ID      | GOAL          | GOAL MET? (X=MET)      |
+| -------------|:-------------:|:-------------:|
+| B1           | Login to my account          | X |
+| B2           | Save my Cart between sessions     | X |
+| B3           | Save my information for faster purchases  | X |
+| B4           | View my Order History    | X |
+| B5           | Save items to a Wish List    | X |
+
+- B1-B5 are all met and proven in the above Testing section.
+- B2 the Cart is saved in the user's session remaining on the same device and browser.
+- The Wish List & Order History is saved across all devices.
+
+---
+
+## Brand User
+
+**As a Brand user, I want to:**
+
+| ID      | GOAL          | GOAL MET? (X=MET)      |
+| -------------|:-------------:|:-------------:|
+| C1           | Add items to the store          | X |
+| C2           | Add Categories & Collections    | X |
+| C3           | View Users' Order History  | X |
+| C4           | Update items within the store    | X |
+| C5           | Remove items from the store    | X |
+
+- C1-C5 are all met and proven in the above Testing section.
+- Functionality is provided on the Front-End through the `Add` & `Edit` pages.
+- They are able to view users order history within their Admin section.
+
+---
+
+## Site Admin
+
+**As the Site Admin, I want to:**
+
+| ID      | GOAL          | GOAL MET? (X=MET)      |
+| -------------|:-------------:|:-------------:|
+| D1           | Have the same C.R.U.D. functionality as Brands | X |
+| D2           | View & manage User Accounts    | X |
+| D3           | View & manage Orders  | X |
+| D4           | Receive Stripe payments   | X |
+| D5           | Ensure site users have their expected experiences  | X |
+
+- D1 & D5 are met by the above section goals being met.
+- D2 & D3 are achievable through Django's Admin pages.
+- D4 is proven in the above Manual Testing section.
+
+---
+
+I am confident that the above examples further substantiate the evidence provided in the previous "Plane Analysis" sections and will be strengthened further by the following "Testing" sections. 
+
+I have substantial reason to declare all user and site-owner stories met.
+
+[Back to top ↑](#testing_document)
+
+---
+
+# Bugs
+
+Over the course of this project, I encountered numerous bugs that either impacted the functionality or design of the website and needed to be fixed.
+
+## Chrome Dev Tools
+
+Chrome Dev Tools served as one of my most important methods of debugging from start to finish. It allowed me to find numerous errors in the code such as: 
+
+- Noticing discrepancies in my `<div>` arrangements and classes and ordering them correctly so that elements opened and closed when they should have.
+
+- Test out the inline styles on numerous elements before committing those changes to CSS.
+    - Used heavily while deciding on card designs.
+
+- See if an object had unintentional padding or margins being applied to it by default Materialize classes and remove/add where necessary.
+
+- Diagnose numerous bugs and hierarchical code issues present throughout the project.
+
+- See additional "issues" that may impact the performance of my project or stop it from meeting best practice guidelines.
+
+---
+
+### BUG #1
+
+---
+
+**Bug:** Index Promo cards squished and unreadable on smaller devices.
+
+<details><summary>Bug 1</summary><img src="" alt=""></details>
+
+**Fix:** I realised I needed to change the default Materialize column class to make it responsive on smaller devices. Set it to display single cards on smaller devices and rows of 2 and 3 on larger screens.
+
+<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
+
+---
+
+## Known Bugs
+
+---
+
+If a User refreshes the Order Confirmation page it will resend the Confirmation email.
+
+This is a minor issue that would only effect a very small subset of users, that happen to refresh their order confirmations.
+
+A warning has been added to the bottom of Confirmation Emails to inform the user that if they receive multiple emails with the same order number, that they haven't been billed more than once.
+
+This is a satisfactory - yet temporary - solution and something I would look to improve upon in future builds of this project.
+
+[Back to Top ↑](#testing-document)
+
+[Return to README.md ↑](/README.md#testing)
