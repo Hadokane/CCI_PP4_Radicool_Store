@@ -7,11 +7,21 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            {% if from_profile %}
+            <h2 class="logo-font mb-4">Past Order</h2>
+            <hr>
+            <p class="text-black">Your order information is below.
+                A confirmation email was sent to
+                <strong>{{ order.email }}</strong>.
+            </p>
+            {% else %}
             <h2 class="logo-font mb-4">Thank You</h2>
             <hr>
             <p class="text-black">Your order information is below.
                 A confirmation email will be sent to
-                <strong>{{ order.email }}</strong>.</p>
+                <strong>{{ order.email }}</strong>.
+            </p>
+            {% endif %}
         </div>
     </div>
 
