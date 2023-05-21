@@ -164,8 +164,8 @@ def send_email(order):
         {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
     send_mail(
-        "Hello! Radicool Order Done",
-        "{{ order.order_number }} is being processed.",
+        subject,
+        body,
         settings.DEFAULT_FROM_EMAIL,
         [customers_email]
     )
