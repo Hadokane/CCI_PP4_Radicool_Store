@@ -172,6 +172,7 @@ button:hover {
 }
 
 /* Nav Link Text */
+.dropdown-menu p.disabled,
 .nav-item p{
   color: black;
   font-weight: 600;
