@@ -5,11 +5,11 @@ This is email confirmation that your RADICOOL order has been received.
 Your order information is below:
 
 Order Number: {{ order.order_number }}
-Order Date: {{ order.date }}
+Order Date: {{ order.created }}
 
-Order Total: £{{ order.order_total }}
-Delivery: £{{ order.delivery_cost }}
-Grand Total: £{{ order.grand_total }}
+Order Total: £{{ order.total_paid }}
+Delivery: £{{ order.total_delivery_cost }}
+Grand Total: £{{ order.total_grand }}
 
 Your order will be shipped to: 
 {{ order.street_address_1 }},

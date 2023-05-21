@@ -6,10 +6,12 @@ from django.shortcuts import (
 from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
-from .forms import OrderForm
 from cart.cart import Cart
 from .models import Order, OrderItem
+from .forms import OrderForm
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 
@@ -20,7 +22,6 @@ def cache_checkout_data(request):
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
-            'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
         return HttpResponse(status=200)
@@ -43,30 +44,30 @@ def checkout(request):
         num = uuid.uuid4().hex.upper()
 
         order = Order.objects.create(
-                full_name=request.POST["full_name"],
-                email=request.POST['email'],
-                town_or_city=request.POST['town_or_city'],
-                street_address_1=request.POST['street_address_1'],
-                street_address_2=request.POST['street_address_2'],
-                county=request.POST['county'],
-                postcode=request.POST['postcode'],
-                country=request.POST['country'],
-                total_paid=carttotal,
-                total_delivery_cost=cartdelivery,
-                total_grand=cartgrand,
-                order_key=request.POST.get('client_secret'),
-                order_number=num,
-                )
+            full_name=request.POST["full_name"],
+            email=request.POST['email'],
+            town_or_city=request.POST['town_or_city'],
+            street_address_1=request.POST['street_address_1'],
+            street_address_2=request.POST['street_address_2'],
+            county=request.POST['county'],
+            postcode=request.POST['postcode'],
+            country=request.POST['country'],
+            total_paid=carttotal,
+            total_delivery_cost=cartdelivery,
+            total_grand=cartgrand,
+            order_key=request.POST.get('client_secret'),
+            order_number=num,
+        )
         order_id = order.pk
 
         for item in cart:
             OrderItem.objects.create(
-                    order_id=order_id,
-                    merch=item['product'],
-                    price=item['price'],
-                    quantity=item['qty'],
-                    size=item["size"],
-                    )
+                order_id=order_id,
+                merch=item['product'],
+                price=item['price'],
+                quantity=item['qty'],
+                size=item["size"],
+            )
 
         return redirect(reverse("checkout:checkout_success",
                         args=[order.order_number]))
@@ -121,7 +122,6 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
@@ -130,27 +130,16 @@ def checkout_success(request, order_number):
         order.user_profile = profile
         order.save()
 
-        # Show confirmation message
-        messages.success(request, f"Order: {order_number} successful! \
+    # Show confirmation message
+    messages.success(request, f"Order: {order_number} successful! \
                      Confirmation Email sent to {order.email}.")
 
-        # Save the user's info
-        if save_info:
-            profile_data = {
-                "default_full_name": order.full_name,
-                'default_street_address_1': order.street_address_1,
-                'default_street_address_2': order.street_address_2,
-                'default_town_or_city': order.town_or_city,
-                'default_county': order.county,
-                'default_postcode': order.postcode,
-                'default_country': order.country,
-            }
-            user_profile_form = UserProfileForm(profile_data, instance=profile)
-            if user_profile_form.is_valid():
-                user_profile_form.save()
-
+    # Clear the Cart
     cart = Cart(request)
     cart.clear()
+
+    # Send confirmation email
+    send_email(order)
 
     template = 'checkout/checkout_success.html'
     context = {
@@ -162,3 +151,21 @@ def checkout_success(request, order_number):
 
 def payment_confirmation(data):
     Order.objects.filter(order_key=data).update(billing_status=True)
+
+
+def send_email(order):
+    """Send the user a confirmation email"""
+    customers_email = order.email
+    subject = render_to_string(
+        '../templates/emails/confirmation_email_subject.txt',
+        {'order': order})
+    body = render_to_string(
+        '../templates/emails/confirmation_email_body.txt',
+        {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+    send_mail(
+        "Hello! Radicool Order Done",
+        "{{ order.order_number }} is being processed.",
+        settings.DEFAULT_FROM_EMAIL,
+        [customers_email]
+    )
