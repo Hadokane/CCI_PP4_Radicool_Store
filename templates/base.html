@@ -97,9 +97,9 @@
                             <p>Account <i class="fa-solid fa-caret-down"></i></p>
                         </a>
                         <div class="dropdown-menu">
+                            {% if request.user.is_authenticated %}
                             <p class="dropdown-item text-center disabled">Hi {{user.username}}!</p>
                             <hr>
-                            {% if request.user.is_authenticated %}
                             {% for group in request.user.groups.all %}
                             {% if group.name == 'Brand' %}
                             <a class="dropdown-item text-center" href="{% url 'admin:index' %}">Admin</a>
