@@ -28,7 +28,8 @@
                 </a>
 
                 <!-- Delete Button-->
-                <a class="delete-btn btn btn-outline-dark btn-rounded mb-3" href="{% url 'store:delete_merch' post.id %}">
+                <a class="delete-btn btn btn-outline-dark btn-rounded mb-3"
+                    href="{% url 'store:delete_merch' post.id %}">
                     <i class="fa-solid fa-trash"></i> Delete the Product
                 </a>
             </div>
@@ -39,146 +40,142 @@
 
 <!--Search Title-->
 <div class="container">
-{% if q %}
+    {% if q %}
     <h1>You searched for: "{{ q }}"</h1>
-{% else %}
+    {% else %}
     <h1>Search our merchandise, results will display here.</h1>
+    {% endif %}
 </div>
-{% endif %}
 
 <!--Cards Container-->
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <!--Loops through merch displaying them responsively in cards-->
-            {% for post in results %}
-            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                <div class="card h-100 mb-4 shadow-sm text-center">
+<div class="container">
+    <div class="row">
+        <!--Loops through merch displaying them responsively in cards-->
+        {% for post in results %}
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 mb-4 shadow-sm text-center">
 
-                    <!--Card Header Image-->
-                    <a href="{{ post.get_absolute_url }}">
-                        <div class="overflow-auto">
-                            <img class="card-img-top" src="{{ post.image.url }}"
-                                alt="{{ post.product_name }}">
-                        </div>
-                    </a>
-
-                    <!--Card Body Text-->
-                    <div class="card-body text-center d-flex flex-column">
-                        <a class="card-text"
-                            href="{{ post.get_absolute_url }}"><strong>{{ post.product_name }}</strong></a>
-                        <p class="card-text"><em>{{ post.description }}</em></p>
-
-                        {% if post.category %}
-                        <p>
-                            <a class="card-text" href="{% url 'store:category_info' post.category.slug %}">
-                                <i class="fa-solid fa-tag"></i>
-                                {{ post.category }}
-                            </a>
-                        </p>
-                        {% endif %}
-
-                        {% if post.collection %}
-                        <p>
-                            <a class="card-text" href="{% url 'store:collection_info' post.collection.slug %}">
-                                <i class="fa-solid fa-record-vinyl"></i>
-                                {{ post.collection }}</a>
-                        </p>
-                        {% endif %}
-
-                         <!--Wishlist-->
-                         <div class="m-3 align-self-center mt-auto">
-                            {% if request.user.is_authenticated %}
-                            {% if wishlist %}
-                            {% if m in wishlist %}
-                            <!--Remove from Wishlist Icon-->
-                            <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' post.id %}"
-                                aria-label="remove from wishlist"
-                                class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                <i class="fa-solid fa-heart-circle-xmark"></i>
-                            </a>
-                            {% else %}
-                            <!--Add to Wishlist Icon-->
-                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' post.id %}"
-                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                <i class="fa-solid fa-heart-circle-plus"></i>
-                            </a>
-                            {% endif %}
-                            {% else %}
-                            <!--Otherwise if no Wishlist show this-->
-                            <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' post.id %}"
-                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                <i class="fa-solid fa-heart-circle-plus"></i>
-                            </a>
-                            {% endif %}
-                            {% else %}
-                            <!--If not authenticated-->
-                            <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
-                                aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
-                                <i class="fa-solid fa-heart-circle-plus"></i>
-                            </a>
-                            {% endif %}
-                        </div>
-
-                        <p class="card-text align-self-center mt-auto">
-                            <a href="{{ post.get_absolute_url }}">
-                                <strong>
-                                    <i class="fa-regular fa-money-bill-1"></i>
-                                    £{{ post.price }}
-                                </strong>
-                            </a>
-                        </p>
-                        
+                <!--Card Header Image-->
+                <a href="{{ post.get_absolute_url }}">
+                    <div class="overflow-auto">
+                        <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.product_name }}">
                     </div>
+                </a>
 
-                    <!--Card Footer Buttons-->
-                    {% for group in request.user.groups.all %}
-                    {% if group.name == 'Brand' %}
-                    <div class="card-footer">
-                        <p>
-                            <a href="{% url 'store:edit_merch' post.id %}">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                                Edit the Product
-                            </a>
-                        </p>
+                <!--Card Body Text-->
+                <div class="card-body text-center d-flex flex-column">
+                    <a class="card-text" href="{{ post.get_absolute_url }}"><strong>{{ post.product_name }}</strong></a>
+                    <p class="card-text"><em>{{ post.description }}</em></p>
 
-                        <!--Calls safety modal - Delete function-->
-                        <p>
-                            <a class="delete-text text-danger text-center" type="button" data-toggle="modal"
-                                data-target="#deleteModal{{ post.id }}">
-                                <i class="fa-solid fa-trash"></i> Delete the Product</a>
-                        </p>
-
-                    </div>
+                    {% if post.category %}
+                    <p>
+                        <a class="card-text" href="{% url 'store:category_info' post.category.slug %}">
+                            <i class="fa-solid fa-tag"></i>
+                            {{ post.category }}
+                        </a>
+                    </p>
                     {% endif %}
-                    {% endfor %}
+
+                    {% if post.collection %}
+                    <p>
+                        <a class="card-text" href="{% url 'store:collection_info' post.collection.slug %}">
+                            <i class="fa-solid fa-record-vinyl"></i>
+                            {{ post.collection }}</a>
+                    </p>
+                    {% endif %}
+
+                    <!--Wishlist-->
+                    <div class="m-3 align-self-center mt-auto">
+                        {% if request.user.is_authenticated %}
+                        {% if wishlist %}
+                        {% if m in wishlist %}
+                        <!--Remove from Wishlist Icon-->
+                        <a title="Remove from Wish List" href="{% url 'profiles:update_wishlist' post.id %}"
+                            aria-label="remove from wishlist"
+                            class="remove-wishlist btn btn-lg btn-outline-dark btn-rounded mb-3">
+                            <i class="fa-solid fa-heart-circle-xmark"></i>
+                        </a>
+                        {% else %}
+                        <!--Add to Wishlist Icon-->
+                        <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' post.id %}"
+                            aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                            <i class="fa-solid fa-heart-circle-plus"></i>
+                        </a>
+                        {% endif %}
+                        {% else %}
+                        <!--Otherwise if no Wishlist show this-->
+                        <a title="Add to Wish List" href="{% url 'profiles:update_wishlist' post.id %}"
+                            aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                            <i class="fa-solid fa-heart-circle-plus"></i>
+                        </a>
+                        {% endif %}
+                        {% else %}
+                        <!--If not authenticated-->
+                        <a title="Sign Up to use Wish List" href="{% url 'account_signup' %}"
+                            aria-label="add to wishlist" class="btn btn-lg btn-outline-dark btn-rounded mb-3">
+                            <i class="fa-solid fa-heart-circle-plus"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <p class="card-text align-self-center mt-auto">
+                        <a href="{{ post.get_absolute_url }}">
+                            <strong>
+                                <i class="fa-regular fa-money-bill-1"></i>
+                                £{{ post.price }}
+                            </strong>
+                        </a>
+                    </p>
+
                 </div>
-            </div>
 
-            <!--Horizontal Rule Settings-->
+                <!--Card Footer Buttons-->
+                {% for group in request.user.groups.all %}
+                {% if group.name == 'Brand' %}
+                <div class="card-footer">
+                    <p>
+                        <a href="{% url 'store:edit_merch' post.id %}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Edit the Product
+                        </a>
+                    </p>
 
-            {% if forloop.counter|divisibleby:1 %}
-            <div class="col-12 d-sm-none">
-                <hr>
+                    <!--Calls safety modal - Delete function-->
+                    <p>
+                        <a class="delete-text text-danger text-center" type="button" data-toggle="modal"
+                            data-target="#deleteModal{{ post.id }}">
+                            <i class="fa-solid fa-trash"></i> Delete the Product</a>
+                    </p>
+
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
-            {% endif %}
-            {% if forloop.counter|divisibleby:2 %}
-            <div class="col-12 d-none d-sm-block d-md-block d-lg-none ">
-                <hr>
-            </div>
-            {% endif %}
-            {% if forloop.counter|divisibleby:3 %}
-            <div class="col-12 d-none d-lg-block d-xl-none">
-                <hr>
-            </div>
-            {% endif %}
-            {% if forloop.counter|divisibleby:4 %}
-            <div class="col-12 d-none d-xl-block">
-                <hr>
-            </div>
-            {% endif %}
-            {% endfor %}
         </div>
+
+        <!--Horizontal Rule Settings-->
+
+        {% if forloop.counter|divisibleby:1 %}
+        <div class="col-12 d-sm-none">
+            <hr>
+        </div>
+        {% endif %}
+        {% if forloop.counter|divisibleby:2 %}
+        <div class="col-12 d-none d-sm-block d-md-block d-lg-none ">
+            <hr>
+        </div>
+        {% endif %}
+        {% if forloop.counter|divisibleby:3 %}
+        <div class="col-12 d-none d-lg-block d-xl-none">
+            <hr>
+        </div>
+        {% endif %}
+        {% if forloop.counter|divisibleby:4 %}
+        <div class="col-12 d-none d-xl-block">
+            <hr>
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 

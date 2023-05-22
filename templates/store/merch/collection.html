@@ -3,6 +3,9 @@
 {% block extra_title %}| {{collection.col_name}}{% endblock %}
 {% block content %}
 
+<!-- Search Bar -->
+{% include 'includes/search/search_bar.html' %}
+
 <!-- Delete Modal -->
 {% for m in merch %}
 <div class="modal fade" id="deleteModal{{m.id}}" tabindex="-1" role="dialog"

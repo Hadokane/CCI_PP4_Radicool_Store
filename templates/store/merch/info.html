@@ -3,6 +3,9 @@
 {% block extra_title %}| {{ merch.product_name }} {% endblock %}
 {% block content %}
 
+<!-- Search Bar -->
+{% include 'includes/search/search_bar.html' %}
+
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
     aria-hidden="true">

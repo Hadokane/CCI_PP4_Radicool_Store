@@ -96,13 +96,13 @@
 
                     <div class="float-right mr-0 form-p">
                         {% if user.is_authenticated %}
-                            <p>Save delivery information in your <a href="{% url 'profiles:profile' %}">profile</a>
+                            <p>Save delivery details in your <a href="{% url 'profiles:profile' %}"><strong><em>profile</em></strong></a>
                                 for faster purchases.
                             </p>
                         {% else %}
                             <p>
-                                <a href="{% url 'account_signup' %}">Sign up</a> or 
-                                <a href="{% url 'account_login' %}">login</a> to save delivery information.
+                                <a href="{% url 'account_signup' %}"><strong><em>Sign up</em></strong></a> or 
+                                <a href="{% url 'account_login' %}"><strong><em>login</em></strong></a> to save delivery details.
                             </p>
                         {% endif %}
                     </div>
