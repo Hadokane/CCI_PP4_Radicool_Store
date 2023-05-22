@@ -1196,9 +1196,7 @@ if 'USE_AWS' in os.environ:
 
 1. https://docs.google.com/ - For user goals tables
 
-1. https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group
-
-1. https://stackoverflow.com/questions/71712258/error-could-not-build-wheels-for-backports-zoneinfo-which-is-required-to-insta
+1. https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group - Information on creating user groups in Django and changing the HTML super user only tags to recognise `Brand Accounts` instead, allowing Front-End C.R.U.D. implementation for multiple groups.
 
 ---
 

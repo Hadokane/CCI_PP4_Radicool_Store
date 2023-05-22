@@ -535,11 +535,7 @@ Here we will test our previously defined user goals by providing and acknowledgi
 - D2 & D3 are achievable through Django's Admin pages.
 - D4 is proven in the above Manual Testing section.
 
----
-
-I am confident that the above examples further substantiate the evidence provided in the previous "Plane Analysis" sections and will be strengthened further by the following "Testing" sections. 
-
-I have substantial reason to declare all user and site-owner stories met.
+After carrying out the above Testing - both Manual & Automated - I have substantial reason to declare all User Goals met.
 
 [Back to top ↑](#testing_document)
 
@@ -547,22 +543,15 @@ I have substantial reason to declare all user and site-owner stories met.
 
 # Bugs
 
-Over the course of this project, I encountered numerous bugs that either impacted the functionality or design of the website and needed to be fixed.
+Over the course of this project, I encountered numerous bugs that needed to be fixed and overcome.
+
+In the following section I will document each of these and the methods used to correct their related issues.
 
 ## Chrome Dev Tools
 
-Chrome Dev Tools served as one of my most important methods of debugging from start to finish. It allowed me to find numerous errors in the code such as: 
+Chrome Dev Tools served as an important tool when debugging. 
 
-- Noticing discrepancies in my `<div>` arrangements and classes and ordering them correctly so that elements opened and closed when they should have.
-
-- Test out the inline styles on numerous elements before committing those changes to CSS.
-    - Used heavily while deciding on card designs.
-
-- See if an object had unintentional padding or margins being applied to it by default Materialize classes and remove/add where necessary.
-
-- Diagnose numerous bugs and hierarchical code issues present throughout the project.
-
-- See additional "issues" that may impact the performance of my project or stop it from meeting best practice guidelines.
+It allowed me to find numerous errors in the code such as out of place closing tags, view and correct console errors and try out numerous in-line styles while finding specific classes that could be changed with CSS. It was a crucial tool used to detect and diagnose bugs.
 
 ---
 
@@ -570,13 +559,418 @@ Chrome Dev Tools served as one of my most important methods of debugging from st
 
 ---
 
-**Bug:** Index Promo cards squished and unreadable on smaller devices.
+**Bug:** /admin/login does not exist.
 
-<details><summary>Bug 1</summary><img src="" alt=""></details>
+<details><summary>Bug 1</summary><img src="docs/testing/bugs/bug1.png" alt="Bug 1"></details>
 
-**Fix:** I realised I needed to change the default Materialize column class to make it responsive on smaller devices. Set it to display single cards on smaller devices and rows of 2 and 3 on larger screens.
+**Fix:** Needed to define SITE_ID=1 in settings.py.
+
+<details><summary>Bug 1 - Fix</summary><img src="docs/testing/bugs/bug1f.png" alt="Bug 1 - Fix"></details>
+
+- Solution found here: [Stack Overflow](https://stackoverflow.com/questions/9736975/django-admin-doesnotexist-at-admin)
+
+---
+
+### BUG #2
+
+---
+
+**Bug:** CSRF Verification failed.
+
+<details><summary>Bug 2</summary><img src="docs/testing/bugs/bug2.png" alt="Bug 2"></details>
+
+**Fix:** Added the below to setting file:
+```
+CSRF_TRUSTED_ORIGINS = [
+  'https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96.gitpod.io'
+]
+```
+
+- Solution found here: [Stack Overflow](https://stackoverflow.com/questions/10388033/csrf-verification-failed-request-aborted)
+
+---
+
+### BUG #3
+
+---
+
+**Bug:** no such table: store_category
+
+<details><summary>Bug 3</summary><img src="docs/testing/bugs/bug3.png" alt="Bug 3"></details>
+
+**Fix:** The solution was to flush the migrations folder from the Store App & re-migrate the tables.
+
+- Solution found here: [Stack Overflow](https://stackoverflow.com/questions/43880426/how-to-force-migrations-to-a-db-if-some-tables-already-exist-in-django)
+
+---
+
+### BUG #4
+
+---
+
+**Bug:** I limited the `max_digits` on the `Merch` tables `price` field too much. Not realising it included decimal places.
+
+<details><summary>Bug 4</summary><img src="docs/testing/bugs/bug4.png" alt="Bug 4"></details>
+
+**Fix:** Increasing `max_digits=8` allowing for higher prices in the store.
+
+<details><summary>Bug 4 - Fix</summary><img src="docs/testing/bugs/bug4f.png" alt="Bug 4 - Fix"></details>
+
+---
+
+### BUG #5
+
+---
+
+**Bug:** Images not showing when called from the Media folder.
+
+<details><summary>Bug 5</summary><img src="docs/testing/bugs/bug5.png" alt="Bug 5"></details>
+
+<details><summary>Bug 5 - Code</summary><img src="docs/testing/bugs/bug5_2.png" alt="Bug 5-2"></details>
+
+**Fix:** Needed to include `Media` before the URL, 
+
+I discovered this issue by printing the link out to the page and seeing it wasn't parsing the full url. Print(m.image)
+
+<details><summary>Bug 5 - Fix</summary><img src="docs/testing/bugs/bug5f.png" alt="Bug 5 - Fix"></details>
+
+---
+
+### BUG #6
+
+---
+
+**Bug:** Images showing on `Home` but not on `item`.
+
+<details><summary>Bug 6</summary><img src="docs/testing/bugs/bug6.png" alt="Bug 6"></details>
+
+Realised similar to the above bug, `item` is being added to the URL making the image link incorrect.
+
+<details><summary>Bug 6 - URL</summary><img src="docs/testing/bugs/bug6_2.png" alt="Bug 6 - URL"></details>
+
+**Fix:** Added ../media/ to the beginning of the URL, this fixed the issue.
+
+<details><summary>Bug 6 - Code Fix</summary><img src="docs/testing/bugs/bug6_3.png" alt="Bug 6 - Code Fix"></details>
+
+<details><summary>Bug 6 - Fix</summary><img src="docs/testing/bugs/bug6f.png" alt="Bug 6 - Fix"></details>
+
+Note - Later this was updated further to: `{{ merch.image.url }}` which was crucial for linking the project to external databases.
+
+---
+
+### BUG #7
+
+---
+
+**Bug:** The page is showing it's HTML code in the page body rather than expected page content.
+
+<details><summary>Bug 7 - Body</summary><img src="docs/testing/bugs/bug7.png" alt="Bug 7"></details>
+
+Dev Tools revealed the page's HTML was being loaded as text into the body for some reason.
+
+<details><summary>Bug 7 - Dev Tools</summary><img src="docs/testing/bugs/bug7_2.png" alt="Bug 7-2"></details>
+
+**Fix:** Appeared to be an issue with having multiple dictionaries in a return, condensing them fixed the issue.
+
+```
+ISSUE CODE:
+
+return render(request, "store/merch/collection.html", {"collection": collection}, {"merch": merch})
+
+FIXED CODE:
+return render(request, "store/merch/collection.html", {"collection": collection, "merch": merch})
+```
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** When selected a Category or Collection `item` was being added to the URL, causing an error.
+
+<details><summary>Bug 8</summary><img src="docs/testing/bugs/bug8.png" alt="Bug 8"></details>
+
+**Fix:** Wrong `reverse` URLs were used on the Models. Correcting these to the below code fixed the issue.
+
+<details><summary>Bug 8 - Incorrect Code</summary><img src="docs/testing/bugs/bug8.png" alt="Bug 8 - Incorrect Code"></details>
+
+```
+FIXED CODE:
+
+def get_absolute_url(self):
+    return reverse("store:category_info", args=[self.slug])
+
+def get_absolute_url(self):
+    return reverse("store:collection_info", args=[self.slug])
+
+```
+
+---
+
+### BUG #9
+
+---
+
+**Bug:** `Reverse` for `Store` app not found.
+
+<details><summary>Bug 9</summary><img src="docs/testing/bugs/bug9.png" alt="Bug 9"></details>
+
+**Fix:** The original URL's mentioned in Code Institute tutorials were shown as:
+
+```
+EXAMPLE:
+{% url 'pagename' %}
+
+CODE USED:
+{% url 'products' %}
+```
+This returned errors, the solution was to use updated syntax and provide the app's name first:
+```
+EXAMPLE:
+{% url 'app:pagename' %}
+
+FIX:
+{% url 'store:products' %}
+```
+
+<details><summary>Bug 9 - Fix</summary><img src="docs/testing/bugs/bug9.png" alt="Bug 9 - Fix"></details>
+
+- Solution found here: [Stack Overflow](https://stackoverflow.com/questions/45724006/django-reverse-for-not-found-is-not-a-valid-view-function-or-pattern-na)
+
+---
+
+### BUG #10
+
+---
+
+**Bug:** `Size` showing for all items in Cart if anything is updated.
+
+<details><summary>Bug 10</summary><img src="docs/testing/bugs/bug10.png" alt="Bug 10"></details>
+
+The following Code introduced this issue.
+
+<details><summary>Bug 10 - Code</summary><img src="docs/testing/bugs/bug10_2.png" alt="Bug 10 - Code"></details>
+
+**Fix:** Used the following code to target specific elements and change them on user click.
+
+<details><summary>Bug 10 - Code Fix</summary><img src="docs/testing/bugs/bug10f.png" alt="Bug 10 - Code Fix"></details>
+
+<details><summary>Bug 10 - Fix</summary><img src="docs/testing/bugs/bug10_3.png" alt="Bug 10 - Fix"></details>
+
+---
+
+### BUG #11
+
+---
+
+**Bug:** Only Merchandise with a `Size` would update in the Cart.
+
+<details><summary>Bug 11</summary><img src="docs/testing/bugs/bug11.png" alt="Bug 11"></details>
+
+<details><summary>Bug 11 - No Update</summary><img src="docs/testing/bugs/bug11_2.png" alt="Bug 11 - 2"></details>
+
+Items without sizes weren't updating due to this line of code stopping later code from running.
+
+<details><summary>Bug 11 - Error Code</summary><img src="docs/testing/bugs/bug11_3.png" alt="Bug 11 - 3"></details>
+
+**Fix:** I updated the below code:
+
+<details><summary>Bug 11 - Initial Code</summary><img src="docs/testing/bugs/bug11_4.png" alt="Bug 11 - 4"></details>
+
+To this, calling an if function to only get the element when `Size` met a set parameter:
+
+<details><summary>Bug 11 - Fix</summary><img src="docs/testing/bugs/bug11f.png" alt="Bug 11 - Fix"></details>
+
+---
+
+### BUG #12
+
+---
+
+**Bug:** Stripe Checkout Form not submitting.
+
+<details><summary>Bug 12</summary><img src="docs/testing/bugs/bug12.png" alt="Bug 12"></details>
+
+**Fix:** The Submit button was'nt inside the form tags. Moving it inside fixed the issue.
+
+---
+
+### BUG #13
+
+---
+
+**Bug:** Stripe Webhooks all failing. None returning to local project.
+
+<details><summary>Bug 13</summary><img src="docs/testing/bugs/bug13.png" alt="Bug 1"></details>
+
+**Fix:** Initially I used Stripe's Local Listener which began returning positive webhooks.
+
+<details><summary>Bug 13 - Local Fix</summary><img src="docs/testing/bugs/bug13f.png" alt="Bug 13 Fix"></details>
+
+I later realised that setting the local server to `Public` within GitPod would fix this issue.
+
+<details><summary>Bug 13 - Public Fix</summary><img src="docs/testing/bugs/bug13f2.png" alt="Bug 13 Fix 2"></details>
+
+<details><summary>Bug 13 - Stripe</summary><img src="docs/testing/bugs/bug13f3.png" alt="Bug 13 Fix 3"></details>
+
+---
+
+### BUG #14
+
+---
+
+**Bug:** Custom templates not being detected by Django AllAuth.
+
+<details><summary>Bug 14</summary><img src="docs/testing/bugs/bug14.png" alt="Bug 14"></details>
+
+**Fix:** Corrected AllAuth templates URL within Radicool.settings.
+
+<details><summary>Bug 14 - Fix</summary><img src="docs/testing/bugs/bug14f.png" alt="Bug 14 Fix"></details>
+
+---
+
+### BUG #15
+
+---
+
+**Bug:** Items without `Size` show `None` within the Admin database. This is too long for the two characters expected such as "XS" or "XL" by the `Size` field.
+
+<details><summary>Bug 15</summary><img src="docs/testing/bugs/bug15.png" alt="Bug 15"></details>
+
+<details><summary>Bug 15 - Code</summary><img src="docs/testing/bugs/bug15f.png" alt="Bug 15 Code"></details>
+
+**Fix:** Changed the code within `Size` on the data model, increasing the `max_length` from "2" to "4".
+
+---
+
+### BUG #16
+
+---
+
+**Bug:** The Button & Link were changing colours seperately on `:hover`, causing a slight delay before both reached the same colouration.
+
+<details><summary>Bug 16</summary><img src="docs/testing/bugs/bug16.png" alt="Bug 16"></details>
+
+**Fix:** Remove the surrounding button and style the `a` class to appear as the button. Fixed the issue on user `:hover`.
+
+<details><summary>Bug 16 - Fix</summary><img src="docs/testing/bugs/bug16f.png" alt="Bug 16 Fix"></details>
+
+---
+
+### BUG #17
+
+---
+
+**Bug:** No Wish List heart icon showing for newly created users or unauthorised users.
+
+<details><summary>Bug 17</summary><img src="docs/testing/bugs/bug17.png" alt="Bug 17"></details>
+
+**Fix:** Added additional if/else tags to the template HTML. Providing a view for unauthorised viewers and a view for users who were authenticated but had no Wish List, as the Wish List wouldn't be created for a user if it was empty, preventing users from adding to an empty Wish List.
+
+<details><summary>Bug 17 - Fix</summary><img src="docs/testing/bugs/bug17f.png" alt="Bug 17 Fix"></details>
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** Deployment issue prevented Heroku build.
+
+<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+
+**Fix:** Downgrading the projects requirement version `backports` fixed the issue.
+
+```
+backports.zoneinfo==0.2.1;python_version<"3.9"
+```
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** Issue here
+
+<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+
+**Fix:** Fix here
 
 <details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** Issue here
+
+<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+
+**Fix:** Fix here
+
+<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** Issue here
+
+<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+
+**Fix:** Fix here
+
+<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** Issue here
+
+<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+
+**Fix:** Fix here
+
+<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** Issue here
+
+<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+
+**Fix:** Fix here
+
+<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
+
+---
+
+### BUG #8
+
+---
+
+**Bug:** Issue here
+
+<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+
+**Fix:** Fix here
+
+<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
+
+- Solution found here: [Stack Overflow](https://stackoverflow.com/questions/71712258/error-could-not-build-wheels-for-backports-zoneinfo-which-is-required-to-insta)
 
 ---
 
