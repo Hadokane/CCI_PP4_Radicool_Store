@@ -76,7 +76,7 @@ Modals use position: fixed, which can sometimes be a bit particular about its re
 This error is a false flag, as proven by this article from [W3Schools](https://www.w3schools.com/cssref/css_pr_scale.php) explaining how to use the scale property and providing "%" as a valid input, also stating that:
 
 ```
-Note: An alternative technique to scale an element is to use CSS transform property with CSS scale() function.
+Note: An alternative technique to scale an element is to use CSS transform property with the CSS scale() function.
 The CSS scale property, as explained on this webpage, is arguably a simpler and more direct way to scale an element.
 ```
 
@@ -88,12 +88,12 @@ The CSS scale property, as explained on this webpage, is arguably a simpler and 
 }
 
 The MDN docs do state:
-The scale CSS property allows you to specify scale transforms individually and independently of the transform property. This maps better to typical user interface usage, and saves having to remember the exact order of transform functions to specify in the transform value.
+The scale CSS property allows you to specify scale transforms individually and independently of the transform property. This maps better to typical user interface usage and saves having to remember the exact order of transform functions to specify in the transform value.
 ```
 
 As shown here this is an issue with the validator not recognising this "newer" CSS property rather than an issue with my CSS code.
 
-I am satisfied with the results of this validation and consider it to be passed, as I have used a more efficient method for my use-case than the suggested "fix".
+I am satisfied with the results of this validation and consider it to be passed, as I have used a more efficient method for my use case than the suggested "fix".
 
 ---
 
@@ -101,7 +101,7 @@ I am satisfied with the results of this validation and consider it to be passed,
 
 - [JSHint Validator](https://jshint.com/)
 
-I utilised JSHint as a validation tool for the "Checkout.JS" file. Which contains all of the projects internal JS used for Stripe and payment handling. The validator passed Radicool's JS.
+I utilised JSHint as a validation tool for the "Checkout.JS" file. Which contains all of the project's internal JS used for Stripe and payment handling. The validator passed Radicool's JS.
 
   - <details><summary>JSHint Validation</summary><img src="docs/testing/jshint.png"></details>
 
@@ -109,11 +109,11 @@ I utilised JSHint as a validation tool for the "Checkout.JS" file. Which contain
 
 ## Flake8 Python Linter
 
-- [Flake8 Validator](https://pep8ci.herokuapp.com/)
+- [Flake8 Validator](https://flake8.pycqa.org/en/latest/)
 
-This was ran internally using GitPod's CLI.
+This was run internally using GitPod's CLI.
 
-Initially a number of formatting errors were shown:
+Initially, several formatting errors were shown:
 
   - <details><summary>Initial Python Lint</summary><img src="docs/testing/flake8.png" alt="Python Lint Results #1"></details>
 
@@ -147,9 +147,9 @@ After carrying out the above steps, Radicool passed Wave validation.
 
 As justification for the remaining contrast errors and alerts:
 
-- Alerts are referring almost entirely to "redundant links" but I feel a user would expect multiple elements within the same card to lead to that cards `info` html page. As such these have been left in to provide a better user experience, as they cause no issues to the website.
+- Alerts are referring almost entirely to "redundant links" but I feel a user would expect multiple elements within the same card to lead to that card's `info` HTML page. As such these have been left in to provide a better user experience, as they cause no issues to the website.
 
-- Contrast errors are all in reference to white text appearing on the Radicool green. This is a similar colour convention's used by world renowned brands such as: Subway, Asda, Starbucks and Xbox. I am confident users will have no issue interacting with these elements and have ensured it is only used on elements that are not-integral to a users purchase journey such as sort buttons and a website banner.
+- Contrast errors are all about white text appearing on the Radicool green. This is a similar colour convention used by world-renowned brands such as Subway, Asda, Starbucks and Xbox. I am confident users will have no issue interacting with these elements and have ensured it is only used on elements that are not integral to a user's purchase journey such as sort buttons and a website banner.
 
 ---
 
@@ -165,13 +165,13 @@ The performance results were concerning, to improve this statistic and raise sco
 
 - `<Meta>` tags were added to the base template's head to improve the SEO potential of Radicool.
 
-- Stripe JS was moved to the checkout page where it was required instead of being ran from the Base template.
+- Stripe JS was moved to the checkout page where it was required instead of being run from the Base template.
 
-- Replaced images within the Amazon Bucket. Changing .jpg's and .png's into .webp images using [Cloud Convert](https://cloudconvert.com/). Boosted "Home" Performance to 56%.
+- Replaced images within the Amazon Bucket. Changing .jpgs and .pngs into .webp images using [Cloud Convert](https://cloudconvert.com/). Boosted "Home" Performance to 56%.
 
-- Navbar links coloured darker and made bolder.
+- Navbar links are coloured darker and made bolder.
 
-- Javascript moved to base template footer from head.
+- Javascript moved to the base template footer from the head.
 
 - Hero Image pre-loaded within the HTML.
 
@@ -185,13 +185,13 @@ Running a test on the same project locally instead gave these results.
 
 <details><summary>Lighthouse Local Desktop Check</summary><img src="docs/testing/lighthouse-local-test.png"></details>
 
-With the above in mind I feel as though I've done what I can to improve the scores & that further improvements to "Performance" would require me to purchase and upgrade my subscriptions to either Heroku, Railway or - most likely - Amazon's services.
+With the above in mind, I feel as though I've done what I can to improve the scores & that further improvements to "Performance" would require me to purchase and upgrade my subscriptions to either Heroku, Railway or - most likely - Amazon's services.
 
-With that in mind, I am happy with the above results and feel this testing process has dramatically improved the overall speed and best practice across the Radicool E-commerce store. Images have been drastically condensed in file-size, the order of elements and frameworks loading has been improved and sped-up.
+With that in mind, I am happy with the above results and feel this testing process has dramatically improved the overall speed and best practices across the Radicool E-commerce store. Images have been drastically condensed in file size, and the order of elements and framework loading has been improved and sped up.
 
-All-in-all a better user-experience has been achieved. 
+All-in-all a better user experience has been achieved. 
 
-[Back to Top ↑](#testing-document)
+[Back to Top ↑](#testing)
 
 ---
 
@@ -212,7 +212,7 @@ The website has been tested on up-to-date versions of the following browsers:
 
 - Microsoft Edge
 - Google Chrome
-- Chrome for android
+- Chrome for Android
 - Mozilla Firefox
 - Opera
 - Safari
@@ -221,15 +221,15 @@ The website has been tested on up-to-date versions of the following browsers:
 
 The website has also been tested on monitors of 16:9, 16:10 and 21:9 resolutions.
 
-[Back to Top ↑](#testing-document)
+[Back to Top ↑](#testing)
 
 ---
 
 # Manual Testing
 
-Manual testing played a crucial role in the development of this  project.
+Manual testing played a crucial role in the development of this project.
 
-It has been carried out at each step of development through the use of Chrome Dev Tools, family & friends user tests and by asking and solving questions about the sites functionality in order to find any additional development oversights.
+It has been carried out at each step of development through the use of Chrome Dev Tools, family & friends user tests and by asking and solving questions about the site's functionality to find any additional development oversights.
 
 Once the project had reached its developmental conclusion I compiled a list of main concerns that would need to be passed to confirm the site worked as intended. Through this methodology, I can ensure that I've satisfied my project brief and provided a fully functional full-stack website, fit for consumption by multiple users.
 
@@ -237,7 +237,7 @@ Once the project had reached its developmental conclusion I compiled a list of m
 
 1. Can users create a new account?
 
-Here we created a new user account with a test email from [Temp Mail](https://temp-mail.org/en/) and attempt to sign up to Radicool.
+Here we created a new user account with a test email from [Temp Mail](https://temp-mail.org/en/) and attempt to sign up for Radicool.
 
 **Passes Testing:**
 
@@ -245,7 +245,7 @@ Here we created a new user account with a test email from [Temp Mail](https://te
 
 - The user is sent an email allowing them to authenticate their account.
 
-- Once authenticated a user is able to sign in to their account.
+- Once authenticated a user can sign in to their account.
 
 - This is a responsive, positive user experience, with informative prompts and interactive elements to guide the user.
 
@@ -263,9 +263,9 @@ Here we created a new user account with a test email from [Temp Mail](https://te
 
 ---
 
-2. Can users login on their verified accounts?
+2. Can users log in on their verified accounts?
 
-**Passes Testing:** Alerts tell the user of issues preventing login. The user is able to login to the website with the correct information.
+**Passes Testing:** Alerts tell the user of issues preventing login. The user can log in to the website with the correct information.
 
 <details><summary>Login - Test</summary><img src="docs/testing/signup_test/6.png" alt="Sign Up 7"></details>
 
@@ -285,13 +285,13 @@ For this test:
 
 **Passes Testing:** 
 
-- The Brand Account user is able to access a limited version of the Admin section from the Front-End. Viewing order history and having C.R.U.D. functionality over Merchandise.
+- The Brand Account user can access a limited version of the Admin section from the Front-End. Viewing order history and having C.R.U.D. functionality over Merchandise.
 
 - They can perform C.R.U.D. functionality from the Front-End via the "Add" & "Edit" pages.
 
-- They are able to Delete products from the Front-End via a defensively designed delete modal.
+- They can Delete products from the Front-End via a defensively designed delete modal.
 
-- Regular users are blocked from accessing Brand Account only pages if they navigate to the URL directly and are informed of this by Alerts.
+- Regular users are blocked from accessing Brand Account-only pages if they navigate to the URL directly and are informed of this by Alerts.
 
 <details><summary>Brand Account - Assigning group</summary><img src="docs/testing/brand_account/a_create.png" alt="Assigning group"></details>
 
@@ -319,9 +319,9 @@ For this test:
 
 **Passes Testing:** 
 
-- Users are able to add items to their cart and this is reflected by the live updating cart in the top right of the site.
+- Users can add items to their cart and this is reflected by the live updating cart in the top right of the site.
 
-- The cart functions as expected by updating it's subtotal and quantity.
+- The cart functions as expected by updating its subtotal and quantity.
 
 - Button text provides live positive feedback.
 
@@ -335,19 +335,19 @@ For this test:
 
 **Passes Testing:** 
 
-- Users are able to remove items from the cart via interactive buttons.
+- Users can remove items from the cart via interactive buttons.
 
-- The totals dynamically update to inform the user of shipping costs, sub totals for each item and the carts grand total.
+- The totals dynamically update to inform the user of shipping costs, subtotals for each item and the Cart grand total.
 
 - Size and quantity can be updated for each item dynamically within the cart.
 
-- Button text provides live positive feedback for update. Page refreshes on removal.
+- Button text provides live positive feedback for the update. Page refreshes on removal.
 
 <details><summary>Cart - Test</summary><img src="docs/testing/cart_test/cart.png" alt="Cart - Test"></details>
 
 <details><summary>Cart - Remove</summary><img src="docs/testing/cart_test/remove.png" alt="Cart - Remove"></details>
 
-<details><summary>Cart - Update</summary><img src="docs/testing/cart_test/update.png" alt="Cart - Update"></details>
+<details><summary>Cart - Update</summary><img src="docs/testing/cart_test/update1.png" alt="Cart - Update"></details>
 
 <details><summary>Cart - Updated</summary><img src="docs/testing/cart_test/update2.png" alt="Cart - Updated"></details>
 
@@ -366,11 +366,11 @@ For this test:
 
 - The user is shown a confirmation page.
 
-- The order appears within the users Profile under Order History and is viewable.
+- The order appears within the user's Profile under Order History and is viewable.
 
 - A confirmation email is sent to the user.
 
-- Users can save delivery information in their Profile, that is then called in the Checkout.
+- Users can save delivery information in their Profile, which is then called in the Checkout.
 
 <details><summary>Checkout - Test</summary><img src="docs/testing/checkout_test/ch1.png" alt="Checkout - Test"></details>
 
@@ -384,7 +384,7 @@ For this test:
 
 <details><summary>Checkout - Order History</summary><img src="docs/testing/checkout_test/ch6.png" alt="Checkout - Order History"></details>
 
-<details><summary>Profile - Past Order</summary><img src="docs/testing/checkout_test/chpast.png" alt="Profile - Past Order"></details>
+<details><summary>Profile - Past Order</summary><img src="docs/testing/checkout_test/ch_past.png" alt="Profile - Past Order"></details>
 
 <details><summary>Profile Info - Test</summary><img src="docs/testing/checkout_test/prof1.png" alt="Profile Info - Test"></details>
 
@@ -400,15 +400,15 @@ For this test:
 
 **Passes Testing:** 
 
-- The user is able to add & remove items from their wish list.
+- The user can add & remove items from their wish list.
 
-- The correct buttons display by items to show the user if they are within their list or not.
+- The correct buttons display items to show the user if they are within their list or not.
 
 - Merchandise on the wish list page link correctly to their `info` pages when interacted with.
 
 - The user has front-end C.R.U.D. functionality over their wish list.
 
-- Unauthorised users are directed to the sign up page, thus being incentivised to sign up for Radicool's services.
+- Unauthorised users are directed to the sign-up page, thus being incentivised to sign up for Radicool's services.
 
 - Toast Alerts provide positive feedback for users.
 
@@ -430,7 +430,7 @@ For this test:
 
 **Passes Testing:** 
 
-- Guests are able to checkout and receive confirmation emails the same as regular users.
+- Guests can check out and receive confirmation emails the same as regular users.
 
 <details><summary>Checkout - Guest</summary><img src="docs/testing/checkout_test/ch_g1.png" alt="Checkout - Guest"></details>
 
@@ -442,13 +442,13 @@ For this test:
 
 **Additional Tests:** 
 
-- Users are able to sign in on multiple devices.
+- Users can sign in on multiple devices.
 
 - Alert Toasts can be closed by clicking them.
 
 - Users cannot see other users' data.
 
-[Back to top ↑](#testing_document)
+[Back to Top ↑](#testing)
 
 ---
 
@@ -515,7 +515,7 @@ Here we will test our previously defined user goals by providing and acknowledgi
 
 - C1-C5 are all met and proven in the above Testing section.
 - Functionality is provided on the Front-End through the `Add` & `Edit` pages.
-- They are able to view users order history within their Admin section.
+- They can view users' order history within their Admin section.
 
 ---
 
@@ -537,21 +537,21 @@ Here we will test our previously defined user goals by providing and acknowledgi
 
 After carrying out the above Testing - both Manual & Automated - I have substantial reason to declare all User Goals met.
 
-[Back to top ↑](#testing_document)
+[Back to Top ↑](#testing)
 
 ---
 
 # Bugs
 
-Over the course of this project, I encountered numerous bugs that needed to be fixed and overcome.
+Throughout this project, I encountered numerous bugs that needed to be fixed and overcome.
 
-In the following section I will document each of these and the methods used to correct their related issues.
+In the following section, I will document each of these and the methods used to correct their related issues.
 
 ## Chrome Dev Tools
 
 Chrome Dev Tools served as an important tool when debugging. 
 
-It allowed me to find numerous errors in the code such as out of place closing tags, view and correct console errors and try out numerous in-line styles while finding specific classes that could be changed with CSS. It was a crucial tool used to detect and diagnose bugs.
+It allowed me to find numerous errors in the code such as out-of-place closing tags, view and correct console errors and try out numerous in-line styles while finding specific classes that could be changed with CSS. It was a crucial tool used to detect and diagnose bugs.
 
 ---
 
@@ -579,7 +579,7 @@ It allowed me to find numerous errors in the code such as out of place closing t
 
 <details><summary>Bug 2</summary><img src="docs/testing/bugs/bug2.png" alt="Bug 2"></details>
 
-**Fix:** Added the below to setting file:
+**Fix:** Added the below to the setting file:
 ```
 CSRF_TRUSTED_ORIGINS = [
   'https://8000-hadokane-ccipp4radicool-noye1esno7l.ws-eu96.gitpod.io'
@@ -612,7 +612,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 <details><summary>Bug 4</summary><img src="docs/testing/bugs/bug4.png" alt="Bug 4"></details>
 
-**Fix:** Increasing `max_digits=8` allowing for higher prices in the store.
+**Fix:** Increasing `max_digits=8` allows for higher prices in the store.
 
 <details><summary>Bug 4 - Fix</summary><img src="docs/testing/bugs/bug4f.png" alt="Bug 4 - Fix"></details>
 
@@ -630,9 +630,11 @@ CSRF_TRUSTED_ORIGINS = [
 
 **Fix:** Needed to include `Media` before the URL, 
 
-I discovered this issue by printing the link out to the page and seeing it wasn't parsing the full url. Print(m.image)
+I discovered this issue by printing the link out to the page and seeing it wasn't parsing the full URL. Print(m.image)
 
 <details><summary>Bug 5 - Fix</summary><img src="docs/testing/bugs/bug5f.png" alt="Bug 5 - Fix"></details>
+
+[Back to Top ↑](#testing)
 
 ---
 
@@ -640,7 +642,7 @@ I discovered this issue by printing the link out to the page and seeing it wasn'
 
 ---
 
-**Bug:** Images showing on `Home` but not on `item`.
+**Bug:** Images showing on `Home` but not on `Item`.
 
 <details><summary>Bug 6</summary><img src="docs/testing/bugs/bug6.png" alt="Bug 6"></details>
 
@@ -662,7 +664,7 @@ Note - Later this was updated further to: `{{ merch.image.url }}` which was cruc
 
 ---
 
-**Bug:** The page is showing it's HTML code in the page body rather than expected page content.
+**Bug:** The page is showing its HTML code in the page body rather than the expected page content.
 
 <details><summary>Bug 7 - Body</summary><img src="docs/testing/bugs/bug7.png" alt="Bug 7"></details>
 
@@ -687,7 +689,7 @@ return render(request, "store/merch/collection.html", {"collection": collection,
 
 ---
 
-**Bug:** When selected a Category or Collection `item` was being added to the URL, causing an error.
+**Bug:** When selecting a Category or Collection `item` was being added to the URL, causing an error.
 
 <details><summary>Bug 8</summary><img src="docs/testing/bugs/bug8.png" alt="Bug 8"></details>
 
@@ -716,7 +718,7 @@ def get_absolute_url(self):
 
 <details><summary>Bug 9</summary><img src="docs/testing/bugs/bug9.png" alt="Bug 9"></details>
 
-**Fix:** The original URL's mentioned in Code Institute tutorials were shown as:
+**Fix:** The original URLs mentioned in Code Institute tutorials were shown as:
 
 ```
 EXAMPLE:
@@ -737,6 +739,8 @@ FIX:
 <details><summary>Bug 9 - Fix</summary><img src="docs/testing/bugs/bug9.png" alt="Bug 9 - Fix"></details>
 
 - Solution found here: [Stack Overflow](https://stackoverflow.com/questions/45724006/django-reverse-for-not-found-is-not-a-valid-view-function-or-pattern-na)
+
+[Back to Top ↑](#testing)
 
 ---
 
@@ -792,7 +796,7 @@ To this, calling an if function to only get the element when `Size` met a set pa
 
 <details><summary>Bug 12</summary><img src="docs/testing/bugs/bug12.png" alt="Bug 12"></details>
 
-**Fix:** The Submit button was'nt inside the form tags. Moving it inside fixed the issue.
+**Fix:** The Submit button wasn't inside the form tags. Moving it inside fixed the issue.
 
 ---
 
@@ -800,7 +804,7 @@ To this, calling an if function to only get the element when `Size` met a set pa
 
 ---
 
-**Bug:** Stripe Webhooks all failing. None returning to local project.
+**Bug:** Stripe Webhooks are all failing to return to the local project.
 
 <details><summary>Bug 13</summary><img src="docs/testing/bugs/bug13.png" alt="Bug 1"></details>
 
@@ -842,13 +846,15 @@ I later realised that setting the local server to `Public` within GitPod would f
 
 **Fix:** Changed the code within `Size` on the data model, increasing the `max_length` from "2" to "4".
 
+[Back to Top ↑](#testing)
+
 ---
 
 ### BUG #16
 
 ---
 
-**Bug:** The Button & Link were changing colours seperately on `:hover`, causing a slight delay before both reached the same colouration.
+**Bug:** The Button & Link were changing colours separately on `:hover`, causing a slight delay before both reached the same colouration.
 
 <details><summary>Bug 16</summary><img src="docs/testing/bugs/bug16.png" alt="Bug 16"></details>
 
@@ -872,103 +878,19 @@ I later realised that setting the local server to `Public` within GitPod would f
 
 ---
 
-### BUG #8
+### BUG #18
 
 ---
 
 **Bug:** Deployment issue prevented Heroku build.
 
-<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
+<details><summary>Bug 18</summary><img src="docs/testing/bugs/bug18.png" alt="Bug 18"></details>
 
-**Fix:** Downgrading the projects requirement version `backports` fixed the issue.
+**Fix:** Downgrading the project's requirement version `backports` fixed the issue.
 
 ```
 backports.zoneinfo==0.2.1;python_version<"3.9"
 ```
-
----
-
-### BUG #8
-
----
-
-**Bug:** Issue here
-
-<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
-
-**Fix:** Fix here
-
-<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
-
----
-
-### BUG #8
-
----
-
-**Bug:** Issue here
-
-<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
-
-**Fix:** Fix here
-
-<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
-
----
-
-### BUG #8
-
----
-
-**Bug:** Issue here
-
-<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
-
-**Fix:** Fix here
-
-<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
-
----
-
-### BUG #8
-
----
-
-**Bug:** Issue here
-
-<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
-
-**Fix:** Fix here
-
-<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
-
----
-
-### BUG #8
-
----
-
-**Bug:** Issue here
-
-<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
-
-**Fix:** Fix here
-
-<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
-
----
-
-### BUG #8
-
----
-
-**Bug:** Issue here
-
-<details><summary>Bug 1</summary><img src="" alt="Bug 1"></details>
-
-**Fix:** Fix here
-
-<details><summary>Bug 1 - Fix</summary><img src="" alt="Bug 1 Fix"></details>
 
 - Solution found here: [Stack Overflow](https://stackoverflow.com/questions/71712258/error-could-not-build-wheels-for-backports-zoneinfo-which-is-required-to-insta)
 
@@ -980,12 +902,12 @@ backports.zoneinfo==0.2.1;python_version<"3.9"
 
 If a User refreshes the Order Confirmation page it will resend the Confirmation email.
 
-This is a minor issue that would only effect a very small subset of users, that happen to refresh their order confirmations.
+This is a minor issue that would only affect a very small subset of users, that happen to refresh their order confirmations.
 
-A warning has been added to the bottom of Confirmation Emails to inform the user that if they receive multiple emails with the same order number, that they haven't been billed more than once.
+A warning has been added to the bottom of Confirmation Emails to inform the user that if they receive multiple emails with the same order number, they haven't been billed more than once.
 
 This is a satisfactory - yet temporary - solution and something I would look to improve upon in future builds of this project.
 
-[Back to Top ↑](#testing-document)
+[Back to Top ↑](#testing)
 
 [Return to README.md ↑](/README.md#testing)

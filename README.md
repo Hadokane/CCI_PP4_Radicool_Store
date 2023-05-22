@@ -45,7 +45,7 @@ Targeted at music/alternative media fans, Radicool offers them a way to purchase
 
 The above will be displayed throughout this project via my: coding, comments, commits, and the explanation provided by this README and the accompanying [TESTING](TESTING.md) document.
 
-Full CRUD* functionality is achievable through the front end of the site, with different user groups having differing actions and interactions with site elements. *(Create, Read, Update, Delete.)
+Full CRUD* functionality is achievable through the Front-End of the site, with different user groups having differing actions and interactions with site elements. *(Create, Read, Update, Delete.)
 
 ---
 
@@ -68,9 +68,8 @@ Full CRUD* functionality is achievable through the front end of the site, with d
     - [Creating The Gitpod-Workspace](#creating-the-gitpod-workspace)
     - [Forking The Github Repository](#forking-the-github-repository)
     - [Deploying With Heroku](#deploying-with-heroku)
-    - [Deploying With ElephantSQL](#deploying-with-elephantsql)
-    - [Gitpod CLI Inputs](#gitpod-cli-terminal-inputs)
-    - [PostgreSQL Inputs](#postgresql-inputs)
+    - [Deploying With Railway](#deploying-with-railway)
+    - [Amazon Web Services (AWS)](#amazon-web-services-(aws))
 1. [Credits](#credits)
     - [Languages Used](#languages-used)
     - [Frameworks Libraries & Programs Used](#frameworks-libraries-and-programs-used)
@@ -121,7 +120,7 @@ With the above goals in mind, I have assembled the following "Grid of Opportunit
 |------------------------------------|------------|-----------|
 | All website elements function correctly    | 5          | 5         |
 | Sign up & Login functions work correctly on any device     | 5          | 5         |
-| Users have C.R.U.D. functionality over their basket and order     | 5          | 5         |
+| Users have C.R.U.D. functionality over their Cart and order     | 5          | 5         |
 | Provide Admin functionality for the Site Admin         | 5          | 5         |
 | Users can complete a purchase | 5          | 5        |
 | User can view content by Category/Collection | 4          | 4        |
@@ -169,7 +168,7 @@ The features required are written concerning the established user group stories 
     
 - Provide a list of past orders. (VIEW)
 
-- Allows users to save/update their checkout information. (READ & UPDATE)**
+- Allows users to save/update their checkout information. (READ & UPDATE)
 
 **5. A Users table within the Database to store each user's account information.**
     
@@ -214,10 +213,13 @@ In a theoretical "next update", I would aim to add additional functionality to t
 
 1. Provide additional payment options such as Paypal or Google Pay to the checkout. Stripe was required specifically by the project's Assessment Criteria and as such serves as the current implemented payment method. In a live setting including Paypal or Google Pay would be a preference as I feel these are more widely known to the standard consumer and would improve user confidence in shopping with Radicool.
 
+2. Implement Social Account sign-up/login for user convenience. In no way a priority as the current sign-up/login method functions great and allows any User to complete a full purchase journey.
 
-**To improve the experience for Bran Accounts, the following could be implemented:**
+3. Pagination can be added to the All Products, Category and Collection pages as the Merchandise inventory of the website grows. This would improve on load times and keep pages from being overwhelming to the user. Radicool's inventory is small, making this currently an unnecessary addition.
 
-1. Create specific user groups for each Brand Account that sells through Radicool. Limiting their C.R.U.D. functionality to predefined Categories & Collections within the website. This is in the interest of defensive design as it would stop Brand Accounts from being able to add, edit or delete another Brand Account's Merchandise. Currently, this isn't a priority or issue as all Brand Accounts are fictional and their merchandise could also be uploaded/managed by the Site Admin directly at this current stage. This would be beneficial given the small scale of the current site, limiting the need for multiple Brand Account Groups being created via Django.
+**To improve the experience for Brand Accounts, the following could be implemented:**
+
+1. Create specific user groups for each Brand Account that sells through Radicool. Limiting their C.R.U.D. functionality to predefined Categories & Collections within the website. This is in the interest of defensive design as it would stop Brand Accounts from being able to add, edit or delete another Brand Account's Merchandise. Currently, this isn't a priority or issue as all Brand Accounts are fictional and their merchandise could also be uploaded/managed by the Site Admin directly at this current stage.
 
 2. Allow Brand Accounts to see how much stock of their Merchandise has been purchased through their Admin page. Could set up direct emails to them each time one of their items sells. Currently, they would need to scan through Order History manually or trust the Site Admins' reports to see how well their Merchandise was selling. This wasn't deemed a priority feature for an initial launch as it doesn't affect the site functionality or initial User Goals established.
 
@@ -323,7 +325,7 @@ The following pages would be contained within a Django "Store" app, created to h
 
 ---
 
-The first thing the user should be greeted by is an appealing `Home Page/Index` containing the following:
+The first thing the user will be greeted by is an appealing `Home Page/Index` containing the following:
 
 - A clutter-free, intuitive design, making use of Bootstrap classes and minimal brand colours to allow Merchandise imagery to stand out.
 
@@ -414,7 +416,7 @@ The Checkout App will contain two HTML pages.
 
     - Provide the user with a form - utilising [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/) - to enter their delivery information.
 
-    - Provide a checkbox, allowing the user to save their delivery information to their profile, improving their experience dramatically on subsequent purchases and meeting expectations.
+    - Allow the user to recover their delivery information from their profile, improving their experience and providing value in the user creating an account.
 
     - Provide a Stripe payment element. Allowing the user to submit payments & the Site Admin to receive payments.
 
@@ -601,7 +603,7 @@ This final UX section will tie together the above goals and features by describi
 
 As a software developer, I am fully aware that Radicool will be viewed across numerous different browsers, screen sizes and device types. As such, responsive design becomes a crucial factor in ensuring Radicool is accessible to as many users as possible across their multitudes of devices.
 
-*Manual testing will also be implemented and detailed in the TESTING document, further ensuring elements display as expected. 
+Manual testing will also be implemented and detailed in the TESTING document, further ensuring elements display as expected. 
 
 Bootstrap classes were used extensively across the website, as a reliable, industry-standard solution in achieving responsive design. Their container classes and cards can be seen across all areas of the website. 
 
@@ -669,9 +671,9 @@ A font designed for use in posters, to be displayed in bold uppercase letters. U
 
 **#21D192 - the main accent colour of the website.**
 
-This green was chosen as it's an energetic, friendly and eye-catching colour. It complements the website's minimal colour palette of black and white by allowing it to have a sole colour to define its brand identity.
+This green was chosen as it's an energetic, friendly and eye-catching colour. It complements the website's minimal colour palette of black and white by allowing this single colour to define the brand's identity.
 
-This is also used to highlight icons and elements when the user hovers over them, providing positive feedback to user interactions.
+This is also used to highlight icons and elements when User's `:hover` over them, providing positive feedback to user interactions.
 
 ---
 
@@ -683,9 +685,11 @@ The red was chosen to give the "REMOVE" button further distinction from the "ADD
 
 This improves the user's overall experience by providing the icon buttons pleasing UI with a different highlight to reinforce specific user actions.
 
+For Brand Accounts, this Red can be seen on the `Delete` Merchandise options for the same reasons as above.
+
 ---
 
-**Black & White** were used to keep the website free from cluttering colour to allow the product imagery to stand out without having to compete with surrounding clashes.
+**Black & White** were used to keep the website free from cluttering colours and to allow the product imagery to stand out without having to compete with surrounding clashes.
 
 They allow fonts, buttons and elements to remain readable and legible at any size.
 
@@ -711,7 +715,7 @@ The specific HTML page content is then displayed through the use of Django {% bl
 
 Finally a `Footer` with placeholder links, a short site blurb and a copyright disclaimer.
 
-This simple layout allows a user to intuitively navigate Radicool with no learning curve, as it meets the same standard conventions as the majority of popular websites and as such users should be able to navigate it with ease. This will be further reinforced by manual and automated testing criteria in the TESTING document. 
+This simple layout allows a user to intuitively navigate Radicool with no learning curve, as it meets the same standard conventions as the majority of popular websites and as such users will be able to navigate it with ease. This will be further reinforced by manual and automated testing criteria in the TESTING document. 
 
 ---
 
@@ -723,7 +727,7 @@ This simple layout allows a user to intuitively navigate Radicool with no learni
 
 ---
 
-![Radicool Logo](static/logos/radicool_logo.png)
+![Radicool Logo](static/logos/radicool_logo.webp)
 
 The logo makes use of **Londrina Outline** for the reasons described above.
 
@@ -786,7 +790,7 @@ To distinguish it from other collections present on the home page it has been gi
 This section is built with adaptability in mind, as the background is also easily changeable - through a single CSS line - to match the theme of the collection.
 An image such as the above hero image, a different gradient, block colour or repeating pattern could all be implemented to complement the theme.
 
-This helps the section to stand out to a user while also increasing sales/click-throughs for both the band/brand.
+This helps the section to stand out to users while increasing sales/conversions.
 
 ---
 
@@ -798,7 +802,7 @@ This helps the section to stand out to a user while also increasing sales/click-
 
 This follows the same reasoning and principles as the above two sections. 
 
-The added benefit of a **Featured Item** is that this is the only item directly purchasable* from the home page. Driving user interactions, wish list additions and sales for a specific item in line with site goals. Improving interactions for the user and driving sales for Brand Accounts.
+The added benefit of a **Featured Item** is that this is the only item directly purchasable* from the home page. Driving user interactions, wish list additions and sales for a specific item in line with site goals. Improving user interactions and driving sales.
 
 *(addable to cart) 
 
@@ -868,11 +872,11 @@ Examples of defensive design implementations can be seen here:
 
 - The delete button required a failsafe to prevent Brand Accounts from unintentionally removing Merchandise. This was achieved through the use of a Bootstrap modal. Upon clicking the delete link on a card, the modal loads, making users confirm their actions, improving their overall experience and providing a defensive design solution to this issue.
 
-    - <details><summary>Delete Modal</summary><img src="officechampion/static/assets/images/docs/surface/dlt_modal.png" alt="Delete Modal"></details>
+    - <details><summary>Delete Modal</summary><img src="docs/images/dlt_modal.png" alt="Delete Modal"></details>
 
 - The above method was also implemented on the `logout` page of the website. Moving this page inside of a modal provides the same defensive solution and improvements to user experience as mentioned above, also shortening the user's journey by eliminating the need for a separate HTML `logout` page.
 
-    - <details><summary>Delete Modal</summary><img src="officechampion/static/assets/images/docs/surface/dlt_modal.png" alt="Delete Modal"></details>
+    - <details><summary>Logout Modal</summary><img src="docs/images/logout_modal.png" alt="Logout Modal"></details>
 
 - Button`:hover` icons change colour to indicate a positive (Green) or negative (Red) user action, providing positive visual feedback. In the following IXD section, look at the `wish list buttons` images to see a clear example of this design principle. Red indicates `Remove` and Green represents `Add`.
 
@@ -1089,6 +1093,8 @@ if 'USE_AWS' in os.environ:
 
 5. Push these changes to Heroku.
 
+[Back to top ↑](#radicool)
+
 ---
 
 # Credits 
@@ -1107,7 +1113,7 @@ if 'USE_AWS' in os.environ:
 - [Heroku](https://heroku.com/)
   - Heroku is used for the deployment & hosting of this project.
 
-- [ElephantSQL](https://elephantSQL.com)
+- [Railway](https://railway.app/)
   - For hosting the PostgreSQL database for Heroku to access.
 
 - [PostgreSQL](https://www.postgresql.org/)
@@ -1151,10 +1157,16 @@ if 'USE_AWS' in os.environ:
   - Git is used in conjunction with the above for version control.
 
 - [Draw io](https://www.draw.io)
-  - Used to create Wireframes & Database Schema for the project during development.
+  - Used to create Wireframes for the project during development.
+
+- [DBDiagram](https://dbdiagram.io/)
+   - Used to create Database Schema during development.
 
 - [Adobe Photoshop](https://www.adobe.com/uk/products/photoshop.html)
   - Photoshop was used to create the website's logo and for editing imagery throughout the project.
+
+- [Google Docs](https://docs.google.com/)
+  - Docs & Sheets used to track User Goals.
 
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
   - Chrome's Dev Tools were essential during the development of this project.
@@ -1180,23 +1192,28 @@ if 'USE_AWS' in os.environ:
 
 - [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/) - Accessibility testing.
 
-- [A11y Color Contrast Accessibility Validator](https://color.a11y.com/Contrast/) - Contrast testing.
-
 - [Lighthouse & Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Performance testing.
 
 ---
 
 ## Technologies Used:
 
-1. https://learn.codeinstitute.net/ - For course videos & assignment
+- [Code Institute](https://learn.codeinstitute.net/)
+    - For course videos & this project's assignment.
+    - [Boutique Ado](https://github.com/Code-Institute-Solutions/boutique_ado_v1)
+        - Served as a foundational knowledge project for constructing this website, mainly in the Checkout section.
 
-1. https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13 - For guidance on Conventional Commits
+- [Github - qoomon](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13)
+    - For guidance on Conventional Commits.
 
-1. https://dbdiagram.io/ - DB Schema Tool
+- [Grammarly](https://app.grammarly.com/)
+  - Used to spell-check documents.
 
-1. https://docs.google.com/ - For user goals tables
+- [StackOverflow - Group Creation Article](https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group) 
+    - Information on creating user groups in Django and changing the HTML super user-only tags to recognise `Brand Accounts` instead, allowing Front-End C.R.U.D. implementation for multiple groups.
 
-1. https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group - Information on creating user groups in Django and changing the HTML super user only tags to recognise `Brand Accounts` instead, allowing Front-End C.R.U.D. implementation for multiple groups.
+- [Very Academy](https://www.youtube.com/@veryacademy)
+    - A youtube channel packed with information on Django. His courses helped guide my app design process and layout.
 
 ---
 
