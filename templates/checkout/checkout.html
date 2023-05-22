@@ -93,6 +93,20 @@
                     {{ order_form.county | as_crispy_field }}
                     <span>{{ order_form.postcode | as_crispy_field }}</span>
                     {{ order_form.country | as_crispy_field }}
+
+                    <div class="float-right mr-0 form-p">
+                        {% if user.is_authenticated %}
+                            <p>Save delivery information in your <a href="{% url 'profiles:profile' %}">profile</a>
+                                for faster purchases.
+                            </p>
+                        {% else %}
+                            <p>
+                                <a href="{% url 'account_signup' %}">Sign up</a> or 
+                                <a href="{% url 'account_login' %}">login</a> to save delivery information.
+                            </p>
+                        {% endif %}
+                    </div>
+
                 </fieldset>
 
                 <!-- Payment Section -->

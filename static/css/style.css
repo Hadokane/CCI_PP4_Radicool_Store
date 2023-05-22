@@ -157,7 +157,15 @@ a:hover i {
   text-decoration: solid;
 }
 
+/* Checkout Form link */
+.form-p a{
+  color: black;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 /* Hover effect for buttons and links */
+.form-p a:hover,
 a:hover,
 button:hover {
   font-weight: 800;
